@@ -1,0 +1,45 @@
+- title: RANC
+  subtitle: Reconfigurable Architecture for Neuromorphic Computing
+  group: featured
+  image: images/brain.png
+  link: /projects/ranc
+  description: Go to _data/projects.yaml to modify this and a add short description
+  tags:
+    - website
+
+- title: CEDR
+  subtitle: Compiler-Integrated Extensible DSSoC Runtime
+  group: featured
+  image: images/soc.png
+  link: /projects/cedr
+  description: Go to _data/projects.yaml to modify this and a add short description
+  tags:
+    - website
+
+- title: PASH
+  subtitle: Productivity-Aware Scheduling in HPC
+  group: archived
+  image: images/hpc.png
+  link: /projects/pash
+  description: Go to _data/projects.yaml to modify this and a add short description
+  tags:
+    - website
+
+- title: LDPC
+  subtitle: LDPC Simulation Testbed
+  group: archived
+  image: images/ldpc.png
+  link: /projects/ldpc
+  description: Go to _data/projects.yaml to modify this and a add short description
+  tags:
+    - website
+
+- title: Cool Web Server
+  subtitle: a subtitle
+  group: archived
+  image: images/photo.jpg
+  link: https://github.com/
+  description: Lorem ipsum _dolor sit amet_, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  repo: greenelab/lab-website-template
+  tags:
+    - software
