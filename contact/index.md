@@ -7,27 +7,26 @@ nav:
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Go to contact/index.md to modify here.
 
 {%
   include button.html
   type="email"
-  text="jane@smith.com"
-  link="jane@smith.com"
+  text="akoglu@arizona.edu"
+  link="akoglu@arizona.edu"
 %}
 {%
   include button.html
   type="phone"
-  text="(555) 867-5309"
-  link="+1-555-867-5309"
+  text="(520) 626-5149"
+  link="+1-520-626-5149"
 %}
 {%
   include button.html
   type="address"
+  text="ECE356B"
   tooltip="Our location on Google Maps for easy navigation"
-  link="https://www.google.com/maps"
+  link="https://www.google.com/maps/place/Department+of+Electrical+and+Computer+Engineering/@32.2356201,-110.9534426,15z/data=!4m2!3m1!1s0x0:0x9a1073d0b9a5bc24?sa=X&ved=2ahUKEwiI5_Tmh8KAAxVLLUQIHeqTB7AQ_BJ6BAhSEAA&ved=2ahUKEwiI5_Tmh8KAAxVLLUQIHeqTB7AQ_BJ6BAhgEAg"
 %}
 
 {% include section.html %}
@@ -36,8 +35,7 @@ nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 {%
   include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
+  image="images/uofa.webp"
 %}
 
 {% endcapture %}
@@ -46,8 +44,8 @@ nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 {%
   include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
+  image="images/storyHero.jpg"
+  caption="University Of Arizona - ECE Department"
 %}
 
 {% endcapture %}
