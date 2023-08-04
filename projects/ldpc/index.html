@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--
+  Based on the Scrolling Nav template from Start Bootstrap
+  https://github.com/BlackrockDigital/startbootstrap-scrolling-nav
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="High Throughput Testbed for Low Density Parity Check (LDPC) Decoders">
+  <meta name="author" content="University of Arizona Reconfigurable Computing Lab">
+
+  <title>LDPC Simulation Testbed</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/scrolling-nav.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">LDPC Simulation Testbed</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
+          </li>
+          <li class="nav-item">
+          	<a class="nav-link js-scroll-trigger" href="#projectstatus">Project Status</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-dark text-dark">
+    <div class="container text-center">
+      <!--Royalty free source: https://www.cleanpng.com/png-system-on-a-chip-psoc-integrated-circuits-chips-si-1135310/download-png.html-->
+      <img class="img-fluid" src="./images/ldpc_concept.png" alt="" width="1000" height="500">
+    </div>
+    <div class="container text-center">
+      <h1>LDPC Simulation Testbed</h1>
+      <p class="lead"><b>High Throughput FPGA based Simulation Testbed for LDPC codes</b></p>
+      <a class="btn btn-secondary btn-large" href="https://github.com/UA-RCL/LDPC_Simulation_Testbed" target="_blank">GitHub</a>
+      <br>
+      <div class="row justify-content-center mt-2">
+        <div class="col-sm-0 text-center mr-1">
+          <a class="github-button" href="https://github.com/UA-RCL/LDPC_Simulation_Testbed" data-icon="octicon-star" data-size="large" aria-label="Star UA-RCL/LDPC_Simulation_Testbed on GitHub">Star</a>
+        </div>
+        <div class="col-sm-0 text-center ml-1">
+          <a class="github-button" href="https://github.com/UA-RCL/LDPC_Simulation_Testbed/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork UA-RCL/LDPC_Simulation_Testbed on GitHub">Fork</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h2>About</h2>
+          <p class="lead">
+          	This project presents an FPGA based high throughput and modular simulation testbed for rapid simulation of decoders for Low Density Parity Check (LDPC) codes. The users can replace different modules of this testbed to incorporate their own hard-decision decoders for rapid characterization.
+          	</p>
+          
+          	
+          	<div class="container text-center">
+	        			<img class="img-fluid" src="./images/project_images/5g.png" alt="" width="150" height="100">
+	        			<img class="img-fluid" src="./images/project_images/10gb.png" alt="" width="150" height="100">
+	        			<img class="img-fluid" src="./images/project_images/wifi.png" alt="" width="150" height="100">
+	        			<img class="img-fluid" src="./images/project_images/wimax.png" alt="" width="150" height="100">
+          	</div>
+
+        <p class="lead">
+				LDPC codes are a popular choice for employment in several cutting edge communication standards such as 5G, WiFi, WiMax, 10 Gigabit Ethernet etc.. With the increasing popularity of LDPC codes, the research to obtain decoders with better error correction performance and reduced hardware footprint is becoming prominent as well. Analyzing and improving the decoders require detailed large scale simulations. General purpose CPU based software execution of such simulators have become infeasible due to long simulation time. Furthermore, developing such simulators on hardware platform (e.g. FPGA) requires significant amount of effort which is outside the scope of research on decoders.<br>
+          		<br>
+          	
+          		The testbed reduces the duration of large scale simulations down to <b>order of hours</b> from <b>order of years</b> on a single core CPU. Furthermore, this highly flexible testbed reduces design time significantly by enabling users to easily integrate their desired decoders with this platform. <br><br>
+
+        </p>
+       
+       	<div class="container text-center">
+	   	 	<img class="img-fluid" src="./images/LDPC_git_diagram_2.png" alt="" width="1200" height="500">
+        </div>
+ 		<br>
+        
+  			</div>
+  		</div>
+  		
+  	</div>
+
+  </section>
+
+  
+  <section id="publications">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h2>Publications and News</h2>
+          <p class="lead">
+            <ol>
+
+            	<li>B. Unal, M. S. Hassan, J. Mack, N. Kumbhare and A. Akoglu, "Design of High Throughput FPGA-Based Testbed for Accelerating Error Characterization of LDPC Codes," <i>2019 International Conference on ReConFigurable Computing and FPGAs (ReConFig)</i>, Cancun, Mexico, 2019, pp. 1-8, doi: 10.1109/ReConFig48160.2019.8994785.</li>
+
+    			<li>B. Unal, A. Akoglu, F. Ghaffari and B. Vasic, "Hardware Implementation and Performance Analysis of Resource Efficient Probabilistic Hard Decision LDPC Decoders," <i>IEEE Transactions on Circuits and Systems I: Regular Papers</i>, vol. 65, no. 9, pp. 3074-3084, Sept. 2018.</li>
+            	
+    			<li>B. Unal, F. Ghaffari, A. Akoglu, D. Declercq, B. Vasic, Analysis and Implementation of Resource Efficient Probabilistic Gallager B LDPC Decoder, <i>The 15th IEEE International New Circuits and Systems Conference (NEWCAS 2017)</i>, Strasbourg, France, pp. 333-336, June 25-28, 2017. </li>
+
+            </ol>
+          </p>
+          <!-- Demo video...-->
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="projectstatus">
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-lg-10 mx-auto">
+  				<h2>Project Status and Future Work</h2>
+  				<p class="lead">
+  					Currently, our testbed supports several hard-decision decoding algorithms such as Gallager B (GaB), Probabilistic GaB (PGaB), Gradient Descent Bit Flipping (GDBF), and Probabilistic GDBF (PGDBF). The FPGA based testbed allows users to specify different simulation parameters before launching the execution, and returns the statistics to the user for calculating the error correction performance of decoder under test. <br><br>
+
+  					In future works, we aim to add more recent hard-decision decoding algorithms like Probabilistic Parallel Bit Flipping (PPBF), Tabu-list Random-penalty GDBF (TRGDBF) etc. to the decoder library. We further aim to take the testbed on MPSoC. Taking advantage of this platform, the aim is to make the testbed more flexible and capable. Besides statistics, it should be able to provide detailed information to the users to identify the weaknesses of the simulated decoders.
+  				</p>
+  			</div>
+  		</div>
+  	</div>
+  	
+  </section>
+
+    <!-- Profiles are generated via js/profile.js -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h4>Current Contributors</h4>
+          <div class="row mx-auto mt-3">
+            <div class="col-sm mx-auto text-center">
+             	<div class="contrib-profile" data-name="Sahil Hassan" data-location="UArizona"></div>
+            </div>
+            <div class="col-sm mx-auto text-center">
+            	<div class="contrib-profile" data-name="Joshua Mack" data-location="UArizona"></div>
+            </div>
+            <div class="col-sm mx-auto text-center">
+            	<div class="contrib-profile" data-name="Nirmal Kumbhare" data-location="UArizona"></div>
+            </div>
+            
+          </div>
+          <div class="row mx-auto mt-3">
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Ali Akoglu" data-location="UArizona"></div>
+            </div>
+          </div>
+          
+          <h4>Previous Contributors</h4>
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Burak Unal" data-location="Karabuk University"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Maintained by the University of Arizona <a href="https://uweb.engr.arizona.edu/~rcl/">Reconfigurable Computing Lab</a>. Copyright &copy; 2020, University of Arizona</p>
+    </div>
+  </footer>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script async src="vendor/github-buttons/js/buttons.min.js"></script>
+
+  <script src="js/scrolling-nav.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+
+</html>
