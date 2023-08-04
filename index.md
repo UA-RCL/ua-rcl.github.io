@@ -3,7 +3,7 @@
 
 # University of Arizona Reconfigurable Computing Lab (UA-RCL)
 
-Go inside index.md in root directory to modify. Email and Scholar links in the footer navigates to Dr. Akoglu's pages, maybe we can open new accounts for RCL itself. 
+Go inside index.md in root directory to modify. Email and Scholar links in the footer navigates to Dr. Akoglu's pages. 
 
 {%
   include button.html
