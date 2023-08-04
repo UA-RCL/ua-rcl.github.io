@@ -1,18 +1,18 @@
 # site properties and page defaults
 title: UA-RCL
-subtitle: University of Arizona 
-description: An easy-to-use, flexible website template for labs, with automatic citations, GitHub tag imports, pre-built components, and more.
+subtitle: 
+description: An engaging 1-3 sentence description of your lab.
 header: images/background.jpg
 footer: images/background.jpg
 
 # site social media and other links
 links:
-  email: akoglu@arizona.edu
+  email: contact@UA-RCL.com
   orcid: 0000-0001-8713-9213
   google-scholar: 
   github: UA-RCL
-  twitter: YourLabHandle
-  youtube: YourLabChannel
+  twitter: UA-RCL
+  youtube: UA-RCL
 
 ### jekyll settings
 
