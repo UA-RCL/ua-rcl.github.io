@@ -50,3 +50,294 @@
   repo: UA-RCL/CEDR
   plugin: sources.py
   file: sources.yaml
+- id: doi:10.1109/VLSI-SoC54400.2022.9939623
+  title: A Hardware-based HEFT Scheduler Implementation for Dynamic Workloads on Heterogeneous
+    SoCs
+  authors:
+  - Alexander Fusco
+  - Sahil Hassan
+  - Joshua Mack
+  - Ali Akoglu
+  publisher: 2022 IFIP/IEEE 30th International Conference on Very Large Scale Integration
+    (VLSI-SoC)
+  date: '2022-03-10'
+  link: https://doi.org/gsj4c3
+  type: paper
+  description: description here
+  image: images/soc.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/CEDR
+  - type: website
+    link: projects/cedr
+  tags:
+  - can add tags here
+  repo: UA-RCL/CEDR
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1109/TPDS.2021.3135876
+  title: Performant, Multi-Objective Scheduling of Highly Interleaved Task Graphs
+    on Heterogeneous System on Chip Devices
+  authors:
+  - Joshua Mack
+  - Samet E. Arda
+  - Umit Y. Ogras
+  - Ali Akoglu
+  publisher: IEEE Transactions on Parallel and Distributed Systems
+  date: ''
+  link: https://doi.org/gsj4c8
+  type: paper
+  description: description here
+  image: images/soc.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/CEDR
+  - type: website
+    link: projects/cedr
+  tags:
+  - can add tags here
+  repo: UA-RCL/CEDR
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1109/TCAD.2020.3038151
+  title: 'RANC: Reconfigurable Architecture for Neuromorphic Computing'
+  authors:
+  - Joshua Mack
+  - Ruben Purdy
+  - Kris Rockowitz
+  - Michael Inouye
+  - Edward Richter
+  - Spencer Valancius
+  - Nirmal Kumbhare
+  - Md Sahil Hassan
+  - Kaitlin Fair
+  - John Mixter
+  - Ali Akoglu
+  publisher: IEEE Transactions on Computer-Aided Design of Integrated Circuits and
+    Systems
+  date: ''
+  link: https://doi.org/gsj4dc
+  type: paper
+  description: description here
+  image: images/brain.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/RANC
+  - type: website
+    link: projects/ranc
+  tags:
+  - can add tags here
+  repo: UA-RCL/RANC
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1016/j.parco.2020.102686
+  title: Dynamic power management for value-oriented schedulers in power-constrained
+    HPC system
+  authors:
+  - Nirmal Kumbhare
+  - Ali Akoglu
+  - Aniruddha Marathe
+  - Salim Hariri
+  - Ghaleb Abdulla
+  publisher: Parallel Computing
+  date: '2020-05-16'
+  link: https://doi.org/gsj4df
+  type: paper
+  description: description here
+  image: images/hpc.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/PASH
+  - type: website
+    link: projects/pash
+  tags:
+  - can add tags here
+  repo: UA-RCL/PASH
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1109/IPDPSW50202.2020.00022
+  title: FPGA Based Emulation Environment for Neuromorphic Architectures
+  authors:
+  - Spencer Valancius
+  - Edward Richter
+  - Ruben Purdy
+  - Kris Rockowitz
+  - Michael Inouye
+  - Joshua Mack
+  - Nirmal Kumbhare
+  - Kaitlin Fair
+  - John Mixter
+  - Ali Akoglu
+  publisher: 2020 IEEE International Parallel and Distributed Processing Symposium
+    Workshops (IPDPSW)
+  date: '2020-05-18'
+  link: https://doi.org/gsj4dh
+  type: paper
+  description: description here
+  image: images/brain.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/RANC
+  - type: website
+    link: projects/ranc
+  tags:
+  - can add tags here
+  repo: UA-RCL/RANC
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1109/IPDPSW50202.2020.00016
+  title: User-Space Emulation Framework for Domain-Specific SoC Design
+  authors:
+  - Joshua Mack
+  - Nirmal Kumbhare
+  - Anish NK
+  - Umit Y. Ogras
+  - Ali Akoglu
+  publisher: 2020 IEEE International Parallel and Distributed Processing Symposium
+    Workshops (IPDPSW)
+  date: '2020-05-18'
+  link: https://doi.org/gsj4dk
+  type: paper
+  description: description here
+  image: images/soc.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/CEDR
+  - type: website
+    link: projects/cedr
+  tags:
+  - can add tags here
+  repo: UA-RCL/CEDR
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1109/TPDS.2020.2967373
+  title: A Value-Oriented Job Scheduling Approach for Power-Constrained and Oversubscribed
+    HPC Systems
+  authors:
+  - Nirmal Kumbhare
+  - Aniruddha Marathe
+  - Ali Akoglu
+  - Howard Jay Siegel
+  - Ghaleb Abdulla
+  - Salim Hariri
+  publisher: IEEE Transactions on Parallel and Distributed Systems
+  date: '2020-01-16'
+  link: https://doi.org/gsj4d8
+  type: paper
+  description: description here
+  image: images/hpc.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/PASH
+  - type: website
+    link: projects/pash
+  tags:
+  - can add tags here
+  repo: UA-RCL/PASH
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1109/ReConFig48160.2019.8994785
+  title: Design of High Throughput FPGA-Based Testbed for Accelerating Error Characterization
+    of LDPC Codes
+  authors:
+  - Burak Unal
+  - Md Sahil Hassan
+  - Joshua Mack
+  - Nirmal Kumbhare
+  - Ali Akoglu
+  publisher: 2019 International Conference on ReConFigurable Computing and FPGAs (ReConFig)
+  date: '2019-12-09'
+  link: https://doi.org/gh6t72
+  type: paper
+  description: description here
+  image: images/ldpc.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/LDPC_Simulation_Testbed
+  - type: website
+    link: projects/ldpc
+  tags:
+  - can add tags here
+  repo: UA-RCL/LDPC_Simulation_Testbed
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1109/PDCAT46702.2019.00035
+  title: Adaptive Power Reallocation for Value-Oriented Schedulers in Power-Constrained
+    HPC
+  authors:
+  - Nirmal Kumbhare
+  - Aniruddha Marathe
+  - Ali Akoglu
+  - Salim Hariri
+  - Ghaleb Abdulla
+  publisher: 2019 20th International Conference on Parallel and Distributed Computing,
+    Applications and Technologies (PDCAT)
+  date: '2019-12-05'
+  link: https://doi.org/gsj4fb
+  type: paper
+  description: description here
+  image: images/hpc.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/PASH
+  - type: website
+    link: projects/pash
+  tags:
+  - can add tags here
+  repo: UA-RCL/PASH
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1109/AICCSA56895.2022.10017481
+  title: GPGPU-based High Throughput Image Pre-processing Towards Large-Scale Optical
+    Character Recognition
+  authors:
+  - Serhan Gener
+  - Parker Dattilo
+  - Dhruv Gajaria
+  - Alexander Fusco
+  - Ali Akoglu
+  publisher: 2022 IEEE/ACS 19th International Conference on Computer Systems and Applications
+    (AICCSA)
+  date: '2022-12-05'
+  link: https://doi.org/gsj4fc
+  type: paper
+  description: description here
+  tags:
+  - can add tags here
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1109/UBMK52708.2021.9558926
+  title: FPGA-based Minimal Latency HEFT Scheduler for Heterogeneous Computing
+  authors:
+  - Ilkin Aliyev
+  - Joshua Mack
+  - Nirmal Kumbhare
+  - Ali Akoglu
+  - H. Fatih Ugurdag
+  publisher: 2021 6th International Conference on Computer Science and Engineering
+    (UBMK)
+  date: '2022-09-15'
+  link: https://doi.org/gsj4fg
+  type: paper
+  description: description here
+  image: images/soc.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/CEDR
+  - type: website
+    link: projects/cedr
+  tags:
+  - can add tags here
+  repo: UA-RCL/CEDR
+  plugin: sources.py
+  file: sources.yaml
