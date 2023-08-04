@@ -1,5 +1,5 @@
 ---
-name: Alex Fusco
+name: Alex Fusco (MS)
 image: images/profiles/alex.jpg
 description: SpaceX
 role: graduated
@@ -15,7 +15,7 @@ links:
   cv: 
 ---
 
-Graduation: Spring 2023
+Graduation: Spring 2023 (MS)
 
 Works at SpaceX 
 

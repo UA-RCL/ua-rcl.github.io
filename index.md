@@ -19,12 +19,11 @@ Go inside index.md in root directory to modify. Email and Scholar links in the f
 ### Published papers, awards (like Maisha got), we should discuss about what we will migrate from the other website
 
 1. Our paper CEDR-API: Productive, Performant Programming of Domain-Specific Embedded Systems (arXiv) was accepted to the 2023 IPDPS Heterogeneity in Computing Workshop.
-2. Our paper CEDR -- A Compiler-Integrated, Extensible, DSSoC Runtime (arXiv, ACM) was accepted for publication in the ACM Transactions on Embedded Computing Systems.
-3. Our paper User-Space Emulation Framework for Domain-Specific SoC Design (arXiv, IEEE Xplore) was accepted to the 2020 IPDPS Heterogeneity in Computing Workshop.
-
-- We presented Automating Programming and Development of Heterogeneous SoCs with LLVM Tools at the 2020 Free and Open Source Developers' European Meetup (FOSDEM 2020).
-- We presented a poster on Heterogeneous SoC Design Space Exploration with an FPGA based Emulation Framework at the 2019 International Conference on ReConFigurable Computing and FPGAs (ReConFig 2019).
-- We presented a poster and demo on Emulation Framework for Hardware-Software Co-Design of Heterogeneous SoCs at 2019 ARM Research Summit.
+1. Our paper CEDR -- A Compiler-Integrated, Extensible, DSSoC Runtime (arXiv, ACM) was accepted for publication in the ACM Transactions on Embedded Computing Systems.
+1. Our paper User-Space Emulation Framework for Domain-Specific SoC Design (arXiv, IEEE Xplore) was accepted to the 2020 IPDPS Heterogeneity in Computing Workshop.
+1. We presented Automating Programming and Development of Heterogeneous SoCs with LLVM Tools at the 2020 Free and Open Source Developers' European Meetup (FOSDEM 2020).
+1. We presented a poster on Heterogeneous SoC Design Space Exploration with an FPGA based Emulation Framework at the 2019 International Conference on ReConFigurable Computing and FPGAs (ReConFig 2019).
+1. We presented a poster and demo on Emulation Framework for Hardware-Software Co-Design of Heterogeneous SoCs at 2019 ARM Research Summit.
 
 ## Highlights
 

@@ -1,5 +1,5 @@
 ---
-name: Nirmal Kumbhare
+name: Nirmal Kumbhare (Ph.D.)
 image: images/profiles/nirmal.jpg
 description: Apple
 role: graduated
@@ -15,7 +15,7 @@ links:
   cv: 
 ---
 
-Graduation: Spring 2019
+Graduation: Spring 2019 (Ph.D.)
 
 Works at Apple 
 

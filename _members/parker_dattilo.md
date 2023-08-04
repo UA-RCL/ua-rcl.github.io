@@ -1,6 +1,6 @@
 ---
-name: Parker Dattilo
-image: 
+name: Parker Dattilo (MS)
+image: images/profiles/parker.jpg
 description: Raytheon
 role: graduated
 date: 2023-1-1
@@ -15,7 +15,7 @@ links:
   cv: 
 ---
 
-Graduation: Spring 2023
+Graduation: Spring 2023 (MS)
 
 Works at Raytheon 
 
