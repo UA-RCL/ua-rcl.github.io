@@ -4,8 +4,6 @@
   image: images/projects/brain.png
   link: /projects/ranc
   description: Go to _data/projects.yaml to modify this and a add short description
-  tags:
-    - website
 
 - title: CEDR
   subtitle: Compiler-Integrated Extensible DSSoC Runtime
@@ -13,8 +11,6 @@
   image: images/projects/soc.png
   link: /projects/cedr
   description: Go to _data/projects.yaml to modify this and a add short description
-  tags:
-    - website
 
 - title: PASH
   subtitle: Productivity-Aware Scheduling in HPC
@@ -22,8 +18,6 @@
   image: images/projects/hpc.png
   link: /projects/pash
   description: Go to _data/projects.yaml to modify this and a add short description
-  tags:
-    - website
 
 - title: LDPC
   subtitle: LDPC Simulation Testbed
@@ -31,5 +25,3 @@
   image: images/projects/ldpc.png
   link: /projects/ldpc
   description: Go to _data/projects.yaml to modify this and a add short description
-  tags:
-    - website

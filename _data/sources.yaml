@@ -1,7 +1,7 @@
 - id: doi:10.1109/TCAD.2023.3285410
   type: paper
   description: description here
-  date: 2023-6-12
+  date: '2023-6-12'
   image: images/projects/brain.png
   buttons:
     - type: source
@@ -16,7 +16,7 @@
 - id: doi:10.1145/3529257
   type: paper
   description: description here
-  date: 2023-1-24
+  date: '2023-1-24'
   image: images/projects/soc.png
   buttons:
     - type: source
@@ -31,7 +31,7 @@
 - id: doi:10.1109/VLSI-SoC54400.2022.9939623
   type: paper
   description: description here
-  date: 2022-3-10
+  date: '2022-3-10'
   image: images/projects/soc.png
   buttons:
     - type: source
@@ -46,7 +46,7 @@
 - id: doi:10.1109/TPDS.2021.3135876
   type: paper
   description: description here
-  date: 2021-12-16
+  date: '2021-12-16'
   image: images/projects/soc.png
   buttons:
     - type: source
@@ -61,7 +61,7 @@
 - id: doi:10.1109/TCAD.2020.3038151
   type: paper
   description: description here
-  date: 2020-11-16
+  date: '2020-11-16'
   image: images/projects/brain.png
   buttons:
     - type: source
@@ -76,7 +76,7 @@
 - id: doi:10.1016/j.parco.2020.102686
   type: paper
   description: description here
-  date: 2020-5-16
+  date: '2020-5-16'
   image: images/projects/hpc.png
   buttons:
     - type: source
@@ -91,7 +91,7 @@
 - id: doi:10.1109/IPDPSW50202.2020.00022
   type: paper
   description: description here
-  date: 2020-5-18
+  date: '2020-5-18'
   image: images/projects/brain.png
   buttons:
     - type: source
@@ -106,7 +106,7 @@
 - id: doi:10.1109/IPDPSW50202.2020.00016
   type: paper
   description: description here
-  date: 2020-5-18
+  date: '2020-5-18'
   image: images/projects/soc.png
   buttons:
     - type: source
@@ -121,7 +121,7 @@
 - id: doi:10.1109/TPDS.2020.2967373
   type: paper
   description: description here
-  date: 2020-1-16
+  date: '2020-1-16'
   image: images/projects/hpc.png
   buttons:
     - type: source
@@ -136,7 +136,7 @@
 - id: doi:10.1109/ReConFig48160.2019.8994785
   type: paper
   description: description here
-  date: 2019-12-9
+  date: '2019-12-9'
   image: images/projects/ldpc.png
   buttons:
     - type: source
@@ -151,7 +151,7 @@
 - id: doi:10.1109/PDCAT46702.2019.00035
   type: paper
   description: description here
-  date: 2019-12-5
+  date: '2019-12-5'
   image: images/projects/hpc.png
   buttons:
     - type: source
@@ -166,14 +166,14 @@
 - id: doi:10.1109/AICCSA56895.2022.10017481
   type: paper
   description: description here
-  date: 2022-12-5
+  date: '2022-12-5'
   tags:
     - can add tags here
 
 - id: doi:10.1109/UBMK52708.2021.9558926
   type: paper
   description: description here
-  date: 2022-9-15
+  date: '2022-9-15'
   image: images/projects/soc.png
   buttons:
     - type: source

@@ -9,8 +9,6 @@ nav:
 
 Go to team/index.md to modify this. Everyone should edit their pages from /members folder to make sure everything is correct. 
 
-Are we going to add previous members??
-
 {% include section.html %}
 
 {% include list.html data="members" component="portrait" filters="role: pi" %}<br>
