@@ -14,7 +14,7 @@ Are we going to add previous members??
 {% include section.html %}
 
 {% include list.html data="members" component="portrait" filters="role: pi" %}<br>
-{% include list.html data="members" component="portrait" filters="role: ^(?!pi$)" %}
+{% include list.html data="members" component="portrait" filters="role: phd" %}
 
 {% include section.html background="images/background.jpg" dark=true %}
 
@@ -24,7 +24,14 @@ Go to team/index.md to modify here
 
 ## GRADUATED
 
-- Nirmal Kumbhare (Ph.D.) Spring 2019, Post Doctoral Researcher @ University of Arizona <br>
+{% include list.html data="members" component="portrait" filters="role: graduated" %}<br>
+
+
+- Alex Fusco (MS) Spring 2023, @ SpaceX <br>
+    Hardware-based resource management for heterogenous SoCs
+- PArker Dattilo (MS) Spring 2023, @ Raytheon <br>
+    Error correction on neuromorphic computing architectures
+- Nirmal Kumbhare (Ph.D.) Spring 2019, @ Apple <br>
     Power-Aware Value-Based Resource Management in High Performance Computing Systems
 - Burak Unal (Ph.D.) Spring 2019, Assistant Professor @ Karabuk University, Turkey <br>
     Low-Density Parity-Check Code Decoder Design and Error Characterization on an FPGA Based Framework
