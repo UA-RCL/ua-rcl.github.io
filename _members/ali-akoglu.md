@@ -11,6 +11,7 @@ links:
   orcid: 
   google-scholar: JeiSWR8AAAAJ&hl=en
   linkedin: ali-akoglu-35810b84
+  cv: 
 ---
 
 Go to _members/ali-akoglu.md to add your personal bio here and edit personal links

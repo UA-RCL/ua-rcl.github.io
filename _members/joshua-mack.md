@@ -10,6 +10,7 @@ links:
   orcid: 
   google-scholar: IiACx-AAAAAJ&hl=en&oi=ao
   linkedin: jmack2545/
+  cv: 
 ---
 
 Go to _members/joshua-mack.md to add your personal bio here and edit personal links

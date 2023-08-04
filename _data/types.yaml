@@ -70,6 +70,10 @@ search:
   text: Search
   tooltip: Search
 
+cv:
+  icon: fa-solid fa-file-pdf
+  text: CV
+
 # social media
 
 orcid:

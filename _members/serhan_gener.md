@@ -10,6 +10,7 @@ links:
   orcid: 
   google-scholar: EjJKffkAAAAJ&hl=en&oi=ao
   linkedin: yilmaz-serhan-gener-aa2836157
+  cv: 
 ---
 
 Go to _members/serhan-gener.md to add your personal bio here and edit home-page and edit personal links
