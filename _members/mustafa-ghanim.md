@@ -3,8 +3,7 @@ name: Mustafa Ghanim
 image: images/profiles/
 role: phd
 aliases:
-  - M. Ghanim
-  - M Ghanim
+  - Mustafa Ghanim
 links:
   home-page: 
   email: mustafaghanim@arizona.edu

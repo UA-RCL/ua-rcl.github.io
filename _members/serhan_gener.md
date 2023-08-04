@@ -3,8 +3,7 @@ name: Serhan Gener
 image: images/profiles/serhan.jpg
 role: phd
 aliases:
-  - S. Gener
-  - S Gener
+  - Serhan Gener
 links:
   home-page: 
   email: gener@arizona.edu

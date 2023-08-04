@@ -4,8 +4,7 @@ image: images/profiles/akoglu.jpg
 description: Professor
 role: pi
 aliases:
-  - A. Akoglu
-  - A Akoglu
+  - Ali Akoglu
 links:
   home-page: https://ece.engineering.arizona.edu/faculty-staff/faculty/ali-akoglu
   email: akoglu@arizona.edu

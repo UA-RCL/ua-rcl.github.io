@@ -3,8 +3,7 @@ name: Sahil Hassan
 image: images/profiles/sahil.jpg
 role: phd
 aliases:
-  - S. Hassan
-  - S Hassan
+  - Sahil Hassan
 links:
   home-page: 
   email: sahilhassan@arizona.edu

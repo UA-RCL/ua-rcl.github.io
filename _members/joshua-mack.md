@@ -4,7 +4,6 @@ image: images/profiles/joshua.jpg
 role: phd
 aliases:
   - Joshua Mack
-  - J Mack
 links:
   home-page: https://mackncheesiest.github.io/
   email: jmack2545@arizona.edu

@@ -3,8 +3,7 @@ name: Maisha Hafiz
 image: images/profiles/
 role: phd
 aliases:
-  - M. Hafiz
-  - M Hafiz
+  - Maisha Hafiz
 links:
   home-page: 
   email: mhafiz1@arizona.edu

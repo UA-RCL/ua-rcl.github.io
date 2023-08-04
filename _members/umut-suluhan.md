@@ -3,8 +3,7 @@ name: H. Umut Suluhan
 image: images/profiles/umut.jpg
 role: phd
 aliases:
-  - H. U. Suluhan
-  - H U Suluhan
+  - Hasan Umut Suluhan
 links:
   home-page: https://umutsuluhan.github.io/
   email: suluhan@arizona.edu

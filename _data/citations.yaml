@@ -13,7 +13,7 @@
   link: https://doi.org/gsjxx7
   type: paper
   description: description here
-  image: images/brain.png
+  image: images/projects/brain.png
   buttons:
   - type: source
     text: Source Code
@@ -38,7 +38,7 @@
   link: https://doi.org/gsjxx8
   type: paper
   description: description here
-  image: images/soc.png
+  image: images/projects/soc.png
   buttons:
   - type: source
     text: Source Code
@@ -64,7 +64,7 @@
   link: https://doi.org/gsj4c3
   type: paper
   description: description here
-  image: images/soc.png
+  image: images/projects/soc.png
   buttons:
   - type: source
     text: Source Code
@@ -89,7 +89,7 @@
   link: https://doi.org/gsj4c8
   type: paper
   description: description here
-  image: images/soc.png
+  image: images/projects/soc.png
   buttons:
   - type: source
     text: Source Code
@@ -121,7 +121,7 @@
   link: https://doi.org/gsj4dc
   type: paper
   description: description here
-  image: images/brain.png
+  image: images/projects/brain.png
   buttons:
   - type: source
     text: Source Code
@@ -147,7 +147,7 @@
   link: https://doi.org/gsj4df
   type: paper
   description: description here
-  image: images/hpc.png
+  image: images/projects/hpc.png
   buttons:
   - type: source
     text: Source Code
@@ -178,7 +178,7 @@
   link: https://doi.org/gsj4dh
   type: paper
   description: description here
-  image: images/brain.png
+  image: images/projects/brain.png
   buttons:
   - type: source
     text: Source Code
@@ -204,7 +204,7 @@
   link: https://doi.org/gsj4dk
   type: paper
   description: description here
-  image: images/soc.png
+  image: images/projects/soc.png
   buttons:
   - type: source
     text: Source Code
@@ -231,7 +231,7 @@
   link: https://doi.org/gsj4d8
   type: paper
   description: description here
-  image: images/hpc.png
+  image: images/projects/hpc.png
   buttons:
   - type: source
     text: Source Code
@@ -257,7 +257,7 @@
   link: https://doi.org/gh6t72
   type: paper
   description: description here
-  image: images/ldpc.png
+  image: images/projects/ldpc.png
   buttons:
   - type: source
     text: Source Code
@@ -284,7 +284,7 @@
   link: https://doi.org/gsj4fb
   type: paper
   description: description here
-  image: images/hpc.png
+  image: images/projects/hpc.png
   buttons:
   - type: source
     text: Source Code
@@ -329,7 +329,7 @@
   link: https://doi.org/gsj4fg
   type: paper
   description: description here
-  image: images/soc.png
+  image: images/projects/soc.png
   buttons:
   - type: source
     text: Source Code
