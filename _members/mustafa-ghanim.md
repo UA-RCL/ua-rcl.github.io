@@ -1,16 +1,18 @@
 ---
 name: Mustafa Ghanim
-image: images/profiles/
+image: images/profiles/mustafa.jpg
 role: phd
 aliases:
   - Mustafa Ghanim
 links:
   home-page: 
   email: mustafaghanim@arizona.edu
-  orcid: 
-  google-scholar: 
+  orcid: 0000-0002-0690-9325
+  google-scholar: H8QjPhcAAAAJ&hl=en
   linkedin: mustafa-ghanim
-  cv: 
+  cv: images/cv/Mustafa_Ghanim_CV.pdf
 ---
 
-Go to _members/mustafa-ghanim.md to add your personal bio here and edit home-page and edit personal links
+**Research Interests:** Anomaly Detection, Runtime Management for DSSoCs, High-performance Computing, Digital Hardware Design
+
+Mustafa Ghanim earned his BS degree in Electronics and Communications Engineering from Istanbul Technical University, Istanbul, Turkey in 2019. He then completed his MS degree in Electrical and Electronics Engineering from Ozyegin University, Istanbul, Turkey in 2022. He is currently pursuing his PhD at the Electrical and Computer Engineering Department of the University of Arizona, Tucson, Arizona, United States.
