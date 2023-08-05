@@ -7,10 +7,6 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-microscope" %}Research
 
-### We can put project logos next to each paper to differentiate (new papers are added through _data/sources.yaml) 
-
-### Which papers are we going to put here?
-
 {% include section.html %}
 
 ## Highlighted

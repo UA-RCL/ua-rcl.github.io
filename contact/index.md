@@ -7,8 +7,6 @@ nav:
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
-Go to contact/index.md to modify here.
-
 {%
   include button.html
   type="email"

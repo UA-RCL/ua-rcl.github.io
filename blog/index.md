@@ -7,8 +7,6 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-feather-pointed" %}Blog
 
-Go to blog/index.md to modify here
-
 {% include section.html %}
 
 {% include search-box.html %}

@@ -7,8 +7,6 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-wrench" %}Projects
 
-Go to projects/index.md to modify this!!!
-
 {% include tags.html tags="publication, resource, website" %}
 
 {% include search-info.html %}

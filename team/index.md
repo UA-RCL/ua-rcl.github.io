@@ -7,8 +7,6 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-users" %}Team
 
-Go to team/index.md to modify this. Everyone should edit their pages from /members folder to make sure everything is correct. 
-
 {% include section.html %}
 
 {% include list.html data="members" component="portrait" filters="role: pi" %}<br>
