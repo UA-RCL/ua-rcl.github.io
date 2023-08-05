@@ -19,7 +19,7 @@ Go inside index.md in root directory to modify. Email and Scholar links in the f
 ### Published papers, awards (like Maisha got), we should discuss about what we will migrate from the other website
 
 1. Our paper PyTorch and CEDR: Enabling Deployment of Machine Learning Models on Heterogeneous Computing Systems was accepted to the [20th ACS/IEEE International Conference on Computer Systems and Applications (AICCSA 2023)](https://aiccsa.net/AICCSA2023/).
-1. Our paper CEDR-API: Productive, Performant Programming of Domain-Specific Embedded Systems ([arXiv](https://arxiv.org/abs/2304.12396)) was accepted to the 2023 IPDPS Heterogeneity in Computing Workshop.
+1. Our paper CEDR-API: Productive, Performant Programming of Domain-Specific Embedded Systems ([arXiv](https://arxiv.org/abs/2304.12396), [IEEE Xplore](https://ieeexplore.ieee.org/document/10196561)) was accepted to the 2023 IPDPS Heterogeneity in Computing Workshop.
 1. Our paper CEDR -- A Compiler-Integrated, Extensible, DSSoC Runtime ([arXiv](https://arxiv.org/pdf/2204.08962.pdf), [ACM](https://dl.acm.org/doi/full/10.1145/3529257)) was accepted for publication in the ACM Transactions on Embedded Computing Systems.
 1. Our article RANC: Reconfigurable Architecture for Neuromorphic Computing ([arxiv](https://arxiv.org/abs/2011.00624)) was accepted for publication in the IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems
 1. Our paper User-Space Emulation Framework for Domain-Specific SoC Design ([arXiv](https://arxiv.org/pdf/2004.01636.pdf), [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/9150335)) was accepted to the 2020 IPDPS Heterogeneity in Computing Workshop.
