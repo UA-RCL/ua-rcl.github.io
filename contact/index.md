@@ -51,19 +51,3 @@ Go to contact/index.md to modify here.
 {% endcapture %}
 
 {% include cols.html col1=col1 col2=col2 %}
-
-{% include section.html dark=true %}
-
-{% capture col1 %}
-Go to contact/index.html to modify here
-{% endcapture %}
-
-{% capture col2 %}
-Go to contact/index.html to modify here
-{% endcapture %}
-
-{% capture col3 %}
-Go to contact/index.html to modify here
-{% endcapture %}
-
-{% include cols.html col1=col1 col2=col2 col3=col3 %}
