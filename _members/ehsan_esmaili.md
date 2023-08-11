@@ -1,7 +1,7 @@
 ---
 name: Ehsan Esmaili (MS)
-image: 
-description: Micron
+image: images/profiles/graduate/ehsan_esmaili.jpeg
+description: Solidigm
 role: graduated
 date: 2018-1-1
 aliases:
@@ -17,6 +17,6 @@ links:
 
 Graduation: Spring 2018 (MS)
 
-Works at Micron
+Works at Solidigm
 
 Thesis: Scalable Autonomic Management of 3D Cardiac Simulations

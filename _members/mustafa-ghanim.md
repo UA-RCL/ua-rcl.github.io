@@ -1,6 +1,6 @@
 ---
 name: Mustafa Ghanim
-image: images/profiles/mustafa.jpg
+image: images/profiles/lab/mustafa_ghanim.jpg
 role: phd
 aliases:
   - Mustafa Ghanim

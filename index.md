@@ -3,6 +3,8 @@
 
 # University of Arizona Reconfigurable Computing Lab (UA-RCL)
 
+We build open-source ecosystems towards making emerging computing systems accessible for the users. We research ways to bridge the gap between application engineers, hardware architects, and system software developers with a vertically integrated infrastructure that crosses all domains of computing system research. Our research program focuses on high performance computing systems and non-traditional computing architectures with themes that cover: a) development of resource management strategies from multi-processor system-on-chip to cloud computing scale; b) design and development of reconfigurable hardware architectures for reusable systems; c) modeling and simulation of neuromorphic computing architectures; and d) restructuring computationally challenging algorithms for achieving high performance on field programmable gate array (FPGA) and graphics processing unit (GPU) hardware architectures.
+
 {%
   include button.html
   type="github"

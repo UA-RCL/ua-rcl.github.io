@@ -1,6 +1,6 @@
 ---
 name: Alex Fusco (MS)
-image: images/profiles/alex.jpg
+image: images/profiles/graduate/alex_fusco.jpg
 description: SpaceX
 role: graduated
 date: 2023-1-1

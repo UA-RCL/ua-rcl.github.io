@@ -1,6 +1,6 @@
 ---
 name: Audip Pandit (MS)
-image: 
+image: images/profiles/graduate/audip_pandit.jpeg
 description: Intel
 role: graduated
 date: 2007-1-1

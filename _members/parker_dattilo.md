@@ -1,6 +1,6 @@
 ---
 name: Parker Dattilo (MS)
-image: images/profiles/parker.jpg
+image: images/profiles/graduate/parker_dattilo.jpg
 description: Raytheon
 role: graduated
 date: 2023-1-1

@@ -1,6 +1,6 @@
 ---
 name: Cihan Tunc (Ph.D.)
-image: 
+image: images/profiles/graduate/cihan_tunc.jpeg
 description: University of North Texas
 role: graduated
 date: 2014-1-1

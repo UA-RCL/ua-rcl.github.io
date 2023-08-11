@@ -1,6 +1,6 @@
 ---
 name: Joshua Mack
-image: images/profiles/joshua.jpg
+image: images/profiles/lab/joshua_mack.jpg
 role: phd
 aliases:
   - Joshua Mack

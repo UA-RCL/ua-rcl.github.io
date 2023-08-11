@@ -1,6 +1,6 @@
 ---
 name: Nirmal Kumbhare (Ph.D.)
-image: images/profiles/nirmal.jpg
+image: images/profiles/graduate/nirmal_kumbhare.jpg
 description: Apple
 role: graduated
 date: 2019-1-1

@@ -1,7 +1,7 @@
 ---
 name: Senthilkumar Thoravi Rajavel (MS)
-image: 
-description: Lattice Semiconductor
+image: images/profiles/graduate/senthilkumar_thoravi_rajavel.jpeg
+description: Synopsys
 role: graduated
 date: 2011-1-1
 aliases:
@@ -17,6 +17,6 @@ links:
 
 Graduation: Summer 2011 (MS)
 
-Works at Lattice Semiconductor
+Works at Synopsys
 
 Thesis: Design of multi-objective clustering and energy modeling for FPGAs

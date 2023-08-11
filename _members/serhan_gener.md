@@ -1,6 +1,6 @@
 ---
 name: Serhan Gener
-image: images/profiles/serhan.jpg
+image: images/profiles/lab/serhan_gener.jpg
 role: phd
 aliases:
   - Serhan Gener

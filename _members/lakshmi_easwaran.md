@@ -1,7 +1,7 @@
 ---
 name: Lakshmi Easwaran (MS)
-image: 
-description: Intel
+image: images/profiles/graduate/lakshmi_easwaran.jpeg
+description: AMD
 role: graduated
 date: 2010-1-1
 aliases:
@@ -17,6 +17,6 @@ links:
 
 Graduation: Spring 2010 (MS)
 
-Works at Intel
+Works at AMD
 
 Thesis: Wirelength prediction based power aware clustering for FPGA CAD

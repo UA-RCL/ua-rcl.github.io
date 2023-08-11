@@ -1,6 +1,6 @@
 ---
 name: Burak Unal (Ph.D.)
-image: images/profiles/burak.jpg
+image: images/profiles/graduate/burak_unal.jpg
 description: Karabuk University
 role: graduated
 date: 2019-1-1

@@ -1,6 +1,6 @@
 ---
 name: Ali Akoglu
-image: images/profiles/akoglu.jpg
+image: images/profiles/lab/ali_akoglu.jpg
 description: Professor
 role: pi
 aliases:

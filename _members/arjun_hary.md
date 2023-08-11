@@ -1,7 +1,7 @@
 ---
 name: Arjun Hary (MS)
 image: 
-description: TI
+description: Annapurna Labs (AWS)
 role: graduated
 date: 2010-1-1
 aliases:
@@ -17,6 +17,6 @@ links:
 
 Graduation: Spring 2010 (MS)
 
-Works at TI
+Works at Annapurna Labs, AWS
 
 Thesis: Design of fault tolerant scientific workflows with Kepler

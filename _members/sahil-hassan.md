@@ -1,6 +1,6 @@
 ---
 name: Sahil Hassan
-image: images/profiles/sahil.jpg
+image: images/profiles/lab/sahil_hassan.jpg
 role: phd
 aliases:
   - Sahil Hassan

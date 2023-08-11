@@ -1,6 +1,6 @@
 ---
 name: H. Umut Suluhan
-image: images/profiles/umut.jpg
+image: images/profiles/lab/umut_suluhan.jpg
 role: phd
 aliases:
   - Hasan Umut Suluhan

@@ -1,7 +1,7 @@
 ---
 name: Deepak Sreedharan (MS)
-image: 
-description: TI
+image: images/profiles/graduate/deepak_sreedharan.jpeg
+description: Texas Instruments
 role: graduated
 date: 2008-1-1
 aliases:
@@ -17,6 +17,6 @@ links:
 
 Graduation: Spring 2007 (Ph.D.)
 
-Works at TI
+Works at Texas Instruments
 
 Thesis: Hybrid Processing Element based Reconfigurable Architectures for Cryptography Algorithms
