@@ -37,7 +37,7 @@ Navigate to ```_members``` page and change the information in the corresponding 
 
 Create a new member under ```_members/``` and enter necessary information. Role parameter groups members into either current or graduate students. Upload profile picture for a new student under ```images/profiles/``` folder.
 
-### Blog Updates
+## Blog Updates
 
 To add a new blog post, add a new markdown file to ```_posts/``` folder following the format. For modifying an existing post, just edit the corresponding blog post in ```_posts/```.
 
