@@ -3,21 +3,21 @@
   group: featured
   image: images/projects/brain.png
   link: /projects/ranc
-  description: Exploration platform for architecture and applications of neuromorphic computing
+  description: Exploring the architectures and applications of neuromorphic computing
 
 - title: DASH-SoC
   subtitle: Domain-Focused Advanced Software-Reconfigurable Heterogeneous System on Chip
   group: featured
   image: images/projects/soc.png
   link: /projects/cedr
-  description: Runtime framework for heterogeneous SoC systems
+  description: Hardware agnostic and productive application development and deployment on heterogenous SoCs
 
 - title: COCHON
   subtitle: Configurable Optical Communications via Heterogeneous-processing Optimized Node
   group: featured
   image: images/projects/cochon.png
   link: /projects/cochon
-  description: Optimized satellite communication through heterogeneous SoC
+  description: Runtime optimized communication system design on heterogenous SoCs
 
 - title: PASH
   subtitle: Productivity-Aware Scheduling in HPC
