@@ -2,8 +2,6 @@
 name: Mustafa Ghanim
 image: images/profiles/lab/mustafa_ghanim.jpg
 role: phd
-aliases:
-  - Mustafa Ghanim
 links:
   home-page: 
   email: mustafaghanim@arizona.edu

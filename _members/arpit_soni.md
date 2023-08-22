@@ -4,8 +4,6 @@ image:
 description: Intel
 role: graduated
 date: 2016-1-1
-aliases:
-  - Arpit Soni
 links:
   home-page: 
   email: 

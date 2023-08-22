@@ -4,8 +4,6 @@ image: images/profiles/graduate/senthilkumar_thoravi_rajavel.jpeg
 description: Synopsys
 role: graduated
 date: 2011-1-1
-aliases:
-  - Senthilkumar Thoravi Rajavel
 links:
   home-page: 
   email: 

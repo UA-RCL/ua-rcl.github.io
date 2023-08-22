@@ -4,8 +4,6 @@ image: images/profiles/graduate/jeff_josiah.jpeg
 description: Intel
 role: graduated
 date: 2008-1-1
-aliases:
-  - Jeff Josiah
 links:
   home-page: 
   email: 

@@ -2,8 +2,6 @@
 name: Maisha Hafiz
 image: images/profiles/
 role: phd
-aliases:
-  - Maisha Hafiz
 links:
   home-page: 
   email: mhafiz1@arizona.edu

@@ -4,8 +4,6 @@ image: images/profiles/graduate/ehsan_esmaili.jpeg
 description: Solidigm
 role: graduated
 date: 2018-1-1
-aliases:
-  - Ehsan Esmaili
 links:
   home-page: 
   email: 

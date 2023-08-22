@@ -4,8 +4,6 @@ image: images/profiles/graduate/yoon_kah_leow.jpeg
 description: MediaTek
 role: graduated
 date: 2013-1-1
-aliases:
-  - Yoon Kah Leow
 links:
   home-page: 
   email: 

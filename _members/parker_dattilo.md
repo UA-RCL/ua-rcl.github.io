@@ -4,8 +4,6 @@ image: images/profiles/graduate/parker_dattilo.jpg
 description: Raytheon
 role: graduated
 date: 2023-1-1
-aliases:
-  - Parker Dattilo
 links:
   home-page: 
   email: parkerdattilo@arizona.edu

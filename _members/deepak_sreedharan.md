@@ -4,8 +4,6 @@ image: images/profiles/graduate/deepak_sreedharan.jpeg
 description: Texas Instruments
 role: graduated
 date: 2008-1-1
-aliases:
-  - Deepak Sreedharan
 links:
   home-page: 
   email: 

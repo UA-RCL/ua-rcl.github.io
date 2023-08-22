@@ -4,8 +4,6 @@ image: images/profiles/graduate/gregory_striemer.jpeg
 description: US Government
 role: graduated
 date: 2013-1-1
-aliases:
-  - Gregory Strimer
 links:
   home-page: 
   email: 

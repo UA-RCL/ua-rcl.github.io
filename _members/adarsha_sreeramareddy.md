@@ -4,8 +4,6 @@ image:
 description: Indigo Quotient Labs
 role: graduated
 date: 2009-1-1
-aliases:
-  - Ruchika Verma
 links:
   home-page: 
   email: 

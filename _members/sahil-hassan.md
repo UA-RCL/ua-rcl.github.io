@@ -2,8 +2,6 @@
 name: Sahil Hassan
 image: images/profiles/lab/sahil_hassan.jpg
 role: phd
-aliases:
-  - Sahil Hassan
 links:
   home-page: 
   email: sahilhassan@arizona.edu

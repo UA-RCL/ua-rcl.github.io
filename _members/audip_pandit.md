@@ -4,8 +4,6 @@ image: images/profiles/graduate/audip_pandit.jpeg
 description: Intel
 role: graduated
 date: 2007-1-1
-aliases:
-  - Audip Pandit
 links:
   home-page: 
   email: 

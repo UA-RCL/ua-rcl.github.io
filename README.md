@@ -21,11 +21,11 @@ contact:  contact/index.md
 
 ### Existing Project
 
-Firstly, update the information in the ```research/index.md``` if necessary. Then, update the information in the ```projects/<name>``` folder.
+Update the information in the ```projects/<name>``` folder.
 
 ### New Project
 
-Create a new project information section in ```research/index.md``` following the current format. Then, generate a project in ```projects/``` folder trying to follow the design of the other projects. Then, add the newly generated website to ```_data/projects.yaml``` file.
+Generate a project in ```projects/``` folder trying to follow the design of the other projects. Then, add the newly generated website to ```_data/projects.yaml``` file.
 
 ## Team Member Updates
 

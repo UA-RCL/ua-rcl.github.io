@@ -4,8 +4,6 @@ image: images/profiles/graduate/alex_fusco.jpg
 description: SpaceX
 role: graduated
 date: 2023-1-1
-aliases:
-  - Alex Fusco
 links:
   home-page: 
   email: afusco1@arizona.edu

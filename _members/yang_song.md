@@ -4,8 +4,6 @@ image:
 description: Nvidia
 role: graduated
 date: 2011-1-1
-aliases:
-  - Yang Song
 links:
   home-page: 
   email: 

@@ -4,8 +4,6 @@ image:
 description: Intel
 role: graduated
 date: 2007-1-1
-aliases:
-  - Sandeep Venishetti
 links:
   home-page: 
   email: 

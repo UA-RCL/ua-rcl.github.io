@@ -4,8 +4,6 @@ image:
 description: Annapurna Labs (AWS)
 role: graduated
 date: 2010-1-1
-aliases:
-  - Arjun Hary
 links:
   home-page: 
   email: 

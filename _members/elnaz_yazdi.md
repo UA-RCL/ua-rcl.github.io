@@ -4,8 +4,6 @@ image:
 description: Ford Motor Company
 role: graduated
 date: 2018-1-1
-aliases:
-  - Elnaz Yazdi
 links:
   home-page: 
   email: 

@@ -4,8 +4,6 @@ image: images/profiles/graduate/andrew_lotti.jpeg
 description: Raytheon
 role: graduated
 date: 2008-1-1
-aliases:
-  - Andrew Lotti
 links:
   home-page: 
   email: 

@@ -4,8 +4,6 @@ image: images/profiles/graduate/burak_unal.jpg
 description: Karabuk University
 role: graduated
 date: 2019-1-1
-aliases:
-  - Burak Unal
 links:
   home-page: 
   email: 

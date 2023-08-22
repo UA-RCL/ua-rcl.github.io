@@ -4,8 +4,6 @@ image:
 description: DataDomain
 role: graduated
 date: 2009-1-1
-aliases:
-  - Hanyu Liu
 links:
   home-page: 
   email: 

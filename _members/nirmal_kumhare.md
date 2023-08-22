@@ -4,8 +4,6 @@ image: images/profiles/graduate/nirmal_kumbhare.jpg
 description: Apple
 role: graduated
 date: 2019-1-1
-aliases:
-  - Nirmal Kumbhare
 links:
   home-page: 
   email: 
