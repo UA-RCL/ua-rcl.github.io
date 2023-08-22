@@ -31,30 +31,7 @@ We build open-source ecosystems towards making emerging computing systems access
 
 {% capture text %}
 
-Click below link for our research interests.
-
-{%
-  include button.html
-  link="research"
-  text="See our publications"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="research"
-  title="Our Research"
-  text=text
-%}
-
-{% capture text %}
-
-Click below link for our ongoing and archived projects.
+Click below link for our active and archived projects.
 
 {%
   include button.html
@@ -69,11 +46,9 @@ Click below link for our ongoing and archived projects.
 
 {%
   include feature.html
-  image="images/photo.jpg"
+  image="images/icon.png"
   link="projects"
   title="Our Projects"
-  flip=true
-  style="bare"
   text=text
 %}
 
@@ -94,8 +69,10 @@ Click below link to meet our team members.
 
 {%
   include feature.html
-  image="images/photo.jpg"
+  image="images/blog/picacho_peak/picacho1.jpeg"
   link="team"
   title="Our Team"
+  flip=true
+  style="bare"
   text=text
 %}

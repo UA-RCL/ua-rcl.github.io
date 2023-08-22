@@ -71,9 +71,58 @@
             CEDR is a Linux-based compilation and runtime framework that provides an ecosystem for hardware-software co-design and evaluation 
             of heterogeneous SoCs during the pre-silicon design phase. This framework holistically targets three key challenges of 
             SoC design: accelerator integration, resource management, and application development. 
-            CEDR is a flexible and lightweight user-space runtime environment that is portable across different SoC platforms.
-          </p>
-        </div>
+            CEDR is a flexible and lightweight user-space runtime environment that is portable across different SoC platforms. 
+            Our research trusts can be summarized as follows:
+          </p><br>
+
+            <h4>Value based Runtime Management</h4>
+            <p class="lead"></p>
+              Value-based resource management heuristics, which are traditionally deployed in heterogeneous HPC systems, maximize system productivity by assigning resources to 
+              each job based on its priority and estimated value gain relative to each job's completion time. We investigate the utility of value-based resource management at 
+              heterogeneous SoC scale and demonstrate its ability to make effective scheduling decisions for time-constrained jobs in oversubscribed systems where system 
+              resources are shared by multiple users and applications arrive dynamically. The proposed value-based resource management approach drops tasks that are estimated to
+              result with lower-value gain dynamically with the aim of completing more number of high-value jobs with a scheduling decision time at 120𝜇s scale. The 
+              value-based resource management treats scheduling as a global optimization problem, therefore this study sets a path forward for deploying a unified value-based 
+              resource management on a system composed of front-end SoC-based edge devices and a back-end HPC system.
+            </p><br>
+
+            <h4>Anomaly Detection on Heterogeneous SoC</h4>
+            <p class="lead"></p>
+              Distinguishing between normal and abnormal application behavior poses a greater challenge in heterogeneous computing systems compared to homogeneous systems due 
+              to varying execution characteristics influenced by factors like differences in programming models, diversity of Processing Elements (PEs), and dynamically changing 
+              resource allocation decisions. We develop a profiling framework integrated with an open-source runtime to understand the non-linear correlations among the 
+              aforementioned factors. Using this framework as a foundation, we construct an autoencoder model that provides a holistic system view and achieves up to 19% 
+              and 13% improvement in abnormal behavior detection accuracy compared to conventional methods such as the One-Class Support Vector Machine and Isolation Forest 
+              respectively. We demonstrate the robustness of our approach by executing real-world applications covering radar, communications, and autonomous vehicles domains 
+              along with anomalous application scenarios that manipulate behavior or the state of the runtime manager, scheduler, and PEs across three commercial off-the-shelf 
+              platforms and three scheduling heuristic policies.
+            </p><br>
+
+            <h4>RISC-V based Heterogeneous SoC Emulation Platform</h4>
+            <p class="lead"></p>
+              Heterogeneous System-on-Chip (SoC) architectures are becoming attractive for deployment in HPC environments as they deliver performance with energy efficiency 
+              and scalability benefits. Particularly the RISC-V is an attractive solution for building heterogeneous systems at HPC scale since it offers ability to customize 
+              CPU cores and modularity to integrate with other compute units towards meeting the demands of wide range of computational workloads. Consequently, there is a 
+              need for a software ecosystem that facilitates productive application development and deployment on such heterogeneous SoCs, while utilizing system resources 
+              effectively. We present a preliminary study over a runtime environment that allows execution of applications written in C/C++ on heterogeneous SoC architectures 
+              composed of multiple RISC-V core types and a pool of accelerators emulated on Xilinx Virtex 7 FPGA.  We showcase ability to investigate the impact of hardware 
+              composition and scheduling policy on execution time performance while executing real-life applications in our emulation environment. 
+            </p><br>
+
+            <h4>Automated PyTorch Application Deployment on Heterogeneous SoC</h4>
+            <p class="lead"></p>
+              The PyTorch programming interface enables efficient deployment of machine learning models, leveraging the parallelism offered by GPU architectures. In this study, 
+              we present the integration of the PyTorch framework with a compiler and runtime ecosystem. Our aim is to demonstrate the ability to deploy PyTorch-based models on 
+              FPGA-based SoC platforms, without requiring users to possess prior FPGA-based design experience. The proposed PyTorch model transformation approach expands the 
+              range of hardware architectures that PyTorch developers can target, enabling them to take advantage of the energy-efficient execution provided by heterogeneous 
+              computing systems. Our experiments involve compiling and executing real-life applications on heterogeneous SoC configurations emulated on the Xilinx Zynq 
+              Ultrascale+ ZCU102 system. We showcase our ability to deploy three distinct PyTorch applications, encompassing object detection, visual geometry group (VGG), 
+              and speech classification, using the integrated compiler and runtime system without loss of model accuracy. Furthermore, we extend our analysis by evaluating 
+              dynamically arriving workload scenarios, consisting of a mix of PyTorch models and non-PyTorch-based applications. Through these experiments, we vary the hardware 
+              composition and scheduling heuristics. Our findings indicate that when PyTorch-based applications coexist with unrelated applications, our integrated scheduler 
+              fairly dispatches tasks to the FPGA platform's accelerator and CPU cores, without compromising the target throughput for each application.
+            </p><br>
+          </div>
       </div>
     </div>
   </section>
@@ -85,7 +134,7 @@
           <h2>Publications and News</h2>
           <p class="lead">
             <ol>
-              
+              <li>Our paper <i></i>PyTorch and CEDR: Enabling Deployment of Machine Learning Models on Heterogeneous Computing Systems<i></i> was accepted to the 20th ACS/IEEE International Conference on Computer Systems and Applications (AICCSA 2023).
               <li>Our paper <i>CEDR-API: Productive, Performant Programming of Domain-Specific Embedded Systems</i> (<a href="https://arxiv.org/abs/2304.12396">arXiv</a>) was accepted to the 2023 IPDPS Heterogeneity in Computing Workshop.</li>
               <li>Our paper <i>CEDR -- A Compiler-Integrated, Extensible, DSSoC Runtime</i> (<a href="https://arxiv.org/pdf/2204.08962.pdf">arXiv</a>, <a href="https://dl.acm.org/doi/full/10.1145/3529257">ACM</a>) was accepted for publication in the ACM Transactions on Embedded Computing Systems.</li>
               <li>Our paper <i>User-Space Emulation Framework for Domain-Specific SoC Design</i> (<a href="https://arxiv.org/pdf/2004.01636.pdf">arXiv</a>, <a href="https://ieeexplore.ieee.org/abstract/document/9150335">IEEE Xplore</a>) was accepted to the 2020 IPDPS Heterogeneity in Computing Workshop.</li>

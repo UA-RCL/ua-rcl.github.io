@@ -3,25 +3,30 @@
   group: featured
   image: images/projects/brain.png
   link: /projects/ranc
-  description: Go to _data/projects.yaml to modify this and a add short description
+  description: Exploration platform for architecture and applications of neuromorphic computing
 
-- title: CEDR
-  subtitle: Compiler-Integrated Extensible DSSoC Runtime
+- title: DASH-SoC
+  subtitle: Domain-Focused Advanced Software-Reconfigurable Heterogeneous System on Chip
   group: featured
   image: images/projects/soc.png
   link: /projects/cedr
-  description: Go to _data/projects.yaml to modify this and a add short description
+  description: Runtime framework for heterogeneous SoC systems
+
+- title: COCHON
+  subtitle: Configurable Optical Communications via Heterogeneous-processing Optimized Node
+  group: featured
+  image: images/projects/cochon.png
+  link: /projects/cochon
+  description: Optimized satellite communication through heterogeneous SoC
 
 - title: PASH
   subtitle: Productivity-Aware Scheduling in HPC
   group: archived
   image: images/projects/hpc.png
   link: /projects/pash
-  description: Go to _data/projects.yaml to modify this and a add short description
 
 - title: LDPC
   subtitle: LDPC Simulation Testbed
   group: archived
   image: images/projects/ldpc.png
   link: /projects/ldpc
-  description: Go to _data/projects.yaml to modify this and a add short description

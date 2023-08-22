@@ -13,7 +13,7 @@ nav:
 
 {% include section.html %}
 
-## Featured
+## Active
 
 {% include list.html component="card" data="projects" filters="group: featured"%}
 
