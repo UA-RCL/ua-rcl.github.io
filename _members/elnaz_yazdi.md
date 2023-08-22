@@ -1,6 +1,6 @@
 ---
 name: Elnaz T. Yazdi (MS)
-image: 
+image: images/profiles/graduate/elnaz_yazdi.jpg
 description: Ford Motor Company
 role: graduated
 date: 2018-1-1

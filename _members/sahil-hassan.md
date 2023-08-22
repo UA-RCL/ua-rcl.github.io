@@ -3,12 +3,14 @@ name: Sahil Hassan
 image: images/profiles/lab/sahil_hassan.jpg
 role: phd
 links:
-  home-page: 
   email: sahilhassan@arizona.edu
-  orcid: 
-  google-scholar: 0igXiycAAAAJ&hl=en&oi=ao
+  orcid: 0000-0002-4574-9555 
+  google-scholar: 0igXiycAAAAJ&hl=en 
   linkedin: md-sahil-hassan-a637a2177
-  cv: 
+  home-page: 
+  cv: images/cv/SahilHassan_CV_aug23.pdf 
 ---
 
-Go to _members/sahil-hassan.md to add your personal bio here and edit personal links
+Sahil Hassan received his B.Sc. (2016) and M.Sc. (2018, with specialization in Communication and Signal Processing) from the department of Electrical and Electronic Engineering, at the University of Dhaka, Bangladesh. He is currently a doctoral candidate at the department of Electrical and Computer Engineering, University of Arizona. 
+
+His research interests include design and development of resource management techniques for emerging heterogeneous embedded computing systems, novel architectures and algorithms for neuromorphic computing, and FPGA based reconfigurable architectures.
