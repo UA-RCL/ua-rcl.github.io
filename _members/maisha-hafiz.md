@@ -1,6 +1,6 @@
 ---
 name: Maisha Hafiz
-image: images/profiles/
+image: images/profiles/lab/maisha.jpg
 role: phd
 links:
   home-page: 
@@ -11,4 +11,3 @@ links:
   cv: 
 ---
 
-Go to _members/maisha-hafiz.md to add your personal bio here and edit home-page and edit personal links
