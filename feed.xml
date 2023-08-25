@@ -1,15 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-08-25T00:41:03+00:00</updated><id>/feed.xml</id><title type="html">UA-RCL</title><subtitle>An engaging 1-3 sentence description of your lab.</subtitle><entry><title type="html">Dinner at Dr. Akoglu’s home</title><link href="/2023/05/11/dinner.html" rel="alternate" type="text/html" title="Dinner at Dr. Akoglu’s home" /><published>2023-05-11T00:00:00+00:00</published><updated>2023-08-25T00:40:08+00:00</updated><id>/2023/05/11/dinner</id><content type="html" xml:base="/2023/05/11/dinner.html"><![CDATA[<p>We can scribble something short here.</p>
-
-<figure class="figure">
-  <a href="/team" class="figure-image" aria-label="The team at our dinner at Dr. Akoglu's home, 2023">
-    <img src="/images/blog/dinner/dinner1.jpeg" style="
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-08-25T00:54:44+00:00</updated><id>/feed.xml</id><title type="html">UA-RCL</title><subtitle>An engaging 1-3 sentence description of your lab.</subtitle><entry><title type="html">ECE Building Group Picture</title><link href="/2023/05/20/group_picture.html" rel="alternate" type="text/html" title="ECE Building Group Picture" /><published>2023-05-20T00:00:00+00:00</published><updated>2023-08-25T00:53:55+00:00</updated><id>/2023/05/20/group_picture</id><content type="html" xml:base="/2023/05/20/group_picture.html"><![CDATA[<figure class="figure">
+  <a href="/team" class="figure-image" aria-label="The team at the end of Spring semester, 2023">
+    <img src="/images/blog/group_picture/group_picture.jpg" style="
         width: 900px;
         max-height: unset;
-      " alt="The team at our dinner at Dr. Akoglu's home, 2023" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;" />
+      " alt="The team at the end of Spring semester, 2023" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      The team at our dinner at Dr. Akoglu’s home, 2023
+      The team at the end of Spring semester, 2023
+
+    </figcaption>
+  
+</figure>
+
+<!-- section break -->
+<!--
+  background: ;
+  dark: ;
+  size: ;
+-->]]></content><author><name>Umut Suluhan</name></author><summary type="html"><![CDATA[The team at the end of Spring semester, 2023]]></summary></entry><entry><title type="html">Dinner at Dr. Akoglu’s home</title><link href="/2023/05/11/dinner.html" rel="alternate" type="text/html" title="Dinner at Dr. Akoglu’s home" /><published>2023-05-11T00:00:00+00:00</published><updated>2023-08-25T00:53:55+00:00</updated><id>/2023/05/11/dinner</id><content type="html" xml:base="/2023/05/11/dinner.html"><![CDATA[<figure class="figure">
+  <a href="/team" class="figure-image" aria-label="The team having dinner at Dr. Akoglu's house, 2023">
+    <img src="/images/blog/dinner/dinner1.jpeg" style="
+        width: 900px;
+        max-height: unset;
+      " alt="The team having dinner at Dr. Akoglu's house, 2023" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      The team having dinner at Dr. Akoglu’s house, 2023
 
     </figcaption>
   
@@ -45,9 +63,7 @@
 </figure>
 
 
-</div>]]></content><author><name>Umut Suluhan</name></author><summary type="html"><![CDATA[We can scribble something short here.]]></summary></entry><entry><title type="html">Our trip to University of Wisconsin–Madison</title><link href="/2023/04/01/wisconsin.html" rel="alternate" type="text/html" title="Our trip to University of Wisconsin–Madison" /><published>2023-04-01T00:00:00+00:00</published><updated>2023-08-25T00:40:08+00:00</updated><id>/2023/04/01/wisconsin</id><content type="html" xml:base="/2023/04/01/wisconsin.html"><![CDATA[<p>We can scribble something short here.</p>
-
-<figure class="figure">
+</div>]]></content><author><name>Umut Suluhan</name></author><summary type="html"><![CDATA[The team having dinner at Dr. Akoglu’s house, 2023]]></summary></entry><entry><title type="html">Our trip to University of Wisconsin–Madison</title><link href="/2023/04/01/wisconsin.html" rel="alternate" type="text/html" title="Our trip to University of Wisconsin–Madison" /><published>2023-04-01T00:00:00+00:00</published><updated>2023-08-25T00:53:55+00:00</updated><id>/2023/04/01/wisconsin</id><content type="html" xml:base="/2023/04/01/wisconsin.html"><![CDATA[<figure class="figure">
   <a href="/team" class="figure-image" aria-label="Our trip to University of Wisconsin–Madison, 2023">
     <img src="/images/blog/wisconsin/wisconsin1.JPG" style="
         width: 900px;
@@ -92,9 +108,7 @@
 </figure>
 
 
-</div>]]></content><author><name>Umut Suluhan</name></author><summary type="html"><![CDATA[We can scribble something short here.]]></summary></entry><entry><title type="html">Our trip to Picacho Peak</title><link href="/2023/03/25/picacho-peak.html" rel="alternate" type="text/html" title="Our trip to Picacho Peak" /><published>2023-03-25T00:00:00+00:00</published><updated>2023-08-25T00:40:08+00:00</updated><id>/2023/03/25/picacho-peak</id><content type="html" xml:base="/2023/03/25/picacho-peak.html"><![CDATA[<p>We can scribble something short here.</p>
-
-<figure class="figure">
+</div>]]></content><author><name>Umut Suluhan</name></author><summary type="html"><![CDATA[Our trip to University of Wisconsin–Madison, 2023]]></summary></entry><entry><title type="html">Our trip to Picacho Peak</title><link href="/2023/03/25/picacho-peak.html" rel="alternate" type="text/html" title="Our trip to Picacho Peak" /><published>2023-03-25T00:00:00+00:00</published><updated>2023-08-25T00:53:55+00:00</updated><id>/2023/03/25/picacho-peak</id><content type="html" xml:base="/2023/03/25/picacho-peak.html"><![CDATA[<figure class="figure">
   <a href="/team" class="figure-image" aria-label="The team at our Picacho Peak trip, 2023">
     <img src="/images/blog/picacho_peak/picacho1.jpeg" style="
         width: 900px;
@@ -149,4 +163,24 @@
 </figure>
 
 
-</div>]]></content><author><name>Umut Suluhan</name></author><summary type="html"><![CDATA[We can scribble something short here.]]></summary></entry></feed>
+</div>]]></content><author><name>Umut Suluhan</name></author><summary type="html"><![CDATA[The team at our Picacho Peak trip, 2023]]></summary></entry><entry><title type="html">Bowling Event</title><link href="/2022/10/01/bowling.html" rel="alternate" type="text/html" title="Bowling Event" /><published>2022-10-01T00:00:00+00:00</published><updated>2023-08-25T00:53:55+00:00</updated><id>/2022/10/01/bowling</id><content type="html" xml:base="/2022/10/01/bowling.html"><![CDATA[<figure class="figure">
+  <a href="/team" class="figure-image" aria-label="The team at our bowling event, 2022">
+    <img src="/images/blog/bowling/bowling.jpg" style="
+        width: 900px;
+        max-height: unset;
+      " alt="The team at our bowling event, 2022" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      The team at our bowling event, 2022
+
+    </figcaption>
+  
+</figure>
+
+<!-- section break -->
+<!--
+  background: ;
+  dark: ;
+  size: ;
+-->]]></content><author><name>Umut Suluhan</name></author><summary type="html"><![CDATA[The team at our bowling event, 2022]]></summary></entry></feed>
