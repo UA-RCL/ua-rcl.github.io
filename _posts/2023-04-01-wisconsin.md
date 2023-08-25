@@ -3,8 +3,6 @@ title: Our trip to University of Wisconsin–Madison
 author: Umut Suluhan
 ---
 
-We can scribble something short here.
-
 {%
   include figure.html
   image="images/blog/wisconsin/wisconsin1.JPG"

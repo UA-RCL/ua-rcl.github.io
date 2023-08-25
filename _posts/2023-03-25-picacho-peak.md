@@ -3,7 +3,6 @@ title: Our trip to Picacho Peak
 author: Umut Suluhan
 ---
 
-We can scribble something short here.
 
 {%
   include figure.html
