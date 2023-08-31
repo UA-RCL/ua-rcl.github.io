@@ -17,7 +17,7 @@ We build open-source ecosystems towards making emerging computing systems access
 ## News
 
 1. Our paper ***Contention-aware Performance Modeling for Heterogeneous Edge and Cloud Systems*** ([ACM](https://dl.acm.org/doi/abs/10.1145/3589010.3594889)) was published in the Proceedings of the 3rd Workshop on Flexible Resource and Application Management on the Edge.
-1. Our paper ***FALCON: An FPGA Emulation Platform for Domain-Specific Systems-on-Chip (DSSoCs)*** ([IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/10168840/)) was published in the Proceedings of the 3rd Workshop on Flexible Resource and Application Management on the Edge.
+1. Our paper ***FALCON: An FPGA Emulation Platform for Domain-Specific Systems-on-Chip (DSSoCs)*** ([IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/10168840/)) was published in the IEEE Design & Test.
 1. Our paper ***GPU-based and Streaming-enabled Implementation of Pre-processing Flow towards Enhancing Optical Character Recognition Accuracy and Efficiency*** was accepted to Springer Cluster Computing journal.
 1. Our paper ***PyTorch and CEDR: Enabling Deployment of Machine Learning Models on Heterogeneous Computing Systems*** was accepted to the 20th ACS/IEEE International Conference on Computer Systems and Applications (AICCSA 2023).
 1. Our article ***A Novel Implementation Methodology for Error Correction Codes on a Neuromorphic Architecture*** ([arxiv](https://arxiv.org/abs/2306.04010), [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/10149083)) was published in the IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems.
