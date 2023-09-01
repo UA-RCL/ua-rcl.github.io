@@ -3,7 +3,7 @@ name: H. Umut Suluhan
 image: images/profiles/lab/umut_suluhan.jpg
 role: phd
 links:
-  home-page: https://umutsuluhan.github.io/
+  #home-page: https://umutsuluhan.github.io/
   email: suluhan@arizona.edu
   orcid: 0009-0009-5398-5708
   google-scholar: dcYgpdgAAAAJ&hl=en
