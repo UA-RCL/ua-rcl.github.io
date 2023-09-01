@@ -43,7 +43,7 @@ Click below link for our active and archived projects.
 
 {%
   include feature.html
-  image="images/icon.png"
+  image="images/RCL_areas.png"
   link="projects"
   title="Our Projects"
   text=text
