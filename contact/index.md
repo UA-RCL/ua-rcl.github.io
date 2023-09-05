@@ -22,7 +22,7 @@ nav:
 {%
   include button.html
   type="address"
-  text="ECE356B"
+  text="ECE455"
   tooltip="Our location on Google Maps for easy navigation"
   link="https://www.google.com/maps/place/Department+of+Electrical+and+Computer+Engineering/@32.2356201,-110.9534426,15z/data=!4m2!3m1!1s0x0:0x9a1073d0b9a5bc24?sa=X&ved=2ahUKEwiI5_Tmh8KAAxVLLUQIHeqTB7AQ_BJ6BAhSEAA&ved=2ahUKEwiI5_Tmh8KAAxVLLUQIHeqTB7AQ_BJ6BAhgEAg"
 %}
