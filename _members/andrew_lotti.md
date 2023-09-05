@@ -4,13 +4,6 @@ image: images/profiles/graduate/andrew_lotti.jpeg
 description: Raytheon
 role: graduated
 date: 2008-1-1
-links:
-  home-page: 
-  email: 
-  orcid: 
-  google-scholar: 
-  linkedin: 
-  cv: 
 ---
 
 Graduation: Fall 2008 (MEng)

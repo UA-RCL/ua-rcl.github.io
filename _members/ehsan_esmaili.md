@@ -4,13 +4,6 @@ image: images/profiles/graduate/ehsan_esmaili.jpeg
 description: Solidigm
 role: graduated
 date: 2018-1-1
-links:
-  home-page: 
-  email: 
-  orcid: 
-  google-scholar: 
-  linkedin: 
-  cv: 
 ---
 
 Graduation: Spring 2018 (MS)

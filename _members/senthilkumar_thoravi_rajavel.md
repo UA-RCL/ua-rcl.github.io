@@ -4,13 +4,6 @@ image: images/profiles/graduate/senthilkumar_thoravi_rajavel.jpeg
 description: Synopsys
 role: graduated
 date: 2011-1-1
-links:
-  home-page: 
-  email: 
-  orcid: 
-  google-scholar: 
-  linkedin: 
-  cv: 
 ---
 
 Graduation: Summer 2011 (MS)

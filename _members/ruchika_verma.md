@@ -4,13 +4,6 @@ image:
 description: TRX Systems
 role: graduated
 date: 2009-1-1
-links:
-  home-page: 
-  email: 
-  orcid: 
-  google-scholar: 
-  linkedin: 
-  cv: 
 ---
 
 Graduation: Spring 2009 (MS)

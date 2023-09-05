@@ -4,13 +4,6 @@ image:
 description: Intel
 role: graduated
 date: 2016-1-1
-links:
-  home-page: 
-  email: 
-  orcid: 
-  google-scholar: 
-  linkedin: 
-  cv: 
 ---
 
 Graduation: Spring 2016 (MS)

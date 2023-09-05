@@ -4,13 +4,6 @@ image: images/profiles/graduate/lakshmi_easwaran.jpeg
 description: AMD
 role: graduated
 date: 2010-1-1
-links:
-  home-page: 
-  email: 
-  orcid: 
-  google-scholar: 
-  linkedin: 
-  cv: 
 ---
 
 Graduation: Spring 2010 (MS)

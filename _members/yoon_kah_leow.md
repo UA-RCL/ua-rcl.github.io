@@ -4,13 +4,6 @@ image: images/profiles/graduate/yoon_kah_leow.jpeg
 description: MediaTek
 role: graduated
 date: 2013-1-1
-links:
-  home-page: 
-  email: 
-  orcid: 
-  google-scholar: 
-  linkedin: 
-  cv: 
 ---
 
 Graduation: Spring 2013 (Ph.D.)
