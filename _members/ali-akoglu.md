@@ -12,4 +12,3 @@ links:
   cv: 
 ---
 
-Go to _members/ali-akoglu.md to add your personal bio here and edit personal links
