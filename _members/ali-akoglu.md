@@ -9,6 +9,6 @@ links:
   orcid: 
   google-scholar: JeiSWR8AAAAJ&hl=en
   linkedin: ali-akoglu-35810b84
-  cv: 
+  cv: images/cv/cv_akoglu.pdf
 ---
 
