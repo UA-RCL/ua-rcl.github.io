@@ -12,6 +12,13 @@
   link: /projects/cedr
   description: Hardware agnostic and productive application development and deployment on heterogenous SoCs
 
+- title: PROWESS
+  subtitle: Processor Reconfiguration for Wideband Spectrum Sensing
+  group: featured
+  image: images/projects/prowess.png
+  link: /projects/prowess
+  description: Heterogeneous SoC design for high-performance wideband spectrum sensing
+
 - title: COCHON
   subtitle: Configurable Optical Communications via Heterogeneous-processing Optimized Node
   group: featured
