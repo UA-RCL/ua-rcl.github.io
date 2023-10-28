@@ -17,7 +17,7 @@
   group: featured
   image: images/projects/prowess.png
   link: /projects/prowess
-  description: Heterogeneous SoC design for high-performance wideband spectrum sensing
+  description: Runtime software design for heterogeneous SoC for high-performance spectrum sensing
 
 - title: COCHON
   subtitle: Configurable Optical Communications via Heterogeneous-processing Optimized Node
