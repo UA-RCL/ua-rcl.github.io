@@ -8,14 +8,13 @@ We build open-source ecosystems towards making emerging computing systems access
 {%
   include button.html
   type="github"
-  text="On GitHub"
+  text="RCL GitHub"
   link="UA-RCL"
 %}
 
 {% include section.html %}
 
 ## News
-
 
 1. Joshua Mack held an Education Class ***CEDR: A Novel Runtime Environment for Accelerator-Rich Heterogeneous Architectures*** ([YouTube](https://www.youtube.com/watch?v=nMWDFAChcFI&list=PLMohsHZ1Urxvq9ZXyDenPMtbodupJaoZw&index=9&ab_channel=EmbeddedSystemsWeek%28ESWEEK%29)) in ESWEEK'23.
 1. Our paper ***Contention-aware Performance Modeling for Heterogeneous Edge and Cloud Systems*** ([ACM](https://dl.acm.org/doi/abs/10.1145/3589010.3594889)) was published in the Proceedings of the 3rd Workshop on Flexible Resource and Application Management on the Edge.
@@ -30,7 +29,7 @@ We build open-source ecosystems towards making emerging computing systems access
 
 {% capture text %}
 
-Click below link for our active and archived projects.
+Click the link below for our active and archived projects.
 
 {%
   include button.html
@@ -53,7 +52,7 @@ Click below link for our active and archived projects.
 
 {% capture text %}
 
-Click below link to meet our team members.
+Click the link below to meet our team members.
 
 {%
   include button.html
@@ -75,3 +74,30 @@ Click below link to meet our team members.
   style="bare"
   text=text
 %}
+
+<!-- 
+Will uncomment as the tutorial is finalized
+
+{% capture text %}
+
+Click the link below to see our presentations and tutorials.
+
+{%
+  include button.html
+  link="presentations"
+  text="Presentations and Tutorials"
+  icon="fa-solid fa-arrow-right"
+  flip=true
+  style="bare"
+%}
+
+{% endcapture %}
+
+{%
+  include feature.html
+  image="images/blog/picacho_peak/picacho1.jpeg"
+  link="presentations"
+  title="Our Presentations"
+  style="bare"
+  text=text
+%} -->
