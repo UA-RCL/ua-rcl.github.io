@@ -39,47 +39,39 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Our trip to University of Wisconsin–Madison | UA-RCL</title>
+<title>FPGA'23 Tutorial | UA-RCL</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="Our trip to University of Wisconsin–Madison">
+<meta name="title" content="FPGA'23 Tutorial">
 <meta name="description" content="University of Arizona Reconfigurable Computing Lab. An engaging 1-3 sentence description of your lab.">
 
-<meta property="og:title" content="Our trip to University of Wisconsin–Madison">
+<meta property="og:title" content="FPGA'23 Tutorial">
 <meta property="og:site_title" content="UA-RCL">
 <meta property="og:description" content="University of Arizona Reconfigurable Computing Lab. An engaging 1-3 sentence description of your lab.">
 <meta property="og:url" content="">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Our trip to University of Wisconsin–Madison">
+<meta property="twitter:title" content="FPGA'23 Tutorial">
 <meta property="twitter:description" content="University of Arizona Reconfigurable Computing Lab. An engaging 1-3 sentence description of your lab.">
 <meta property="twitter:url" content="">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:image" content="/images/share.jpg">
 
 
-  <meta name="author" content="Umut Suluhan">
-  <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2023-11-29T19:48:14+00:00">
-  <meta property="article:published_time" content="2023-04-01T00:00:00+00:00">
-  <meta property="article:modified_time" content="2023-11-29T19:48:14+00:00">
-  <meta name="revised" content="2023-11-29T19:48:14+00:00">
+  <meta property="og:type" content="website">
 
 
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     
-      "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "Our trip to University of Wisconsin–Madison" },
-      "datePublished": "2023-04-01T00:00:00+00:00",
-      "dateModified": "2023-11-29T19:48:14+00:00",
+      "@type": "WebSite",
     
-    "name": "Our trip to University of Wisconsin–Madison",
+    "name": "FPGA'23 Tutorial",
     "description": "University of Arizona Reconfigurable Computing Lab. An engaging 1-3 sentence description of your lab.",
-    "headline": "Our trip to University of Wisconsin–Madison",
+    "headline": "FPGA'23 Tutorial",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -286,6 +278,58 @@
     <link href="/_styles/util.css" rel="stylesheet">
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 <!-- include all css in styles folder -->
 
@@ -401,133 +445,77 @@
   
 
   <section class="background" data-size="page">
-    <h1 class="center">Our trip to University of Wisconsin–Madison</h1>
+    <h1 id="work-in-progress"><strong>Work in Progress</strong></h1>
 
-<div class="post-info">
-  
-    
-    
-      <span data-tooltip="Author">
-        <i class="icon fa-solid fa-feather-pointed"></i>
-        <span>Umut Suluhan</span>
-      </span>
-    
-  
+<h1 id="cedr-a-holistic-software-and-hardware-design-environment-for-fpga-integrated-heterogeneous-systems">CEDR: A Holistic Software and Hardware Design Environment for FPGA-Integrated Heterogeneous Systems</h1>
 
-  
-  
+<h2 id="linux-windows-and-mac">Linux, Windows, and Mac</h2>
 
-  
-    <span data-tooltip="Originally published on">
-      <i class="icon fa-regular fa-calendar"></i>
-      <span>April 01, 2023</span>
-    </span>
-  
+<p>Install Docker based on the host machine platform using the link below: 
+<a href="https://docs.docker.com/engine/install/#desktop">https://docs.docker.com/engine/install/#desktop</a></p>
 
-  
-    <span data-tooltip="Last updated on">
-      <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>November 29, 2023</span>
-    </span>
-  
-</div>
-  </section>
+<p>Pull the existing latest Docker container with all dependencies installed: 
+<a href="https://hub.docker.com/r/mackncheesiest/cedr_dev/tags">https://hub.docker.com/r/mackncheesiest/cedr_dev/tags</a></p>
 
-  
-  
-  
+<h2 id="windows-based-example">Windows-based example:</h2>
 
-  <section class="background" data-size="page">
-    <!--
-  background: ;
-  dark: ;
-  size: ;
--->
+<p>Open a terminal and run the docker image using the following command:</p>
 
+<p><code class="language-plaintext highlighter-rouge">docker run -it --rm -v &lt;working-directory&gt;:/root/repository mackncheesiest/cedr_dev:latest /bin/bash</code></p>
 
-<figure class="figure">
-  <a href="/team" class="figure-image" aria-label="Our trip to University of Wisconsin–Madison, 2023">
-    <img src="/images/blog/wisconsin/wisconsin1.JPG" style="
-        width: 900px;
-        max-height: unset;
-      " alt="Our trip to University of Wisconsin–Madison, 2023" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
-  </a>
-  
-    <figcaption class="figure-caption">
-      Our trip to University of Wisconsin–Madison, 2023
+<p>Set <working-directory> as any folder in the host machine, all files will be stored here.</working-directory></p>
 
-    </figcaption>
-  
-</figure>
-  </section>
+<p>You can use this method to re-connect to the docker container after you exit.</p>
 
-  
-  
-  
+<p>Clone CEDR from GitHub using one of the following methods:</p>
 
-  <section class="background" data-size="page">
-    <!--
-  background: ;
-  dark: ;
-  size: ;
--->
+<p>Clone with ssh:</p>
 
-<div class="grid" data-style="">
-  
-<figure class="figure">
-  <a class="figure-image" aria-label="figure link">
-    <img src="/images/blog/wisconsin/wisconsin2.JPG" style="
-        width: auto;
-        max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
-  </a>
-  
-</figure>
+<p><code class="language-plaintext highlighter-rouge">git clone git@github.com:UA-RCL/CEDR.git</code></p>
 
-<figure class="figure">
-  <a class="figure-image" aria-label="figure link">
-    <img src="/images/blog/wisconsin/wisconsin3.JPG" style="
-        width: auto;
-        max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
-  </a>
-  
-</figure>
+<p>Clone with https:</p>
 
+<p><code class="language-plaintext highlighter-rouge">git clone https://github.com/UA-RCL/CEDR.git</code></p>
 
-</div>
-  </section>
+<h2 id="linux-specific-requires-root-access">Linux Specific (Requires root access)</h2>
 
-  
-  
-  
+<p>Install git using the following command:</p>
 
-  <section class="background" data-size="page">
-    <!--
-  background: ;
-  dark: ;
-  size: ;
--->
+<p><code class="language-plaintext highlighter-rouge">sudo apt-get install git-all</code></p>
 
+<p>Clone CEDR from GitHub using one of the following methods:</p>
 
-<div class="post-nav">
-  <span>
-    
-      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
-      <a href="/2023/03/25/picacho-peak.html">
-        Our trip to Picacho Peak
-      </a>
-    
-  </span>
-  <span>
-    
-      Next post <i class="icon fa-solid fa-angle-right"></i><br>
-      <a href="/2023/05/11/dinner.html">
-        Dinner at Dr. Akoglu's home
-      </a>
-    
-  </span>
-</div>
+<p>Clone with ssh:</p>
+
+<p><code class="language-plaintext highlighter-rouge">git clone git@github.com:UA-RCL/CEDR.git</code></p>
+
+<p>Clone with https:</p>
+
+<p><code class="language-plaintext highlighter-rouge">git clone https://github.com/UA-RCL/CEDR.git</code></p>
+
+<p>Change your working directory to the cloned CEDR folder</p>
+
+<p><code class="language-plaintext highlighter-rouge">cd CEDR</code></p>
+
+<h2 id="docker-image-path">Docker Image Path:</h2>
+
+<p>Install Docker using the following command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt install docker.io</code></p>
+
+<p>Build the Docker image:</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker build --tag cedr_dev:latest .</code></p>
+
+<p>Run the Docker image:</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run -it --rm -v $(pwd):/root/repository cedr_dev:latest /bin/bash</code></p>
+
+<h2 id="without-using-docker-image">Without Using Docker Image:</h2>
+
+<p>Install all the required dependencies using the following command (this will take some time):</p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo bash install_dependencies.sh</code></p>
   </section>
 
 
