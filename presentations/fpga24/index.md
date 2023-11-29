@@ -1,5 +1,5 @@
 ---
-title: FPGA'23 Tutorial
+title: FPGA'24 Tutorial
 ---
 
 # **Work in Progress**
