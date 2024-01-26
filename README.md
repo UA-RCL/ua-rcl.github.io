@@ -43,3 +43,14 @@ To add a new blog post, add a new markdown file to ```_posts/``` folder followin
 
 _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
 
+
+## Test changes with Docker
+
+It is recommended to use the provided Docker configuration with this repo to start a local server, and test out how the changes reflect on the webpage, before pushing to github. Follow the steps below:
+1. Download and install docker for your OS distribution. ([Docker Install Page](https://docs.docker.com/engine/install/)).
+2. In the current repository directory, run `sudo bash .docker/run.sh`. This step sets up the docker and launches a server.
+3. Once the docker sets up the server, user will get notification such as the following-
+![alt text](./images/readme_scrsht_1.png)
+4. Open the server address (`http://localhost:4000`) in the browser to view the webpage, and review the changes.
+
+Any changes made in the sources while the server is running, prompts the docker to regenerate the website, which may take a few minutes to reflect in the browser.
