@@ -10,18 +10,16 @@ title: FPGA'24 Tutorial
 - Downloading and building CEDR (5 min)  
 - CEDR Overview and capabilities (15 min) 
 - Hands-on Exercise 1 (60 minutes) 
-  - User-1: Deploying reference applications on systems composed of ARM CPUs and FPGA accelerators.  
+  - Deploying reference applications on systems composed of ARM CPUs and FPGA accelerators.  
     - Activity: Prepare reference C/C++ Radar Correlator implementation by introducing CEDR API calls to the application, walk through the compilation flow and deploy on the ZCU102 platform. 
-  - User-2: Integrating and evaluating scheduling heuristic with CEDR  
-    - Activity: Walk through the integration of Earliest Finish Time heuristic, conduct performance evaluation on the ZCU102 platform with dynamically arriving Radar Correlator and Pulse Doppler based workload scenarios  
-- Hands on exercise 2: (30 minutes) 
-  - User-3: Design space exploration on systems composed of ARM CPUs and FPGA accelerators.  
+- Hands on exercise 2: (30 minutes)
+  - Design space exploration on systems composed of ARM CPUs and FPGA accelerators.  
     - Activity: Vary number of compute resources across different scheduling heuristics (round robin, minimum execution time, earlies finish time) in dynamically arriving workload scenarios. Radar correlator and Pulse Doppler applications will be launched with user defined workload scenarios using custom FPGA images that couple CPU cores with a variety of accelerates emulated on the ZCU102 platform. 
 - Discussions and Interactive Experimentation on the Fly (15 minutes) 
   - We will explore some of the scenarios listed below based on the interests of the audience:  
     - Experiment with a new application that relies on key computation kernels such as FFT, GEMM, Convolution, Vector addition or Vector multiplication.  
     - Experiment with a new application that requires a new API call not supported by CEDR 
-    - Walk through the integration of new API call to CEDR and perform functional verification on an X86 based system 
+    - Walk through the integration of new API call to CEDR and perform functional verification on an x86 based system 
 
 ## Tutorial Flow
 
@@ -111,10 +109,10 @@ cmake ../
 make -j -$(nproc)
 ```
 At this point there are 4 important files that should be compiled:
-  * *cedr:* CEDR runtime daemon
-  * *sub_dag:* CEDR job submission process
-  * *kill_daemon:* CEDR termination process
-  * *libdash-rt/libdash-rt.so:* Shared object used by CEDR for API calls
+ - *cedr:* CEDR runtime daemon
+ - *sub_dag:* CEDR job submission process
+ - *kill_daemon:* CEDR termination process
+ - *libdash-rt/libdash-rt.so:* Shared object used by CEDR for API calls
 
 Look into [dash.h](libdash/dash.h) under [libdash](libdash) folder and see available API calls.
 
@@ -128,9 +126,9 @@ cd applications/APIApps/radar_correlator
 ```
 
 Look at the [non-API version](applications/APIApps/radar_correlator/radar_correlator_non_api.c) of the Radar Correlator and locate possible places for adding API calls to the application
-  * Forward FFT call: Line 146
-  * Forward FFT call: Line 167
-  * Inverse FFT call: Line 194
+ - Forward FFT call: Line 146
+ - Forward FFT call: Line 167
+ - Inverse FFT call: Line 194
 
 Change the radar correlator to have DASH_FFT API calls and create a new file to place the API calls in the file
 ```bash
