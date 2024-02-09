@@ -5,4 +5,4 @@ nav:
   tooltip: Archive of presentations and tutorials
 ---
 
-# [FPGA'24 Tutorial](./fpga24/index.html)
+# [FPGA'24 Tutorial](./fpga24)
