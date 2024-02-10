@@ -25,10 +25,14 @@
 
 :root {
   // font families
-  --title: "Barlow", sans-serif;
-  --heading: "Barlow", sans-serif;
-  --body: "Barlow", sans-serif;
-  --code: "Roboto Mono", monospace;
+  // --title: "Barlow", sans-serif;
+  // --heading: "Barlow", sans-serif;
+  // --body: "Barlow", sans-serif;
+  // --code: "Roboto Mono", monospace;
+  --title: sans-serif;
+  --heading: sans-serif;
+  --body: sans-serif;
+  --code: monospace;
 
   // font sizes
   --medium: 1rem;
