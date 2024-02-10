@@ -28,6 +28,7 @@
 
 .portrait-image {
   width: 100%;
+  max-width: 200px;
   aspect-ratio: 1/1;
   border-radius: 999px;
   object-fit: cover;
@@ -71,6 +72,10 @@
 .portrait[data-style=small] .portrait-role .icon {
   left: -2px;
   top: -2px;
+}
+
+.wide-profile {
+  width: 35%;
 }
 
 /*# sourceMappingURL=portrait.css.map */
