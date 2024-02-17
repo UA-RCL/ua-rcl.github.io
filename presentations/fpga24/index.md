@@ -16,6 +16,14 @@ We will start with an overview of CEDR, and then we will explore how CEDR (i) al
   custom-class="wide-profile"
 %}
 
+{%
+  include portrait.html
+  name="Sahil Hassan"
+  description="Sahil Hassan is a senior PhD student in the Reconfigurable Computing Lab graduating in Spring 2024. His research interests include design and development of resource management techniques for emerging heterogeneous embedded computing systems, novel architectures and algorithms for neuromorphic computing, and FPGA based reconfigurable architectures."
+  image="/images/profiles/lab/sahil_hassan.jpg"
+  custom-class="wide-profile"
+%}
+
 {% 
   include portrait.html
   name="Serhan Gener"
