@@ -7,7 +7,7 @@ style: /_styles/presentations/fpga24/custom.css
 
 In this tutorial, we will familiarize ourselves with setting up CEDR and perform following set of tasks:
 - [Getting started](#exercise-0-getting-started-with-cedr) with and compiling CEDR
-- [Introducing CEDR APIs](#exercise-1-introduction-cedr-apis-to-baseline-c-applications) into baseline C++ applications
+- [Introducing CEDR APIs](#exercise-1-introducing-cedr-apis-to-baseline-c-applications) into baseline C++ applications
 - [Performing DSE](#exercise-2-design-space-exploration) by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios
 
 Additionally, we provide a number of supplemental tutorials on topics such as:
@@ -93,7 +93,7 @@ At this point there are 4 important files that should be compiled:
 
 Look into [dash.h](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h) under [libdash](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash) folder and see available API calls.
 
-# Exercise 1: Introduction CEDR APIs to Baseline C++ Applications
+# Exercise 1: Introducing CEDR APIs to Baseline C++ Applications
 [Return to table of contents](#fpga24-tutorial-archive)
 
 ## Application Overview
