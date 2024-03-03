@@ -465,12 +465,24 @@
 
 <p>In this tutorial, we will familiarize ourselves with setting up CEDR and perform following set of tasks:</p>
 <ul>
-  <li>Introducing an API call to an baseline C++ application.</li>
-  <li>Design space exploration by varying number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios.</li>
-  <li>Integrating and evaluating scheduling heuristic with CEDR and conducting performance evaluation with dynamically arriving workload scenarios.</li>
-  <li>Experiment with a new application that relies on key computation kernels such as FFT, GEMM, Convolution, Vector addition or Vector multiplication.</li>
-  <li>Perform experiments on GPU and FPGA based SoCs.</li>
-  <li>Integration of new API call to CEDR.</li>
+  <li>
+<a href="#exercise-0-getting-started-with-cedr">Getting started</a> with and compiling CEDR</li>
+  <li>
+<a href="#exercise-1-introduction-cedr-apis-to-baseline-c-applications">Introducing CEDR APIs</a> into baseline C++ applications</li>
+  <li>
+<a href="#exercise-2-design-space-exploration">Performing DSE</a> by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios</li>
+</ul>
+
+<p>Additionally, we provide a number of supplemental tutorials on topics such as:</p>
+<ul>
+  <li>
+<a href="#supplemental-exercise-1-integration-and-evaluation-of-eft-scheduler">Integrating and evaluating scheduling heuristics</a> with CEDR and conducting performance evaluation with dynamically arriving workload scenarios.</li>
+  <li>Integration of <a href="#supplemental-exercise-2-introducing-a-new-api-call">new API calls</a>.</li>
+  <li>Performing experiments with <a href="#supplemental-exercise-3-running-multiple-applications-with-cedr-on-x86">many simultaneous applications</a>
+</li>
+  <li>Performing <a href="#supplemental-exercise-4-gpu-based-soc-experiment-nvidia-jetson-agx-xavier">GPU-based experiments</a> via a Jetson AGX Xavier system</li>
+  <li>Conducting cross compilation-based studies <a href="#supplemental-exercise-5-fpga-based-soc-experiment-zcu102-mpsoc">on Xilinx ZCU102 FPGAs</a>
+</li>
 </ul>
 
 <h2 id="tutorial-requirements">Tutorial Requirements</h2>
@@ -481,6 +493,7 @@
 </ul>
 
 <h1 id="exercise-0-getting-started-with-cedr">Exercise 0: Getting Started with CEDR</h1>
+<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
 
 <h2 id="initial-setup">Initial Setup:</h2>
 <h3 id="docker-based-instructions-linux-windows-and-mac">Docker-based Instructions (Linux, Windows, and Mac)</h3>
@@ -558,6 +571,7 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <p>Look into <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h">dash.h</a> under <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash">libdash</a> folder and see available API calls.</p>
 
 <h1 id="exercise-1-introduction-cedr-apis-to-baseline-c-applications">Exercise 1: Introduction CEDR APIs to Baseline C++ Applications</h1>
+<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
 
 <h2 id="application-overview">Application Overview</h2>
 
@@ -708,6 +722,7 @@ python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 <p>Having built CEDR and compiled radar correlator application, we can proceed to performing design-space exploration now.</p>
 
 <h1 id="exercise-2-design-space-exploration">Exercise 2: Design Space Exploration</h1>
+<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
 
 <p>CEDR comes with some scripts that makes design-space exploration (DSE) rapid and easy. Now, we will go over the flow and define how to perform DSE step by step. First, navigate to folder where we accomodate API based CEDR scripts from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
 
@@ -856,6 +871,7 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
 <h1 id="supplemental-exercises">Supplemental Exercises:</h1>
 
 <h2 id="supplemental-exercise-1-integration-and-evaluation-of-eft-scheduler">Supplemental Exercise 1: Integration and Evaluation of EFT Scheduler</h2>
+<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
 
 <p>Now navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scr-api/scheduler.cpp">scheduler.cpp</a>. This file contains various schedulers already tailored to work with CEDR. In this part of the tutorial, we will add the Earliest Finish Time(EFT) scheduler to CEDR. EFT heuristic schedules all the tasks in the <code class="language-plaintext highlighter-rouge">read queue</code> one by one based on the earliest expected finish time of the task on the available resources (processing elements – PE).</p>
 
@@ -1064,6 +1080,7 @@ make <span class="nt">-j</span>
 </code></pre></div></div>
 
 <h2 id="supplemental-exercise-2-introducing-a-new-api-call">Supplemental Exercise 2: Introducing a New API Call</h2>
+<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
 
 <p>In this section of the tutorial, we will demonstrate integration of a new API call to the CEDR. We will use <code class="language-plaintext highlighter-rouge">DASH_ZIP</code> API call as an example.</p>
 
@@ -1199,6 +1216,7 @@ make fft_nb.so
 <p>If you have a C++ based serial implementation of key kernels in your application, you can add your API call following the explanations in this section and replace your C++ kernel code with newly introduced API call following the Section 3.</p>
 
 <h2 id="supplemental-exercise-3-running-multiple-applications-with-cedr-on-x86">Supplemental Exercise 3: Running Multiple Applications with CEDR on x86</h2>
+<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
 
 <h3 id="compilation-of-applications">Compilation of Applications</h3>
 <p>In this section, we will demonstrate CEDR’s ability to manage dynamically arriving applications. Assuming you already have built CEDR following the previous steps, we will directly delve into compiling and running two new applications that are lane detection and pulse doppler.</p>
@@ -1234,6 +1252,7 @@ make nonblocking
 <p>Observe the <a href="./build/output_fft.png">output image of lane detection</a> and the <a href="./build/output/pulse_doppler_output.txt">shift and time delay</a> calculated by pulse doppler.</p>
 
 <h2 id="supplemental-exercise-4-gpu-based-soc-experiment-nvidia-jetson-agx-xavier">Supplemental Exercise 4: GPU Based SoC Experiment (Nvidia Jetson AGX Xavier)</h2>
+<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
 
 <h3 id="building-cedr">Building CEDR</h3>
 <p>Firstly, we need to connect to the Nvidia Jetson board through ssh connection.</p>
@@ -1329,6 +1348,7 @@ app_id: 3, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: &
 </code></pre></div></div>
 
 <h2 id="supplemental-exercise-5-fpga-based-soc-experiment-zcu102-mpsoc">Supplemental Exercise 5: FPGA Based SoC Experiment (ZCU102 MPSoC)</h2>
+<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
 
 <p>(Conv2d (accelerator) is not included in HCW release.)
 Moving on to the aarch64-based build for ZCU102 FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/aarch64-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container. (Self note: Be careful about platform.h)
