@@ -342,8 +342,14 @@
 
 
 <!-- include all css in styles folder -->
+<!-- 
 
+  <link href="/_styles/presentations/fpga24/custom.css" rel="stylesheet" />
+ -->
 
+<!-- allow pages to customize styling via frontmatter -->
+
+<link href="/_styles/presentations/fpga24/custom.css" rel="stylesheet">
 
   <!-- third party scripts -->
 <script src="https://unpkg.com/@popperjs/core@2" defer></script>
@@ -566,8 +572,8 @@
     <ul>
       <li>We will explore some of the scenarios listed below based on the interests of the audience:
         <ul>
-          <li>Experiment with a new application that relies on key computation kernels such as FFT, GEMM, Convolution, Vector addition or Vector multiplication.</li>
-          <li>Experiment with a new application that requires a new API call not supported by CEDR</li>
+          <li>Experiment with a new applications that rely on key computation kernels such as FFT, GEMM, Convolution, Vector addition or Vector multiplication.</li>
+          <li>Experiment with a new applications that require a new API call not supported by CEDR</li>
           <li>Walk through the integration of new API call to CEDR and perform functional verification on an x86 based system</li>
         </ul>
       </li>
