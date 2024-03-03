@@ -473,41 +473,23 @@
   <li>Integration of new API call to CEDR.</li>
 </ul>
 
-<h2 id="0-requirements">0. Requirements</h2>
+<h2 id="tutorial-requirements">Tutorial Requirements</h2>
 <ul>
-  <li>Linux machine or <a href="https://hub.docker.com/r/mackncheesiest/cedr_dev/tags">docker image</a>
+  <li>Ubuntu-based Linux machine or ability to run a <a href="https://hub.docker.com/r/mackncheesiest/cedr_dev/tags">docker image</a>
 </li>
-  <li>CEDR Source Files: <a href="https://github.com/UA-RCL/CEDR/">CEDR repository for this tutorial</a>
-</li>
+  <li>CEDR Source Files: <a href="https://github.com/UA-RCL/CEDR/">CEDR repository for this tutorial</a>, checked out to the <code class="language-plaintext highlighter-rouge">tutorial</code> branch.</li>
 </ul>
 
-<h2 id="1-initial-setup">1. Initial Setup:</h2>
-<h3 id="linux-windows-and-mac">Linux, Windows, and MAC</h3>
+<h1 id="exercise-0-getting-started-with-cedr">Exercise 0: Getting Started with CEDR</h1>
+
+<h2 id="initial-setup">Initial Setup:</h2>
+<h3 id="docker-based-instructions-linux-windows-and-mac">Docker-based Instructions (Linux, Windows, and Mac)</h3>
 <p>Install Docker based on the host machine platform using the <a href="https://docs.docker.com/engine/install/#desktop">link</a>.
 Pull the existing latest <a href="https://hub.docker.com/r/mackncheesiest/cedr_dev/tags">Docker container</a> with all dependencies installed.
-Open a terminal and run the docker image using the following command:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -it --rm -v &lt;working-directory&gt;:/root/repository mackncheesiest/cedr_dev:latest /bin/bash
+Open a terminal in your CEDR folder and run the docker image using the following command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -it --rm -v $(pwd):/root/repository mackncheesiest/cedr_dev:latest /bin/bash
 </code></pre></div></div>
-<p>Set <working-directory> as any folder in the host machine, all files will be stored here.
-You can use this method to re-connect to the docker container after you exit.
-Clone CEDR from GitHub using one of the following methods:</working-directory></p>
-<ul>
-  <li>Clone with ssh:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>git clone <span class="nt">-b</span> tutorial git@github.com:UA-RCL/CEDR.git
-</code></pre></div>    </div>
-  </li>
-  <li>Clone with https:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>git clone <span class="nt">-b</span> tutorial https://github.com/UA-RCL/CEDR.git
-</code></pre></div>    </div>
-  </li>
-</ul>
 
-<h3 id="linux-specific-requires-root-access">Linux Specific (Requires root access)</h3>
-<p>Install git using the following command:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>git-all
-</code></pre></div></div>
 <p>Clone CEDR from GitHub using one of the following methods:</p>
 <ul>
   <li>Clone with ssh:
@@ -519,31 +501,31 @@ Clone CEDR from GitHub using one of the following methods:</working-directory></
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>git clone <span class="nt">-b</span> tutorial https://github.com/UA-RCL/CEDR.git
 </code></pre></div>    </div>
-    <p>Change your working directory to the cloned CEDR folder</p>
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>CEDR
-</code></pre></div>    </div>
-    <p>Using Docker Image:</p>
-  </li>
-  <li>Install Docker using the following command:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>docker.io
-</code></pre></div>    </div>
-  </li>
-  <li>Build the Docker image:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>docker build <span class="nt">--tag</span> cedr_dev:latest <span class="nb">.</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Run the Docker image:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>:/root/repository cedr_dev:latest /bin/bash
-</code></pre></div>    </div>
   </li>
 </ul>
 
-<p>Without Using Docker Image:</p>
+<h3 id="linux-native-instructions-requires-root-access">Linux-native instructions (Requires root access)</h3>
+<p>Install git using the following command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>git-all
+</code></pre></div></div>
+
+<p>Clone CEDR from GitHub using one of the following methods:</p>
 <ul>
+  <li>Clone with ssh:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>git clone <span class="nt">-b</span> tutorial git@github.com:UA-RCL/CEDR.git
+</code></pre></div>    </div>
+  </li>
+  <li>Clone with https:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>git clone <span class="nt">-b</span> tutorial https://github.com/UA-RCL/CEDR.git
+</code></pre></div>    </div>
+  </li>
+  <li>Change your working directory to the cloned CEDR folder
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>CEDR
+</code></pre></div>    </div>
+  </li>
   <li>Install all the required dependencies using the following command (this will take some time):
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>bash install_dependencies.sh
@@ -551,9 +533,9 @@ Clone CEDR from GitHub using one of the following methods:</working-directory></
   </li>
 </ul>
 
-<h2 id="2-building-cedr-for-x86">2. Building CEDR for x86</h2>
+<h2 id="building-cedr-for-x86">Building CEDR for x86:</h2>
 
-<p>Navigate to the <a href="./">root directory</a> and create a build folder</p>
+<p>Navigate to the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial">root directory</a> and create a build folder</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>build
 </code></pre></div></div>
 <p>Change current directory to build</p>
@@ -575,17 +557,17 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <em>libdash-rt/libdash-rt.so:</em> Shared object used by CEDR for API calls</li>
 </ul>
 
-<p>Look into <a href="libdash/dash.h">dash.h</a> under <a href="libdash">libdash</a> folder and see available API calls.</p>
+<p>Look into <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h">dash.h</a> under <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash">libdash</a> folder and see available API calls.</p>
 
 <h2 id="3-introducing-api-call-to-a-baseline-c-application">3. Introducing API Call to a Baseline C++ Application</h2>
 
 <h3 id="31-application-overview">3.1 Application Overview</h3>
 
-<p>Move to the Radar Correlator folder in the <a href="applications/APIApps/radar_correlator/">applications</a> folder from <a href="./">root directory</a></p>
+<p>Move to the Radar Correlator folder in the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator/">applications</a> folder from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/">root directory</a></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>applications/APIApps/radar_correlator
 </code></pre></div></div>
 
-<p>Look at the <a href="applications/APIApps/radar_correlator/radar_correlator_non_api.c">non-API version</a> of the Radar Correlator and locate possible places for adding API calls to the application</p>
+<p>Look at the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator/radar_correlator_non_api.c">non-API version</a> of the Radar Correlator and locate possible places for adding API calls to the application</p>
 <ul>
   <li>Forward FFT call: Line 146</li>
   <li>Forward FFT call: Line 167</li>
@@ -596,7 +578,7 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>radar_correlator_non_api.c radar_correlator_fft.c
 </code></pre></div></div>
 
-<p>Make sure the <a href="libdash/dash.h">dash.h</a> is included in the application</p>
+<p>Make sure the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h">dash.h</a> is included in the application</p>
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"dash.h"</span><span class="cp">
 </span></code></pre></div></div>
 
@@ -636,7 +618,7 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../../build
 </code></pre></div></div>
 
-<p>Copy the daemon configuration file from the <a href="./">root repository</a> base directory to the build folder</p>
+<p>Copy the daemon configuration file from the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root repository</a> base directory to the build folder</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> ../daemon_config.json ./
 </code></pre></div></div>
 
@@ -683,10 +665,10 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./cedr <span class="nt">-c</span> ./daemon_config.json
 </code></pre></div></div>
 
-<p>Push CEDR to the background or open another terminal and navigate to the same build folder (<a href="./">root repository</a>/build)</p>
+<p>Push CEDR to the background or open another terminal and navigate to the same build folder (<a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root repository</a>/build)</p>
 <ul>
   <li>Option 1: Ctrl+z or run CEDR with <code class="language-plaintext highlighter-rouge">./cedr -c ./daemon_config.json &amp;</code> in the previous step. Now this terminal can be used for running next steps.</li>
-  <li>Option 2: Open a second terminal and go to CEDR build directory, <code>cd  [root repository](./)/build</code>. Now this second terminal can be used for running next steps.</li>
+  <li>Option 2: Open a second terminal and go to CEDR build directory, <code>cd  [root repository](https://github.com/UA-RCL/CEDR/tree/tutorial/./)/build</code>. Now this second terminal can be used for running next steps.</li>
 </ul>
 
 <p>Run <code class="language-plaintext highlighter-rouge">sub_dag</code> to submit application(s) to CEDR</p>
@@ -719,7 +701,7 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <code class="language-plaintext highlighter-rouge">timing_trace.log</code> stores the computing resource and execution time of the API call.</li>
 </ul>
 
-<p>We can generate a Gantt chart showing the distribution of tasks to the processing elements. Navigate the <code class="language-plaintext highlighter-rouge">scripts/</code> folder from the <a href="./">root directory</a> and run <code class="language-plaintext highlighter-rouge">gantt_k-nk.py</code> script.</p>
+<p>We can generate a Gantt chart showing the distribution of tasks to the processing elements. Navigate the <code class="language-plaintext highlighter-rouge">scripts/</code> folder from the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a> and run <code class="language-plaintext highlighter-rouge">gantt_k-nk.py</code> script.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd scripts/
 python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
@@ -729,12 +711,12 @@ python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 
 <h2 id="4-design-space-exploration">4. Design Space Exploration</h2>
 
-<p>CEDR comes with some scripts that makes design-space exploration (DSE) rapid and easy. Now, we will go over the flow and define how to perform DSE step by step. First, navigate to folder where we accomodate API based CEDR scripts from <a href="./">root directory</a>.</p>
+<p>CEDR comes with some scripts that makes design-space exploration (DSE) rapid and easy. Now, we will go over the flow and define how to perform DSE step by step. First, navigate to folder where we accomodate API based CEDR scripts from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>scripts/scripts-API/run_scripts
 </code></pre></div></div>
 
-<p>We will initially run <a href="./scripts/scripts-API/run_scripts/daemon_generator.py">daemon_generator.py</a> file to generate <code class="language-plaintext highlighter-rouge">daemon_config.json</code> files for our sweeps. We can modify the following code portion to denote scheduler types and hardware compositions. We set schedulers as <code class="language-plaintext highlighter-rouge">SIMPLE, ETF, and MET</code> while hardware compositions that are going to sweeped are picked as 4 CPUs at maximum since we don’t have any accelerator on the x86 system. If there were any accelerator, we would also set the maximum number of accelerator that we would like to sweep up to.</p>
+<p>We will initially run <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/daemon_generator.py">daemon_generator.py</a> file to generate <code class="language-plaintext highlighter-rouge">daemon_config.json</code> files for our sweeps. We can modify the following code portion to denote scheduler types and hardware compositions. We set schedulers as <code class="language-plaintext highlighter-rouge">SIMPLE, ETF, and MET</code> while hardware compositions that are going to sweeped are picked as 4 CPUs at maximum since we don’t have any accelerator on the x86 system. If there were any accelerator, we would also set the maximum number of accelerator that we would like to sweep up to.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SCHEDS</span> <span class="o">=</span> <span class="p">[</span><span class="s">"SIMPLE"</span><span class="p">,</span> <span class="s">"ETF"</span><span class="p">,</span> <span class="s">"MET"</span><span class="p">]</span>
 <span class="n">CPUS</span> <span class="o">=</span> <span class="mi">3</span>
@@ -746,7 +728,7 @@ python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 
 <p>Then, we can see that number of each processing element starts from <code class="language-plaintext highlighter-rouge">0</code> all the way up to <code class="language-plaintext highlighter-rouge">maximum number of that processing element</code> looking at nested loops between Lines 26-31 (except CPU starts from 1). By changing the boundaries of the for loops, we can control the starting point of the sweep for each processing element. For this experiment, we will keep the file same.</p>
 
-<p>Next, we need to configure <a href="./scripts/scripts-API/run_scripts/run_cedr.sh">run_cedr.sh</a> and <a href="./scripts/scripts-API/run_scripts/run_subdag.sh">run_sub_dag.sh</a>, which will concurrently run CEDR and submit applications. In <code class="language-plaintext highlighter-rouge">run_cedr.sh</code>, we need to set the following fields identical to the daemon config generator. Periodicity denotes the delay between injecting each application instance in microseconds.</p>
+<p>Next, we need to configure <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/run_cedr.sh">run_cedr.sh</a> and <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/run_subdag.sh">run_sub_dag.sh</a>, which will concurrently run CEDR and submit applications. In <code class="language-plaintext highlighter-rouge">run_cedr.sh</code>, we need to set the following fields identical to the daemon config generator. Periodicity denotes the delay between injecting each application instance in microseconds.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">SCHEDS</span><span class="o">=(</span><span class="s2">"SIMPLE"</span> <span class="s2">"MET"</span> <span class="s2">"ETF"</span><span class="o">)</span>
 <span class="nv">CPUS</span><span class="o">=</span>3
@@ -808,12 +790,12 @@ docker <span class="nb">exec</span> <span class="nt">-it</span> &lt;CONTAINER ID
 bash run_sub_dag.sh <span class="c"># Execute on the second terminal</span>
 </code></pre></div></div>
 
-<p>After both scripts terminate, there should be a folder named <code class="language-plaintext highlighter-rouge">HIGH</code> in the <code class="language-plaintext highlighter-rouge">log_dir</code> containing as many files as there are trials. Each folder should have log files for each hardware composition, scheduler, and injection rate. To plot all the DSE results in a 3D format, first navigate to <code class="language-plaintext highlighter-rouge">scripts/scripts-API/</code> from <a href="./">root directory</a>.</p>
+<p>After both scripts terminate, there should be a folder named <code class="language-plaintext highlighter-rouge">HIGH</code> in the <code class="language-plaintext highlighter-rouge">log_dir</code> containing as many files as there are trials. Each folder should have log files for each hardware composition, scheduler, and injection rate. To plot all the DSE results in a 3D format, first navigate to <code class="language-plaintext highlighter-rouge">scripts/scripts-API/</code> from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>scripts/scripts-API/
 </code></pre></div></div>
 
-<p>There are two scripts named <code class="language-plaintext highlighter-rouge">makedataframe.py</code> and <code class="language-plaintext highlighter-rouge">plt3dplot_inj.py</code> for plotting 3D diagram. For each DSE experiment, following lines in <a href="scripts/scripts-API/makedataframe.py">makedataframe.py</a> should be modified.</p>
+<p>There are two scripts named <code class="language-plaintext highlighter-rouge">makedataframe.py</code> and <code class="language-plaintext highlighter-rouge">plt3dplot_inj.py</code> for plotting 3D diagram. For each DSE experiment, following lines in <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/makedataframe.py">makedataframe.py</a> should be modified.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">corelist</span> <span class="o">=</span> <span class="p">[</span><span class="s">' cpu1'</span><span class="p">,</span> <span class="s">' cpu2'</span><span class="p">,</span> <span class="s">' cpu3'</span><span class="p">]</span>  <span class="c1"># Line 38
 </span>
@@ -849,7 +831,7 @@ bash run_sub_dag.sh <span class="c"># Execute on the second terminal</span>
 python3 makedataframe.py <span class="nt">-i</span> ../../build/log_dir/ <span class="nt">-w</span> HIGH <span class="nt">-o</span> dataframe.csv <span class="nt">-t</span> 2 <span class="nt">-r</span> 2
 </code></pre></div></div>
 
-<p>Modify the following lines in the <a href="scripts/scripts-API/plt3dplot_inj.py">plt3dplot_inj.py</a>.</p>
+<p>Modify the following lines in the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/plt3dplot_inj.py">plt3dplot_inj.py</a>.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### Configuration specification ###
 ### Starting from line 27
@@ -875,7 +857,7 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
 
 <h2 id="5-integration-and-evaluation-of-eft-scheduler">5. Integration and Evaluation of EFT Scheduler</h2>
 
-<p>Now navigate to <a href="scr-api/scheduler.cpp">scheduler.cpp</a>. This file contains various schedulers already tailored to work with CEDR. In this part of the tutorial, we will add the Earliest Finish Time(EFT) scheduler to CEDR. EFT heuristic schedules all the tasks in the <code class="language-plaintext highlighter-rouge">read queue</code> one by one based on the earliest expected finish time of the task on the available resources (processing elements – PE).</p>
+<p>Now navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scr-api/scheduler.cpp">scheduler.cpp</a>. This file contains various schedulers already tailored to work with CEDR. In this part of the tutorial, we will add the Earliest Finish Time(EFT) scheduler to CEDR. EFT heuristic schedules all the tasks in the <code class="language-plaintext highlighter-rouge">read queue</code> one by one based on the earliest expected finish time of the task on the available resources (processing elements – PE).</p>
 
 <p>First, we will write the EFT scheduler as a C/C++ function. We will utilize the available variables for all the schedulers in CEDR. A list of the useful variables and their explanations can be found in the bulleted list below.</p>
 
@@ -1036,14 +1018,14 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
 
 <h3 id="56-adding-eft-as-a-scheduling-option">5.6 Adding EFT as a scheduling option</h3>
 
-<p>Now, the only thing left is to ensure CEDR can run this function during scheduling events. To do this in the same <a href="scr-api/scheduler.cpp">scheduler.cpp</a> file, we go to the end and update the <a href="https://github.com/UA-RCL/CEDR/blob/tutorial/src-api/scheduler.cpp#L406">performScheduling</a> function. In the function where <code class="language-plaintext highlighter-rouge">sched_policy</code> is checked, we add another <code class="language-plaintext highlighter-rouge">else if</code> segment that checks whether the scheduling policy is <code class="language-plaintext highlighter-rouge">EFT</code>. If it is, we will call the function we just created.</p>
+<p>Now, the only thing left is to ensure CEDR can run this function during scheduling events. To do this in the same <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scr-api/scheduler.cpp">scheduler.cpp</a> file, we go to the end and update the <a href="https://github.com/UA-RCL/CEDR/blob/tutorial/src-api/scheduler.cpp#L406">performScheduling</a> function. In the function where <code class="language-plaintext highlighter-rouge">sched_policy</code> is checked, we add another <code class="language-plaintext highlighter-rouge">else if</code> segment that checks whether the scheduling policy is <code class="language-plaintext highlighter-rouge">EFT</code>. If it is, we will call the function we just created.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">sched_policy</span> <span class="o">==</span> <span class="s">"EFT"</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">tasks_scheduled</span> <span class="o">+=</span> <span class="n">scheduleEFT</span><span class="p">(</span><span class="n">cedr_config</span><span class="p">,</span> <span class="n">ready_queue</span><span class="p">,</span> <span class="n">hardware_thread_handle</span><span class="p">,</span> <span class="n">resource_mutex</span><span class="p">,</span> <span class="n">free_resource_count</span><span class="p">);</span>
   <span class="p">}</span>
 </code></pre></div></div>
 
-<p>After adding EFT as one of the scheduling heuristic options to CEDR, we will need to rebuild CEDR in the <code class="language-plaintext highlighter-rouge">build</code> directory. First, navigate to <a href="./">root directory</a>, then follow the steps below to rebuild CEDR with EFT.</p>
+<p>After adding EFT as one of the scheduling heuristic options to CEDR, we will need to rebuild CEDR in the <code class="language-plaintext highlighter-rouge">build</code> directory. First, navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>, then follow the steps below to rebuild CEDR with EFT.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>build
 make <span class="nt">-j</span>
@@ -1051,7 +1033,7 @@ make <span class="nt">-j</span>
 
 <h3 id="57-enabling-eft-for-cedr">5.7 Enabling EFT for CEDR</h3>
 
-<p>In the <a href="daemon_config.json">daemon_config.json</a> file, we updated the <a href="https://github.com/UA-RCL/CEDR/blob/tutorial/daemon_config.json#L35">“Scheduler”</a> field to be “EFT” before running CEDR with the updated daemon config file.</p>
+<p>In the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file, we updated the <a href="https://github.com/UA-RCL/CEDR/blob/tutorial/daemon_config.json#L35">“Scheduler”</a> field to be “EFT” before running CEDR with the updated daemon config file.</p>
 
 <pre><code class="language-JSON">    "Scheduler": "EFT",
 </code></pre>
@@ -1085,7 +1067,7 @@ make <span class="nt">-j</span>
 
 <p>In this section of the tutorial, we will demonstrate integration of a new API call to the CEDR. We will use <code class="language-plaintext highlighter-rouge">DASH_ZIP</code> API call as an example.</p>
 
-<p>Navigate to libdash folder from <a href="./">root directory</a>.</p>
+<p>Navigate to libdash folder from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>libdash
 </code></pre></div></div>
 
@@ -1119,7 +1101,7 @@ make <span class="nt">-j</span>
 <span class="p">}</span> <span class="n">zip_op_t</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>Add CPU implementation of the ZIP to <a href="libdash/cpu/">libdash/cpu</a> <code class="language-plaintext highlighter-rouge">zip.cpp</code>. For simplicity, we just copy the original implementation.</p>
+<p>Add CPU implementation of the ZIP to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/cpu/">libdash/cpu</a> <code class="language-plaintext highlighter-rouge">zip.cpp</code>. For simplicity, we just copy the original implementation.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>original_files/zip.cpp libdash/cpu/
 </code></pre></div></div>
 
@@ -1172,7 +1154,7 @@ make <span class="nt">-j</span>
 </li>
 </ol>
 
-<p>Having included API implementation, we should introduce the new API call to the system by updating CEDR header file (<a href="src-api/include/header.hpp">./src-api/include/header.hpp</a>):</p>
+<p>Having included API implementation, we should introduce the new API call to the system by updating CEDR header file (<a href="https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp">./src-api/include/header.hpp</a>):</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enum api_types {DASH_FFT = 0, DASH_GEMM = 1, DASH_FIR = 2, DASH_SpectralOpening = 3, DASH_CIC = 4, DASH_BPSK = 5, DASH_QAM16 = 6, DASH_CONV_2D = 7, DASH_CONV_1D = 8, &lt;b&gt;DASH_ZIP = 9,&lt;/b&gt; NUM_API_TYPES = &lt;b&gt;10&lt;/b&gt;};
 
@@ -1349,7 +1331,7 @@ app_id: 3, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: &
 <h2 id="9-fpga-based-soc-experiment-zcu102-mpsoc">9. FPGA Based SoC Experiment (ZCU102 MPSoC)</h2>
 
 <p>(Conv2d (accelerator) is not included in HCW release.)
-Moving on to the aarch64-based build for ZCU102 FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="toolchains/aarch64-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container. (Self note: Be careful about platform.h)
+Moving on to the aarch64-based build for ZCU102 FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/aarch64-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container. (Self note: Be careful about platform.h)
 Simply run the following commands from the repository root folder:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>build-arm
@@ -1377,7 +1359,7 @@ make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc
 
 <h3 id="91-cross-compilation">9.1 Cross-compilation</h3>
 
-<p>Assuming you came here after building the lane detection for x86_64, we will directly move to compile the lane detection for aarch64. First, navigate to <a href="applications/APIApps/lane_detection">applications/APIApps/lane_detection</a> folder. Then run the following command to build the executable for aacrh64:</p>
+<p>Assuming you came here after building the lane detection for x86_64, we will directly move to compile the lane detection for aarch64. First, navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/lane_detection">applications/APIApps/lane_detection</a> folder. Then run the following command to build the executable for aacrh64:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>applications/APIApps/lane_detection
 <span class="nv">ARCH</span><span class="o">=</span>aarch64 make fft_nb.so
@@ -1401,7 +1383,7 @@ file track_nb.so
 
 <h3 id="92-running-api-based-cedr-on-zcu102">9.2 Running API-based CEDR on ZCU102</h3>
 
-<p>Now, change your working directory to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory. Before going into the zcu102 first copy the <a href="daemon_config.json">daemon_config.json</a> file to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory and create an output folder. From the build-arm directory, run:</p>
+<p>Now, change your working directory to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory. Before going into the zcu102 first copy the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory and create an output folder. From the build-arm directory, run:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../../build-arm
 <span class="nb">cp</span> ../daemon_config.json ./
@@ -1423,7 +1405,7 @@ sshfs &lt;user_name&gt;@&lt;ip <span class="k">for </span>the localmachine&gt;:&
 
 <p>After these steps are completed, if you type <code class="language-plaintext highlighter-rouge">ls</code> you should see all the files you had on the local machine is also here on the zcu102.</p>
 
-<p>Before running CEDR, we need to enable FFT and GEMM accelerator in the <a href="daemon_config.json">daemon_config.json</a> file and loosen the thread permission just like we did for x86_64. By the time this tutorial was written, we had 2 FFT and 2 GEMM accelerators available in the FPGA image. We can put any number between 0-2 to the corresponding fields on the <a href="daemon_config.json">daemon_config.json</a> file. Change the file with the following <code class="language-plaintext highlighter-rouge">Worker Threads</code> setup:</p>
+<p>Before running CEDR, we need to enable FFT and GEMM accelerator in the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file and loosen the thread permission just like we did for x86_64. By the time this tutorial was written, we had 2 FFT and 2 GEMM accelerators available in the FPGA image. We can put any number between 0-2 to the corresponding fields on the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file. Change the file with the following <code class="language-plaintext highlighter-rouge">Worker Threads</code> setup:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"Worker Threads"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
