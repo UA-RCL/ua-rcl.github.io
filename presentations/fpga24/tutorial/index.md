@@ -1017,4 +1017,4 @@ cat output/pulse_doppler_output.txt
 
 ## 10. Contact
 
-For any questions and bug report, please email to [suluhan@arizona.edu](mailto:suluhan@arizona.edu).
+For any questions and bug report, please email [jmack2545@arizona.edu](mailto:jmack2545@arizona.edu), [gener@arizona.edu](mailto:gener@arizona.edu), or [suluhan@arizona.edu](mailto:suluhan@arizona.edu).

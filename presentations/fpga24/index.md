@@ -11,7 +11,7 @@ We will start with an overview of CEDR, and then we will explore how CEDR (i) al
 {%
   include portrait.html
   name="Joshua Mack"
-  description="Joshua Mack is a senior PhD student in the Reconfigurable Computing Lab graduating in Spring 2024. His research interests span topics within reconfigurable and FPGA systems, emerging architectures, and the design of abstractions to enable productive, heterogeneous embedded systems."
+  description="Joshua Mack is a senior researcher in the Reconfigurable Computing Lab who defended his PhD dissertation in Spring 2024. His research interests span topics within reconfigurable and FPGA systems, emerging architectures, and the design of abstractions to enable productive, heterogeneous embedded systems."
   image="/images/profiles/lab/joshua_mack.jpg"
   custom-class="wide-profile"
 %}
