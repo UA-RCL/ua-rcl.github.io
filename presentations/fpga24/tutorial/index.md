@@ -1,5 +1,6 @@
 ---
 title: FPGA'24 Tutorial Contents
+style: /_styles/presentations/fpga24/custom.css
 ---
 
 # FPGA'24 Tutorial Archive

@@ -1,5 +1,6 @@
 ---
 title: FPGA'24 Tutorial Introduction
+style: /_styles/presentations/fpga24/custom.css
 ---
 
 # CEDR: A Holistic Software and Hardware Design Environment for FPGA-Integrated Heterogeneous Systems
@@ -44,8 +45,8 @@ We will start with an overview of CEDR, and then we will explore how CEDR (i) al
     - Activity: Vary number of compute resources across different scheduling heuristics (round robin, minimum execution time, earlies finish time) in dynamically arriving workload scenarios. Radar correlator and Pulse Doppler applications will be launched with user defined workload scenarios using custom FPGA images that couple CPU cores with a variety of accelerates emulated on the ZCU102 platform. 
 - Discussions and Interactive Experimentation on the Fly (15 minutes) 
   - We will explore some of the scenarios listed below based on the interests of the audience:  
-    - Experiment with a new application that relies on key computation kernels such as FFT, GEMM, Convolution, Vector addition or Vector multiplication.  
-    - Experiment with a new application that requires a new API call not supported by CEDR 
+    - Experiment with a new applications that rely on key computation kernels such as FFT, GEMM, Convolution, Vector addition or Vector multiplication.  
+    - Experiment with a new applications that require a new API call not supported by CEDR 
     - Walk through the integration of new API call to CEDR and perform functional verification on an x86 based system 
 
 

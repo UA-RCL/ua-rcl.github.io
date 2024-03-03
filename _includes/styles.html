@@ -19,10 +19,15 @@
 {% endfor %}
 
 <!-- include all css in styles folder -->
-{% assign styles = site.static_files
+<!-- {% assign styles = site.static_files
   | where_exp: "file",
     "file.path contains '/_styles' and file.path contains '.css'"
 %}
 {% for style in styles %}
   <link href="{{ style.path | relative_url }}" rel="stylesheet" />
-{% endfor %}
+{% endfor %} -->
+
+<!-- allow pages to customize styling via frontmatter -->
+{% if page.style %}
+<link href="{{ page.style | relative_url }}" rel="stylesheet"/>
+{% endif %}
