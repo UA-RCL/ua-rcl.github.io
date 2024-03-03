@@ -521,17 +521,15 @@ Open a terminal in your CEDR folder and run the docker image using the following
 <div class="highlight"><pre class="highlight"><code>git clone <span class="nt">-b</span> tutorial https://github.com/UA-RCL/CEDR.git
 </code></pre></div>    </div>
   </li>
-  <li>Change your working directory to the cloned CEDR folder
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>CEDR
-</code></pre></div>    </div>
-  </li>
-  <li>Install all the required dependencies using the following command (this will take some time):
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>bash install_dependencies.sh
-</code></pre></div>    </div>
-  </li>
 </ul>
+
+<p>Change your working directory to the cloned CEDR folder</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>CEDR
+</code></pre></div></div>
+
+<p>Install all the required dependencies using the following command (this will take some time):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>bash install_dependencies.sh
+</code></pre></div></div>
 
 <h2 id="building-cedr-for-x86">Building CEDR for x86:</h2>
 
@@ -559,9 +557,9 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 
 <p>Look into <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h">dash.h</a> under <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash">libdash</a> folder and see available API calls.</p>
 
-<h2 id="3-introducing-api-call-to-a-baseline-c-application">3. Introducing API Call to a Baseline C++ Application</h2>
+<h1 id="exercise-1-introduction-cedr-apis-to-baseline-c-applications">Exercise 1: Introduction CEDR APIs to Baseline C++ Applications</h1>
 
-<h3 id="31-application-overview">3.1 Application Overview</h3>
+<h2 id="application-overview">Application Overview</h2>
 
 <p>Move to the Radar Correlator folder in the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator/">applications</a> folder from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/">root directory</a></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>applications/APIApps/radar_correlator
@@ -612,7 +610,7 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <span class="nb">cp</span> <span class="nt">-r</span> input/ ../../../build
 </code></pre></div></div>
 
-<h3 id="32-cpu-based-preliminary-validation-of-the-api-based-code">3.2 CPU-based Preliminary Validation of the API Based Code</h3>
+<h2 id="cpu-based-preliminary-validation-of-the-api-based-code">CPU-based Preliminary Validation of the API Based Code</h2>
 
 <p>Move back to the CEDR build folder containing CEDR binaries</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../../build
@@ -709,7 +707,7 @@ python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 
 <p>Having built CEDR and compiled radar correlator application, we can proceed to performing design-space exploration now.</p>
 
-<h2 id="4-design-space-exploration">4. Design Space Exploration</h2>
+<h1 id="exercise-2-design-space-exploration">Exercise 2: Design Space Exploration</h1>
 
 <p>CEDR comes with some scripts that makes design-space exploration (DSE) rapid and easy. Now, we will go over the flow and define how to perform DSE step by step. First, navigate to folder where we accomodate API based CEDR scripts from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
 
@@ -855,7 +853,9 @@ python3 plt3dplot_inj.py dataframe.csv EXEC  <span class="c"># Application execu
 python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhead</span>
 </code></pre></div></div>
 
-<h2 id="5-integration-and-evaluation-of-eft-scheduler">5. Integration and Evaluation of EFT Scheduler</h2>
+<h1 id="supplemental-exercises">Supplemental Exercises:</h1>
+
+<h2 id="integration-and-evaluation-of-eft-scheduler">Integration and Evaluation of EFT Scheduler</h2>
 
 <p>Now navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scr-api/scheduler.cpp">scheduler.cpp</a>. This file contains various schedulers already tailored to work with CEDR. In this part of the tutorial, we will add the Earliest Finish Time(EFT) scheduler to CEDR. EFT heuristic schedules all the tasks in the <code class="language-plaintext highlighter-rouge">read queue</code> one by one based on the earliest expected finish time of the task on the available resources (processing elements – PE).</p>
 
@@ -876,7 +876,7 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
 
 <p>Leveraging the available variables, we will implement the EFT in C/C++ step by step. First, we will handle the initializations, then the main loop body for task-to-PE mapping based on the heuristic, followed by the actual PE assignment for the task, and end with final checks. After implementing the scheduler, we will add the EFT scheduler as one of the schedulers for CEDR and enable it in the runtime config.</p>
 
-<h3 id="51-initialization">5.1 Initialization</h3>
+<h3 id="initialization">Initialization</h3>
 
 <p>Here we will initialize some of the required fields for the EFT heuristic. We will use this function’s start time as the reference current time while computing the expected finish time of a task on the PEs.</p>
 
@@ -896,7 +896,7 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
   <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">total_resources</span> <span class="o">=</span> <span class="n">cedr_config</span><span class="p">.</span><span class="n">getTotalResources</span><span class="p">();</span> <span class="c1">// Total Number of PEs available</span>
 </code></pre></div></div>
 
-<h3 id="52-eft-heuristic---task-to-pe-mapping">5.2 EFT heuristic - Task-to-PE mapping</h3>
+<h3 id="eft-heuristic---task-to-pe-mapping">EFT heuristic - Task-to-PE mapping</h3>
 
 <p>Here, we will have a double nested loop, where the outer loop will traverse all the tasks in the ready queue using the <code class="language-plaintext highlighter-rouge">ready_queue</code> variable. The inner loop will traverse all the PEs in the current runtime by indexing the <code class="language-plaintext highlighter-rouge">hardware_thread_handle</code>.</p>
 
@@ -918,7 +918,7 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
     <span class="p">}</span>
 </code></pre></div></div>
 
-<h3 id="53-eft-heuristic---task-to-pe-assignment">5.3 EFT heuristic - Task-to-PE assignment</h3>
+<h3 id="eft-heuristic---task-to-pe-assignment">EFT heuristic - Task-to-PE assignment</h3>
 
 <p>Here, we will utilize a built-in function that does final checks before assigning the task to the given PE. Based on this assignment, it also handles the actual queue management and modification of any required field. Details of this function can be found <a href="https://github.com/UA-RCL/CEDR/blob/tutorial/src-api/scheduler.cpp#L17-L64">here</a>.</p>
 
@@ -932,7 +932,7 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
       <span class="p">);</span>
 </code></pre></div></div>
 
-<h3 id="54-final-checks">5.4 Final checks</h3>
+<h3 id="final-checks">Final checks</h3>
 
 <p>In the last part, we will check whether the task assignment to given PE was successful and move on to the next task in the <code class="language-plaintext highlighter-rouge">ready queue</code>.</p>
 
@@ -952,7 +952,7 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
   <span class="k">return</span> <span class="n">tasks_scheduled</span><span class="p">;</span>
 </code></pre></div></div>
 
-<h3 id="55-full-eft-in-cc">5.5 Full EFT in C/C++</h3>
+<h3 id="full-eft-in-cc">Full EFT in C/C++</h3>
 
 <p>Now collecting all the steps, we will have the EFT function written in C/C++ that is tailored to CEDR, as shown:</p>
 
@@ -1016,7 +1016,7 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h3 id="56-adding-eft-as-a-scheduling-option">5.6 Adding EFT as a scheduling option</h3>
+<h3 id="adding-eft-as-a-scheduling-option">Adding EFT as a scheduling option</h3>
 
 <p>Now, the only thing left is to ensure CEDR can run this function during scheduling events. To do this in the same <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scr-api/scheduler.cpp">scheduler.cpp</a> file, we go to the end and update the <a href="https://github.com/UA-RCL/CEDR/blob/tutorial/src-api/scheduler.cpp#L406">performScheduling</a> function. In the function where <code class="language-plaintext highlighter-rouge">sched_policy</code> is checked, we add another <code class="language-plaintext highlighter-rouge">else if</code> segment that checks whether the scheduling policy is <code class="language-plaintext highlighter-rouge">EFT</code>. If it is, we will call the function we just created.</p>
 
@@ -1031,14 +1031,14 @@ python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhe
 make <span class="nt">-j</span>
 </code></pre></div></div>
 
-<h3 id="57-enabling-eft-for-cedr">5.7 Enabling EFT for CEDR</h3>
+<h3 id="enabling-eft-for-cedr">Enabling EFT for CEDR</h3>
 
 <p>In the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file, we updated the <a href="https://github.com/UA-RCL/CEDR/blob/tutorial/daemon_config.json#L35">“Scheduler”</a> field to be “EFT” before running CEDR with the updated daemon config file.</p>
 
 <pre><code class="language-JSON">    "Scheduler": "EFT",
 </code></pre>
 
-<h3 id="58-running-cedr-with-eft-scheduler">5.8 Running CEDR with EFT Scheduler</h3>
+<h3 id="running-cedr-with-eft-scheduler">Running CEDR with EFT Scheduler</h3>
 
 <p>Using the same methods as in Section 3.2, we will run CEDR and see the use of the EFT scheduler. After running the following command, we will see that the scheduler to be used is selected as EFT in the displayed logs.</p>
 
@@ -1063,7 +1063,7 @@ make <span class="nt">-j</span>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./kill_daemon
 </code></pre></div></div>
 
-<h2 id="6-introducing-a-new-api-call">6. Introducing a New API Call</h2>
+<h2 id="introducing-a-new-api-call">Introducing a New API Call</h2>
 
 <p>In this section of the tutorial, we will demonstrate integration of a new API call to the CEDR. We will use <code class="language-plaintext highlighter-rouge">DASH_ZIP</code> API call as an example.</p>
 
@@ -1198,9 +1198,9 @@ make fft_nb.so
 
 <p>If you have a C++ based serial implementation of key kernels in your application, you can add your API call following the explanations in this section and replace your C++ kernel code with newly introduced API call following the Section 3.</p>
 
-<h2 id="7-running-multiple-applications-with-cedr-on-x86">7. Running Multiple Applications with CEDR on x86</h2>
+<h2 id="running-multiple-applications-with-cedr-on-x86">Running Multiple Applications with CEDR on x86</h2>
 
-<h3 id="71-compilation-of-applications">7.1 Compilation of Applications</h3>
+<h3 id="compilation-of-applications">Compilation of Applications</h3>
 <p>In this section, we will demonstrate CEDR’s ability to manage dynamically arriving applications. Assuming you already have built CEDR following the previous steps, we will directly delve into compiling and running two new applications that are lane detection and pulse doppler.</p>
 
 <p>Firstly, navigate to lane detection folder from the root folder of the repository, compile it for x86 and move shared object and input files to <code class="language-plaintext highlighter-rouge">build</code> folder for running with CEDR. (If you have already done this for the previous section, you don’t have to compile the lane detection once more.)</p>
@@ -1218,7 +1218,7 @@ make nonblocking
 <span class="nb">mkdir</span> ../../../build/output
 </code></pre></div></div>
 
-<h3 id="72-running-the-applications-with-cedr">7.2 Running the Applications with CEDR</h3>
+<h3 id="running-the-applications-with-cedr">Running the Applications with CEDR</h3>
 
 <p>Now that we have all binaries and input files ready, we can proceed with running these applications with CEDR. First, navigate to <code class="language-plaintext highlighter-rouge">build</code> directory.</p>
 
@@ -1233,9 +1233,9 @@ make nonblocking
 
 <p>Observe the <a href="./build/output_fft.png">output image of lane detection</a> and the <a href="./build/output/pulse_doppler_output.txt">shift and time delay</a> calculated by pulse doppler.</p>
 
-<h2 id="8-gpu-based-soc-experiment-nvidia-jetson-agx-xavier">8. GPU Based SoC Experiment (Nvidia Jetson AGX Xavier)</h2>
+<h2 id="gpu-based-soc-experiment-nvidia-jetson-agx-xavier">GPU Based SoC Experiment (Nvidia Jetson AGX Xavier)</h2>
 
-<h3 id="81-building-cedr">8.1 Building CEDR</h3>
+<h3 id="building-cedr">Building CEDR</h3>
 <p>Firstly, we need to connect to the Nvidia Jetson board through ssh connection.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh &lt;user-name&gt;@&lt;jetson-ip&gt;
 </code></pre></div></div>
@@ -1261,7 +1261,7 @@ cmake <span class="nt">-DLIBDASH_MODULES</span><span class="o">=</span><span cla
 make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
 </code></pre></div></div>
 
-<h3 id="82-compilation">8.2 Compilation</h3>
+<h3 id="compilation">Compilation</h3>
 
 <p>Now, we can compile the lane detection application running the following commands. This creates an executable shared object that we will move to <code class="language-plaintext highlighter-rouge">build</code> folder along with input image to run the <code class="language-plaintext highlighter-rouge">lane_detection</code>:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../applications/APIApps/lane_detection/
@@ -1275,7 +1275,7 @@ make nonblocking
 <span class="nb">cp</span> <span class="nt">-r</span> pulse_doppler-nb-x86.so input/ ../../../build/
 </code></pre></div></div>
 
-<h3 id="83-running-the-applications-with-cedr">8.3 Running the Applications with CEDR</h3>
+<h3 id="running-the-applications-with-cedr-1">Running the Applications with CEDR</h3>
 
 <p>Now, we need to go back to <code class="language-plaintext highlighter-rouge">build</code> folder and move <code class="language-plaintext highlighter-rouge">daemon_config.json</code> to it. Also, create a <code class="language-plaintext highlighter-rouge">output</code> folder for storing <code class="language-plaintext highlighter-rouge">pulse doppler</code> output:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../../build/
@@ -1328,7 +1328,7 @@ app_id: 3, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: &
 <span class="nb">cat </span>output/pulse_doppler_output.txt
 </code></pre></div></div>
 
-<h2 id="9-fpga-based-soc-experiment-zcu102-mpsoc">9. FPGA Based SoC Experiment (ZCU102 MPSoC)</h2>
+<h2 id="fpga-based-soc-experiment-zcu102-mpsoc">FPGA Based SoC Experiment (ZCU102 MPSoC)</h2>
 
 <p>(Conv2d (accelerator) is not included in HCW release.)
 Moving on to the aarch64-based build for ZCU102 FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/aarch64-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container. (Self note: Be careful about platform.h)
@@ -1357,7 +1357,7 @@ make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc
 
 <p>After this, we can go to build our application using cross-compilation for aarch64</p>
 
-<h3 id="91-cross-compilation">9.1 Cross-compilation</h3>
+<h3 id="cross-compilation">Cross-compilation</h3>
 
 <p>Assuming you came here after building the lane detection for x86_64, we will directly move to compile the lane detection for aarch64. First, navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/lane_detection">applications/APIApps/lane_detection</a> folder. Then run the following command to build the executable for aacrh64:</p>
 
@@ -1381,7 +1381,7 @@ file track_nb.so
 <span class="nb">cp</span> <span class="nt">-r</span> pulse_doppler-nb-aarch64.so input/ ../../../build-arm
 </code></pre></div></div>
 
-<h3 id="92-running-api-based-cedr-on-zcu102">9.2 Running API-based CEDR on ZCU102</h3>
+<h3 id="running-api-based-cedr-on-zcu102">Running API-based CEDR on ZCU102</h3>
 
 <p>Now, change your working directory to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory. Before going into the zcu102 first copy the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory and create an output folder. From the build-arm directory, run:</p>
 
@@ -1451,9 +1451,9 @@ app_id: 0, app_name: track_nb, task_id: 8, task_name: DASH_FFT, resource_name: &
 <span class="nb">cat </span>output/pulse_doppler_output.txt
 </code></pre></div></div>
 
-<h2 id="10-contact">10. Contact</h2>
+<h1 id="contact">Contact</h1>
 
-<p>For any questions and bug report, please email <a href="mailto:jmack2545@arizona.edu">jmack2545@arizona.edu</a>, <a href="mailto:gener@arizona.edu">gener@arizona.edu</a>, or <a href="mailto:suluhan@arizona.edu">suluhan@arizona.edu</a>.</p>
+<p>For any questions and bug reports, please email <a href="mailto:jmack2545@arizona.edu">jmack2545@arizona.edu</a>, <a href="mailto:gener@arizona.edu">gener@arizona.edu</a>, or <a href="mailto:suluhan@arizona.edu">suluhan@arizona.edu</a>.</p>
   </section>
 
 
