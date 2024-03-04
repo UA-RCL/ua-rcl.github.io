@@ -469,26 +469,25 @@
   <section class="background" data-size="page">
     <h1 id="fpga24-tutorial-archive">FPGA’24 Tutorial Archive</h1>
 
-<p>In this tutorial, we will familiarize ourselves with setting up CEDR and perform following set of tasks:</p>
+<p>In this tutorial, we will familiarize ourselves with setting up CEDR and performing the following set of tasks:</p>
 <ul>
   <li>
 <a href="#exercise-0-getting-started-with-cedr">Getting started</a> with and compiling CEDR</li>
   <li>
 <a href="#exercise-1-introducing-cedr-apis-to-baseline-c-applications">Introducing CEDR APIs</a> into baseline C++ applications</li>
   <li>
-<a href="#exercise-2-design-space-exploration">Performing DSE</a> by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios</li>
+<a href="#exercise-2-fpga-based-soc-experiment-zcu102-mpsoc">Conducting cross compilation-based studies</a> on Xilinx ZCU102 FPGAs</li>
 </ul>
 
 <p>Additionally, we provide a number of supplemental tutorials on topics such as:</p>
 <ul>
   <li>
-<a href="#supplemental-exercise-1-integration-and-evaluation-of-eft-scheduler">Integrating and evaluating scheduling heuristics</a> with CEDR and conducting performance evaluation with dynamically arriving workload scenarios.</li>
-  <li>Integration of <a href="#supplemental-exercise-2-introducing-a-new-api-call">new API calls</a>.</li>
-  <li>Performing experiments with <a href="#supplemental-exercise-3-running-multiple-applications-with-cedr-on-x86">many simultaneous applications</a>
-</li>
-  <li>Performing <a href="#supplemental-exercise-4-gpu-based-soc-experiment-nvidia-jetson-agx-xavier">GPU-based experiments</a> via a Jetson AGX Xavier system</li>
-  <li>Conducting cross compilation-based studies <a href="#supplemental-exercise-5-fpga-based-soc-experiment-zcu102-mpsoc">on Xilinx ZCU102 FPGAs</a>
-</li>
+<a href="#supplemental-exercise-1-design-space-exploration">Performing DSE</a> by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios</li>
+  <li>
+<a href="#supplemental-exercise-2-integration-and-evaluation-of-eft-scheduler">Integrating and evaluating scheduling heuristics</a> with CEDR and conducting performance evaluation with dynamically arriving workload scenarios.</li>
+  <li><a href="#supplemental-exercise-3-introducing-a-new-api-call">Integrating new API calls</a></li>
+  <li><a href="#supplemental-exercise-4-running-multiple-applications-with-cedr-on-x86">Performing experiments with many simultaneous applications</a></li>
+  <li><a href="#supplemental-exercise-5-gpu-based-soc-experiment-nvidia-jetson-agx-xavier">Conducting GPU-based experiments</a></li>
 </ul>
 
 <h2 id="tutorial-requirements">Tutorial Requirements</h2>
@@ -499,7 +498,7 @@
 </ul>
 
 <h1 id="exercise-0-getting-started-with-cedr">Exercise 0: Getting Started with CEDR</h1>
-<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
+<p><a href="#fpga24-tutorial-archive">Return to top</a></p>
 
 <h2 id="initial-setup">Initial Setup:</h2>
 <h3 id="docker-based-instructions-linux-windows-and-mac">Docker-based Instructions (Linux, Windows, and Mac)</h3>
@@ -577,7 +576,7 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <p>Look into <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h">dash.h</a> under <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash">libdash</a> folder and see available API calls.</p>
 
 <h1 id="exercise-1-introducing-cedr-apis-to-baseline-c-applications">Exercise 1: Introducing CEDR APIs to Baseline C++ Applications</h1>
-<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
+<p><a href="#fpga24-tutorial-archive">Return to top</a></p>
 
 <h2 id="application-overview">Application Overview</h2>
 
@@ -683,10 +682,10 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./cedr <span class="nt">-c</span> ./daemon_config.json
 </code></pre></div></div>
 
-<p>Push CEDR to the background or open another terminal and navigate to the same build folder (<a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root repository</a>/build)</p>
+<p>Push CEDR to the background or open another terminal and navigate to the same build folder (<a href="https://github.com/UA-RCL/CEDR/tree/tutorial/">root repository</a>/build)</p>
 <ul>
   <li>Option 1: Ctrl+z or run CEDR with <code class="language-plaintext highlighter-rouge">./cedr -c ./daemon_config.json &amp;</code> in the previous step. Now this terminal can be used for running next steps.</li>
-  <li>Option 2: Open a second terminal and go to CEDR build directory, <code>cd  [root repository](https://github.com/UA-RCL/CEDR/tree/tutorial/./)/build</code>. Now this second terminal can be used for running next steps.</li>
+  <li>Option 2: Open a second terminal and go to CEDR build directory, <code>cd ${repo_root}/build</code>. Now this second terminal can be used for running next steps.</li>
 </ul>
 
 <p>Run <code class="language-plaintext highlighter-rouge">sub_dag</code> to submit application(s) to CEDR</p>
@@ -727,8 +726,134 @@ python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 
 <p>Having built CEDR and compiled radar correlator application, we can proceed to performing design-space exploration now.</p>
 
-<h1 id="exercise-2-design-space-exploration">Exercise 2: Design Space Exploration</h1>
-<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
+<h1 id="exercise-2-fpga-based-soc-experiment-zcu102-mpsoc">Exercise 2: FPGA Based SoC Experiment (ZCU102 MPSoC)</h1>
+<p><a href="#fpga24-tutorial-archive">Return to top</a></p>
+
+<p>(Conv2d (accelerator) is not included in HCW release.)
+Moving on to the aarch64-based build for ZCU102 FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/aarch64-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
+Simply run the following commands from the repository root folder:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>build-arm
+<span class="nb">cd </span>build-arm
+cmake <span class="nt">-DLIBDASH_MODULES</span><span class="o">=</span><span class="s2">"FFT GEMM"</span> <span class="nt">--toolchain</span><span class="o">=</span>../toolchains/aarch64-linux-gnu.toolchain.cmake ..
+make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
+</code></pre></div></div>
+
+<p>This will create an executable file for <code class="language-plaintext highlighter-rouge">cedr</code>, <code class="language-plaintext highlighter-rouge">sub_dag</code>, <code class="language-plaintext highlighter-rouge">kill_deamon</code>, and <code class="language-plaintext highlighter-rouge">libdash-rt</code> for aarch64 platforms. We can check the platform type of an executable using the <code class="language-plaintext highlighter-rouge">file</code> command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>file cedr
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cedr: ELF 64-bit LSB shared object, &lt;b&gt;ARM aarch64&lt;/b&gt;, version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=7374bd01c8ded1d48f9dd191e9010496bdffae34, for GNU/Linux 3.7.0, not stripped
+</code></pre></div></div>
+
+<p>Since we also used the <code class="language-plaintext highlighter-rouge">-DLIBDASH_MODULES="FFT GEMM"</code> flag, we also enabled FFT and GEMM accelerator function calls for <code class="language-plaintext highlighter-rouge">DASH_FFT</code> and <code class="language-plaintext highlighter-rouge">DASH_GEMM</code> API calls. We can test if these functions are available or not by running the following commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</span> <span class="nt">-E</span> <span class="s1">'*_fft$|*_gemm$'</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0000000000006974 T &lt;b&gt;DASH_FFT_fft&lt;/b&gt;
+000000000000788c T &lt;b&gt;DASH_GEMM_gemm&lt;/b&gt;
+</code></pre></div></div>
+
+<p>After this, we can go to build our application using cross-compilation for aarch64</p>
+
+<h3 id="cross-compilation">Cross-compilation</h3>
+
+<p>Assuming you came here after building the lane detection for x86_64, we will directly move to compile the lane detection for aarch64. First, navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/lane_detection">applications/APIApps/lane_detection</a> folder. Then run the following command to build the executable for aacrh64:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>applications/APIApps/lane_detection
+<span class="nv">ARCH</span><span class="o">=</span>aarch64 make fft_nb.so
+file track_nb.so
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>track_nb.so: ELF 64-bit LSB shared object, &lt;b&gt;ARM aarch64&lt;/b&gt;, version 1 (SYSV), dynamically linked, BuildID[sha1]=fc95ba8be71bfb2f90164848211b62325f087007, not stripped
+</code></pre></div></div>
+
+<p>After verifying the file is compiled for the correct platform, copy the file and inputs to the build directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Assuming your CEDR build folder is in the root directory and named "build-arm"</span>
+<span class="nb">cp </span>track_nb.so image.png ../../../build-arm
+</code></pre></div></div>
+
+<p>Simply, perform the same operations for pulse doppler application:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../pulse_doppler
+<span class="nv">ARCH</span><span class="o">=</span>aarch64 make nonblocking
+<span class="nb">cp</span> <span class="nt">-r</span> pulse_doppler-nb-aarch64.so input/ ../../../build-arm
+</code></pre></div></div>
+
+<h3 id="running-api-based-cedr-on-zcu102">Running API-based CEDR on ZCU102</h3>
+
+<p>Now, change your working directory to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory. Before going into the zcu102 first copy the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory and create an output folder. From the build-arm directory, run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../../build-arm
+<span class="nb">cp</span> ../daemon_config.json ./
+<span class="nb">mkdir </span>output/
+</code></pre></div></div>
+
+<p>Now we will ssh into the ZCU102, and enter the password when prompted:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh &lt;user-name&gt;@&lt;zcu102-ip&gt;
+</code></pre></div></div>
+
+<p>If you like, you can create a folder for yourself on the board where you will be working for the remainder of this tutorial. Now create a folder in the desired working directory called <code class="language-plaintext highlighter-rouge">mnt</code> and create an sshfs connection for the <code class="language-plaintext highlighter-rouge">mnt</code> directory using the build folder (<code class="language-plaintext highlighter-rouge">build-arm</code>) on your local machine:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;desired workspace&gt;
+<span class="nb">mkdir </span>mnt
+sshfs &lt;user_name&gt;@&lt;ip <span class="k">for </span>the localmachine&gt;:&lt;path to CEDR repository root folder&gt;/build-arm mnt
+<span class="nb">cd </span>mnt
+</code></pre></div></div>
+
+<p>After these steps are completed, if you type <code class="language-plaintext highlighter-rouge">ls</code> you should see all the files you had on the local machine is also here on the zcu102.</p>
+
+<p>Before running CEDR, we need to enable FFT and GEMM accelerator in the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file and loosen the thread permission just like we did for x86_64. By the time this tutorial was written, we had 2 FFT and 2 GEMM accelerators available in the FPGA image. We can put any number between 0-2 to the corresponding fields on the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file. Change the file with the following <code class="language-plaintext highlighter-rouge">Worker Threads</code> setup:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"Worker Threads"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fft"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"gemm"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"gpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span><span class="nl">"Loosen Thread Permissions"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+<p>Execution of CEDR is the same as the x86_64 version. In one terminal launch CEDR:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./cedr <span class="nt">-c</span> ./daemon_config.json <span class="nt">-l</span> NONE &amp;
+</code></pre></div></div>
+<p>After launching CEDR, you should see the function handles for FFT and GEMM accelerators are successfully grabbed.</p>
+
+<p>In another terminal, we will submit an instance of <code class="language-plaintext highlighter-rouge">lane_detection</code> and five instances of <code class="language-plaintext highlighter-rouge">pulse doppler</code> using <code class="language-plaintext highlighter-rouge">sub_dag</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./sub_dag <span class="nt">-a</span> ./track_nb.so,./pulse_doppler-nb-aarch64.so <span class="nt">-n</span> 1,5 <span class="nt">-p</span> 0,100
+</code></pre></div></div>
+
+<p>Now kill the CEDR by running <code class="language-plaintext highlighter-rouge">./kill_deamon</code> on the second terminal and check the resource_name fields for the first 10 FFT tasks:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">head</span> <span class="nt">-n</span> 10 ./log_dir/experiment0/timing_trace.log
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app_id: 0, app_name: track_nb, task_id: 0, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu1&lt;/b&gt;, ref_start_time: 5248428403449098, ref_stop_time: 5248428420053817, actual_exe_time: 16604719
+app_id: 0, app_name: track_nb, task_id: 1, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu2&lt;/b&gt;, ref_start_time: 5248428408909254, ref_stop_time: 5248428420265209, actual_exe_time: 11355955
+app_id: 0, app_name: track_nb, task_id: 3, task_name: DASH_FFT, resource_name: &lt;b&gt;fft1&lt;/b&gt;, ref_start_time: 5248428408932076, ref_stop_time: 5248428420061538, actual_exe_time: 11129462
+app_id: 0, app_name: track_nb, task_id: 4, task_name: DASH_FFT, resource_name: &lt;b&gt;fft2&lt;/b&gt;, ref_start_time: 5248428409129026, ref_stop_time: 5248428420069309, actual_exe_time: 10940283
+app_id: 0, app_name: track_nb, task_id: 2, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu3&lt;/b&gt;, ref_start_time: 5248428409170040, ref_stop_time: 5248428420067799, actual_exe_time: 10897759
+app_id: 0, app_name: track_nb, task_id: 5, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu1&lt;/b&gt;, ref_start_time: 5248428420067189, ref_stop_time: 5248428420236706, actual_exe_time: 169517
+app_id: 0, app_name: track_nb, task_id: 7, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu3&lt;/b&gt;, ref_start_time: 5248428420072569, ref_stop_time: 5248428420260798, actual_exe_time: 188229
+app_id: 0, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: &lt;b&gt;fft2&lt;/b&gt;, ref_start_time: 5248428420073379, ref_stop_time: 5248428420160848, actual_exe_time: 87469
+app_id: 0, app_name: track_nb, task_id: 14, task_name: DASH_FFT, resource_name: &lt;b&gt;fft2&lt;/b&gt;, ref_start_time: 5248428420165289, ref_stop_time: 5248428420259618, actual_exe_time: 94329
+app_id: 0, app_name: track_nb, task_id: 8, task_name: DASH_FFT, resource_name: &lt;b&gt;fft1&lt;/b&gt;, ref_start_time: 5248428420242426, ref_stop_time: 5248428420336426, actual_exe_time: 94000
+</code></pre></div></div>
+
+<p>We can see that all the resources available for FFT execution (<code class="language-plaintext highlighter-rouge">cpu1</code>, <code class="language-plaintext highlighter-rouge">cpu2</code>, <code class="language-plaintext highlighter-rouge">cpu3</code>, <code class="language-plaintext highlighter-rouge">fft1</code>, and <code class="language-plaintext highlighter-rouge">fft2</code>) are being used.</p>
+
+<p>Lastly, let’s compare the outputs with x86 results to validate the correctness.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xdg-open output_fft.png
+<span class="nb">cat </span>output/pulse_doppler_output.txt
+</code></pre></div></div>
+
+<h1 id="supplemental-exercises">Supplemental Exercises:</h1>
+
+<h2 id="supplemental-exercise-1-design-space-exploration">Supplemental Exercise 1: Design Space Exploration</h2>
+<p><a href="#fpga24-tutorial-archive">Return to top</a></p>
 
 <p>CEDR comes with some scripts that makes design-space exploration (DSE) rapid and easy. Now, we will go over the flow and define how to perform DSE step by step. First, navigate to folder where we accomodate API based CEDR scripts from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
 
@@ -874,10 +999,8 @@ python3 plt3dplot_inj.py dataframe.csv EXEC  <span class="c"># Application execu
 python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhead</span>
 </code></pre></div></div>
 
-<h1 id="supplemental-exercises">Supplemental Exercises:</h1>
-
-<h2 id="supplemental-exercise-1-integration-and-evaluation-of-eft-scheduler">Supplemental Exercise 1: Integration and Evaluation of EFT Scheduler</h2>
-<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
+<h2 id="supplemental-exercise-2-integration-and-evaluation-of-eft-scheduler">Supplemental Exercise 2: Integration and Evaluation of EFT Scheduler</h2>
+<p><a href="#fpga24-tutorial-archive">Return to top</a></p>
 
 <p>Now navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scr-api/scheduler.cpp">scheduler.cpp</a>. This file contains various schedulers already tailored to work with CEDR. In this part of the tutorial, we will add the Earliest Finish Time(EFT) scheduler to CEDR. EFT heuristic schedules all the tasks in the <code class="language-plaintext highlighter-rouge">read queue</code> one by one based on the earliest expected finish time of the task on the available resources (processing elements – PE).</p>
 
@@ -1085,8 +1208,8 @@ make <span class="nt">-j</span>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./kill_daemon
 </code></pre></div></div>
 
-<h2 id="supplemental-exercise-2-introducing-a-new-api-call">Supplemental Exercise 2: Introducing a New API Call</h2>
-<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
+<h2 id="supplemental-exercise-3-introducing-a-new-api-call">Supplemental Exercise 3: Introducing a New API Call</h2>
+<p><a href="#fpga24-tutorial-archive">Return to top</a></p>
 
 <p>In this section of the tutorial, we will demonstrate integration of a new API call to the CEDR. We will use <code class="language-plaintext highlighter-rouge">DASH_ZIP</code> API call as an example.</p>
 
@@ -1221,8 +1344,8 @@ make fft_nb.so
 
 <p>If you have a C++ based serial implementation of key kernels in your application, you can add your API call following the explanations in this section and replace your C++ kernel code with newly introduced API call following the Section 3.</p>
 
-<h2 id="supplemental-exercise-3-running-multiple-applications-with-cedr-on-x86">Supplemental Exercise 3: Running Multiple Applications with CEDR on x86</h2>
-<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
+<h2 id="supplemental-exercise-4-running-multiple-applications-with-cedr-on-x86">Supplemental Exercise 4: Running Multiple Applications with CEDR on x86</h2>
+<p><a href="#fpga24-tutorial-archive">Return to top</a></p>
 
 <h3 id="compilation-of-applications">Compilation of Applications</h3>
 <p>In this section, we will demonstrate CEDR’s ability to manage dynamically arriving applications. Assuming you already have built CEDR following the previous steps, we will directly delve into compiling and running two new applications that are lane detection and pulse doppler.</p>
@@ -1257,8 +1380,8 @@ make nonblocking
 
 <p>Observe the <a href="./build/output_fft.png">output image of lane detection</a> and the <a href="./build/output/pulse_doppler_output.txt">shift and time delay</a> calculated by pulse doppler.</p>
 
-<h2 id="supplemental-exercise-4-gpu-based-soc-experiment-nvidia-jetson-agx-xavier">Supplemental Exercise 4: GPU Based SoC Experiment (Nvidia Jetson AGX Xavier)</h2>
-<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
+<h2 id="supplemental-exercise-5-gpu-based-soc-experiment-nvidia-jetson-agx-xavier">Supplemental Exercise 5: GPU Based SoC Experiment (Nvidia Jetson AGX Xavier)</h2>
+<p><a href="#fpga24-tutorial-archive">Return to top</a></p>
 
 <h3 id="building-cedr">Building CEDR</h3>
 <p>Firstly, we need to connect to the Nvidia Jetson board through ssh connection.</p>
@@ -1346,130 +1469,6 @@ app_id: 3, app_name: track_nb, task_id: 6, task_name: DASH_FFT, resource_name: &
 app_id: 3, app_name: track_nb, task_id: 11, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu4&lt;/b&gt;, ref_start_time: 15215236873349088, ref_stop_time: 15215236873802944, actual_exe_time: 453856
 app_id: 3, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu2&lt;/b&gt;, ref_start_time: 15215236873349440, ref_stop_time: 15215236873780032, actual_exe_time: 430592
 </code></pre></div></div>
-
-<p>Lastly, let’s compare the outputs with x86 results to validate the correctness.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xdg-open output_fft.png
-<span class="nb">cat </span>output/pulse_doppler_output.txt
-</code></pre></div></div>
-
-<h2 id="supplemental-exercise-5-fpga-based-soc-experiment-zcu102-mpsoc">Supplemental Exercise 5: FPGA Based SoC Experiment (ZCU102 MPSoC)</h2>
-<p><a href="#fpga24-tutorial-archive">Return to table of contents</a></p>
-
-<p>(Conv2d (accelerator) is not included in HCW release.)
-Moving on to the aarch64-based build for ZCU102 FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/aarch64-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container. (Self note: Be careful about platform.h)
-Simply run the following commands from the repository root folder:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>build-arm
-<span class="nb">cd </span>build-arm
-cmake <span class="nt">-DLIBDASH_MODULES</span><span class="o">=</span><span class="s2">"FFT GEMM"</span> <span class="nt">--toolchain</span><span class="o">=</span>../toolchains/aarch64-linux-gnu.toolchain.cmake ..
-make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
-</code></pre></div></div>
-
-<p>This will create an executable file for <code class="language-plaintext highlighter-rouge">cedr</code>, <code class="language-plaintext highlighter-rouge">sub_dag</code>, <code class="language-plaintext highlighter-rouge">kill_deamon</code>, and <code class="language-plaintext highlighter-rouge">libdash-rt</code> for aarch64 platforms. We can check the platform type of an executable using the <code class="language-plaintext highlighter-rouge">file</code> command:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>file cedr
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cedr: ELF 64-bit LSB shared object, &lt;b&gt;ARM aarch64&lt;/b&gt;, version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=7374bd01c8ded1d48f9dd191e9010496bdffae34, for GNU/Linux 3.7.0, not stripped
-</code></pre></div></div>
-
-<p>Since we also used the <code class="language-plaintext highlighter-rouge">-DLIBDASH_MODULES="FFT GEMM"</code> flag, we also enabled FFT and GEMM accelerator function calls for <code class="language-plaintext highlighter-rouge">DASH_FFT</code> and <code class="language-plaintext highlighter-rouge">DASH_GEMM</code> API calls. We can test if these functions are available or not by running the following commands:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</span> <span class="nt">-E</span> <span class="s1">'*_fft$|*_gemm$'</span>
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0000000000006974 T &lt;b&gt;DASH_FFT_fft&lt;/b&gt;
-000000000000788c T &lt;b&gt;DASH_GEMM_gemm&lt;/b&gt;
-</code></pre></div></div>
-
-<p>After this, we can go to build our application using cross-compilation for aarch64</p>
-
-<h3 id="cross-compilation">Cross-compilation</h3>
-
-<p>Assuming you came here after building the lane detection for x86_64, we will directly move to compile the lane detection for aarch64. First, navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/lane_detection">applications/APIApps/lane_detection</a> folder. Then run the following command to build the executable for aacrh64:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>applications/APIApps/lane_detection
-<span class="nv">ARCH</span><span class="o">=</span>aarch64 make fft_nb.so
-file track_nb.so
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>track_nb.so: ELF 64-bit LSB shared object, &lt;b&gt;ARM aarch64&lt;/b&gt;, version 1 (SYSV), dynamically linked, BuildID[sha1]=fc95ba8be71bfb2f90164848211b62325f087007, not stripped
-</code></pre></div></div>
-
-<p>After verifying the file is compiled for the correct platform, copy the file and inputs to the build directory:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Assuming your CEDR build folder is in the root directory and named "build-arm"</span>
-<span class="nb">cp </span>track_nb.so image.png ../../../build-arm
-</code></pre></div></div>
-
-<p>Simply, perform the same operations for pulse doppler application:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../pulse_doppler
-<span class="nv">ARCH</span><span class="o">=</span>aarch64 make nonblocking
-<span class="nb">cp</span> <span class="nt">-r</span> pulse_doppler-nb-aarch64.so input/ ../../../build-arm
-</code></pre></div></div>
-
-<h3 id="running-api-based-cedr-on-zcu102">Running API-based CEDR on ZCU102</h3>
-
-<p>Now, change your working directory to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory. Before going into the zcu102 first copy the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory and create an output folder. From the build-arm directory, run:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../../build-arm
-<span class="nb">cp</span> ../daemon_config.json ./
-<span class="nb">mkdir </span>output/
-</code></pre></div></div>
-
-<p>Now we will ssh into the ZCU102, and enter the password when prompted:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh &lt;user-name&gt;@&lt;zcu102-ip&gt;
-</code></pre></div></div>
-
-<p>If you like, you can create a folder for yourself on the board where you will be working for the remainder of this tutorial. Now create a folder in the desired working directory called <code class="language-plaintext highlighter-rouge">mnt</code> and create an sshfs connection for the <code class="language-plaintext highlighter-rouge">mnt</code> directory using the build folder (<code class="language-plaintext highlighter-rouge">build-arm</code>) on your local machine:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;desired workspace&gt;
-<span class="nb">mkdir </span>mnt
-sshfs &lt;user_name&gt;@&lt;ip <span class="k">for </span>the localmachine&gt;:&lt;path to CEDR repository root folder&gt;/build-arm mnt
-<span class="nb">cd </span>mnt
-</code></pre></div></div>
-
-<p>After these steps are completed, if you type <code class="language-plaintext highlighter-rouge">ls</code> you should see all the files you had on the local machine is also here on the zcu102.</p>
-
-<p>Before running CEDR, we need to enable FFT and GEMM accelerator in the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file and loosen the thread permission just like we did for x86_64. By the time this tutorial was written, we had 2 FFT and 2 GEMM accelerators available in the FPGA image. We can put any number between 0-2 to the corresponding fields on the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file. Change the file with the following <code class="language-plaintext highlighter-rouge">Worker Threads</code> setup:</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"Worker Threads"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"fft"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"gemm"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"gpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">}</span><span class="err">,</span><span class="w">
-</span><span class="err">...</span><span class="w">
-</span><span class="nl">"Loosen Thread Permissions"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="err">,</span><span class="w">
-</span></code></pre></div></div>
-<p>Execution of CEDR is the same as the x86_64 version. In one terminal launch CEDR:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./cedr <span class="nt">-c</span> ./daemon_config.json <span class="nt">-l</span> NONE &amp;
-</code></pre></div></div>
-<p>After launching CEDR, you should see the function handles for FFT and GEMM accelerators are successfully grabbed.</p>
-
-<p>In another terminal, we will submit an instance of <code class="language-plaintext highlighter-rouge">lane_detection</code> and five instances of <code class="language-plaintext highlighter-rouge">pulse doppler</code> using <code class="language-plaintext highlighter-rouge">sub_dag</code>:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./sub_dag <span class="nt">-a</span> ./track_nb.so,./pulse_doppler-nb-aarch64.so <span class="nt">-n</span> 1,5 <span class="nt">-p</span> 0,100
-</code></pre></div></div>
-
-<p>Now kill the CEDR by running <code class="language-plaintext highlighter-rouge">./kill_deamon</code> on the second terminal and check the resource_name fields for the first 10 FFT tasks:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">head</span> <span class="nt">-n</span> 10 ./log_dir/experiment0/timing_trace.log
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app_id: 0, app_name: track_nb, task_id: 0, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu1&lt;/b&gt;, ref_start_time: 5248428403449098, ref_stop_time: 5248428420053817, actual_exe_time: 16604719
-app_id: 0, app_name: track_nb, task_id: 1, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu2&lt;/b&gt;, ref_start_time: 5248428408909254, ref_stop_time: 5248428420265209, actual_exe_time: 11355955
-app_id: 0, app_name: track_nb, task_id: 3, task_name: DASH_FFT, resource_name: &lt;b&gt;fft1&lt;/b&gt;, ref_start_time: 5248428408932076, ref_stop_time: 5248428420061538, actual_exe_time: 11129462
-app_id: 0, app_name: track_nb, task_id: 4, task_name: DASH_FFT, resource_name: &lt;b&gt;fft2&lt;/b&gt;, ref_start_time: 5248428409129026, ref_stop_time: 5248428420069309, actual_exe_time: 10940283
-app_id: 0, app_name: track_nb, task_id: 2, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu3&lt;/b&gt;, ref_start_time: 5248428409170040, ref_stop_time: 5248428420067799, actual_exe_time: 10897759
-app_id: 0, app_name: track_nb, task_id: 5, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu1&lt;/b&gt;, ref_start_time: 5248428420067189, ref_stop_time: 5248428420236706, actual_exe_time: 169517
-app_id: 0, app_name: track_nb, task_id: 7, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu3&lt;/b&gt;, ref_start_time: 5248428420072569, ref_stop_time: 5248428420260798, actual_exe_time: 188229
-app_id: 0, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: &lt;b&gt;fft2&lt;/b&gt;, ref_start_time: 5248428420073379, ref_stop_time: 5248428420160848, actual_exe_time: 87469
-app_id: 0, app_name: track_nb, task_id: 14, task_name: DASH_FFT, resource_name: &lt;b&gt;fft2&lt;/b&gt;, ref_start_time: 5248428420165289, ref_stop_time: 5248428420259618, actual_exe_time: 94329
-app_id: 0, app_name: track_nb, task_id: 8, task_name: DASH_FFT, resource_name: &lt;b&gt;fft1&lt;/b&gt;, ref_start_time: 5248428420242426, ref_stop_time: 5248428420336426, actual_exe_time: 94000
-</code></pre></div></div>
-
-<p>We can see that all the resources available for FFT execution (<code class="language-plaintext highlighter-rouge">cpu1</code>, <code class="language-plaintext highlighter-rouge">cpu2</code>, <code class="language-plaintext highlighter-rouge">cpu3</code>, <code class="language-plaintext highlighter-rouge">fft1</code>, and <code class="language-plaintext highlighter-rouge">fft2</code>) are being used.</p>
 
 <p>Lastly, let’s compare the outputs with x86 results to validate the correctness.</p>
 
