@@ -1,6 +1,6 @@
 ---
 title: ECE Building Group Picture
-author: Umut Suluhan
+#author: Umut Suluhan
 ---
 
 

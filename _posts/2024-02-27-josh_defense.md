@@ -1,6 +1,6 @@
 ---
 title: Joshua Mack's PhD Defense
-author: Umut Suluhan
+#author: Umut Suluhan
 ---
 
 {%

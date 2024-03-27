@@ -1,6 +1,6 @@
 ---
 title: Our trip to Picacho Peak
-author: Umut Suluhan
+#author: Umut Suluhan
 ---
 
 

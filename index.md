@@ -16,7 +16,8 @@ We build open-source ecosystems towards making emerging computing systems access
 
 ## News
 
-1. Joshua Mack has defended his PhD dissertation successfully. Congrats Dr. Mack!
+1. Joshua Mack held a Tutorial Session ***CEDR: A Holistic Software and Hardware Design Environment for FPGA-Integrated Heterogeneous Systems*** in FPGA'24. (Check out our [blog post](./2024/03/03/fpga_tutorial.html))
+1. Joshua Mack has defended his PhD dissertation successfully. Congrats Dr. Mack! (Check out our [blog post](./2024/02/27/josh_defense.html))
 1. Joshua Mack held an Education Class ***CEDR: A Novel Runtime Environment for Accelerator-Rich Heterogeneous Architectures*** ([YouTube](https://www.youtube.com/watch?v=nMWDFAChcFI&list=PLMohsHZ1Urxvq9ZXyDenPMtbodupJaoZw&index=9&ab_channel=EmbeddedSystemsWeek%28ESWEEK%29)) in ESWEEK'23.
 1. Our paper ***Contention-aware Performance Modeling for Heterogeneous Edge and Cloud Systems*** ([ACM](https://dl.acm.org/doi/abs/10.1145/3589010.3594889)) was published in the Proceedings of the 3rd Workshop on Flexible Resource and Application Management on the Edge.
 1. Our paper ***FALCON: An FPGA Emulation Platform for Domain-Specific Systems-on-Chip (DSSoCs)*** ([IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/10168840/)) was published in the IEEE Design & Test.

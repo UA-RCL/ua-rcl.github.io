@@ -1,6 +1,6 @@
 ---
 title: Our trip to University of Wisconsin–Madison
-author: Umut Suluhan
+#author: Umut Suluhan
 ---
 
 {%
