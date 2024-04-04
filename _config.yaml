@@ -1,7 +1,7 @@
 # site properties and page defaults
 title: UA-RCL
 subtitle: University of Arizona Reconfigurable Computing Lab
-description: An engaging 1-3 sentence description of your lab.
+#description: An engaging 1-3 sentence description of your lab.
 header: images/background_v4.jpg
 footer: images/background_v4.jpg
 
