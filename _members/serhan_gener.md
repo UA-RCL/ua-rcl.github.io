@@ -7,6 +7,7 @@ links:
   orcid: 0000-0002-8163-1191
   google-scholar: EjJKffkAAAAJ&hl=en&oi=ao
   linkedin: yilmaz-serhan-gener-aa2836157
+  cv: images/cv/Serhan_Gener_Resume.pdf
 ---
 
 Serhan Gener received his BS and MS degrees in computer engineering from Yeditepe University, Istanbul, Turkey, in 2015 and 2017, respectively. He began his PhD journey at Yeditepe University in 2017, focusing on formal security verification and FPGA design. In 2018, he transitioned to the Computer Science department at the University of California - Riverside for his PhD, where he concentrated on FPGA-based Fully Homomorphic Encryption design.
