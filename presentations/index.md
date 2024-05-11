@@ -14,3 +14,11 @@ Click [here](./fpga24/) to see our tutorial from [FPGA 2024](https://isfpga.org)
 {% endcapture %}
 
 {% include feature.html title="<h1>FPGA 2024</h1>" text=content image="https://www.isfpga.org/wp-content/uploads/2020/06/montereybridge3-1536x390.jpg" %}
+
+{% capture content %}
+
+Click [here](./ipdps24/) to see our poster session material from [IPDPS 2024](https://www.ipdps.org/)
+
+{% endcapture %}
+
+{% include feature.html title="<h1>IPDPS 2024</h1>" text=content image="./presentations/ipdps24/ipdps24.png" %}
