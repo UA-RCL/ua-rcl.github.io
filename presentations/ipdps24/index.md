@@ -19,12 +19,3 @@ Click [here](./posters/PyTorch.pdf) to see our poster from IPDPS PhD Forum.
   image="/images/profiles/lab/umut_suluhan.jpg"
   custom-class="wide-profile"
 %}
-
-{% 
-  include portrait.html
-  name="Ali Akoglu"
-  description="Ali Akoglu is a professor in the Department of Electrical and Computer Engineering and the BIO5 Institute at the University of Arizona.He is the site director of the National Science Foundation (NSF), Industry-University Cooperative Research Center on Cloud and Autonomic Computing."
-  image="/images/profiles/lab/ali_akoglu.jpg"
-  custom-class="wide-profile"
-%}
-
