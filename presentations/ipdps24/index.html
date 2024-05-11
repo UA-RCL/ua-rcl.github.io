@@ -49,21 +49,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Bowling Event | UA-RCL</title>
+<title>FPGA'24 Tutorial Introduction | UA-RCL</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="Bowling Event">
+<meta name="title" content="FPGA'24 Tutorial Introduction">
 <meta name="description" content="University of Arizona Reconfigurable Computing Lab. ">
 
-<meta property="og:title" content="Bowling Event">
+<meta property="og:title" content="FPGA'24 Tutorial Introduction">
 <meta property="og:site_title" content="UA-RCL">
 <meta property="og:description" content="University of Arizona Reconfigurable Computing Lab. ">
 <meta property="og:url" content="">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Bowling Event">
+<meta property="twitter:title" content="FPGA'24 Tutorial Introduction">
 <meta property="twitter:description" content="University of Arizona Reconfigurable Computing Lab. ">
 <meta property="twitter:url" content="">
 <meta property="twitter:card" content="summary_large_image">
@@ -79,9 +79,9 @@
     
       "@type": "WebSite",
     
-    "name": "Bowling Event",
+    "name": "FPGA'24 Tutorial Introduction",
     "description": "University of Arizona Reconfigurable Computing Lab. ",
-    "headline": "Bowling Event",
+    "headline": "FPGA'24 Tutorial Introduction",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -288,6 +288,58 @@
     <link href="/_styles/util.css" rel="stylesheet">
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 <!-- include all css in styles folder -->
 <!-- 
@@ -296,6 +348,8 @@
  -->
 
 <!-- allow pages to customize styling via frontmatter -->
+
+<link href="/_styles/presentations/fpga24/custom.css" rel="stylesheet">
 
   <!-- third party scripts -->
 <script src="https://unpkg.com/@popperjs/core@2" defer></script>
@@ -413,94 +467,61 @@
   
 
   <section class="background" data-size="page">
-    <h1 class="center">Bowling Event</h1>
+    <h1 id="seamless-and-rapid-pytorch-model-deployment-in-heterogeneous-soc">Seamless and Rapid PyTorch Model Deployment in Heterogeneous SoC</h1>
 
-<div class="post-info">
-  
+<p>When designed with the right mix of accelerators and general-purpose processors, heterogeneous systems offer performance and energy efficiency not attainable with homogeneous counterparts. Optimizing a heterogeneous computing system is a multi-dimensional and complex design space exploration problem particularly in scenarios where algorithms, data types, and processing resources and their availability vary dynamically. In this study, our aim is to design and develop an intelligent runtime framework that enables deployment of machine learning models on heterogeneous computing systems under dynamically arriving workload scenarios. The proposed framework offers the ability to adjust the composition of the data processing pipeline to align with the desired configuration of associated machine learning workflows through model-driven resource management heuristics; and streamlining data transfers for each workflow by continuously provisioning and re-provisioning resources (compute, memory) in a closed loop fashion through low-overhead, non-intrusive resource state monitoring mechanisms.</p>
 
-  
-  
+<p>We realize seamless deployment of PyTorch models by dynamically loading accelerator-supported functions during runtime. This approach allows runtime to benefit from accelerators for certain layers and fall back to CPU for unsupported layers. Such flexibility facilitates the integration from native Python implementation to a diverse set of heterogeneous SoCs. Numerous methods have been introduced for deploying machine learning models on FPGA platforms leveraging Open Neural Network Exchange (ONNX) or PYNQ. While these methods alleviate the developer’s workload, they necessitate hardware expertise during the implementation process and lack seamless endto-end integration. In contrast, our approach does not require users to have prior FPGA-based design experience and delivers a straightforward, portable, and adaptable deployment process. This is achieved by incorporating neural
+network layers at the task level through an API-based programming model, thereby obviating the necessity for hardware implementation of the model. We demonstrate proposed framework’s capabilities through preliminary studies by deploying PyTorch models on heterogeneous SoCs such as Xilinx Zynq UltraScale+™ MPSoC ZCU102 and NVIDIA Jetson AGX Xavier. We showcase the impact of scheduling heuristic and hardware configurations on the system’s performance under dynamic workloads leveraging the FPGA-based MPSoC. This framework provides application developers with the flexibility of deploying their neural networks on platforms other than GPUs and enables them to realize machine learning execution on power-constrained environments while taking advantage of the parallelism offered by FPGA-based compute platforms without having to program in their native programming models.</p>
 
-  
-    <span data-tooltip="Originally published on">
-      <i class="icon fa-regular fa-calendar"></i>
-      <span>October 01, 2022</span>
-    </span>
-  
+<p>Click <a href="./posters/PyTorch.pdf">here</a> to see our poster from IPDPS PhD Forum.</p>
 
-  
-    <span data-tooltip="Last updated on">
-      <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 11, 2024</span>
-    </span>
-  
-</div>
-  </section>
+<div class="portrait-wrapper">
+  <a class="portrait wide-profile" data-style="" aria-label="Umut Suluhan">
+    <img src="/images/profiles/lab/umut_suluhan.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
 
-  
-  
-  
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Umut Suluhan
+          </span>
+        
 
-  <section class="background" data-size="page">
-    <!--
-  background: ;
-  dark: ;
-  size: ;
--->
-
-
-<figure class="figure">
-  <a href="/team" class="figure-image" aria-label="The team at our bowling event, 2022">
-    <img src="/images/blog/bowling/bowling.jpg" style="
-        width: 900px;
-        max-height: unset;
-      " alt="The team at our bowling event, 2022" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+        
+          <span class="portrait-role">
+            
+            
+            <span>Umut Suluhan is a second year PhD student in the Reconfigurable Computing Lab. His research interests are broadly in high-performance computing and reconfigurable architectures with a focus on runtime software design for domain specific system on chips and resource management in heterogeneous computing systems.</span>
+          </span>
+        
+      </span>
+    
   </a>
-  
-    <figcaption class="figure-caption">
-      The team at our bowling event, 2022
+</div>
 
-    </figcaption>
-  
-</figure>
-  </section>
+<div class="portrait-wrapper">
+  <a class="portrait wide-profile" data-style="" aria-label="Ali Akoglu">
+    <img src="/images/profiles/lab/ali_akoglu.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
 
-  
-  
-  
-
-  <section class="background" data-size="page">
-    <!--
-  background: ;
-  dark: ;
-  size: ;
--->
-  </section>
-
-  
-  
-  
-
-  <section class="background" data-size="page">
-    <!--
-  background: ;
-  dark: ;
-  size: ;
--->
-
-
-<div class="post-nav">
-  <span>
     
-  </span>
-  <span>
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Ali Akoglu
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            
+            <span>Ali Akoglu is a professor in the Department of Electrical and Computer Engineering and the BIO5 Institute at the University of Arizona.He is the site director of the National Science Foundation (NSF), Industry-University Cooperative Research Center on Cloud and Autonomic Computing.</span>
+          </span>
+        
+      </span>
     
-      Next post <i class="icon fa-solid fa-angle-right"></i><br>
-      <a href="/2023/03/25/picacho-peak.html">
-        Our trip to Picacho Peak
-      </a>
-    
-  </span>
+  </a>
 </div>
   </section>
 
