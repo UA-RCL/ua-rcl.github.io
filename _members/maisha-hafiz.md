@@ -8,6 +8,6 @@ links:
   orcid: 
   google-scholar: 
   linkedin: maisha-hafiz
-  cv: 
+  cv: images/cv/Maisha_Hafiz_resume.pdf
 ---
 
