@@ -33,9 +33,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#project-status">Project Status</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -68,60 +68,19 @@
         <div class="col-lg-10 mx-auto">
           <h2>About CEDR</h2>
           <p class="lead">
-            CEDR is a Linux-based compilation and runtime framework that provides an ecosystem for hardware-software co-design and evaluation 
-            of heterogeneous SoCs during the pre-silicon design phase. This framework holistically targets three key challenges of 
-            SoC design: accelerator integration, resource management, and application development. 
-            CEDR is a flexible and lightweight user-space runtime environment that is portable across different SoC platforms. 
-            Our research trusts can be summarized as follows:
+            System designers are continuously exploring design methodologies that harness increased levels of heterogeneity towards pushing the boundaries of achievable performance gains. 
+            We have developed CEDR, an open-source, unified compilation, and runtime framework designed for heterogeneous systems, as part of the DARPA DSSoC program. CEDR allows 
+            applications, scheduling heuristics, and accelerators to be co-designed in a cohesive manner. CEDR is currently being leveraged in basic research as part of the DARPA 
+            SpaceBACN and PROWESS programs. Its utility has been successfully tested by our industry partners General Dynamics and Collins Aerospace with their applications along 
+            with several academic partners and independently evaluated by the Carnegie Mellon University Software Engineering Institute.
+            We shared CEDR with the community by organizing tutorials in venues such as International Symposium on Field Programmable Gate Arrays (ISFPGA’24) and Embedded Systems Week, 
+            Education Track (ESWEEK’23).  We showcased the utility of this framework through live demonstrations during Free and Open-source Software Developers’ European Meeting 
+            (FOSDEM’20 and ’21), GNU Radio 4.0 Hackfest (2020), GNU Radio Conference (2022), and Arm Research Summit (2019).
           </p><br>
-
-            <h4>Value based Runtime Management</h4>
-            <p class="lead"></p>
-              Value-based resource management heuristics, which are traditionally deployed in heterogeneous HPC systems, maximize system productivity by assigning resources to 
-              each job based on its priority and estimated value gain relative to each job's completion time. We investigate the utility of value-based resource management at 
-              heterogeneous SoC scale and demonstrate its ability to make effective scheduling decisions for time-constrained jobs in oversubscribed systems where system 
-              resources are shared by multiple users and applications arrive dynamically. The proposed value-based resource management approach drops tasks that are estimated to
-              result with lower-value gain dynamically with the aim of completing more number of high-value jobs with a scheduling decision time at 120𝜇s scale. The 
-              value-based resource management treats scheduling as a global optimization problem, therefore this study sets a path forward for deploying a unified value-based 
-              resource management on a system composed of front-end SoC-based edge devices and a back-end HPC system.
-            </p><br>
-
-            <h4>Anomaly Detection on Heterogeneous SoC</h4>
-            <p class="lead"></p>
-              Distinguishing between normal and abnormal application behavior poses a greater challenge in heterogeneous computing systems compared to homogeneous systems due 
-              to varying execution characteristics influenced by factors like differences in programming models, diversity of Processing Elements (PEs), and dynamically changing 
-              resource allocation decisions. We develop a profiling framework integrated with an open-source runtime to understand the non-linear correlations among the 
-              aforementioned factors. Using this framework as a foundation, we construct an autoencoder model that provides a holistic system view and achieves up to 19% 
-              and 13% improvement in abnormal behavior detection accuracy compared to conventional methods such as the One-Class Support Vector Machine and Isolation Forest 
-              respectively. We demonstrate the robustness of our approach by executing real-world applications covering radar, communications, and autonomous vehicles domains 
-              along with anomalous application scenarios that manipulate behavior or the state of the runtime manager, scheduler, and PEs across three commercial off-the-shelf 
-              platforms and three scheduling heuristic policies.
-            </p><br>
-
-            <h4>RISC-V based Heterogeneous SoC Emulation Platform</h4>
-            <p class="lead"></p>
-              Heterogeneous System-on-Chip (SoC) architectures are becoming attractive for deployment in HPC environments as they deliver performance with energy efficiency 
-              and scalability benefits. Particularly the RISC-V is an attractive solution for building heterogeneous systems at HPC scale since it offers ability to customize 
-              CPU cores and modularity to integrate with other compute units towards meeting the demands of wide range of computational workloads. Consequently, there is a 
-              need for a software ecosystem that facilitates productive application development and deployment on such heterogeneous SoCs, while utilizing system resources 
-              effectively. We present a preliminary study over a runtime environment that allows execution of applications written in C/C++ on heterogeneous SoC architectures 
-              composed of multiple RISC-V core types and a pool of accelerators emulated on Xilinx Virtex 7 FPGA.  We showcase ability to investigate the impact of hardware 
-              composition and scheduling policy on execution time performance while executing real-life applications in our emulation environment. 
-            </p><br>
-
-            <h4>Automated PyTorch Application Deployment on Heterogeneous SoC</h4>
-            <p class="lead"></p>
-              The PyTorch programming interface enables efficient deployment of machine learning models, leveraging the parallelism offered by GPU architectures. In this study, 
-              we present the integration of the PyTorch framework with a compiler and runtime ecosystem. Our aim is to demonstrate the ability to deploy PyTorch-based models on 
-              FPGA-based SoC platforms, without requiring users to possess prior FPGA-based design experience. The proposed PyTorch model transformation approach expands the 
-              range of hardware architectures that PyTorch developers can target, enabling them to take advantage of the energy-efficient execution provided by heterogeneous 
-              computing systems. Our experiments involve compiling and executing real-life applications on heterogeneous SoC configurations emulated on the Xilinx Zynq 
-              Ultrascale+ ZCU102 system. We showcase our ability to deploy three distinct PyTorch applications, encompassing object detection, visual geometry group (VGG), 
-              and speech classification, using the integrated compiler and runtime system without loss of model accuracy. Furthermore, we extend our analysis by evaluating 
-              dynamically arriving workload scenarios, consisting of a mix of PyTorch models and non-PyTorch-based applications. Through these experiments, we vary the hardware 
-              composition and scheduling heuristics. Our findings indicate that when PyTorch-based applications coexist with unrelated applications, our integrated scheduler 
-              fairly dispatches tasks to the FPGA platform's accelerator and CPU cores, without compromising the target throughput for each application.
-            </p><br>
+          <div class="container text-center">
+            <img class="img-fluid" src="./images/project_images/cedr_overall.png" alt="" width="1080" height="720">
+            </div>
+          <div class="container text-center">
           </div>
       </div>
     </div>
@@ -153,28 +112,61 @@
     </div>
   </section>
 
-  <section id="project-status">
+  <section id="about">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <h2>Project Status and Future Work</h2>
-          <div class="container text-center">
-           <img class="img-fluid" src="./images/project_images/framework.png" alt="" width="500" height="500">
+            <h2>Value based Runtime Management</h2>
+            <p class="lead">
+              Value-based resource management heuristics, which are traditionally deployed in heterogeneous HPC systems, maximize system productivity by assigning resources to 
+              each job based on its priority and estimated value gain relative to each job's completion time. We investigate the utility of value-based resource management at 
+              heterogeneous SoC scale and demonstrate its ability to make effective scheduling decisions for time-constrained jobs in oversubscribed systems where system 
+              resources are shared by multiple users and applications arrive dynamically. The proposed value-based resource management approach drops tasks that are estimated to
+              result with lower-value gain dynamically with the aim of completing more number of high-value jobs with a scheduling decision time at 120𝜇s scale. The 
+              value-based resource management treats scheduling as a global optimization problem, therefore this study sets a path forward for deploying a unified value-based 
+              resource management on a system composed of front-end SoC-based edge devices and a back-end HPC system.
+            </p><br>
+
+            <h2>Anomaly Detection on Heterogeneous SoC</h2>
+            <p class="lead">
+              Distinguishing between normal and abnormal application behavior poses a greater challenge in heterogeneous computing systems compared to homogeneous systems due 
+              to varying execution characteristics influenced by factors like differences in programming models, diversity of Processing Elements (PEs), and dynamically changing 
+              resource allocation decisions. We develop a profiling framework integrated with an open-source runtime to understand the non-linear correlations among the 
+              aforementioned factors. Using this framework as a foundation, we construct an autoencoder model that provides a holistic system view and achieves up to 19% 
+              and 13% improvement in abnormal behavior detection accuracy compared to conventional methods such as the One-Class Support Vector Machine and Isolation Forest 
+              respectively. We demonstrate the robustness of our approach by executing real-world applications covering radar, communications, and autonomous vehicles domains 
+              along with anomalous application scenarios that manipulate behavior or the state of the runtime manager, scheduler, and PEs across three commercial off-the-shelf 
+              platforms and three scheduling heuristic policies.
+            </p><br>
+
+            <h2>RISC-V based Heterogeneous SoC Emulation Platform</h2>
+            <p class="lead">
+              Heterogeneous System-on-Chip (SoC) architectures are becoming attractive for deployment in HPC environments as they deliver performance with energy efficiency 
+              and scalability benefits. Particularly the RISC-V is an attractive solution for building heterogeneous systems at HPC scale since it offers ability to customize 
+              CPU cores and modularity to integrate with other compute units towards meeting the demands of wide range of computational workloads. Consequently, there is a 
+              need for a software ecosystem that facilitates productive application development and deployment on such heterogeneous SoCs, while utilizing system resources 
+              effectively. We present a preliminary study over a runtime environment that allows execution of applications written in C/C++ on heterogeneous SoC architectures 
+              composed of multiple RISC-V core types and a pool of accelerators emulated on Xilinx Virtex 7 FPGA.  We showcase ability to investigate the impact of hardware 
+              composition and scheduling policy on execution time performance while executing real-life applications in our emulation environment. 
+            </p><br>
+
+            <h2>Automated PyTorch Application Deployment on Heterogeneous SoC</h2>
+            <p class="lead">
+              The PyTorch programming interface enables efficient deployment of machine learning models, leveraging the parallelism offered by GPU architectures. In this study, 
+              we present the integration of the PyTorch framework with a compiler and runtime ecosystem. Our aim is to demonstrate the ability to deploy PyTorch-based models on 
+              FPGA-based SoC platforms, without requiring users to possess prior FPGA-based design experience. The proposed PyTorch model transformation approach expands the 
+              range of hardware architectures that PyTorch developers can target, enabling them to take advantage of the energy-efficient execution provided by heterogeneous 
+              computing systems. Our experiments involve compiling and executing real-life applications on heterogeneous SoC configurations emulated on the Xilinx Zynq 
+              Ultrascale+ ZCU102 system. We showcase our ability to deploy three distinct PyTorch applications, encompassing object detection, visual geometry group (VGG), 
+              and speech classification, using the integrated compiler and runtime system without loss of model accuracy. Furthermore, we extend our analysis by evaluating 
+              dynamically arriving workload scenarios, consisting of a mix of PyTorch models and non-PyTorch-based applications. Through these experiments, we vary the hardware 
+              composition and scheduling heuristics. Our findings indicate that when PyTorch-based applications coexist with unrelated applications, our integrated scheduler 
+              fairly dispatches tasks to the FPGA platform's accelerator and CPU cores, without compromising the target throughput for each application.
+            </p><br>
           </div>
-          <p class="lead">
-            The runtime in CEDR is implemented as a resource management daemon process that is capable of performing scheduling on the dynamically submitted jobs. 
-            A job is represented using a data flow graph (JSON file) and binary generated by the <a href="https://fosdem.org/2020/schedule/event/llvm_aut_prog_het_soc/">compiler tool</a>. 
-            The resource management daemon process (block 1) is multi-threaded. One of the threads act as a management thread to handle user-submitted jobs. 
-            The remaining threads are the worker threads responsible for executing the assigned tasks. 
-            The job submission process is a user-command that is responsible for transferring the user inputs to the daemon process. 
-            The framework has been validated on ZCU102 and Odroid XU3 platforms.
-          </p>
-          <p class="lead">
-            In the future, we will strengthen the capabilities of the compiler tool to identify kernels in the complex workload and integrate richer scheduling algorithms in the framework.
-          </p>
-        </div>
       </div>
     </div>
+  </section>
 
     <!-- Profiles are generated via js/profile.js -->
     <div class="container">

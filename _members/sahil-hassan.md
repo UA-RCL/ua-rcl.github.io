@@ -1,7 +1,7 @@
 ---
 name: Sahil Hassan
 image: images/profiles/lab/sahil_hassan.jpg
-role: phd
+role: postdoc
 links:
   email: sahilhassan@arizona.edu
   orcid: 0000-0002-4574-9555 

@@ -1,7 +1,7 @@
 ---
 name: Joshua Mack
 image: images/profiles/lab/joshua_mack.jpg
-role: phd
+role: graduated
 links:
   email: jmack2545@arizona.edu
   google-scholar: IiACx-AAAAAJ&hl=en&oi=ao
