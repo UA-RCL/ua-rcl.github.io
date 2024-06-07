@@ -13,6 +13,6 @@ links:
 ---
 
 Joshua Mack received the B.Sc. in Electrical and Computer Engineering as well as B.Sc. in Mathematics from the University of Arizona in 2017. 
-He is currently a doctoral candidate in the Electrical and Computer Engineering Program at the University of Arizona. 
+In 2024, he received his PhD in the Electrical and Computer Engineering Program at the University of Arizona.
 
-His research interests span topics within reconfigurable and FPGA systems, emerging architectures, and the design of abstractions to enable productive, intelligent workload partitioning across heterogeneous embedded systems.
+His research interests span topics within reconfigurable and FPGA systems, emerging neuromorphic architectures, and the design of abstractions to enable productive, intelligent workload partitioning across heterogeneous embedded systems.
