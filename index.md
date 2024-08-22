@@ -16,11 +16,12 @@ We research ways to bridge the gap between application engineers, hardware archi
 
 ## News
 
+1. Our paper titled ***A Runtime Manager Integrated Emulation Environment for Heterogeneous SoC Design with RISC-V Cores*** ([IEEE Xplore](https://ieeexplore.ieee.org/document/10596355)) was published in Heterogeneity in Computing Workshop ([HCW'24](https://hcw.pages.dev/)). 
+1. Our paper titled ***Tutorial: A Novel Runtime Environment for Accelerator-Rich Heterogeneous Architectures*** ([ACM](https://dl.acm.org/doi/abs/10.1145/3687463)) was published in ACM Transactions on Embedded Computing Systems. 
 1. Joshua Mack has won Outstanding Graduate Student award and Dr. Akoglu has won Outstanding Faculty award. Congrats Dr. Mack and Dr. Akoglu! (Check out the [link](https://ece.engineering.arizona.edu/news-events/celebrating-class-2024))   
 1. Joshua Mack and Sahil Hassan have graduated from PhD program and received their degrees in Graduation Ceremony. Congrats Dr. Mack and Dr. Sahil! (Check out our [blog post](./2024/05/10/graduation_ceremony.html))   
 1. Our paper titled ***PyTorch and CEDR: Enabling Deployment of Machine Learning Models on Heterogeneous Computing Systems*** ([IEEE Xplore](https://ieeexplore.ieee.org/document/10479315)) was published in 2023 20th ACS/IEEE International Conference on Computer Systems and Applications (AICCSA).
 1. Mustafa Ghanim won Best Demonstration Award in ECE Graduate Student Research Poster & Demo Symposium held by ECE department. Congrats Mustafa! (Check out our [blog post](./2024/03/15/best_demonstration.html))   
-1. Our paper titled ***A Runtime Manager Integrated Emulation Environment for Heterogeneous SoC Design with RISC-V Cores*** will be presented at the Heterogeneity in Computing Workshop ([HCW'24](https://hcw.pages.dev/)) in May. 
 1. Our paper titled ***GPU-RANC: A Cuda Accelerated Simulation Framework for Neuromorphic Architectures*** will be presented at the Neuro-Inspired Computational Elements ([NICE'24](https://niceworkshop.org/nice-2024/)) in April. 
 1. Joshua Mack and Serhan Gener held a Tutorial Session ***CEDR: A Holistic Software and Hardware Design Environment for FPGA-Integrated Heterogeneous Systems*** in FPGA'24. (Check out our [blog post](./2024/03/03/fpga_tutorial.html))
 1. Joshua Mack has defended his PhD dissertation successfully. Congrats Dr. Mack! (Check out our [blog post](./2024/02/27/josh_defense.html))
