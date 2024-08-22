@@ -1,3 +1,57 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
-[]
+- id: doi:10.1109/ipdpsw59300.2023.00016
+  title: 'CEDR-API: Productive, Performant Programming of Domain-Specific Embedded
+    Systems'
+  authors:
+  - Joshua Mack
+  - Serhan Gener
+  - Sahil Hassan
+  - H. Umut Suluhan
+  - Ali Akoglu
+  publisher: 2023 IEEE International Parallel and Distributed Processing Symposium
+    Workshops (IPDPSW)
+  date: '2023-05-01'
+  link: https://doi.org/gtdh6h
+  orcid: 0009-0009-5398-5708
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/avss56176.2022.9959711
+  title: Dual Camera Based High Spatio-Temporal Resolution Video Generation For Wide
+    Area Surveillance
+  authors:
+  - H. Umut Suluhan
+  - Hasan F. Ates
+  - Bahadir K. Gunturk
+  publisher: 2022 18th IEEE International Conference on Advanced Video and Signal
+    Based Surveillance (AVSS)
+  date: '2022-11-29'
+  link: https://doi.org/gt7m7x
+  orcid: 0009-0009-5398-5708
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/TCAD.2023.3285410
+  title: A Novel Implementation Methodology for Error Correction Codes on a Neuromorphic
+    Architecture
+  authors:
+  - Sahil Hassan
+  - Parker Dattilo
+  - Ali Akoglu
+  publisher: IEEE Transactions on Computer-Aided Design of Integrated Circuits and
+    Systems
+  date: '2023-06-12'
+  link: https://doi.org/gsjxx7
+  type: paper
+  description: description here
+  image: images/projects/brain.png
+  buttons:
+  - type: source
+    text: Source Code
+    link: https://github.com/UA-RCL/RANC
+  - type: website
+    link: projects/ranc
+  tags:
+  - can add tags here
+  repo: UA-RCL/RANC
+  plugin: sources.py
+  file: sources.yaml

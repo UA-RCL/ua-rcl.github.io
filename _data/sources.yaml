@@ -1,2 +1,16 @@
 # If we ever want to add publications, put them here
-# The process generates a citations.yaml file with all the converted citations
+# The process generates a citations.yaml file with all
+- id: doi:10.1109/TCAD.2023.3285410
+  type: paper
+  description: description here
+  date: '2023-6-12'
+  image: images/projects/brain.png
+  buttons:
+    - type: source
+      text: Source Code
+      link: https://github.com/UA-RCL/RANC
+    - type: website
+      link: projects/ranc
+  tags:
+    - can add tags here
+  repo: UA-RCL/RANC

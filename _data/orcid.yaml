@@ -1,2 +1,5 @@
 # Dr. Akoglu's orcid is below, enabling it causes a lot of citations conversions. Keeping it commented out for now as we don't put any publication of any sort
 # - orcid: 0000-0001-7982-8991
+
+# Putting mine to compile as less as we can to reduce the time spent on conversion, otherwise build fails
+- orcid: 0009-0009-5398-5708
