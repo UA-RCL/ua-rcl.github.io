@@ -3,7 +3,7 @@
 
 # University of Arizona Reconfigurable Computing Lab (UA-RCL)
 
-We research ways to bridge the gap between application engineers, hardware architects, and system software developers towards making emerging heterogenous computing and neuromorphic computing systems accessible. For this, we are actively working on two thrusts: a) building intelligent runtime systems for hardware agnostic application development and deployment on SoC scale heterogenous computing systems; b) designing reconfigurable architectures for neuromorphic computing to perform both training and high-throughput inference on resource constraint environments.
+We research ways to bridge the gap between application engineers, hardware architects, and system software developers towards making emerging heterogeneous computing and neuromorphic computing systems accessible. For this, we are actively working on two thrusts: a) building intelligent runtime systems for hardware-agnostic application development and deployment on SoC scale heterogeneous computing systems; b) designing reconfigurable architectures for neuromorphic computing to perform both training and high-throughput inference on resource constraint environments.
 
 {%
   include button.html
