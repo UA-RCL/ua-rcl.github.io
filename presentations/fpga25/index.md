@@ -13,7 +13,7 @@ For the 2025 edition of this tutorial, our goal is to deliver a comprehensive le
 
 {%
   include portrait.html
-  name="<a href='https://ua-rcl.github.io/members/sahil-hassan.html' target='_blank'>Sahil Hassan</a>"
+  name="Sahil Hassan"
   description="Sahil Hassan is a Post-Doc in the Reconfigurable Computing Lab graduating since Spring 2024. His research interests include design and development of resource management techniques for emerging heterogeneous embedded computing systems, novel architectures and algorithms for neuromorphic computing, and FPGA based reconfigurable architectures."
   image="/images/profiles/lab/sahil_hassan.jpg"
   custom-class="wide-profile"
@@ -21,7 +21,7 @@ For the 2025 edition of this tutorial, our goal is to deliver a comprehensive le
 
 {% 
   include portrait.html
-  name="<a href='https://ua-rcl.github.io/members/serhan_gener.html' target='_blank'>Serhan Gener</a>"
+  name="Serhan Gener"
   description="Serhan Gener is a senior PhD student in the Reconfigurable Computing Lab graduating in Spring 2025. His research interests include reconfigurable computing, embedded systems heterogeneous computing, and software security."
   image="/images/profiles/lab/serhan_gener.jpg"
   custom-class="wide-profile"
