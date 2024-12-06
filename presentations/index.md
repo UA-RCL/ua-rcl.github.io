@@ -9,6 +9,14 @@ nav:
 
 {% capture content %}
 
+Click [here](./fpga25/) to see our tutorial from [FPGA 2025](https://isfpga.org)
+
+{% endcapture %}
+
+{% include feature.html title="<h1>FPGA 2025</h1>" text=content image="https://www.isfpga.org/wp-content/uploads/2020/06/montereybridge3-1536x390.jpg" %}
+
+{% capture content %}
+
 Click [here](./fpga24/) to see our tutorial from [FPGA 2024](https://isfpga.org)
 
 {% endcapture %}
