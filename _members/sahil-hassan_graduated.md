@@ -1,6 +1,7 @@
 ---
-name: Sahil Hassan
+name: Sahil Hassan (Ph.D.)
 image: images/profiles/lab/sahil_hassan.jpg
+description: RCL (UofArizona)
 role: graduated
 links:
   email: sahilhassan@arizona.edu
@@ -11,6 +12,8 @@ links:
   cv: images/cv/SahilHassan_CV_aug23.pdf 
 ---
 
-Sahil Hassan received his B.Sc. (2016) and M.Sc. (2018, with specialization in Communication and Signal Processing) from the department of Electrical and Electronic Engineering, at the University of Dhaka, Bangladesh. He is currently a doctoral candidate at the department of Electrical and Computer Engineering, University of Arizona. 
+Graduation: Spring 2024 (Ph.D.)
 
-His research interests include design and development of resource management techniques for emerging heterogeneous embedded computing systems, novel architectures and algorithms for neuromorphic computing, and FPGA based reconfigurable architectures.
+Works at Reconfigurable Computing Laboratory, The University of Arizona
+
+Thesis: [An Emulation Framework for Exploring Domain-Specific SoCs in the Trade Space of Hardware Configuration, Resource Management and Workload Composition](https://repository.arizona.edu/handle/10150/672463 'PDF @ UA Repository')
