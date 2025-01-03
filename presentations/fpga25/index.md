@@ -1,5 +1,5 @@
 ---
-title: FPGA'24 Tutorial Introduction
+title: FPGA'25 Tutorial Introduction
 style: /_styles/presentations/fpga24/custom.css
 ---
 

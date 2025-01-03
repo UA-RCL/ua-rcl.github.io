@@ -17,7 +17,7 @@ Click [here](./fpga25/) to see our tutorial from [FPGA 2025](https://isfpga.org)
 
 {% capture content %}
 
-Click [here](./fpga24/) to see our tutorial from [FPGA 2024](https://isfpga.org)
+Click [here](./fpga24/) to see our tutorial from [FPGA 2024](https://www.isfpga.org/past/fpga2024/)
 
 {% endcapture %}
 
@@ -25,7 +25,7 @@ Click [here](./fpga24/) to see our tutorial from [FPGA 2024](https://isfpga.org)
 
 {% capture content %}
 
-Click [here](./ipdps24/) to see our poster session material from [IPDPS 2024](https://www.ipdps.org/)
+Click [here](./ipdps24/) to see our poster session material from [IPDPS 2024](https://www.ipdps.org/ipdps2024/index.html)
 
 {% endcapture %}
 
