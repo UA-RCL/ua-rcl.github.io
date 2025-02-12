@@ -16,6 +16,8 @@ We research ways to bridge the gap between application engineers, hardware archi
 
 ## News
 
+1. Serhan Gener and Sahil Hassan will hold a Tutorial Session ***CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems*** in [ISFPGA'25](https://www.isfpga.org/workshops-tutorials/#t6).
+1. Our paper titled ***A Unified Portable and Programmable Framework for Task-Based Execution and Dynamic Resource Management on Heterogeneous Systems*** is accepted for publication in Workshop on Extreme Heterogeneity Solutions ([ExHET'25](https://ornl.github.io/events/exhet2025/))
 1. Our paper titled ***A Runtime Manager Integrated Emulation Environment for Heterogeneous SoC Design with RISC-V Cores*** ([IEEE Xplore](https://ieeexplore.ieee.org/document/10596355)) was published in Heterogeneity in Computing Workshop ([HCW'24](https://hcw.pages.dev/)). 
 1. Our paper titled ***Tutorial: A Novel Runtime Environment for Accelerator-Rich Heterogeneous Architectures*** ([ACM](https://dl.acm.org/doi/abs/10.1145/3687463)) was published in ACM Transactions on Embedded Computing Systems. 
 1. Joshua Mack has won Outstanding Graduate Student award and Dr. Akoglu has won Outstanding Faculty award. Congrats Dr. Mack and Dr. Akoglu! (Check out the [link](https://ece.engineering.arizona.edu/news-events/celebrating-class-2024))   
