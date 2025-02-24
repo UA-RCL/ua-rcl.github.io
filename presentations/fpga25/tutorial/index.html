@@ -1114,7 +1114,7 @@ file radar_correlator_zip-arm32.so
 <p>After verifying the file is compiled for the correct platform, copy the file and inputs to the build directory:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Assuming your CEDR build folder is in the root directory and named "build-arm32"</span>
-<span class="nb">cp </span>radar_correlator_zip-arm32.<span class="o">{</span>so,out<span class="o">}</span> ../../../build-arm32
+<span class="nb">cp</span> <span class="nt">-r</span> radar_correlator_zip-arm32.<span class="o">{</span>so,out<span class="o">}</span> input/ ../../../build-arm32
 </code></pre></div></div>
 
 <h3 id="running-cedr-on-zedboard">Running CEDR on ZedBoard</h3>
