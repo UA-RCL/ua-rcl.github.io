@@ -189,14 +189,14 @@ Observe the contents of the `daemon_config.json`
 
 Modify the `daemon_config.json` file to set the number of CPUs to 3 (or any other number).
 
-<pre>
+```
 "Worker Threads": {
   "cpu": <b>3</b>,
   "fft": 0,
   "gemm": 0,
   "gpu": 0
 },
-</pre>
+```
 
 Run CEDR using the config file
 ```bash
@@ -279,14 +279,14 @@ mv gantt.png gantt_10rc_100ms.png
 ## Chaning Hardware Composition
 Until now, we have been using 3 CPUs. This time we will use 5 CPUs and run the same experiment. Modify the `daemon_config.json` file to set the number of CPUs to 5.
 
-<pre>
+```
 "Worker Threads": {
   "cpu": <b>5</b>,
   "fft": 0,
   "gemm": 0,
   "gpu": 0
 },
-</pre>
+```
 
 While in the build folder, run CEDR again. Run `sub_dag` to submit applications to CEDR, this time using `-n 10` with `-p 100000` to submit 10 radar correlators with 100ms delays between each instance and terminate CEDR using `kill_daemon`. Make sure you wait for all 10 instances to complete before running `kill_daemon` and generate the Gantt chart. 
 
@@ -301,9 +301,9 @@ mv gantt.png gantt_10rc_100ms_5CPU.png
 ## Chaning the scheduler
 Until now, we have been using Round Robin scheduler. This time we will run the same experiment using `ETF` scheduler. Modify the `daemon_config.json` file to set scheduler as `ETF`.
 
-<pre>
+```
 "Scheduler": "ETF",
-</pre>
+```
 
 While in the build folder, run CEDR again. Run `sub_dag` to submit applications to CEDR, this time using `-n 10` with `-p 100000` to submit 10 radar correlators with 100ms delays between each instance and terminate CEDR using `kill_daemon`. Make sure you wait for all 10 instances to complete before running `kill_daemon` and generate the Gantt chart. 
 
@@ -391,7 +391,7 @@ We also implement two more functions, which contains implementation of CPU-based
 
 Having included API implementation, we should introduce the new API call to the system by updating CEDR header file ([./src-api/include/header.hpp](https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp)):
 
-<pre>
+```
 enum api_types {DASH_FFT = 0, DASH_GEMM = 1, DASH_FIR = 2, DASH_SpectralOpening = 3, DASH_CIC = 4, DASH_BPSK = 5, DASH_QAM16 = 6, DASH_CONV_2D = 7, DASH_CONV_1D = 8, <b>DASH_ZIP = 9,</b> NUM_API_TYPES = <b>10</b>};
 
 static const char *api_type_names[] = {"DASH_FFT", "DASH_GEMM", "DASH_FIR", "DASH_SpectralOpening", "DASH_CIC", "DASH_BPSK", "DASH_QAM16", "DASH_CONV_2D", "DASH_CONV_1D"<b>, "DASH_ZIP"</b>};
@@ -406,7 +406,7 @@ static const std::map<std::string, api_types> api_types_map = { {api_type_names[
                                                                 {api_type_names[api_types::DASH_CONV_2D], api_types::DASH_CONV_2D},
                                                                 {api_type_names[api_types::DASH_CONV_1D], api_types::DASH_CONV_1D},
                                                               <b>{api_type_names[api_types::DASH_ZIP], api_types::DASH_ZIP}</b>};
-</pre>
+```
 
 ## Building CEDR with ZIP API
 Navigate to the build folder, re-generate the files, and check the `libdash-rt.so` shared object to verify the new ZIP-based function calls.
@@ -494,9 +494,9 @@ This will create an executable file for `cedr`, `sub_dag`, `kill_deamon`, and `l
 ```bash
 file cedr
 ```
-<pre>
+```
 cedr: ELF 32-bit LSB shared object, <b>ARM</b>, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=d8c6c1994644d6645f508952b8a3b3e491985a92, not stripped
-</pre>
+```
 
 Since we also used the `-DLIBDASH_MODULES="FFT"` flag, we also enabled FFT accelerator function calls for `DASH_FFT` API calls. We can test if these functions are available or not by running the following commands:
 
@@ -517,7 +517,7 @@ Due to the overhead associated with SD Card based file transfor overheads, we wi
 
 Update the CEDR header file ([./src-api/include/header.hpp](https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp)) to include zip as a resource by updating the following lines:
 
-<pre>
+```
 enum resource_type { cpu = 0, fft = 1, mmult = 2, gpu = 3, <b>zip = 4, NUM_RESOURCE_TYPES = 5 </b>};
 static const char *resource_type_names[] = {"cpu", "fft", "gemm", "gpu"<b>, "zip"</b>};
 static const std::map<std::string, resource_type> resource_type_map = {{resource_type_names[(uint8_t) resource_type::cpu], resource_type::cpu},
@@ -525,7 +525,7 @@ static const std::map<std::string, resource_type> resource_type_map = {{resource
                                                                        {resource_type_names[(uint8_t) resource_type::mmult], resource_type::mmult},
                                                                        {resource_type_names[(uint8_t) resource_type::gpu], resource_type::gpu}<b>,
                                                                        {resource_type_names[(uint8_t) resource_type::zip], resource_type::zip}</b>};
-</pre>
+```
 
 These lines makes sure the functions with `_zip` suffix are grabbed when CEDR starts and used when schedulers assigns tasks to ZIP accelerator.
 
@@ -571,9 +571,9 @@ Now verifiy the functions with `_zip` suffix that are used for ZIP accelerator.
 nm -D libdash-rt/libdash-rt.so | grep -E '*_zip$'
 ```
 
-<pre>
+```
 000065c5 T <b>DASH_ZIP_flt_zip</b>
-</pre>
+```
 
 ### Application Cross-compilation
 
