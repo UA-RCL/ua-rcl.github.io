@@ -520,7 +520,8 @@ Update the CEDR header file ([./src-api/include/header.hpp](https://github.com/U
 ```
 enum resource_type { cpu = 0, fft = 1, mmult = 2, gpu = 3, <b>zip = 4, NUM_RESOURCE_TYPES = 5 </b>};
 static const char *resource_type_names[] = {"cpu", "fft", "gemm", "gpu"<b>, "zip"</b>};
-static const std::map<std::string, resource_type> resource_type_map = {{resource_type_names[(uint8_t) resource_type::cpu], resource_type::cpu},
+static const std::map<std::string, resource_type> resource_type_map = {
+                                                                       {resource_type_names[(uint8_t) resource_type::cpu], resource_type::cpu},
                                                                        {resource_type_names[(uint8_t) resource_type::fft], resource_type::fft},
                                                                        {resource_type_names[(uint8_t) resource_type::mmult], resource_type::mmult},
                                                                        {resource_type_names[(uint8_t) resource_type::gpu], resource_type::gpu}<b>,
