@@ -54,9 +54,6 @@ The tutorial is structured into two core exercises, each including a series of h
 
 ## Archival materials:
 
-<!---
-Click [here](./tutorial) for a self-paced, archival version of our tutorial workflow.
---->
 <b>Hardware Images:</b> FPGA image used in this tutorial is available [here](https://github.com/UA-RCL/Hardware-Images/tree/ZedBoard-ISFPGA25).
 
-<b>Step-by-step Tutorial:</b> A self-paced, archival version of our tutorial workflow will be available here.
+<b>Step-by-step Tutorial:</b> A self-paced, archival version of our tutorial workflow is available [here](./tutorial).

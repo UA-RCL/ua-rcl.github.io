@@ -1,47 +1,56 @@
 ---
-title: FPGA'24 Tutorial Contents
-style: /_styles/presentations/fpga24/custom.css
+title: FPGA'25 Tutorial Contents
+style: /_styles/presentations/fpga25/custom.css
 ---
 
-# FPGA'24 Tutorial Archive
+# FPGA'25 Tutorial Archive
 
 In this tutorial, we will familiarize ourselves with setting up CEDR and performing the following set of tasks:
 - [Getting started](#exercise-0-getting-started-with-cedr) with and compiling CEDR
-- [Introducing CEDR APIs](#exercise-1-introducing-cedr-apis-to-baseline-c-applications) into baseline C++ applications
-- [Conducting cross compilation-based studies](#exercise-2-fpga-based-soc-experiment-zcu102-mpsoc) on Xilinx ZCU102 FPGAs
-
+- **Core Exercise 1** (75 minutes)
+  - **Part-1**
+    - **Activity-1** [Introducing CEDR APIs](#exercise-1-1-1-introducing-cedr-apis-to-baseline-c-applications) into baseline C++ applications
+    - **Activity-2** [Multiple application instance workloads](#exercise-1-1-2-multiple-application-instance-workloads) using different schedulers and hardware compositions
+  - **Part-2**
+    - **Activity-1** - [Integrating new API calls](#exercise-1-2-1-introducing-a-new-api-call) to CEDR by adding ZIP as an API
+    - **Activity-2** - [Integrating new Accelerator](#exercise-1-2-2-introducing-a-new-accelerator) to CEDR and verify it on FPGA
+- **Core Exercise 2** (30 minutes)
+  - **Activity** [Performing DSE](#exercise-2-design-space-exploration) by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios
 
 Additionally, we provide a number of supplemental tutorials on topics such as:
-- [Performing DSE](#supplemental-exercise-1-design-space-exploration) by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios
-- [Integrating and evaluating scheduling heuristics](#supplemental-exercise-2-integration-and-evaluation-of-eft-scheduler) with CEDR and conducting performance evaluation with dynamically arriving workload scenarios.
-- [Integrating new API calls](#supplemental-exercise-3-introducing-a-new-api-call)
-- [Performing experiments with many simultaneous applications](#supplemental-exercise-4-running-multiple-applications-with-cedr-on-x86)
-- [Conducting GPU-based experiments](#supplemental-exercise-5-gpu-based-soc-experiment-nvidia-jetson-agx-xavier)
+- [Integrating and evaluating scheduling heuristics](#supplemental-exercise-1-integration-and-evaluation-of-eft-scheduler) with CEDR and conducting performance evaluation with dynamically arriving workload scenarios.
+- [Performing experiments with many simultaneous applications](#supplemental-exercise-2-running-multiple-applications-with-cedr-on-x86)
+- [Conducting GPU-based experiments](#supplemental-exercise-3-gpu-based-soc-experiment-nvidia-jetson-agx-xavier)
 
 ## Tutorial Requirements
-- Ubuntu-based Linux machine or ability to run a [docker image](https://hub.docker.com/r/mackncheesiest/cedr_dev/tags)
+- Ubuntu-based Linux machine or ability to run a [docker image](https://hub.docker.com/r/uofarcl/cedr/tags)
 - CEDR Source Files: [CEDR repository for this tutorial](https://github.com/UA-RCL/CEDR/), checked out to the `tutorial` branch.
 
 # Exercise 0: Getting Started with CEDR
-[Return to top](#fpga24-tutorial-archive)
+[Return to top](#fpga25-tutorial-archive)
 
 ## Initial Setup:
 ### Docker-based Instructions (Linux, Windows, and Mac)
 Install Docker based on the host machine platform using the [link](https://docs.docker.com/engine/install/#desktop).
-Pull the existing latest [Docker container](https://hub.docker.com/r/mackncheesiest/cedr_dev/tags) with all dependencies installed.
+Pull the existing latest [Docker container](https://hub.docker.com/r/uofarcl/cedr/tags) with all dependencies installed.
 Open a terminal in your CEDR folder and run the docker image using the following command:
 ```
-docker run -it --rm -v $(pwd):/root/repository mackncheesiest/cedr_dev:latest /bin/bash
+docker run -it --rm uofarcl/cedr:tutorial_isfpga25 /bin/bash
 ```
 
-Clone CEDR from GitHub using one of the following methods:
-  * Clone with ssh:
+We will need to copy files from container to host machine, use one of the these alternatives for this:
+  * Mount a volume while running docker using a folder on host machine that has read and write permissions for `other` users:
 ```bash
-git clone -b tutorial git@github.com:UA-RCL/CEDR.git
+docker run -it --rm -v <host-folder>:/root/repository/share uofarcl/cedr:tutorial_isfpga25 /bin/bash
 ```
-  * Clone with https:
+  * Using `docker cp` to copy files from host machine:
 ```bash
-git clone -b tutorial https://github.com/UA-RCL/CEDR.git
+docker ps # Find the Container ID and Name
+docker cp <container_name>:/root/repository/CEDR ./
+```
+  * If you need to detach from docker at any time you can use `Crtl+p` and `Ctrl+q` to detach and to re-attach use:
+```bash
+docker exec -it --rm <container_name> /bin/bash
 ```
 
 ### Linux-native instructions (Requires root access)
@@ -93,8 +102,8 @@ At this point there are 4 important files that should be compiled:
 
 Look into [dash.h](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h) under [libdash](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash) folder and see available API calls.
 
-# Exercise 1: Introducing CEDR APIs to Baseline C++ Applications
-[Return to top](#fpga24-tutorial-archive)
+# Exercise 1-1-1: Introducing CEDR APIs to Baseline C++ Applications
+[Return to top](#fpga25-tutorial-archive)
 
 ## Application Overview
 
@@ -108,7 +117,7 @@ Look at the [non-API version](https://github.com/UA-RCL/CEDR/tree/tutorial/appli
  - Forward FFT call: Line 167
  - Inverse FFT call: Line 194
 
-Change the radar correlator to have DASH_FFT API calls and create a new file to place the API calls in the file
+Create a new file to place the API calls in the file and change the radar correlator to have DASH_FFT API calls.
 ```bash
 cp radar_correlator_non_api.c radar_correlator_fft.c
 ```
@@ -118,7 +127,7 @@ Make sure the [dash.h](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash
 #include "dash.h"
 ```
 
-Change the `radar_correlator_non_api.c` to include `DASH_FFT` calls
+Change the `radar_correlator_fft.c` to include `DASH_FFT` calls
 ```c
 <gsl_fft_wrapper(fft_inp, fft_out, len, true);;
 >DASH_FFT_flt(fft_inp, fft_out, len, true);
@@ -180,14 +189,14 @@ Observe the contents of the `daemon_config.json`
 
 Modify the `daemon_config.json` file to set the number of CPUs to 3 (or any other number).
 
-```
+<pre>
 "Worker Threads": {
   "cpu": <b>3</b>,
   "fft": 0,
   "gemm": 0,
   "gpu": 0
 },
-```
+</pre>
 
 Run CEDR using the config file
 ```bash
@@ -222,162 +231,460 @@ Now, observe the log files generated in `log_dir/experiment0`.
 
 We can generate a Gantt chart showing the distribution of tasks to the processing elements. Navigate the `scripts/` folder from the [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./) and run `gantt_k-nk.py` script.
 
-```
+```bash
 cd scripts/
 python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 ```
 
 Having built CEDR and compiled radar correlator application, we can proceed to performing design-space exploration now. 
 
-# Exercise 2: FPGA Based SoC Experiment (ZCU102 MPSoC)
-[Return to top](#fpga24-tutorial-archive)
+# Exercise 1-1-2: Multiple Application Instance Workloads
+[Return to top](#fpga25-tutorial-archive)
 
-(Conv2d (accelerator) is not included in HCW release.)
-Moving on to the aarch64-based build for ZCU102 FPGA with accelerators. We'll start by building CEDR itself. This time we will use the [toolchain](https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/aarch64-linux-gnu.toolchain.cmake) file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
+## Multiple Applications
+While in the build folder, run CEDR again using the config file
+```bash
+./cedr -c ./daemon_config.json &
+```
+
+Run `sub_dag` to submit applications to CEDR, this time using `-n 10` to submit 10 radar correlators and terminate CEDR using `kill_daemon`.
+
+```bash
+./sub_dag -a ./radar_correlator_fft-x86.so -n 10 -p 0
+./kill_daemon
+```
+
+In this exercise we will be generating multiple Gantt charts for each step, as we change the configurations. After each step we will rename the generated Gantt chart based on the corresponding experiment.
+
+```bash
+python3 ../scripts/gantt_k-nk.py ./log_dir/experiment1/timing_trace.log
+mv gantt.png gantt_10rc.png
+```
+
+## Multiple Applications with Injection Rates
+While in the build folder, run CEDR again using the config file we can use `-l NONE` logging option to disable CEDR based logging prints on the terminal.
+```bash
+./cedr -c ./daemon_config.json -l NONE &
+```
+
+Run `sub_dag` to submit applications to CEDR, this time using `-n 10` with `-p 100000` to submit 10 radar correlators with 100ms delays between each instance and terminate CEDR using `kill_daemon`. Make sure you wait for all 10 instances to complete before running `kill_daemon` and generate the Gantt chart. 
+
+```bash
+./sub_dag -a ./radar_correlator_fft-x86.so -n 10 -p 100000
+./kill_daemon
+python3 ../scripts/gantt_k-nk.py ./log_dir/experiment2/timing_trace.log
+mv gantt.png gantt_10rc_100ms.png
+```
+
+## Chaning Hardware Composition
+Until now, we have been using 3 CPUs. This time we will use 5 CPUs and run the same experiment. Modify the `daemon_config.json` file to set the number of CPUs to 5.
+
+<pre>
+"Worker Threads": {
+  "cpu": <b>5</b>,
+  "fft": 0,
+  "gemm": 0,
+  "gpu": 0
+},
+</pre>
+
+While in the build folder, run CEDR again. Run `sub_dag` to submit applications to CEDR, this time using `-n 10` with `-p 100000` to submit 10 radar correlators with 100ms delays between each instance and terminate CEDR using `kill_daemon`. Make sure you wait for all 10 instances to complete before running `kill_daemon` and generate the Gantt chart. 
+
+```bash
+./cedr -c ./daemon_config.json -l NONE &
+./sub_dag -a ./radar_correlator_fft-x86.so -n 10 -p 100000
+./kill_daemon
+python3 ../scripts/gantt_k-nk.py ./log_dir/experiment3/timing_trace.log
+mv gantt.png gantt_10rc_100ms_5CPU.png
+```
+
+## Chaning the scheduler
+Until now, we have been using Round Robin scheduler. This time we will run the same experiment using `ETF` scheduler. Modify the `daemon_config.json` file to set scheduler as `ETF`.
+
+<pre>
+"Scheduler": "ETF",
+</pre>
+
+While in the build folder, run CEDR again. Run `sub_dag` to submit applications to CEDR, this time using `-n 10` with `-p 100000` to submit 10 radar correlators with 100ms delays between each instance and terminate CEDR using `kill_daemon`. Make sure you wait for all 10 instances to complete before running `kill_daemon` and generate the Gantt chart. 
+
+```bash
+./cedr -c ./daemon_config.json -l NONE &
+./sub_dag -a ./radar_correlator_fft-x86.so -n 10 -p 100000
+./kill_daemon
+python3 ../scripts/gantt_k-nk.py ./log_dir/experiment4/timing_trace.log
+mv gantt.png gantt_10rc_100ms_5CPU_ETF.png
+```
+
+## Verification of Changes
+After each step or once all is done you can see the how the changes are effecting the execution of the applications looking at the generated Gantt charts.
+
+# Exercise 1-2-1: Introducing a New API Call
+[Return to top](#fpga25-tutorial-archive)
+
+In this section of the tutorial, we will demonstrate integration of a new API call to the CEDR. We will use `DASH_ZIP` API call as an example. 
+
+Navigate to libdash folder from [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./).
+```bash
+cd libdash
+```
+
+Add the API function definitions to the `dash.h`.
+
+```c
+void DASH_ZIP_flt(dash_cmplx_flt_type* input_1, dash_cmplx_flt_type* input_2, dash_cmplx_flt_type* output, size_t size, zip_op_t op);
+void DASH_ZIP_flt_nb(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input_2, dash_cmplx_flt_type** output, size_t* size, zip_op_t* op, cedr_barrier_t* kernel_barrier);
+
+void DASH_ZIP_int(dash_cmplx_int_type* input_1, dash_cmplx_int_type* input_2, dash_cmplx_int_type* output, size_t size, zip_op_t op);
+void DASH_ZIP_int_nb(dash_cmplx_int_type** input_1, dash_cmplx_int_type** input_2, dash_cmplx_int_type** output, size_t* size, zip_op_t* op, cedr_barrier_t* kernel_barrier);
+```
+
+There 4 different function definitions here:
+  1. DASH_ZIP_flt: Supports blocking ZIP calls for `dash_cmplx_flt_type`
+  2. DASH_ZIP_flt_nb: Supports non-blocking ZIP calls for `dash_cmplx_flt_type`
+  3. DASH_ZIP_int: Supports blocking ZIP calls for `dash_cmplx_int_type`
+  4. DASH_ZIP_int_nb: Supports non-blocking ZIP calls for `dash_cmplx_int_type`
+
+Add supported ZIP operation enums to `dash_types.h`
+```c
+typedef enum zip_op {
+  ZIP_ADD = 0,
+  ZIP_SUB = 1,
+  ZIP_MULT = 2,
+  ZIP_DIV = 3
+} zip_op_t;
+```
+
+Add CPU implementation of the ZIP to [libdash/cpu](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/cpu/) `zip.cpp`. For simplicity, we just copy the original implementation.
+```bash
+cp ../original_files/zip.cpp cpu/
+```
+
+In `zip.cpp`, we also have the `enqueue_kernel` call in the API definition, which is how the task for this API will be sent to CEDR. A prototype of the `enqueue_kernel` function is given in line 12, and `enqueue_kernel` is used in non-blocking versions of the function (lines 83 and 113). The prototype is the same for all the APIs created for CEDR. The first argument has to be the function name, the second argument has to be the precision to be used, and the third argument shows how many inputs are needed for the calling function (for ZIP, this is 6). Now let's look at the ZIP-specific `enqueue_kernel` call on line 83.
+
+```c
+enqueue_kernel("DASH_ZIP", "flt", 6, input_1, input_2, output, size, op, kernel_barrier);
+```
+
+In this sample `enqueue kernel` call, we have 4 important portions:
+  * ***"DASH_ZIP"***: Name of the API call
+  * ***"flt"***: Type of the inputs on the API call
+  * ***6***: Number of variables for the API call
+  * Variables:
+    * ***input_1***: First input of the ZIP
+    * ***input_2***: Second input of the ZIP
+    * ***output***: Output of the ZIP
+    * ***size***: Array size for inputs and output
+    * ***op***: ZIP operation type (ADD, SUB, MUL, or DIV)
+    * ***kernel_barrier***: Contains configuration information of barriers for blocking and non-blocking implementation
+
+In the `zip.cpp`, we need to fill the bodies of the four function definitions that are used so the application will call `enqueue_kernel` properly and hand off the task to CEDR for scheduling:
+
+1. DASH_ZIP_flt
+2. DASH_ZIP_flt_nb
+3. DASH_ZIP_int
+4. DASH_ZIP_int_nb
+
+We also implement two more functions, which contains implementation of CPU-based ZIP operations. Functions are created with `_cpu` suffix so that CEDR can identify the functions correctly for CPU execution:
+
+1. DASH_ZIP_flt_cpu: `dash_cmplx_flt_type`
+2. DASH_ZIP_int_cpu: `dash_cmplx_int_type`
+
+Having included API implementation, we should introduce the new API call to the system by updating CEDR header file ([./src-api/include/header.hpp](https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp)):
+
+<pre>
+enum api_types {DASH_FFT = 0, DASH_GEMM = 1, DASH_FIR = 2, DASH_SpectralOpening = 3, DASH_CIC = 4, DASH_BPSK = 5, DASH_QAM16 = 6, DASH_CONV_2D = 7, DASH_CONV_1D = 8, <b>DASH_ZIP = 9,</b> NUM_API_TYPES = <b>10</b>};
+
+static const char *api_type_names[] = {"DASH_FFT", "DASH_GEMM", "DASH_FIR", "DASH_SpectralOpening", "DASH_CIC", "DASH_BPSK", "DASH_QAM16", "DASH_CONV_2D", "DASH_CONV_1D"<b>, "DASH_ZIP"</b>};
+...
+static const std::map<std::string, api_types> api_types_map = { {api_type_names[api_types::DASH_FFT], api_types::DASH_FFT},
+                                                                {api_type_names[api_types::DASH_GEMM], api_types::DASH_GEMM},
+                                                                {api_type_names[api_types::DASH_FIR], api_types::DASH_FIR},
+                                                                {api_type_names[api_types::DASH_SpectralOpening], api_types::DASH_SpectralOpening},
+                                                                {api_type_names[api_types::DASH_CIC], api_types::DASH_CIC},
+                                                                {api_type_names[api_types::DASH_BPSK], api_types::DASH_BPSK},
+                                                                {api_type_names[api_types::DASH_QAM16], api_types::DASH_QAM16},
+                                                                {api_type_names[api_types::DASH_CONV_2D], api_types::DASH_CONV_2D},
+                                                                {api_type_names[api_types::DASH_CONV_1D], api_types::DASH_CONV_1D},
+                                                              <b>{api_type_names[api_types::DASH_ZIP], api_types::DASH_ZIP}</b>};
+</pre>
+
+## Building CEDR with ZIP API
+Navigate to the build folder, re-generate the files, and check the `libdash-rt.so` shared object to verify the new ZIP-based function calls.
+```bash
+cd ../build
+cmake ..
+make -j $(nproc)
+nm -D libdash-rt/libdash-rt.so | grep -E '*_ZIP_*'
+```
+
+## Modify Radar Correlator to Include ZIP API
+After re-building CEDR with ZIP API, move to the Radar Correlator folder in the [applications](https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator/)
+```bash
+cd ../applications/APIApps/radar_correlator
+```
+
+Create a new file to place the API calls in the file and change the radar correlator to have DASH_FFT API calls
+```bash
+cp radar_correlator_fft.c radar_correlator_zip.c
+```
+
+Look at the [non-API version](https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator/radar_correlator_non_api.c) of the Radar Correlator and locate possible places for adding ZIP API calls to the application
+ - Multiplication: Lines 173 to 176
+
+Change the `radar_correlator_zip.c` to include `DASH_ZIP` calls
+```c
+<for (i = 0; i < 2 * len; i += 2) {
+<  corr_freq[i] = (X1[i] * X2[i]) + (X1[i + 1] * X2[i + 1]);
+<  corr_freq[i + 1] = (X1[i + 1] * X2[i]) - (X1[i] * X2[i + 1]);
+<}
+>dash_cmplx_flt_type *zip_inp0 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
+>dash_cmplx_flt_type *zip_inp1 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
+>dash_cmplx_flt_type *zip_out = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
+>for (size_t i = 0; i < len; i++) {
+>  zip_inp0[i].re = (dash_re_flt_type) X1[2*i];
+>  zip_inp0[i].im = (dash_re_flt_type) X1[2*i+1];
+>  zip_inp1[i].re = (dash_re_flt_type) X2[2*i];
+>  zip_inp1[i].im = (dash_re_flt_type) -X2[2*i+1]; // Conj Multiplication
+>}
+>DASH_ZIP_flt(zip_inp0, zip_inp1, zip_out, len, ZIP_MULT);
+>for (size_t i = 0; i < len; i++) {
+>  corr_freq[2*i]   = (double) zip_out[i].re;
+>  corr_freq[2*i+1] = (double) zip_out[i].im;
+>}
+```
+
+Build radar correlator with ZIP API calls, standalone as well as the shared object, and compare the output against other versions
+```bash
+make zip
+./radar_correlator_zip-x86.out
+```
+
+Copy the shared object to the CEDR build folder change back to default config file, and run `cedr`, `sub_dag`, and `kill_daemon`.
+```bash
+cp radar_correlator_zip-x86.so ../../../build
+cd ../../../build
+cp ../daemon_config.json ./
+./cedr -c ./daemon_config.json & # With print logs enabled, you can see `DASH_ZIP` API being located by CEDR now
+./sub_dag -a ./radar_correlator_zip-x86.so -n 1 -p 0 # Verifiy the output!
+./kill_daemon
+```
+
+Let's check the `timing_trace.log` for ZIP API calls.
+```bash
+cat log_dir/experiment5/timing_trace.log | grep -E '*ZIP*'
+```
+# Exercise 1-2-2: Introducing a New Accelerator
+Before starting with new accelerator integration we will go through the cross compilation of CEDR and application for ZedBoard.
+
+## FPGA Based SoC Experiment (ZedBoard)
+[Return to top](#fpga25-tutorial-archive)
+
+Moving on to the arm32-based build for ZedBoard FPGA with accelerators. We'll start by building CEDR itself. This time we will use the [toolchain](https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/arm32-linux-gnu.toolchain.cmake) file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
 Simply run the following commands from the repository root folder:
 
 ```bash
-mkdir build-arm
-cd build-arm
-cmake -DLIBDASH_MODULES="FFT GEMM" --toolchain=../toolchains/aarch64-linux-gnu.toolchain.cmake ..
+mkdir build-arm32
+cd build-arm32
+cmake -DLIBDASH_MODULES="FFT" --toolchain=../toolchains/arm32-linux-gnu.toolchain.cmake ..
 make -j $(nproc)
 ```
 
 This will create an executable file for `cedr`, `sub_dag`, `kill_deamon`, and `libdash-rt` for aarch64 platforms. We can check the platform type of an executable using the `file` command:
 
-
 ```bash
 file cedr
 ```
-```
-cedr: ELF 64-bit LSB shared object, <b>ARM aarch64</b>, version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=7374bd01c8ded1d48f9dd191e9010496bdffae34, for GNU/Linux 3.7.0, not stripped
-```
+<pre>
+cedr: ELF 32-bit LSB shared object, <b>ARM</b>, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=d8c6c1994644d6645f508952b8a3b3e491985a92, not stripped
+</pre>
 
-Since we also used the `-DLIBDASH_MODULES="FFT GEMM"` flag, we also enabled FFT and GEMM accelerator function calls for `DASH_FFT` and `DASH_GEMM` API calls. We can test if these functions are available or not by running the following commands:
-
-```bash
-nm -D libdash-rt/libdash-rt.so | grep -E '*_fft$|*_gemm$'
-```
-```
-0000000000006974 T <b>DASH_FFT_fft</b>
-000000000000788c T <b>DASH_GEMM_gemm</b>
-```
-
-After this, we can go to build our application using cross-compilation for aarch64
-
-### Cross-compilation
-
-Assuming you came here after building the lane detection for x86_64, we will directly move to compile the lane detection for aarch64. First, navigate to [applications/APIApps/lane_detection](https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/lane_detection) folder. Then run the following command to build the executable for aacrh64:
+Since we also used the `-DLIBDASH_MODULES="FFT"` flag, we also enabled FFT accelerator function calls for `DASH_FFT` API calls. We can test if these functions are available or not by running the following commands:
 
 ```bash
-cd applications/APIApps/lane_detection
-ARCH=aarch64 make fft_nb.so
-file track_nb.so
+nm -D libdash-rt/libdash-rt.so | grep -E '*_fft$'
 ```
 ```
-track_nb.so: ELF 64-bit LSB shared object, <b>ARM aarch64</b>, version 1 (SYSV), dynamically linked, BuildID[sha1]=fc95ba8be71bfb2f90164848211b62325f087007, not stripped
+000057e1 T DASH_FFT_flt_fft
+0000588f T DASH_FFT_int_fft
+```
+
+After this, we can go to build our application using cross-compilation for arm32. 
+
+## ZIP acceleretor Integration
+Due to the overhead associated with SD Card based file transfor overheads, we will also include ZIP accelerator before moving on to the testing on the ZedBoard.
+
+### Adding ZIP as Resource to CEDR
+
+Update the CEDR header file ([./src-api/include/header.hpp](https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp)) to include zip as a resource by updating the following lines:
+
+<pre>
+enum resource_type { cpu = 0, fft = 1, mmult = 2, gpu = 3, <b>zip = 4, NUM_RESOURCE_TYPES = 5 </b>};
+static const char *resource_type_names[] = {"cpu", "fft", "gemm", "gpu"<b>, "zip"</b>};
+static const std::map<std::string, resource_type> resource_type_map = {{resource_type_names[(uint8_t) resource_type::cpu], resource_type::cpu},
+                                                                       {resource_type_names[(uint8_t) resource_type::fft], resource_type::fft},
+                                                                       {resource_type_names[(uint8_t) resource_type::mmult], resource_type::mmult},
+                                                                       {resource_type_names[(uint8_t) resource_type::gpu], resource_type::gpu}<b>,
+                                                                       {resource_type_names[(uint8_t) resource_type::zip], resource_type::zip}</b>};
+</pre>
+
+These lines makes sure the functions with `_zip` suffix are grabbed when CEDR starts and used when schedulers assigns tasks to ZIP accelerator.
+
+### Accelerator Source File
+
+Add accelerator implementation of the ZIP to [libdash/zip](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/). For simplicity, we just copy the original implementation.
+```bash
+cp -r ../original_files/zip_ZedBoard ../libdash/zip
+```
+
+In the `libdash/zip/zip.cpp`, there is a `DASH_ZIP_flt_zip` function call. The version `DASH_ZIP_flt_cpu` we added in [Integrating new API calls](#exercise-1-2-1-introducing-a-new-api-call) was specifically for using the `cpu` resource while `_zip` suffix is the version that will be used when ZIP accelerator is used as a resource. The `DASH_ZIP_flt_zip` functions handles the input size limitations and data: type converstion and calls another function called `zip_accel` which handles the data transfers and signalling the ZIP accelerator to start execution. Looking deeper inthe function:
+
+* ***config_zip_op(zip_control_base, op)***: Sets the ZIP operation as `op` (ADD/SUB/MULT/DIV)
+* ***config_zip_size(zip_control_base, size)***: Sets the ZIP size as `size`
+* ***memcpy((float\* ) udmabuf_base, input0, 2\*size \* sizeof(float))***: Sends the first input to UDMA for ZIP to use
+* ***memcpy((float\* ) udmabuf_base+(2\*size), input1, 2\*size \* sizeof(float))***: Sends the second input to UDMA for ZIP to use
+* ***setup_rx(dma_control_base, udmabuf_phys + (4 \* size \* sizeof(float)), 2\*size \* sizeof(float))***: Sets the return address for ZIP accelerator to put the output
+* ***setup_tx(dma_control_base, udmabuf_phys, 4 \* size \* sizeof(float))***: Sets the input address for ZIP accelerator to start reading the input from
+* ***zip_write_reg***: Starts the execution of ZIP accelerator
+* ***dma_wait_for_rx_complete***: Waits for ZIP accelerator to complete writing the output
+* ***memcpy(output, &(((float\*)udmabuf_base)[4 \* size]), 2 \* size \* sizeof(float))***: Copies the output back
+
+These are some of the main steps for adding a new accelator to CEDR.
+
+We also need to make sure `CMakeLists.txt` under `libdash` folder looks for ZIP as an accelerator as well. Update following line (19) in [libdash/CMakeLists.txt](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/CMakeLists.txt)
+```CMake
+  set(ALL_LIBDASH_MODULES FFT GEMM GPU ZIP)
+```
+
+### Building CEDR with ZIP
+
+In `build-arm32` folder run the following steps to rebuild CEDR with ZIP as an accelerator.
+
+```bash
+rm -rf ./* # This can be skipped, used for showing fresh start of cmake with new accelerator
+cmake -DLIBDASH_MODULES="FFT ZIP" --toolchain=../toolchains/arm32-linux-gnu.toolchain.cmake ..
+make -j
+```
+
+Now verifiy the functions with `_zip` suffix that are used for ZIP accelerator.
+
+```bash
+nm -D libdash-rt/libdash-rt.so | grep -E '*_zip$'
+```
+
+<pre>
+000065c5 T <b>DASH_ZIP_flt_zip</b>
+</pre>
+
+### Application Cross-compilation
+
+First, navigate to [applications/APIApps/radar_correlator](https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator) folder. Then run the following command to build the executable for arm32:
+
+```bash
+cd ../applications/APIApps/radar_correlator
+ARCH=arm32 make zip
+file radar_correlator_zip-arm32.so
+```
+```
+radar_correlator_zip-arm32.so: ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), dynamically linked, BuildID[sha1]=4f51a07fdd5f11cdad4bb3896dfceee8f9531a14, not stripped
 ```
 
 After verifying the file is compiled for the correct platform, copy the file and inputs to the build directory:
 
 ```bash
-# Assuming your CEDR build folder is in the root directory and named "build-arm"
-cp track_nb.so image.png ../../../build-arm
+# Assuming your CEDR build folder is in the root directory and named "build-arm32"
+cp radar_correlator_zip-arm32.{so,out} ../../../build-arm32
 ```
 
-Simply, perform the same operations for pulse doppler application:
+### Running CEDR on ZedBoard
+
+Now, change your working directory to the `build-arm32` directory. Before going into the ZedBoard first copy the [daemon_config.json](https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json) file to the `build-arm32` directory and create an output folder.
 
 ```bash
-cd ../pulse_doppler
-ARCH=aarch64 make nonblocking
-cp -r pulse_doppler-nb-aarch64.so input/ ../../../build-arm
-```
-
-### Running API-based CEDR on ZCU102
-
-Now, change your working directory to the `build-arm` directory. Before going into the zcu102 first copy the [daemon_config.json](https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json) file to the `build-arm` directory and create an output folder. From the build-arm directory, run:
-
-```bash
-cd ../../../build-arm
+cd ../../../build-arm32
 cp ../daemon_config.json ./
-mkdir output/
+ls
 ```
 
-Now we will ssh into the ZCU102, and enter the password when prompted:
+Now we will copy our files to ZedBoard, and enter the password `root` when prompted. Assuming using Docker, copy the `CEDR/build-arm32` folder to the host machine. While we only need handful of files to actually run CEDR and Radar Correlator application, we will copy everything under `build-arm32` to the SD Card's `System` partition. Running on the host machine:
 
 ```bash
-ssh <user-name>@<zcu102-ip>
+docker cp <container_name>:/root/repository/CEDR/build-arm32 ./
+cp -r ./build-arm32 <path_to_SD_Cards_system_partition>
 ``` 
 
-If you like, you can create a folder for yourself on the board where you will be working for the remainder of this tutorial. Now create a folder in the desired working directory called `mnt` and create an sshfs connection for the `mnt` directory using the build folder (`build-arm`) on your local machine:
+After these steps are completed, remove the SD Card from the host machine and attach it to the ZedBoard and turn on the ZedBoard. Using any serial communication tool like `Putty`, `screen`, or `minicom`, watch ZedBoard as it boots and enter username and password as `root` when promted. After botting the board, navigate to System partition of the SD Card and after typing `ls` you should see all the files you copied on the ZedBoard.
 
 ```bash
-cd <desired workspace>
-mkdir mnt
-sshfs <user_name>@<ip for the localmachine>:<path to CEDR repository root folder>/build-arm mnt
-cd mnt
+screen /dev/ttyACM0 115200
+Username: root
+Password: root
+cd /mnt/sd-mmcblk0p2/build-arm32
+ls
 ```
 
-After these steps are completed, if you type `ls` you should see all the files you had on the local machine is also here on the zcu102.
-
-Before running CEDR, we need to enable FFT and GEMM accelerator in the [daemon_config.json](https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json) file and loosen the thread permission just like we did for x86_64. By the time this tutorial was written, we had 2 FFT and 2 GEMM accelerators available in the FPGA image. We can put any number between 0-2 to the corresponding fields on the [daemon_config.json](https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json) file. Change the file with the following `Worker Threads` setup:
+Before running CEDR, we need to enable FFT accelerator in the [daemon_config.json](https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json) file. By the time this tutorial was written, we had 2 FFT accelerators available in the FPGA image. We can put any number between 0-2 to the corresponding fields on the [daemon_config.json](https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json) file. Change the file with the following `Worker Threads` setup:
 
 ```json
 "Worker Threads": {
-        "cpu": 3,
+        "cpu": 1,
         "fft": 2,
-        "gemm": 2,
+        "gemm": 0,
         "gpu": 0
     },
-...
-"Loosen Thread Permissions": true,
 ```
 Execution of CEDR is the same as the x86_64 version. In one terminal launch CEDR:
 
 ```bash
-./cedr -c ./daemon_config.json -l NONE &
+./cedr -c ./daemon_config.json &
 ```
-After launching CEDR, you should see the function handles for FFT and GEMM accelerators are successfully grabbed.
+After launching CEDR, you should see the function handles for FFT accelerators are successfully grabbed.
 
-In another terminal, we will submit an instance of `lane_detection` and five instances of `pulse doppler` using `sub_dag`:
+In another terminal, we will submit 5 instances of `radar_correlator` using `sub_dag` and check the outputs:
 
 ```bash
-./sub_dag -a ./track_nb.so,./pulse_doppler-nb-aarch64.so -n 1,5 -p 0,100
+./sub_dag -a ./radar_correlator_zip-arm32.so -n 5 -p 0
 ```
 
-Now kill the CEDR by running `./kill_deamon` on the second terminal and check the resource_name fields for the first 10 FFT tasks:
+Now kill CEDR by running `./kill_deamon` and check the `resource_name` fields for the first 10 APIs:
 
 ```bash
+./kill_daemon
 head -n 10 ./log_dir/experiment0/timing_trace.log
 ```
+
+We can see that all the resources available for FFT execution (`cpu1`, `fft1`, and `fft2`) are being used and ZIP is only using CPU (`cpu1`) for execution.
+
+### Using the ZIP Accelerator
+Now we can also test the newly added accelerator based ZIP implementation. Modify the `daemon_config.json` file to set the number of ZIPs to 2.
+
+```json
+"Worker Threads": {
+        "cpu": 1,
+        "fft": 2,
+        "zip": 2,
+        "gemm": 0,
+        "gpu": 0
+    },
 ```
-app_id: 0, app_name: track_nb, task_id: 0, task_name: DASH_FFT, resource_name: <b>cpu1</b>, ref_start_time: 5248428403449098, ref_stop_time: 5248428420053817, actual_exe_time: 16604719
-app_id: 0, app_name: track_nb, task_id: 1, task_name: DASH_FFT, resource_name: <b>cpu2</b>, ref_start_time: 5248428408909254, ref_stop_time: 5248428420265209, actual_exe_time: 11355955
-app_id: 0, app_name: track_nb, task_id: 3, task_name: DASH_FFT, resource_name: <b>fft1</b>, ref_start_time: 5248428408932076, ref_stop_time: 5248428420061538, actual_exe_time: 11129462
-app_id: 0, app_name: track_nb, task_id: 4, task_name: DASH_FFT, resource_name: <b>fft2</b>, ref_start_time: 5248428409129026, ref_stop_time: 5248428420069309, actual_exe_time: 10940283
-app_id: 0, app_name: track_nb, task_id: 2, task_name: DASH_FFT, resource_name: <b>cpu3</b>, ref_start_time: 5248428409170040, ref_stop_time: 5248428420067799, actual_exe_time: 10897759
-app_id: 0, app_name: track_nb, task_id: 5, task_name: DASH_FFT, resource_name: <b>cpu1</b>, ref_start_time: 5248428420067189, ref_stop_time: 5248428420236706, actual_exe_time: 169517
-app_id: 0, app_name: track_nb, task_id: 7, task_name: DASH_FFT, resource_name: <b>cpu3</b>, ref_start_time: 5248428420072569, ref_stop_time: 5248428420260798, actual_exe_time: 188229
-app_id: 0, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: <b>fft2</b>, ref_start_time: 5248428420073379, ref_stop_time: 5248428420160848, actual_exe_time: 87469
-app_id: 0, app_name: track_nb, task_id: 14, task_name: DASH_FFT, resource_name: <b>fft2</b>, ref_start_time: 5248428420165289, ref_stop_time: 5248428420259618, actual_exe_time: 94329
-app_id: 0, app_name: track_nb, task_id: 8, task_name: DASH_FFT, resource_name: <b>fft1</b>, ref_start_time: 5248428420242426, ref_stop_time: 5248428420336426, actual_exe_time: 94000
-```
 
-We can see that all the resources available for FFT execution (`cpu1`, `cpu2`, `cpu3`, `fft1`, and `fft2`) are being used.
-
-Lastly, let's compare the outputs with x86 results to validate the correctness.
-
+Re-run CEDR:
 ```bash
-xdg-open output_fft.png
-cat output/pulse_doppler_output.txt
+./cedr -c ./daemon_config.json &
+```
+After launching CEDR, you should see the function handles for ZIP accelerators are successfully grabbed along with FFTs.
+
+Submit 5 instances of `radar_correlator` using `sub_dag`, check the outputs, kill CEDR using `./kill_deamon`, and check the `resource_name` fields for the first 10 APIs once again:
+```bash
+./sub_dag -a ./radar_correlator_zip-arm32.so -n 5 -p 0
+./kill_daemon
+head -n 10 ./log_dir/experiment1/timing_trace.log
 ```
 
+#### Gantts from ZedBoard Experiments:
+After running these experiments you can turn off the ZedBoard, remove the SD Card, place it to the host machine, copy `timing_trace.log` files for both experiments, and plot the Gantts using the same setup as before. The Gantt of `experiment0` will only show 1CPU and 2FFTs in use while `experiment1` will show 1CPU, 2FFTs, and 2ZIPs in use.
 
-
-# Supplemental Exercises:
-
-## Supplemental Exercise 1: Design Space Exploration
-[Return to top](#fpga24-tutorial-archive)
+## Exercise 2: Design Space Exploration
+[Return to top](#fpga25-tutorial-archive)
 
 CEDR comes with some scripts that makes design-space exploration (DSE) rapid and easy. Now, we will go over the flow and define how to perform DSE step by step. First, navigate to folder where we accomodate API based CEDR scripts from [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./).
 
@@ -453,7 +760,7 @@ cd ../../../build
 rm -rf log_dir/*
 ``` 
 
-Then, first execute `run_cedr.sh` for running CEDR with the DSE configurations on the first terminal. Then, pull up a new terminal and run `run_sub_dag.sh` for dynamically submitting the applications based on workload composition. If you are on Docker environment, execute the first ... commands on a separate terminal to be able to pull up a second terminal running docker container.
+Then, first execute `run_cedr.sh` for running CEDR with the DSE configurations on the first terminal. Then, pull up a new terminal and run `run_sub_dag.sh` for dynamically submitting the applications based on workload composition. If you are on Docker environment, execute the first commands on a separate terminal to be able to pull up a second terminal running docker container.
 
 ```bash
 docker ps
@@ -469,7 +776,7 @@ bash run_sub_dag.sh # Execute on the second terminal
 After both scripts terminate, there should be a folder named `HIGH` in the `log_dir` containing as many files as there are trials. Each folder should have log files for each hardware composition, scheduler, and injection rate. To plot all the DSE results in a 3D format, first navigate to `scripts/scripts-API/` from [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./).
 
 ```bash
-cd scripts/scripts-API/
+cd ../scripts/scripts-API/
 ```
 
 There are two scripts named `makedataframe.py` and `plt3dplot_inj.py` for plotting 3D diagram. For each DSE experiment, following lines in [makedataframe.py](https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/makedataframe.py) should be modified.
@@ -532,12 +839,16 @@ Execute the script using the following commands.
 ```bash
 python3 plt3dplot_inj.py <input file name> <metric>
 python3 plt3dplot_inj.py dataframe.csv CUMU  # Accumulates execution time of each API call
+mv dse_sched.png dse_cumu.png
 python3 plt3dplot_inj.py dataframe.csv EXEC  # Application execution time
+mv dse_sched.png dse_exec.png
 python3 plt3dplot_inj.py dataframe.csv SCHED # Scheduling overhead
 ```
 
-## Supplemental Exercise 2: Integration and Evaluation of EFT Scheduler
-[Return to top](#fpga24-tutorial-archive)
+# Supplemental Exercises:
+
+## Supplemental Exercise 1: Integration and Evaluation of EFT Scheduler
+[Return to top](#fpga25-tutorial-archive)
 
 Now navigate to [scheduler.cpp](https://github.com/UA-RCL/CEDR/tree/tutorial/scr-api/scheduler.cpp). This file contains various schedulers already tailored to work with CEDR. In this part of the tutorial, we will add the Earliest Finish Time(EFT) scheduler to CEDR. EFT heuristic schedules all the tasks in the `read queue` one by one based on the earliest expected finish time of the task on the available resources (processing elements -- PE). 
 
@@ -758,128 +1069,8 @@ Once everything is completed, we will terminate CEDR with `kill_daemon`.
 ./kill_daemon
 ```
 
-## Supplemental Exercise 3: Introducing a New API Call
-[Return to top](#fpga24-tutorial-archive)
-
-In this section of the tutorial, we will demonstrate integration of a new API call to the CEDR. We will use `DASH_ZIP` API call as an example. 
-
-Navigate to libdash folder from [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./).
-```bash
-cd libdash
-```
-
-Add the API function definitions to the `dash.h`.
-
-```c
-void DASH_ZIP_flt(dash_cmplx_flt_type* input_1, dash_cmplx_flt_type* input_2, dash_cmplx_flt_type* output, size_t size, zip_op_t op);
-void DASH_ZIP_flt_nb(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input_2, dash_cmplx_flt_type** output, size_t* size, zip_op_t* op, cedr_barrier_t* kernel_barrier);
-
-void DASH_ZIP_int(dash_cmplx_int_type* input_1, dash_cmplx_int_type* input_2, dash_cmplx_int_type* output, size_t size, zip_op_t op);
-void DASH_ZIP_int_nb(dash_cmplx_int_type** input_1, dash_cmplx_int_type** input_2, dash_cmplx_int_type** output, size_t* size, zip_op_t* op, cedr_barrier_t* kernel_barrier);
-```
-
-There 4 different function definitions here:
-  1. DASH_ZIP_flt: Supports blocking ZIP calls for `dash_cmplx_flt_type`
-  2. DASH_ZIP_flt_nb: Supports non-blocking ZIP calls for `dash_cmplx_flt_type`
-  3. DASH_ZIP_int: Supports blocking ZIP calls for `dash_cmplx_int_type`
-  4. DASH_ZIP_int_nb: Supports non-blocking ZIP calls for `dash_cmplx_int_type`
-
-Add supported ZIP operation enums to `dash_types.h`
-```c
-typedef enum zip_op {
-  ZIP_ADD = 0,
-  ZIP_SUB = 1,
-  ZIP_MULT = 2,
-  ZIP_DIV = 3
-} zip_op_t;
-```
-
-Add CPU implementation of the ZIP to [libdash/cpu](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/cpu/) `zip.cpp`. For simplicity, we just copy the original implementation.
-```bash
-cp original_files/zip.cpp libdash/cpu/
-```
-
-In `zip.cpp`, we also have the `enqueue_kernel` call in the API definition, which is how the task for this API will be sent to CEDR. A prototype of the `enqueue_kernel` function is given in line 12, and `enqueue_kernel` is used in non-blocking versions of the function (lines 83 and 113). The prototype is the same for all the APIs created for CEDR. The first argument has to be the function name, the second argument has to be the precision to be used, and the third argument shows how many inputs are needed for the calling function (for ZIP, this is 6). Now let's look at the ZIP-specific `enqueue_kernel` call.
-
-```c
-enqueue_kernel("DASH_ZIP", "flt", 6, input_1, input_2, output, size, op, kernel_barrier);
-```
-
-In this sample `enqueue kernel` call, we have 4 important portions:
-  * ***"DASH_ZIP"***: Name of the API call
-  * ***"flt"***: Type of the inputs on the API call
-  * ***6***: Number of variables for the API call
-  * Variables:
-    * ***input_1***: First input of the ZIP
-    * ***input_2***: Second input of the ZIP
-    * ***output***: Output of the ZIP
-    * ***size***: Array size for inputs and output
-    * ***op***: ZIP operation type (ADD, SUB, MUL, or DIV)
-    * ***kernel_barrier***: Contains configuration information of barriers for blocking and non-blocking implementation
-
-In the `zip.cpp`, we need to fill the bodies of the four function definitions that are used so the application will call `enqueue_kernel` properly and hand off the task to CEDR for scheduling:
-
-1. DASH_ZIP_flt
-2. DASH_ZIP_flt_nb
-3. DASH_ZIP_int
-4. DASH_ZIP_int_nb
-
-We also implement two more functions, which contains implementation of CPU-based ZIP operations. Functions are created with `_cpu` suffix so that CEDR can identify the functions correctly for CPU execution:
-
-1. DASH_ZIP_flt_cpu: `dash_cmplx_flt_type`
-2. DASH_ZIP_int_cpu: `dash_cmplx_int_type`
-
-Having included API implementation, we should introduce the new API call to the system by updating CEDR header file ([./src-api/include/header.hpp](https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp)):
-
-```
-enum api_types {DASH_FFT = 0, DASH_GEMM = 1, DASH_FIR = 2, DASH_SpectralOpening = 3, DASH_CIC = 4, DASH_BPSK = 5, DASH_QAM16 = 6, DASH_CONV_2D = 7, DASH_CONV_1D = 8, <b>DASH_ZIP = 9,</b> NUM_API_TYPES = <b>10</b>};
-
-static const char *api_type_names[] = {"DASH_FFT", "DASH_GEMM", "DASH_FIR", "DASH_SpectralOpening", "DASH_CIC", "DASH_BPSK", "DASH_QAM16", "DASH_CONV_2D", "DASH_CONV_1D"<b>, "DASH_ZIP"</b>};
-...
-static const std::map<std::string, api_types> api_types_map = { {api_type_names[api_types::DASH_FFT], api_types::DASH_FFT},
-                                                                {api_type_names[api_types::DASH_GEMM], api_types::DASH_GEMM},
-                                                                {api_type_names[api_types::DASH_FIR], api_types::DASH_FIR},
-                                                                {api_type_names[api_types::DASH_SpectralOpening], api_types::DASH_SpectralOpening},
-                                                                {api_type_names[api_types::DASH_CIC], api_types::DASH_CIC},
-                                                                {api_type_names[api_types::DASH_BPSK], api_types::DASH_BPSK},
-                                                                {api_type_names[api_types::DASH_QAM16], api_types::DASH_QAM16},
-                                                                {api_type_names[api_types::DASH_CONV_2D], api_types::DASH_CONV_2D},
-                                                                {api_type_names[api_types::DASH_CONV_1D], api_types::DASH_CONV_1D},
-                                                              <b>{api_type_names[api_types::DASH_ZIP], api_types::DASH_ZIP}</b>};
-```
-
-Navigate to the build folder, re-generate the files, and check the `libdash-rt.so` shared object to verify the new ZIP-based function calls.
-```bash
-cd ../build
-cmake ..
-make -j $(nproc)
-nm -D libdash-rt/libdash-rt.so | grep -E '*_ZIP_*'
-```
-
-To verify, build lane detection application which utilizes ZIP API calls.
-```bash
-cd applications/APIApps/lane_detection/
-make fft_nb.so
-cp track_nb.so image.png ../../../build/
-```
-
-Now, launch CEDR and submit lane detection application.
-```bash
-cd ../../../build/
-rm -rf log_dir/*
-./cedr -c ./daemon_config.json -l NONE &
-./sub_dag -a ./track_nb.so -n 1 -p 0
-```
-
-Let's check the `timing_trace.log` for ZIP API calls.
-```bash
-cat log_dir/experiment0/timing_trace.log | grep -E '*ZIP*'
-```
-
-If you have a C++ based serial implementation of key kernels in your application, you can add your API call following the explanations in this section and replace your C++ kernel code with newly introduced API call following the Section 3.
-
-## Supplemental Exercise 4: Running Multiple Applications with CEDR on x86
-[Return to top](#fpga24-tutorial-archive)
+## Supplemental Exercise 2: Running Multiple Applications with CEDR on x86
+[Return to top](#fpga25-tutorial-archive)
 
 ### Compilation of Applications
 In this section, we will demonstrate CEDR's ability to manage dynamically arriving applications. Assuming you already have built CEDR following the previous steps, we will directly delve into compiling and running two new applications that are lane detection and pulse doppler.
@@ -918,8 +1109,8 @@ Then, launch CEDR with your desired configuration and submit both applications w
 
 Observe the [output image of lane detection](./build/output_fft.png) and the [shift and time delay](./build/output/pulse_doppler_output.txt) calculated by pulse doppler.
 
-## Supplemental Exercise 5: GPU Based SoC Experiment (Nvidia Jetson AGX Xavier)
-[Return to top](#fpga24-tutorial-archive)
+## Supplemental Exercise 3: GPU Based SoC Experiment (Nvidia Jetson AGX Xavier)
+[Return to top](#fpga25-tutorial-archive)
 
 ### Building CEDR
 Firstly, we need to connect to the Nvidia Jetson board through ssh connection. 
@@ -1024,4 +1215,4 @@ cat output/pulse_doppler_output.txt
 
 # Contact
 
-For any questions and bug reports, please email [jmack2545@arizona.edu](mailto:jmack2545@arizona.edu), [gener@arizona.edu](mailto:gener@arizona.edu), or [suluhan@arizona.edu](mailto:suluhan@arizona.edu).
+For any questions and bug reports, please email [sahilhassan@arizona.edu](mailto:sahilhassan@arizona.edu), [gener@arizona.edu](mailto:gener@arizona.edu), or [suluhan@arizona.edu](mailto:suluhan@arizona.edu).
