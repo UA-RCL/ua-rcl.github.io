@@ -74,9 +74,10 @@ Change your working directory to the cloned CEDR folder
 cd CEDR
 ```
 
-Install all the required dependencies using the following command (this will take some time):
+Install all the required dependencies using the following commands (this will take some time):
 ```bash
 sudo bash install_dependencies.sh
+pip3 install -r requirements.txt
 ```
 
 ## Building CEDR for x86:
