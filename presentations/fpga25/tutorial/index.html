@@ -574,8 +574,9 @@ docker <span class="nb">cp</span> &lt;container_name&gt;:/root/repository/CEDR .
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>CEDR
 </code></pre></div></div>
 
-<p>Install all the required dependencies using the following command (this will take some time):</p>
+<p>Install all the required dependencies using the following commands (this will take some time):</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>bash install_dependencies.sh
+pip3 <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
 </code></pre></div></div>
 
 <h2 id="building-cedr-for-x86">Building CEDR for x86:</h2>
