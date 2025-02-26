@@ -52,6 +52,7 @@ docker cp <container_name>:/root/repository/CEDR ./
 ```bash
 docker exec -it --rm <container_name> /bin/bash
 ```
+  * **Windows Users:** To access the FPGA, we will need serial communication tools, which can be [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) in this case. 
 
 ### Linux-native instructions (Requires root access)
 Install git using the following command:
