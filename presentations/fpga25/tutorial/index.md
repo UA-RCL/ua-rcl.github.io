@@ -45,7 +45,7 @@ docker run -it --rm -v <host-folder>:/root/repository/share uofarcl/cedr:tutoria
 ```
   * Using `docker cp` to copy files from host machine:
 ```bash
-docker ps # Find the Container ID and Name
+docker ps # Find the CONTAINER ID and NAME
 docker cp <container_name>:/root/repository/CEDR ./
 ```
   * If you need to detach from docker at any time you can use `Crtl+p` and `Ctrl+q` to detach and to re-attach use:
@@ -94,7 +94,7 @@ cd build
 Call cmake and make to create CEDR executables for x86
 ```bash
 cmake ../
-make -j -$(nproc)
+make -j $(nproc)
 ```
 At this point there are 4 important files that should be compiled:
  - *cedr:* CEDR runtime daemon
@@ -114,31 +114,31 @@ Move to the Radar Correlator folder in the [applications](https://github.com/UA-
 cd applications/APIApps/radar_correlator
 ```
 
-Look at the [non-API version](https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator/radar_correlator_non_api.c) of the Radar Correlator and locate possible places for adding API calls to the application
+Look at the [non-API version](https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator/radar_correlator_non_api.c) (`radar_correlator_non_api.c`) of the Radar Correlator and locate possible places for adding API calls to the application
  - Forward FFT call: Line 146
  - Forward FFT call: Line 167
  - Inverse FFT call: Line 194
 
-Create a new file to place the API calls in the file and change the radar correlator to have DASH_FFT API calls.
+Create a copy of the non-API Radar Correlator file as `radar_correlator_fft.c`. We'll modify this new file into CEDR application by placing DASH_FFT API calls.
 ```bash
 cp radar_correlator_non_api.c radar_correlator_fft.c
 ```
     
-Make sure the [dash.h](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h) is included in the application
+Now, editing the `radar_correlator_fft.c` application, make sure the [dash.h](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h) is included
 ```c
 #include "dash.h"
 ```
 
 Change the `radar_correlator_fft.c` to include `DASH_FFT` calls
 ```c
-<gsl_fft_wrapper(fft_inp, fft_out, len, true);;
->DASH_FFT_flt(fft_inp, fft_out, len, true);
+146 <gsl_fft_wrapper(fft_inp, fft_out, len, true);;
+146 >DASH_FFT_flt(fft_inp, fft_out, len, true);
 
-<gsl_fft_wrapper(fft_inp, fft_out, len, true);;
->DASH_FFT_flt(fft_inp, fft_out, len, true);
+167 <gsl_fft_wrapper(fft_inp, fft_out, len, true);;
+167 >DASH_FFT_flt(fft_inp, fft_out, len, true);
 
-<gsl_fft_wrapper(fft_inp, fft_out, len, false);
->DASH_FFT_flt(fft_inp, fft_out, len, false);
+194 <gsl_fft_wrapper(fft_inp, fft_out, len, false);
+194 >DASH_FFT_flt(fft_inp, fft_out, len, false);
 ```
 
 Build radar correlator without API calls and observe the output
@@ -147,7 +147,7 @@ make non-api
 ./radar_correlator_non_api-x86.out
 ```
 
-Build radar correlator with API calls (standalone execution outside CEDR) and compare the output against non-api version
+Build radar correlator with API calls (standalone CPU-only execution outside CEDR) and compare the output against non-api version
 ```bash
 make standalone
 ./radar_correlator_fft-x86.out
@@ -157,6 +157,7 @@ Build radar correlator shared object to be used with CEDR
 ```bash
 make api
 ```
+This should generate `radar_correlator_fft-x86.so` shared object binary.
 
 Copy the shared object and any input data files to the CEDR build folder
 ```bash
@@ -191,14 +192,16 @@ Observe the contents of the `daemon_config.json`
 
 Modify the `daemon_config.json` file to set the number of CPUs to 3 (or any other number).
 
-```
+<pre class="my-pre">
+
 "Worker Threads": {
   "cpu": <b>3</b>,
   "fft": 0,
   "gemm": 0,
   "gpu": 0
 },
-```
+
+</pre>
 
 Run CEDR using the config file
 ```bash
@@ -234,7 +237,7 @@ Now, observe the log files generated in `log_dir/experiment0`.
 We can generate a Gantt chart showing the distribution of tasks to the processing elements. Navigate the `scripts/` folder from the [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./) and run `gantt_k-nk.py` script.
 
 ```bash
-cd scripts/
+cd ../scripts/    # Running from the CEDR build folder
 python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 ```
 
@@ -278,17 +281,19 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment2/timing_trace.log
 mv gantt.png gantt_10rc_100ms.png
 ```
 
-## Chaning Hardware Composition
+## Changing Hardware Composition
 Until now, we have been using 3 CPUs. This time we will use 5 CPUs and run the same experiment. Modify the `daemon_config.json` file to set the number of CPUs to 5.
 
-```
+<pre class="my-pre">
+
 "Worker Threads": {
   "cpu": <b>5</b>,
   "fft": 0,
   "gemm": 0,
   "gpu": 0
 },
-```
+
+</pre>
 
 While in the build folder, run CEDR again. Run `sub_dag` to submit applications to CEDR, this time using `-n 10` with `-p 100000` to submit 10 radar correlators with 100ms delays between each instance and terminate CEDR using `kill_daemon`. Make sure you wait for all 10 instances to complete before running `kill_daemon` and generate the Gantt chart. 
 
@@ -300,8 +305,8 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment3/timing_trace.log
 mv gantt.png gantt_10rc_100ms_5CPU.png
 ```
 
-## Chaning the scheduler
-Until now, we have been using Round Robin scheduler. This time we will run the same experiment using `ETF` scheduler. Modify the `daemon_config.json` file to set scheduler as `ETF`.
+## Changing the scheduler
+Until now, we have been using Round Robin scheduler. This time we will run the same experiment using Earliest Task First (`ETF`) scheduler. Modify the `daemon_config.json` file to set scheduler as `ETF`.
 
 ```
 "Scheduler": "ETF",
@@ -346,7 +351,7 @@ There 4 different function definitions here:
   3. DASH_ZIP_int: Supports blocking ZIP calls for `dash_cmplx_int_type`
   4. DASH_ZIP_int_nb: Supports non-blocking ZIP calls for `dash_cmplx_int_type`
 
-Add supported ZIP operation enums to `dash_types.h`
+Any custom data types used for a new API call should be added to the `dash_types.h` file. In this case, add supported ZIP operation enums `zip_op` to `dash_types.h`
 ```c
 typedef enum zip_op {
   ZIP_ADD = 0,
@@ -356,7 +361,7 @@ typedef enum zip_op {
 } zip_op_t;
 ```
 
-Add CPU implementation of the ZIP to [libdash/cpu](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/cpu/) `zip.cpp`. For simplicity, we just copy the original implementation.
+Add CPU implementation of the ZIP to [libdash/cpu/](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/cpu/) `zip.cpp`. For simplicity during tutorial, we provide the CPU implementation under `original_files/` directory under root repository, that can simply be copied into `libdash/cpu/`.
 ```bash
 cp ../original_files/zip.cpp cpu/
 ```
@@ -386,14 +391,17 @@ In the `zip.cpp`, we need to fill the bodies of the four function definitions th
 3. DASH_ZIP_int
 4. DASH_ZIP_int_nb
 
-We also implement two more functions, which contains implementation of CPU-based ZIP operations. Functions are created with `_cpu` suffix so that CEDR can identify the functions correctly for CPU execution:
+These are hardware-agnostic functions with precision specified (`flt`/`int`) and serial/parallel execution specified (`_nb` suffix).
+
+Given the hardware-agnostic functions are defined, we furthermore implement two more functions, which contains implementation of CPU-based ZIP operations for two precisions (`flt`,`int`). These functions are created with `_cpu` suffix on top of the hardware-agnostic names, so that CEDR can identify the functions correctly for CPU execution:
 
 1. DASH_ZIP_flt_cpu: `dash_cmplx_flt_type`
 2. DASH_ZIP_int_cpu: `dash_cmplx_int_type`
 
-Having included API implementation, we should introduce the new API call to the system by updating CEDR header file ([./src-api/include/header.hpp](https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp)):
+Having included API implementation in libdash, we should introduce the new API call to the runtime system by updating CEDR header file ([./src-api/include/header.hpp](https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp)):
 
-```
+<pre class="my-pre">
+
 enum api_types {DASH_FFT = 0, DASH_GEMM = 1, DASH_FIR = 2, DASH_SpectralOpening = 3, DASH_CIC = 4, DASH_BPSK = 5, DASH_QAM16 = 6, DASH_CONV_2D = 7, DASH_CONV_1D = 8, <b>DASH_ZIP = 9,</b> NUM_API_TYPES = <b>10</b>};
 
 static const char *api_type_names[] = {"DASH_FFT", "DASH_GEMM", "DASH_FIR", "DASH_SpectralOpening", "DASH_CIC", "DASH_BPSK", "DASH_QAM16", "DASH_CONV_2D", "DASH_CONV_1D"<b>, "DASH_ZIP"</b>};
@@ -407,8 +415,9 @@ static const std::map<std::string, api_types> api_types_map = { {api_type_names[
                                                                 {api_type_names[api_types::DASH_QAM16], api_types::DASH_QAM16},
                                                                 {api_type_names[api_types::DASH_CONV_2D], api_types::DASH_CONV_2D},
                                                                 {api_type_names[api_types::DASH_CONV_1D], api_types::DASH_CONV_1D},
-                                                              <b>{api_type_names[api_types::DASH_ZIP], api_types::DASH_ZIP}</b>};
-```
+                                                                <b>{api_type_names[api_types::DASH_ZIP], api_types::DASH_ZIP}</b>};
+
+</pre>
 
 ## Building CEDR with ZIP API
 Navigate to the build folder, re-generate the files, and check the `libdash-rt.so` shared object to verify the new ZIP-based function calls.
@@ -425,7 +434,7 @@ After re-building CEDR with ZIP API, move to the Radar Correlator folder in the 
 cd ../applications/APIApps/radar_correlator
 ```
 
-Create a new file to place the API calls in the file and change the radar correlator to have DASH_FFT API calls
+Create a copy of the CEDR application file with DASH_FFT API calls as `radar_correlator_zip.c` file. We'll use this new file to change any candidate code for ZIP operations to use DASH_ZIP API calls
 ```bash
 cp radar_correlator_fft.c radar_correlator_zip.c
 ```
@@ -435,33 +444,37 @@ Look at the [non-API version](https://github.com/UA-RCL/CEDR/tree/tutorial/appli
 
 Change the `radar_correlator_zip.c` to include `DASH_ZIP` calls
 ```c
-<for (i = 0; i < 2 * len; i += 2) {
-<  corr_freq[i] = (X1[i] * X2[i]) + (X1[i + 1] * X2[i + 1]);
-<  corr_freq[i + 1] = (X1[i + 1] * X2[i]) - (X1[i] * X2[i + 1]);
-<}
->dash_cmplx_flt_type *zip_inp0 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
->dash_cmplx_flt_type *zip_inp1 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
->dash_cmplx_flt_type *zip_out = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
->for (size_t i = 0; i < len; i++) {
->  zip_inp0[i].re = (dash_re_flt_type) X1[2*i];
->  zip_inp0[i].im = (dash_re_flt_type) X1[2*i+1];
->  zip_inp1[i].re = (dash_re_flt_type) X2[2*i];
->  zip_inp1[i].im = (dash_re_flt_type) -X2[2*i+1]; // Conj Multiplication
->}
->DASH_ZIP_flt(zip_inp0, zip_inp1, zip_out, len, ZIP_MULT);
->for (size_t i = 0; i < len; i++) {
->  corr_freq[2*i]   = (double) zip_out[i].re;
->  corr_freq[2*i+1] = (double) zip_out[i].im;
->}
+// ------- Comment these lines ---------
+for (i = 0; i < 2 * len; i += 2) {
+  corr_freq[i] = (X1[i] * X2[i]) + (X1[i + 1] * X2[i + 1]);
+  corr_freq[i + 1] = (X1[i + 1] * X2[i]) - (X1[i] * X2[i + 1]);
+}
+// -------------------------------------
+// ------ Add the following lines ------
+dash_cmplx_flt_type *zip_inp0 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
+dash_cmplx_flt_type *zip_inp1 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
+dash_cmplx_flt_type *zip_out = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
+for (size_t i = 0; i < len; i++) {
+  zip_inp0[i].re = (dash_re_flt_type) X1[2*i];
+  zip_inp0[i].im = (dash_re_flt_type) X1[2*i+1];
+  zip_inp1[i].re = (dash_re_flt_type) X2[2*i];
+  zip_inp1[i].im = (dash_re_flt_type) -X2[2*i+1]; // Conj Multiplication
+}
+DASH_ZIP_flt(zip_inp0, zip_inp1, zip_out, len, ZIP_MULT);
+for (size_t i = 0; i < len; i++) {
+  corr_freq[2*i]   = (double) zip_out[i].re;
+  corr_freq[2*i+1] = (double) zip_out[i].im;
+}
+// -------------------------------------
 ```
 
-Build radar correlator with ZIP API calls, standalone as well as the shared object, and compare the output against other versions
+Build radar correlator with ZIP API calls, standalone as well as the CEDR-compatible shared-object, and compare the output against other versions
 ```bash
 make zip
 ./radar_correlator_zip-x86.out
 ```
 
-Copy the shared object to the CEDR build folder change back to default config file, and run `cedr`, `sub_dag`, and `kill_daemon`.
+Copy the shared object (`radar_correlator_zip-x86.so`) to the CEDR build folder, change back to default config file, and run `cedr`, `sub_dag`, and `kill_daemon`.
 ```bash
 cp radar_correlator_zip-x86.so ../../../build
 cd ../../../build
@@ -517,9 +530,10 @@ Due to the overhead associated with SD Card based file transfor overheads, we wi
 
 ### Adding ZIP as Resource to CEDR
 
-Update the CEDR header file ([./src-api/include/header.hpp](https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp)) to include zip as a resource by updating the following lines:
+Update the CEDR header file ([./src-api/include/header.hpp](https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp)) to include zip as a supported resource type by updating the following lines:
 
-```
+<pre class="my-pre">
+
 enum resource_type { cpu = 0, fft = 1, mmult = 2, gpu = 3, <b>zip = 4, NUM_RESOURCE_TYPES = 5 </b>};
 static const char *resource_type_names[] = {"cpu", "fft", "gemm", "gpu"<b>, "zip"</b>};
 static const std::map<std::string, resource_type> resource_type_map = {
@@ -528,7 +542,8 @@ static const std::map<std::string, resource_type> resource_type_map = {
                                                                        {resource_type_names[(uint8_t) resource_type::mmult], resource_type::mmult},
                                                                        {resource_type_names[(uint8_t) resource_type::gpu], resource_type::gpu}<b>,
                                                                        {resource_type_names[(uint8_t) resource_type::zip], resource_type::zip}</b>};
-```
+
+</pre>
 
 These lines makes sure the functions with `_zip` suffix are grabbed when CEDR starts and used when schedulers assigns tasks to ZIP accelerator.
 
@@ -554,7 +569,7 @@ In the `libdash/zip/zip.cpp`, there is a `DASH_ZIP_flt_zip` function call. The v
 These are some of the main steps for adding a new accelator to CEDR.
 
 We also need to make sure `CMakeLists.txt` under `libdash` folder looks for ZIP as an accelerator as well. Update following line (19) in [libdash/CMakeLists.txt](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/CMakeLists.txt)
-```CMake
+```cmake
   set(ALL_LIBDASH_MODULES FFT GEMM GPU ZIP)
 ```
 
@@ -574,9 +589,11 @@ Now verifiy the functions with `_zip` suffix that are used for ZIP accelerator.
 nm -D libdash-rt/libdash-rt.so | grep -E '*_zip$'
 ```
 
-```
+<pre class="my-pre">
+
 000065c5 T <b>DASH_ZIP_flt_zip</b>
-```
+
+</pre>
 
 ### Application Cross-compilation
 
@@ -1038,7 +1055,7 @@ make -j
 
 In the [daemon_config.json](https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json) file, we updated the ["Scheduler"](https://github.com/UA-RCL/CEDR/blob/tutorial/daemon_config.json#L35) field to be "EFT" before running CEDR with the updated daemon config file.
 
-```JSON
+```json
     "Scheduler": "EFT",
 ```
 
@@ -1136,7 +1153,7 @@ Then, we can build CEDR. Cross compiler is not necessary in this case since we a
 mkdir build
 cd build
 cmake -DLIBDASH_MODULES="GPU" ../
-make -j -$(nproc)
+make -j $(nproc)
 ```
 
 ### Compilation
@@ -1166,7 +1183,7 @@ mkdir output/
 
 We should enable `GPU` in `daemon_config.json` so that runtime will use it as a computing resource.
 
-```JSON
+```json
 "Worker Threads": {
         "cpu": 7,
         "fft": 0,
@@ -1195,7 +1212,8 @@ Now kill the CEDR by running `./kill_deamon` on the second terminal and check th
 head -n 10 ./log_dir/experiment0/timing_trace.log
 ```
 
-```
+<pre class="my-pre">
+
 app_id: 3, app_name: track_nb, task_id: 0, task_name: DASH_FFT, resource_name: <b>cpu1</b>, ref_start_time: 15215236842193792, ref_stop_time: 15215236873412128, actual_exe_time: 31218336
 app_id: 3, app_name: track_nb, task_id: 1, task_name: DASH_FFT, resource_name: <b>cpu2</b>, ref_start_time: 15215236842244288, ref_stop_time: 15215236873341824, actual_exe_time: 31097536
 app_id: 3, app_name: track_nb, task_id: 2, task_name: DASH_FFT, resource_name: <b>cpu3</b>, ref_start_time: 15215236842259136, ref_stop_time: 15215236873367616, actual_exe_time: 31108480
@@ -1206,7 +1224,8 @@ app_id: 3, app_name: track_nb, task_id: 5, task_name: DASH_FFT, resource_name: <
 app_id: 3, app_name: track_nb, task_id: 6, task_name: DASH_FFT, resource_name: <b>cpu7</b>, ref_start_time: 15215236843057888, ref_stop_time: 15215236873386784, actual_exe_time: 30328896
 app_id: 3, app_name: track_nb, task_id: 11, task_name: DASH_FFT, resource_name: <b>cpu4</b>, ref_start_time: 15215236873349088, ref_stop_time: 15215236873802944, actual_exe_time: 453856
 app_id: 3, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: <b>cpu2</b>, ref_start_time: 15215236873349440, ref_stop_time: 15215236873780032, actual_exe_time: 430592
-```
+
+</pre>
 
 Lastly, let's compare the outputs with x86 results to validate the correctness.
 

@@ -1,0 +1,13 @@
+.my-pre{
+    line-height:1.2em;
+    background: #2d2d2d;
+    color: #cccccc;
+    background-size:2.4em 2.4em;
+    background-origin:content-box;
+    
+    /* some extra styles*/
+    padding:0 20px;
+    text-align:justify;
+    font-family: monospace;
+    overflow-x:auto;
+  }
