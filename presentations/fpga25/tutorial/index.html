@@ -345,6 +345,8 @@
 <!-- 
 
   <link href="/_styles/presentations/fpga24/custom.css" rel="stylesheet" />
+
+  <link href="/_styles/presentations/fpga25/custom.css" rel="stylesheet" />
  -->
 
 <!-- allow pages to customize styling via frontmatter -->
@@ -540,7 +542,7 @@ Open a terminal in your CEDR folder and run the docker image using the following
   </li>
   <li>Using <code class="language-plaintext highlighter-rouge">docker cp</code> to copy files from host machine:
     <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>docker ps <span class="c"># Find the Container ID and Name</span>
+<div class="highlight"><pre class="highlight"><code>docker ps <span class="c"># Find the CONTAINER ID and NAME</span>
 docker <span class="nb">cp</span> &lt;container_name&gt;:/root/repository/CEDR ./
 </code></pre></div>    </div>
   </li>
@@ -591,7 +593,7 @@ pip3 <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
 </code></pre></div></div>
 <p>Call cmake and make to create CEDR executables for x86</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cmake ../
-make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
+make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
 </code></pre></div></div>
 <p>At this point there are 4 important files that should be compiled:</p>
 <ul>
@@ -616,30 +618,30 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>applications/APIApps/radar_correlator
 </code></pre></div></div>
 
-<p>Look at the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator/radar_correlator_non_api.c">non-API version</a> of the Radar Correlator and locate possible places for adding API calls to the application</p>
+<p>Look at the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator/radar_correlator_non_api.c">non-API version</a> (<code class="language-plaintext highlighter-rouge">radar_correlator_non_api.c</code>) of the Radar Correlator and locate possible places for adding API calls to the application</p>
 <ul>
   <li>Forward FFT call: Line 146</li>
   <li>Forward FFT call: Line 167</li>
   <li>Inverse FFT call: Line 194</li>
 </ul>
 
-<p>Create a new file to place the API calls in the file and change the radar correlator to have DASH_FFT API calls.</p>
+<p>Create a copy of the non-API Radar Correlator file as <code class="language-plaintext highlighter-rouge">radar_correlator_fft.c</code>. We’ll modify this new file into CEDR application by placing DASH_FFT API calls.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>radar_correlator_non_api.c radar_correlator_fft.c
 </code></pre></div></div>
 
-<p>Make sure the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h">dash.h</a> is included in the application</p>
+<p>Now, editing the <code class="language-plaintext highlighter-rouge">radar_correlator_fft.c</code> application, make sure the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h">dash.h</a> is included</p>
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"dash.h"</span><span class="cp">
 </span></code></pre></div></div>
 
 <p>Change the <code class="language-plaintext highlighter-rouge">radar_correlator_fft.c</code> to include <code class="language-plaintext highlighter-rouge">DASH_FFT</code> calls</p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">gsl_fft_wrapper</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">true</span><span class="p">);;</span>
-<span class="o">&gt;</span><span class="n">DASH_FFT_flt</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">146</span> <span class="o">&lt;</span><span class="n">gsl_fft_wrapper</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">true</span><span class="p">);;</span>
+<span class="mi">146</span> <span class="o">&gt;</span><span class="n">DASH_FFT_flt</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
 
-<span class="o">&lt;</span><span class="n">gsl_fft_wrapper</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">true</span><span class="p">);;</span>
-<span class="o">&gt;</span><span class="n">DASH_FFT_flt</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="mi">167</span> <span class="o">&lt;</span><span class="n">gsl_fft_wrapper</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">true</span><span class="p">);;</span>
+<span class="mi">167</span> <span class="o">&gt;</span><span class="n">DASH_FFT_flt</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
 
-<span class="o">&lt;</span><span class="n">gsl_fft_wrapper</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
-<span class="o">&gt;</span><span class="n">DASH_FFT_flt</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<span class="mi">194</span> <span class="o">&lt;</span><span class="n">gsl_fft_wrapper</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<span class="mi">194</span> <span class="o">&gt;</span><span class="n">DASH_FFT_flt</span><span class="p">(</span><span class="n">fft_inp</span><span class="p">,</span> <span class="n">fft_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Build radar correlator without API calls and observe the output</p>
@@ -647,7 +649,7 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 ./radar_correlator_non_api-x86.out
 </code></pre></div></div>
 
-<p>Build radar correlator with API calls (standalone execution outside CEDR) and compare the output against non-api version</p>
+<p>Build radar correlator with API calls (standalone CPU-only execution outside CEDR) and compare the output against non-api version</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make standalone
 ./radar_correlator_fft-x86.out
 </code></pre></div></div>
@@ -655,6 +657,7 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 <p>Build radar correlator shared object to be used with CEDR</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make api
 </code></pre></div></div>
+<p>This should generate <code class="language-plaintext highlighter-rouge">radar_correlator_fft-x86.so</code> shared object binary.</p>
 
 <p>Copy the shared object and any input data files to the CEDR build folder</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>radar_correlator_fft-x86.so ../../../build
@@ -702,13 +705,16 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 
 <p>Modify the <code class="language-plaintext highlighter-rouge">daemon_config.json</code> file to set the number of CPUs to 3 (or any other number).</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Worker Threads": {
-  "cpu": &lt;b&gt;3&lt;/b&gt;,
+<pre class="my-pre">
+
+"Worker Threads": {
+  "cpu": <b>3</b>,
   "fft": 0,
   "gemm": 0,
   "gpu": 0
 },
-</code></pre></div></div>
+
+</pre>
 
 <p>Run CEDR using the config file</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./cedr <span class="nt">-c</span> ./daemon_config.json
@@ -752,7 +758,7 @@ make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">npro
 
 <p>We can generate a Gantt chart showing the distribution of tasks to the processing elements. Navigate the <code class="language-plaintext highlighter-rouge">scripts/</code> folder from the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a> and run <code class="language-plaintext highlighter-rouge">gantt_k-nk.py</code> script.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>scripts/
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../scripts/    <span class="c"># Running from the CEDR build folder</span>
 python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 </code></pre></div></div>
 
@@ -791,16 +797,19 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment2/timing_trace.log
 <span class="nb">mv </span>gantt.png gantt_10rc_100ms.png
 </code></pre></div></div>
 
-<h2 id="chaning-hardware-composition">Chaning Hardware Composition</h2>
+<h2 id="changing-hardware-composition">Changing Hardware Composition</h2>
 <p>Until now, we have been using 3 CPUs. This time we will use 5 CPUs and run the same experiment. Modify the <code class="language-plaintext highlighter-rouge">daemon_config.json</code> file to set the number of CPUs to 5.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Worker Threads": {
-  "cpu": &lt;b&gt;5&lt;/b&gt;,
+<pre class="my-pre">
+
+"Worker Threads": {
+  "cpu": <b>5</b>,
   "fft": 0,
   "gemm": 0,
   "gpu": 0
 },
-</code></pre></div></div>
+
+</pre>
 
 <p>While in the build folder, run CEDR again. Run <code class="language-plaintext highlighter-rouge">sub_dag</code> to submit applications to CEDR, this time using <code class="language-plaintext highlighter-rouge">-n 10</code> with <code class="language-plaintext highlighter-rouge">-p 100000</code> to submit 10 radar correlators with 100ms delays between each instance and terminate CEDR using <code class="language-plaintext highlighter-rouge">kill_daemon</code>. Make sure you wait for all 10 instances to complete before running <code class="language-plaintext highlighter-rouge">kill_daemon</code> and generate the Gantt chart.</p>
 
@@ -811,8 +820,8 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment3/timing_trace.log
 <span class="nb">mv </span>gantt.png gantt_10rc_100ms_5CPU.png
 </code></pre></div></div>
 
-<h2 id="chaning-the-scheduler">Chaning the scheduler</h2>
-<p>Until now, we have been using Round Robin scheduler. This time we will run the same experiment using <code class="language-plaintext highlighter-rouge">ETF</code> scheduler. Modify the <code class="language-plaintext highlighter-rouge">daemon_config.json</code> file to set scheduler as <code class="language-plaintext highlighter-rouge">ETF</code>.</p>
+<h2 id="changing-the-scheduler">Changing the scheduler</h2>
+<p>Until now, we have been using Round Robin scheduler. This time we will run the same experiment using Earliest Task First (<code class="language-plaintext highlighter-rouge">ETF</code>) scheduler. Modify the <code class="language-plaintext highlighter-rouge">daemon_config.json</code> file to set scheduler as <code class="language-plaintext highlighter-rouge">ETF</code>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Scheduler": "ETF",
 </code></pre></div></div>
@@ -859,7 +868,7 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment4/timing_trace.log
 </li>
 </ol>
 
-<p>Add supported ZIP operation enums to <code class="language-plaintext highlighter-rouge">dash_types.h</code></p>
+<p>Any custom data types used for a new API call should be added to the <code class="language-plaintext highlighter-rouge">dash_types.h</code> file. In this case, add supported ZIP operation enums <code class="language-plaintext highlighter-rouge">zip_op</code> to <code class="language-plaintext highlighter-rouge">dash_types.h</code></p>
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">enum</span> <span class="n">zip_op</span> <span class="p">{</span>
   <span class="n">ZIP_ADD</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
   <span class="n">ZIP_SUB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
@@ -868,7 +877,7 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment4/timing_trace.log
 <span class="p">}</span> <span class="n">zip_op_t</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>Add CPU implementation of the ZIP to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/cpu/">libdash/cpu</a> <code class="language-plaintext highlighter-rouge">zip.cpp</code>. For simplicity, we just copy the original implementation.</p>
+<p>Add CPU implementation of the ZIP to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/cpu/">libdash/cpu/</a> <code class="language-plaintext highlighter-rouge">zip.cpp</code>. For simplicity during tutorial, we provide the CPU implementation under <code class="language-plaintext highlighter-rouge">original_files/</code> directory under root repository, that can simply be copied into <code class="language-plaintext highlighter-rouge">libdash/cpu/</code>.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> ../original_files/zip.cpp cpu/
 </code></pre></div></div>
 
@@ -912,7 +921,9 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment4/timing_trace.log
   <li>DASH_ZIP_int_nb</li>
 </ol>
 
-<p>We also implement two more functions, which contains implementation of CPU-based ZIP operations. Functions are created with <code class="language-plaintext highlighter-rouge">_cpu</code> suffix so that CEDR can identify the functions correctly for CPU execution:</p>
+<p>These are hardware-agnostic functions with precision specified (<code class="language-plaintext highlighter-rouge">flt</code>/<code class="language-plaintext highlighter-rouge">int</code>) and serial/parallel execution specified (<code class="language-plaintext highlighter-rouge">_nb</code> suffix).</p>
+
+<p>Given the hardware-agnostic functions are defined, we furthermore implement two more functions, which contains implementation of CPU-based ZIP operations for two precisions (<code class="language-plaintext highlighter-rouge">flt</code>,<code class="language-plaintext highlighter-rouge">int</code>). These functions are created with <code class="language-plaintext highlighter-rouge">_cpu</code> suffix on top of the hardware-agnostic names, so that CEDR can identify the functions correctly for CPU execution:</p>
 
 <ol>
   <li>DASH_ZIP_flt_cpu: <code class="language-plaintext highlighter-rouge">dash_cmplx_flt_type</code>
@@ -921,11 +932,13 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment4/timing_trace.log
 </li>
 </ol>
 
-<p>Having included API implementation, we should introduce the new API call to the system by updating CEDR header file (<a href="https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp">./src-api/include/header.hpp</a>):</p>
+<p>Having included API implementation in libdash, we should introduce the new API call to the runtime system by updating CEDR header file (<a href="https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp">./src-api/include/header.hpp</a>):</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enum api_types {DASH_FFT = 0, DASH_GEMM = 1, DASH_FIR = 2, DASH_SpectralOpening = 3, DASH_CIC = 4, DASH_BPSK = 5, DASH_QAM16 = 6, DASH_CONV_2D = 7, DASH_CONV_1D = 8, &lt;b&gt;DASH_ZIP = 9,&lt;/b&gt; NUM_API_TYPES = &lt;b&gt;10&lt;/b&gt;};
+<pre class="my-pre">
 
-static const char *api_type_names[] = {"DASH_FFT", "DASH_GEMM", "DASH_FIR", "DASH_SpectralOpening", "DASH_CIC", "DASH_BPSK", "DASH_QAM16", "DASH_CONV_2D", "DASH_CONV_1D"&lt;b&gt;, "DASH_ZIP"&lt;/b&gt;};
+enum api_types {DASH_FFT = 0, DASH_GEMM = 1, DASH_FIR = 2, DASH_SpectralOpening = 3, DASH_CIC = 4, DASH_BPSK = 5, DASH_QAM16 = 6, DASH_CONV_2D = 7, DASH_CONV_1D = 8, <b>DASH_ZIP = 9,</b> NUM_API_TYPES = <b>10</b>};
+
+static const char *api_type_names[] = {"DASH_FFT", "DASH_GEMM", "DASH_FIR", "DASH_SpectralOpening", "DASH_CIC", "DASH_BPSK", "DASH_QAM16", "DASH_CONV_2D", "DASH_CONV_1D"<b>, "DASH_ZIP"</b>};
 ...
 static const std::map&lt;std::string, api_types&gt; api_types_map = { {api_type_names[api_types::DASH_FFT], api_types::DASH_FFT},
                                                                 {api_type_names[api_types::DASH_GEMM], api_types::DASH_GEMM},
@@ -936,8 +949,9 @@ static const std::map&lt;std::string, api_types&gt; api_types_map = { {api_type_
                                                                 {api_type_names[api_types::DASH_QAM16], api_types::DASH_QAM16},
                                                                 {api_type_names[api_types::DASH_CONV_2D], api_types::DASH_CONV_2D},
                                                                 {api_type_names[api_types::DASH_CONV_1D], api_types::DASH_CONV_1D},
-                                                              &lt;b&gt;{api_type_names[api_types::DASH_ZIP], api_types::DASH_ZIP}&lt;/b&gt;};
-</code></pre></div></div>
+                                                                <b>{api_type_names[api_types::DASH_ZIP], api_types::DASH_ZIP}</b>};
+
+</pre>
 
 <h2 id="building-cedr-with-zip-api">Building CEDR with ZIP API</h2>
 <p>Navigate to the build folder, re-generate the files, and check the <code class="language-plaintext highlighter-rouge">libdash-rt.so</code> shared object to verify the new ZIP-based function calls.</p>
@@ -952,7 +966,7 @@ nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../applications/APIApps/radar_correlator
 </code></pre></div></div>
 
-<p>Create a new file to place the API calls in the file and change the radar correlator to have DASH_FFT API calls</p>
+<p>Create a copy of the CEDR application file with DASH_FFT API calls as <code class="language-plaintext highlighter-rouge">radar_correlator_zip.c</code> file. We’ll use this new file to change any candidate code for ZIP operations to use DASH_ZIP API calls</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>radar_correlator_fft.c radar_correlator_zip.c
 </code></pre></div></div>
 
@@ -962,32 +976,36 @@ nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</
 </ul>
 
 <p>Change the <code class="language-plaintext highlighter-rouge">radar_correlator_zip.c</code> to include <code class="language-plaintext highlighter-rouge">DASH_ZIP</code> calls</p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-<span class="o">&lt;</span>  <span class="n">corr_freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
-<span class="o">&lt;</span>  <span class="n">corr_freq</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
-<span class="o">&lt;</span><span class="p">}</span>
-<span class="o">&gt;</span><span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_inp0</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
-<span class="o">&gt;</span><span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_inp1</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
-<span class="o">&gt;</span><span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_out</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
-<span class="o">&gt;</span><span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="o">&gt;</span>  <span class="n">zip_inp0</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X1</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">];</span>
-<span class="o">&gt;</span>  <span class="n">zip_inp0</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X1</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
-<span class="o">&gt;</span>  <span class="n">zip_inp1</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">];</span>
-<span class="o">&gt;</span>  <span class="n">zip_inp1</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="o">-</span><span class="n">X2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// Conj Multiplication</span>
-<span class="o">&gt;</span><span class="p">}</span>
-<span class="o">&gt;</span><span class="n">DASH_ZIP_flt</span><span class="p">(</span><span class="n">zip_inp0</span><span class="p">,</span> <span class="n">zip_inp1</span><span class="p">,</span> <span class="n">zip_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">ZIP_MULT</span><span class="p">);</span>
-<span class="o">&gt;</span><span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="o">&gt;</span>  <span class="n">corr_freq</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">]</span>   <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">zip_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span><span class="p">;</span>
-<span class="o">&gt;</span>  <span class="n">corr_freq</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">zip_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span><span class="p">;</span>
-<span class="o">&gt;</span><span class="p">}</span>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ------- Comment these lines ---------</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">corr_freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
+  <span class="n">corr_freq</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="c1">// -------------------------------------</span>
+<span class="c1">// ------ Add the following lines ------</span>
+<span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_inp0</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
+<span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_inp1</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
+<span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_out</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">zip_inp0</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X1</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">];</span>
+  <span class="n">zip_inp0</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X1</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">zip_inp1</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">];</span>
+  <span class="n">zip_inp1</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="o">-</span><span class="n">X2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// Conj Multiplication</span>
+<span class="p">}</span>
+<span class="n">DASH_ZIP_flt</span><span class="p">(</span><span class="n">zip_inp0</span><span class="p">,</span> <span class="n">zip_inp1</span><span class="p">,</span> <span class="n">zip_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">ZIP_MULT</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">corr_freq</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">]</span>   <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">zip_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span><span class="p">;</span>
+  <span class="n">corr_freq</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">zip_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// -------------------------------------</span>
 </code></pre></div></div>
 
-<p>Build radar correlator with ZIP API calls, standalone as well as the shared object, and compare the output against other versions</p>
+<p>Build radar correlator with ZIP API calls, standalone as well as the CEDR-compatible shared-object, and compare the output against other versions</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make zip
 ./radar_correlator_zip-x86.out
 </code></pre></div></div>
 
-<p>Copy the shared object to the CEDR build folder change back to default config file, and run <code class="language-plaintext highlighter-rouge">cedr</code>, <code class="language-plaintext highlighter-rouge">sub_dag</code>, and <code class="language-plaintext highlighter-rouge">kill_daemon</code>.</p>
+<p>Copy the shared object (<code class="language-plaintext highlighter-rouge">radar_correlator_zip-x86.so</code>) to the CEDR build folder, change back to default config file, and run <code class="language-plaintext highlighter-rouge">cedr</code>, <code class="language-plaintext highlighter-rouge">sub_dag</code>, and <code class="language-plaintext highlighter-rouge">kill_daemon</code>.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>radar_correlator_zip-x86.so ../../../build
 <span class="nb">cd</span> ../../../build
 <span class="nb">cp</span> ../daemon_config.json ./
@@ -1036,17 +1054,20 @@ make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc
 
 <h3 id="adding-zip-as-resource-to-cedr">Adding ZIP as Resource to CEDR</h3>
 
-<p>Update the CEDR header file (<a href="https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp">./src-api/include/header.hpp</a>) to include zip as a resource by updating the following lines:</p>
+<p>Update the CEDR header file (<a href="https://github.com/UA-RCL/CEDR/tree/tutorial/src-api/include/header.hpp">./src-api/include/header.hpp</a>) to include zip as a supported resource type by updating the following lines:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enum resource_type { cpu = 0, fft = 1, mmult = 2, gpu = 3, &lt;b&gt;zip = 4, NUM_RESOURCE_TYPES = 5 &lt;/b&gt;};
-static const char *resource_type_names[] = {"cpu", "fft", "gemm", "gpu"&lt;b&gt;, "zip"&lt;/b&gt;};
+<pre class="my-pre">
+
+enum resource_type { cpu = 0, fft = 1, mmult = 2, gpu = 3, <b>zip = 4, NUM_RESOURCE_TYPES = 5 </b>};
+static const char *resource_type_names[] = {"cpu", "fft", "gemm", "gpu"<b>, "zip"</b>};
 static const std::map&lt;std::string, resource_type&gt; resource_type_map = {
                                                                        {resource_type_names[(uint8_t) resource_type::cpu], resource_type::cpu},
                                                                        {resource_type_names[(uint8_t) resource_type::fft], resource_type::fft},
                                                                        {resource_type_names[(uint8_t) resource_type::mmult], resource_type::mmult},
-                                                                       {resource_type_names[(uint8_t) resource_type::gpu], resource_type::gpu}&lt;b&gt;,
-                                                                       {resource_type_names[(uint8_t) resource_type::zip], resource_type::zip}&lt;/b&gt;};
-</code></pre></div></div>
+                                                                       {resource_type_names[(uint8_t) resource_type::gpu], resource_type::gpu}<b>,
+                                                                       {resource_type_names[(uint8_t) resource_type::zip], resource_type::zip}</b>};
+
+</pre>
 
 <p>These lines makes sure the functions with <code class="language-plaintext highlighter-rouge">_zip</code> suffix are grabbed when CEDR starts and used when schedulers assigns tasks to ZIP accelerator.</p>
 
@@ -1083,8 +1104,8 @@ static const std::map&lt;std::string, resource_type&gt; resource_type_map = {
 <p>These are some of the main steps for adding a new accelator to CEDR.</p>
 
 <p>We also need to make sure <code class="language-plaintext highlighter-rouge">CMakeLists.txt</code> under <code class="language-plaintext highlighter-rouge">libdash</code> folder looks for ZIP as an accelerator as well. Update following line (19) in <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/CMakeLists.txt">libdash/CMakeLists.txt</a></p>
-<pre><code class="language-CMake">  set(ALL_LIBDASH_MODULES FFT GEMM GPU ZIP)
-</code></pre>
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">set</span><span class="p">(</span>ALL_LIBDASH_MODULES FFT GEMM GPU ZIP<span class="p">)</span>
+</code></pre></div></div>
 
 <h3 id="building-cedr-with-zip">Building CEDR with ZIP</h3>
 
@@ -1100,8 +1121,11 @@ make <span class="nt">-j</span>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</span> <span class="nt">-E</span> <span class="s1">'*_zip$'</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>000065c5 T &lt;b&gt;DASH_ZIP_flt_zip&lt;/b&gt;
-</code></pre></div></div>
+<pre class="my-pre">
+
+000065c5 T <b>DASH_ZIP_flt_zip</b>
+
+</pre>
 
 <h3 id="application-cross-compilation">Application Cross-compilation</h3>
 
@@ -1530,8 +1554,8 @@ make <span class="nt">-j</span>
 
 <p>In the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file, we updated the <a href="https://github.com/UA-RCL/CEDR/blob/tutorial/daemon_config.json#L35">“Scheduler”</a> field to be “EFT” before running CEDR with the updated daemon config file.</p>
 
-<pre><code class="language-JSON">    "Scheduler": "EFT",
-</code></pre>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="nl">"Scheduler"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EFT"</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
 
 <h3 id="running-cedr-with-eft-scheduler">Running CEDR with EFT Scheduler</h3>
 
@@ -1620,7 +1644,7 @@ make nonblocking
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>build
 <span class="nb">cd </span>build
 cmake <span class="nt">-DLIBDASH_MODULES</span><span class="o">=</span><span class="s2">"GPU"</span> ../
-make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
+make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
 </code></pre></div></div>
 
 <h3 id="compilation">Compilation</h3>
@@ -1647,15 +1671,15 @@ make nonblocking
 
 <p>We should enable <code class="language-plaintext highlighter-rouge">GPU</code> in <code class="language-plaintext highlighter-rouge">daemon_config.json</code> so that runtime will use it as a computing resource.</p>
 
-<pre><code class="language-JSON">"Worker Threads": {
-        "cpu": 7,
-        "fft": 0,
-        "gemm": 0,
-        "gpu": 1
-    },
-...
-"Loosen Thread Permissions": true,
-</code></pre>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"Worker Threads"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fft"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"gemm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"gpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span><span class="nl">"Loosen Thread Permissions"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
 
 <p>Execution of CEDR is the same as the x86_64 version. In one terminal launch CEDR:</p>
 
@@ -1672,17 +1696,20 @@ make nonblocking
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">head</span> <span class="nt">-n</span> 10 ./log_dir/experiment0/timing_trace.log
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app_id: 3, app_name: track_nb, task_id: 0, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu1&lt;/b&gt;, ref_start_time: 15215236842193792, ref_stop_time: 15215236873412128, actual_exe_time: 31218336
-app_id: 3, app_name: track_nb, task_id: 1, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu2&lt;/b&gt;, ref_start_time: 15215236842244288, ref_stop_time: 15215236873341824, actual_exe_time: 31097536
-app_id: 3, app_name: track_nb, task_id: 2, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu3&lt;/b&gt;, ref_start_time: 15215236842259136, ref_stop_time: 15215236873367616, actual_exe_time: 31108480
-app_id: 3, app_name: track_nb, task_id: 3, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu4&lt;/b&gt;, ref_start_time: 15215236842278592, ref_stop_time: 15215236873329504, actual_exe_time: 31050912
-app_id: 3, app_name: track_nb, task_id: 4, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu5&lt;/b&gt;, ref_start_time: 15215236842303616, ref_stop_time: 15215236873309984, actual_exe_time: 31006368
-app_id: 3, app_name: track_nb, task_id: 7, task_name: DASH_FFT, resource_name: &lt;b&gt;gpu1&lt;/b&gt;, ref_start_time: 15215236842359360, ref_stop_time: 15215236878110208, actual_exe_time: 35750848
-app_id: 3, app_name: track_nb, task_id: 5, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu6&lt;/b&gt;, ref_start_time: 15215236842560224, ref_stop_time: 15215236873353824, actual_exe_time: 30793600
-app_id: 3, app_name: track_nb, task_id: 6, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu7&lt;/b&gt;, ref_start_time: 15215236843057888, ref_stop_time: 15215236873386784, actual_exe_time: 30328896
-app_id: 3, app_name: track_nb, task_id: 11, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu4&lt;/b&gt;, ref_start_time: 15215236873349088, ref_stop_time: 15215236873802944, actual_exe_time: 453856
-app_id: 3, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: &lt;b&gt;cpu2&lt;/b&gt;, ref_start_time: 15215236873349440, ref_stop_time: 15215236873780032, actual_exe_time: 430592
-</code></pre></div></div>
+<pre class="my-pre">
+
+app_id: 3, app_name: track_nb, task_id: 0, task_name: DASH_FFT, resource_name: <b>cpu1</b>, ref_start_time: 15215236842193792, ref_stop_time: 15215236873412128, actual_exe_time: 31218336
+app_id: 3, app_name: track_nb, task_id: 1, task_name: DASH_FFT, resource_name: <b>cpu2</b>, ref_start_time: 15215236842244288, ref_stop_time: 15215236873341824, actual_exe_time: 31097536
+app_id: 3, app_name: track_nb, task_id: 2, task_name: DASH_FFT, resource_name: <b>cpu3</b>, ref_start_time: 15215236842259136, ref_stop_time: 15215236873367616, actual_exe_time: 31108480
+app_id: 3, app_name: track_nb, task_id: 3, task_name: DASH_FFT, resource_name: <b>cpu4</b>, ref_start_time: 15215236842278592, ref_stop_time: 15215236873329504, actual_exe_time: 31050912
+app_id: 3, app_name: track_nb, task_id: 4, task_name: DASH_FFT, resource_name: <b>cpu5</b>, ref_start_time: 15215236842303616, ref_stop_time: 15215236873309984, actual_exe_time: 31006368
+app_id: 3, app_name: track_nb, task_id: 7, task_name: DASH_FFT, resource_name: <b>gpu1</b>, ref_start_time: 15215236842359360, ref_stop_time: 15215236878110208, actual_exe_time: 35750848
+app_id: 3, app_name: track_nb, task_id: 5, task_name: DASH_FFT, resource_name: <b>cpu6</b>, ref_start_time: 15215236842560224, ref_stop_time: 15215236873353824, actual_exe_time: 30793600
+app_id: 3, app_name: track_nb, task_id: 6, task_name: DASH_FFT, resource_name: <b>cpu7</b>, ref_start_time: 15215236843057888, ref_stop_time: 15215236873386784, actual_exe_time: 30328896
+app_id: 3, app_name: track_nb, task_id: 11, task_name: DASH_FFT, resource_name: <b>cpu4</b>, ref_start_time: 15215236873349088, ref_stop_time: 15215236873802944, actual_exe_time: 453856
+app_id: 3, app_name: track_nb, task_id: 9, task_name: DASH_FFT, resource_name: <b>cpu2</b>, ref_start_time: 15215236873349440, ref_stop_time: 15215236873780032, actual_exe_time: 430592
+
+</pre>
 
 <p>Lastly, let’s compare the outputs with x86 results to validate the correctness.</p>
 
