@@ -1,8 +1,8 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
 - id: doi:10.1145/3704635
-  title: Coarse Grained Task Parallelization by Dynamic Profiling for Heterogeneous
-    SoC Based Embedded System
+  title: Coarse-Grained Task Parallelization by Dynamic Profiling for Heterogeneous
+    SoC-Based Embedded System
   authors:
   - Liangliang Chang
   - Serhan Gener
@@ -11,7 +11,7 @@
   - Ali Akoglu
   - Chaitali Chakrabarti
   publisher: ACM Transactions on Embedded Computing Systems
-  date: '2024-11-15'
+  date: '2024-12-10'
   link: https://doi.org/g8twg9
   orcid: 0009-0009-5398-5708
   plugin: orcid.py
