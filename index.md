@@ -16,7 +16,8 @@ We research ways to bridge the gap between application engineers, hardware archi
 
 ## News
 
-1. Serhan Gener and Sahil Hassan will hold a Tutorial Session ***CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems*** in [ISFPGA'25](https://www.isfpga.org/workshops-tutorials/#t6).
+1. Our paper titled ***A Unified Portable and Programmable Framework for Task-Based Execution and Dynamic Resource Management on Heterogeneous Systems*** has won the Best Paper Award in Workshop on Extreme Heterogeneity Solutions ([ExHET'25](https://ornl.github.io/events/exhet2025/))! Congratulations Serhan! (Check out our [blog post](./2025/03/03/isfpga_tutorial_and_exhet.html))
+1. Serhan Gener and Sahil Hassan held a Tutorial Session titled ***CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems*** in [ISFPGA'25](https://www.isfpga.org/workshops-tutorials/#t6). (Check out our [blog post](./2025/03/03/isfpga_tutorial_and_exhet.html)).
 1. Our paper titled ***A Unified Portable and Programmable Framework for Task-Based Execution and Dynamic Resource Management on Heterogeneous Systems*** is accepted for publication in Workshop on Extreme Heterogeneity Solutions ([ExHET'25](https://ornl.github.io/events/exhet2025/))
 1. Our paper titled ***A Runtime Manager Integrated Emulation Environment for Heterogeneous SoC Design with RISC-V Cores*** ([IEEE Xplore](https://ieeexplore.ieee.org/document/10596355)) was published in Heterogeneity in Computing Workshop ([HCW'24](https://hcw.pages.dev/)). 
 1. Our paper titled ***Tutorial: A Novel Runtime Environment for Accelerator-Rich Heterogeneous Architectures*** ([ACM](https://dl.acm.org/doi/abs/10.1145/3687463)) was published in ACM Transactions on Embedded Computing Systems. 
@@ -25,10 +26,7 @@ We research ways to bridge the gap between application engineers, hardware archi
 1. Our paper titled ***PyTorch and CEDR: Enabling Deployment of Machine Learning Models on Heterogeneous Computing Systems*** ([IEEE Xplore](https://ieeexplore.ieee.org/document/10479315)) was published in 2023 20th ACS/IEEE International Conference on Computer Systems and Applications (AICCSA).
 1. Mustafa Ghanim won Best Demonstration Award in ECE Graduate Student Research Poster & Demo Symposium held by ECE department. Congrats Mustafa! (Check out our [blog post](./2024/03/15/best_demonstration.html))   
 1. Our paper titled ***GPU-RANC: A Cuda Accelerated Simulation Framework for Neuromorphic Architectures*** will be presented at the Neuro-Inspired Computational Elements ([NICE'24](https://niceworkshop.org/nice-2024/)) in April. 
-1. Joshua Mack and Serhan Gener held a Tutorial Session ***CEDR: A Holistic Software and Hardware Design Environment for FPGA-Integrated Heterogeneous Systems*** in FPGA'24. (Check out our [blog post](./2024/03/03/fpga_tutorial.html))
-1. Joshua Mack has defended his PhD dissertation successfully. Congrats Dr. Mack! (Check out our [blog post](./2024/02/27/josh_defense.html))
-1. Our paper titled ***Value-Based Resource Management at SoC Scale*** ([ACM](https://doi.org/10.1145/3624062.3624243)) was published in 3rd Workshop on Redefining Scalability for Diversely Heterogeneous Architectures (RSDHA)
-1. Joshua Mack held an Education Class ***CEDR: A Novel Runtime Environment for Accelerator-Rich Heterogeneous Architectures*** ([YouTube](https://www.youtube.com/watch?v=nMWDFAChcFI&list=PLMohsHZ1Urxvq9ZXyDenPMtbodupJaoZw&index=9&ab_channel=EmbeddedSystemsWeek%28ESWEEK%29)) in ESWEEK'23.
+
 
 Click [here](./archived_news/) to check out archived news.
 
