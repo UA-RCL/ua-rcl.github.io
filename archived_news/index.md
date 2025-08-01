@@ -4,6 +4,10 @@ title: Archived News
 
 # Archived News
 
+
+1. Our paper titled ***PyTorch and CEDR: Enabling Deployment of Machine Learning Models on Heterogeneous Computing Systems*** ([IEEE Xplore](https://ieeexplore.ieee.org/document/10479315)) was published in 2023 20th ACS/IEEE International Conference on Computer Systems and Applications (AICCSA).
+1. Mustafa Ghanim won Best Demonstration Award in ECE Graduate Student Research Poster & Demo Symposium held by ECE department. Congrats Mustafa! (Check out our [blog post](./2024/03/15/best_demonstration.html))   
+1. Our paper titled ***GPU-RANC: A Cuda Accelerated Simulation Framework for Neuromorphic Architectures*** will be presented at the Neuro-Inspired Computational Elements ([NICE'24](https://niceworkshop.org/nice-2024/)) in April. 
 1. Joshua Mack and Serhan Gener held a Tutorial Session ***CEDR: A Holistic Software and Hardware Design Environment for FPGA-Integrated Heterogeneous Systems*** in FPGA'24. (Check out our [blog post](../2024/03/03/fpga_tutorial.html))
 1. Joshua Mack has defended his PhD dissertation successfully. Congrats Dr. Mack! (Check out our [blog post](../2024/02/27/josh_defense.html))
 1. Our paper titled ***Value-Based Resource Management at SoC Scale*** ([ACM](https://doi.org/10.1145/3624062.3624243)) was published in 3rd Workshop on Redefining Scalability for Diversely Heterogeneous Architectures (RSDHA)
