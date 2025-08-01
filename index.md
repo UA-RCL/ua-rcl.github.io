@@ -16,6 +16,7 @@ We research ways to bridge the gap between application engineers, hardware archi
 
 ## News
 
+1. Our paper titled ***An Overview of Challenges and Requirements for Real-Time Spectrum Sensing in Modern RF Autonomy Systems*** ([IEEE Xplore](https://ieeexplore.ieee.org/document/11104816)) is published in IEEE Design & Test.
 1. Our paper titled ***RIMMS: Runtime Integrated Memory Management System for Heterogeneous Computing*** is accepted for publication in Embedded Systems Week ([ESWEEK'25](https://esweek.org/)). The preprint is available on [Arxiv](https://arxiv.org/abs/2507.20514).
 1. Our paper titled ***K-PACT: Kernel Planning for Adaptive Context Switching — A Framework for Clustering, Placement, and Prefetching in Spectrum Sensing*** is accepted for publication in International Conference on Computer-Aided Design ([ICCAD'25](https://2025.iccad.com/)). The preprint is available on [Arxiv](https://arxiv.org/abs/2507.19662) and the source code is hosted on [Github](https://github.com/UA-RCL/K-PACT).
 1. Our paper titled ***A Unified Portable and Programmable Framework for Task-Based Execution and Dynamic Resource Management on Heterogeneous Systems*** ([ACM](https://dl.acm.org/doi/10.1145/3720555.3721988)) was published in Extreme Heterogeneity Solutions ([ExHET'25](https://ornl.github.io/events/exhet2025/)). 
@@ -26,10 +27,6 @@ We research ways to bridge the gap between application engineers, hardware archi
 1. Our paper titled ***Tutorial: A Novel Runtime Environment for Accelerator-Rich Heterogeneous Architectures*** ([ACM](https://dl.acm.org/doi/abs/10.1145/3687463)) was published in ACM Transactions on Embedded Computing Systems. 
 1. Joshua Mack has won Outstanding Graduate Student award and Dr. Akoglu has won Outstanding Faculty award. Congrats Dr. Mack and Dr. Akoglu! (Check out the [link](https://ece.engineering.arizona.edu/news-events/celebrating-class-2024))   
 1. Joshua Mack and Sahil Hassan have graduated from PhD program and received their degrees in Graduation Ceremony. Congrats Dr. Mack and Dr. Sahil! (Check out our [blog post](./2024/05/10/graduation_ceremony.html))   
-1. Our paper titled ***PyTorch and CEDR: Enabling Deployment of Machine Learning Models on Heterogeneous Computing Systems*** ([IEEE Xplore](https://ieeexplore.ieee.org/document/10479315)) was published in 2023 20th ACS/IEEE International Conference on Computer Systems and Applications (AICCSA).
-1. Mustafa Ghanim won Best Demonstration Award in ECE Graduate Student Research Poster & Demo Symposium held by ECE department. Congrats Mustafa! (Check out our [blog post](./2024/03/15/best_demonstration.html))   
-1. Our paper titled ***GPU-RANC: A Cuda Accelerated Simulation Framework for Neuromorphic Architectures*** will be presented at the Neuro-Inspired Computational Elements ([NICE'24](https://niceworkshop.org/nice-2024/)) in April. 
-
 
 Click [here](./archived_news/) to check out archived news.
 
