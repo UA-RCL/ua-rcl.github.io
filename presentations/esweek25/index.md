@@ -1,6 +1,6 @@
 ---
-title: FPGA'25 Tutorial Introduction
-style: /_styles/presentations/fpga24/custom.css
+title: ESWEEK'25 Tutorial Introduction
+style: /_styles/presentations/esweek25/custom.css
 ---
 
 # CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems
