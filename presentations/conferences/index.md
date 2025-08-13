@@ -10,4 +10,4 @@ Click [here](./ipdps24/) to see our poster session material from [IPDPS 2024](ht
 
 {% endcapture %}
 
-{% include feature.html title="<h1>IPDPS 2024</h1>" text=content image="./presentations/ipdps24/ipdps24.png" %}
+{% include feature.html title="<h1>IPDPS 2024</h1>" text=content image="/presentations/conferences/ipdps24/ipdps24.png" %}
