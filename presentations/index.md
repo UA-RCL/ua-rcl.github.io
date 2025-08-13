@@ -9,7 +9,19 @@ nav:
 
 {% capture content %}
 
-Click [here](./fpga25/) to see our tutorial from [FPGA 2025](https://isfpga.org)
+<p style="text-align:left; margin-bottom: 1em;">
+  <img src="https://esweek.org/wp-content/uploads/2020/03/esweek-logo.png" alt="ESWEEK Logo" style="max-width: 100px; height: auto;">
+</p>
+
+Click [here](./esweek25/) to see our tutorial from [ESWEEK 2025](https://esweek.org/tutorials/)
+
+{% endcapture %}
+
+{% include feature.html title="<h1>ESWEEK 2025</h1>" text=content image="https://esweek.org/wp-content/uploads/2025/06/iStock-2165475394.mp4" %}
+
+{% capture content %}
+
+Click [here](./fpga25/) to see our tutorial from [FPGA 2025](https://www.isfpga.org/past/fpga2025/)
 
 {% endcapture %}
 
