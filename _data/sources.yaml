@@ -17,11 +17,6 @@
 #   ranc: true
 
 - id: doi:10.1145/3760257
-  manual: true
-  title: "RIMMS: Runtime Integrated Memory Management System for Heterogeneous Computing"
-  authors: "Serhan Gener, Aditya Ukarande, Shilpa Mysore Srinivasa Murthy, Sahil Hassan, Joshua Mack, Chaitali Chakrabarti, Umit Ogras, Ali Akoglu"
-  publisher: "ACM Transactions on Embedded Computing Systems"
-  date: "2025-08-03"
   tags:
     - CEDR
     - RIMMS
