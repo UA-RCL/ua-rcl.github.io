@@ -143,12 +143,13 @@ for index, source in enumerate(sources):
             # if regular source (id entered by user), throw error
             if get_safe(source, "plugin", "") == "sources.py":
                 log(e, 3, "ERROR")
+                continue
                 error = True
             # otherwise, if from metasource (id retrieved from some third-party API), just warn
             else:
                 log(e, 3, "WARNING")
                 # discard source from citations
-                # continue
+                continue
 
     # preserve fields from input source, overriding existing fields
     citation.update(source)
