@@ -1,0 +1,57 @@
+- title: CLEO-AI
+  subtitle: Closed-loop Edge System for Optimized and Adaptive Intelligence
+  group: featured
+  image: images/background_v2.jpg
+  link: /projects/cedr/projects/cleo-ai.html
+  description: Novel software-hardware co-design framework for mission-adaptive intelligence in complex, dynamic, and resource-constrained edge systems.
+
+- title: HOPPERFISH
+  subtitle: Holistic Profiling with Portable Extensible and Robust Framework Intended for Systems with Heterogeneity
+  group: featured
+  image: images/background_v3.jpg
+  link: /projects/cedr/projects/hopperfish.html
+  description: Holistic profiling framework that unifies analysis across the application, runtime, microarchitecture, and hardware layers to streamline robust feature correlation in heterogeneous computing systems.
+
+- title: PyTorch
+  subtitle: CEDR-PyTorch Integration
+  group: featured
+  image: projects/cedr/images/logos/tool/pytorch-logo.png
+  image_width: 100%
+  image_height: auto
+  image_object_fit: contain
+  link: /projects/cedr/projects/pytorch.html
+  description: Seamless interface for deploying machine learning models on heterogeneous devices.
+
+- title: RIMMS
+  subtitle: Runtime Integrated Memory Management
+  group: featured
+  image: images/background_v1.jpg
+  link: /projects/cedr/projects/rimms.html
+  description: Lightweight, runtime-managed, hardware-agnostic memory abstraction layer that decouples application development from low-level memory operations.
+
+- title: RISC-V
+  subtitle: RISC-V based Heterogeneous SoC Emulation Platform
+  group: featured
+  image: projects/cedr/images/logos/tool/RISC-V-logo.png
+  image_width: 100%
+  image_height: auto
+  image_object_fit: contain
+  link: /projects/cedr/projects/risc-v.html
+  description: Runtime environment that allows execution of applications written in C/C++ on heterogeneous SoC architectures composed of multiple RISC-V core types and a pool of accelerators.
+
+- title: Taskflow
+  subtitle: Task-based Execution and Dynamic Resource Management
+  group: featured
+  image: projects/cedr/images/logos/tool/taskflow-logo.png
+  image_width: 100%
+  image_height: auto
+  image_object_fit: contain
+  link: /projects/cedr/projects/taskflow.html
+  description: Comprehensive framework that automatically parallelizes user applications and dynamically schedules its tasks to heterogeneous platforms, enabling efficient resource utilization and ease of programming.
+
+- title: Value of Service
+  subtitle: Value-based Resource Management Heuristics
+  group: featured
+  image: images/background_v1.jpg
+  link: /projects/cedr/projects/vos.html
+  description: Value-based resource management that treats scheduling as a global optimization problem.

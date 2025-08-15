@@ -1,0 +1,267 @@
+---
+layout: default
+---
+
+
+<section class="full-width-section" style="display: flex; margin-top: 0; padding-top: 0;">
+<div style="display: flex; margin-top: 0; padding-top: 0;">
+
+  <!-- Sidebar -->
+  <nav id="cedr-sidebar">
+    <h3>Table of Contents</h3>
+    <ul style="padding-top: 3rem;">
+
+      <li>
+        <a href="{{ '/projects/cedr/' | relative_url }}" class="{% if page.url == '/projects/cedr/' %}active{% endif %}">Overview</a>
+        <ul style="max-height: {% if page.url contains '/tutorials/' %}500px{% else %}0{% endif %};"></ul>
+      </li>
+
+      <li class="has-sub {% if page.url contains '/tutorials/' %}open{% endif %}">
+        <a href="{{ '/projects/cedr/tutorials/' | relative_url }}" class="{% if page.url contains '/tutorials/' %}active{% endif %}">Tutorials</a>
+        <ul style="max-height: {% if page.url contains '/tutorials/' %}500px{% else %}0{% endif %};">
+          {% assign tutorial_pages = site.pages | where_exp: "p", "p.path contains 'projects/cedr/tutorials/'" | sort: "order" | reverse%}
+          {% for p in tutorial_pages %}
+            {% if p.url != '/projects/cedr/tutorials/' %}
+              <li><a href="{{ p.url | relative_url }}" class="{% if page.url == p.url %}active{% endif %}">{{ p.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+          <li>
+            {% include button.html
+              type="github"
+              text="Detailed Tutorial"
+              link="UA-RCL/CEDR/blob/tutorial/CEDR_tutorial.md"
+            %}
+          </li>
+        </ul>
+      </li>
+
+      <li class="has-sub {% if page.url contains '/projects/cedr/projects/' %}open{% endif %}">
+        <a href="{{ '/projects/cedr/projects/' | relative_url }}" class="{% if page.url contains '/projects/cedr/projects/' %}active{% endif %}">Projects</a>
+        <ul style="max-height: {% if page.url contains '/projects/cedr/projects/' %}500px{% else %}0{% endif %};">
+          {% assign project_pages = site.pages | where_exp: "p", "p.path contains 'projects/cedr/projects/'" %}
+          {% for p in project_pages %}
+            {% if p.url != '/projects/cedr/projects/' %}
+              <li><a href="{{ p.url | relative_url }}" class="{% if page.url == p.url %}active{% endif %}">{{ p.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+
+      <li>
+        <a href="{{ '/projects/cedr/publications/' | relative_url }}" class="{% if page.url == '/projects/cedr/publications/' %}active{% endif %}">Publications</a>
+        <ul style="max-height: {% if page.url contains '/tutorials/' %}500px{% else %}0{% endif %};"></ul>
+      </li>
+
+      <li>
+        <a href="{{ '/projects/cedr/news/' | relative_url }}" class="{% if page.url == '/projects/cedr/news/' %}active{% endif %}">News</a>
+        <ul style="max-height: {% if page.url contains '/tutorials/' %}500px{% else %}0{% endif %};"></ul>
+      </li>
+
+      <li>
+        {% include button.html
+          type="github"
+          text="CEDR GitHub"
+          link="UA-RCL/CEDR"
+        %}
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main style="flex: 1; max-width: none; width: 100%; padding: 0 1rem 1rem 1rem; margin-top: -2rem; padding-top: -2rem;">
+    {{ content }}
+  </main>
+
+  <aside class="sidebar" style="flex: 0 0 300px; position: sticky; top: 70px; align-self: flex-start;">
+    <div class="box">
+      <!-- Keep 3 items only, remove old ones as needed -->
+      <h3>Latest News</h3>
+      <!-- News Item 1 -->
+      <a href="{{ '/projects/cedr/tutorials/esweek25.html' | relative_url }}" class="news-card-link">
+        <div class="news-card">
+          <img src="/projects/cedr/images/logos/conference/esweek-logo.png" alt="ESWEEK 2025" class="news-img">
+          <div class="news-content">
+            <h4>Aug 20, 2025</h4>
+            <p>
+              <!-- Released new <a href="{{ '/projects/cedr/tutorials/esweek25.html' | relative_url }}">ESWEEK 2025</a> tutorial. -->
+              Released new <strong>ESWEEK 2025</strong> tutorial.
+            </p>
+          </div>
+        </div>
+      </a>
+      <!-- News Item 2 -->
+      <a href="{{ '/projects/cedr/projects/rimms.html' | relative_url }}" class="news-card-link">
+        <div class="news-card">
+          <img src="/projects/cedr/images/logos/conference/esweek-logo.png" alt="ESWEEK 2025" class="news-img">
+          <div class="news-content">
+            <h4>Aug 13, 2025</h4>
+            <p>
+              <!-- Our <a href="{{ '/projects/cedr/projects/rimms.html' | relative_url }}">RIMMS</a> paper is released as <strong>just accepted</strong> on TECS under CASES for ESWEEK'25. -->
+              Our <strong>RIMMS</strong> paper is released as <i>just accepted</i> on TECS under CASES for ESWEEK'25.
+            </p>
+          </div>
+        </div>
+      </a>
+      <!-- News Item 3 -->
+      <a href="{{ '/projects/cedr/projects/taskflow.html' | relative_url }}" class="news-card-link">
+        <div class="news-card">
+          <img src="/projects/cedr/images/logos/conference/ExHET_logo.jpg" alt="ExHET 2025" class="news-img">
+          <div class="news-content">
+            <h4>Mar 2, 2025</h4>
+            <p>
+              <!-- Our <a href="{{ '/projects/cedr/projects/taskflow.html' | relative_url }}">Taskflow</a> paper recieved <strong>best paper award</strong> in ExHET'25. -->
+              Our <strong>Taskflow</strong> paper recieved <i>best paper award</i> in ExHET'25.
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="box">
+      <h3>Ongoing Work</h3>
+      <img src="/images/logo.svg" alt="Work 1" style="width: 20%;">
+      <p>Coming soon...</p>
+    </div>
+  </aside>
+
+</div>
+
+</section>
+
+<script>
+document.querySelectorAll('#cedr-sidebar .has-sub > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const parent = this.parentElement;
+    parent.classList.toggle('open');
+    const submenu = parent.querySelector('ul');
+    if (submenu) {
+      if (parent.classList.contains('open')) {
+        submenu.style.maxHeight = submenu.scrollHeight + 'px';
+      } else {
+        window.location.href = this.href;
+      }
+    }
+  });
+});
+</script>
+
+<style> /* News box related changes */
+  @media (max-width: 1020px) { /* Remove news in small windows */
+    .sidebar {
+      display: none;
+    }
+  }
+
+  .box {
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+  }
+
+  .news-card {
+    display: flex;
+    gap: 0.5rem;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    margin-bottom: 1rem;
+  }
+
+  .news-img {
+    width: 80px;
+    height: 80px;
+    object-fit: scale-down;
+  }
+
+  .news-content {
+    padding: 0.5rem;
+  }
+
+  .news-content h4 {
+    margin: 0 0 0.25rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  .news-content p {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .news-card-link {
+    display: block;
+    text-decoration: none; /* remove underline */
+    color: inherit;        /* keep text color */
+  }
+
+  .news-card-link:hover .news-card {
+    background-color: #f5f5f5; /* optional hover effect */
+  }
+</style>
+
+<style> /* ToC related changes */
+  .container {
+    max-width: 100% !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0;
+  }
+
+  /* Sidebar Layout */
+  #cedr-sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 220px;
+    width: 220px;
+    border-right: 1px solid #ccc;
+    padding-right: 1rem;
+    position: sticky;
+    top: 1rem;
+    height: max-content;
+  }
+
+  /* Title */
+  #cedr-sidebar h3 {
+    position: sticky;
+    top: 70px;
+    z-index: 10;
+    padding: 0.5rem 0;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* List Styling */
+  #cedr-sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+  }
+
+  #cedr-sidebar li {
+    padding-left: 1rem;
+  }
+
+  #cedr-sidebar li ul {
+    padding-left: 1rem;
+    overflow: hidden;
+    transition: max-height 0.25s ease-in-out;
+  }
+
+  /* Links */
+  #cedr-sidebar a.active {
+    font-weight: bold;
+    color: #0056b3;
+  }
+
+  #cedr-sidebar a:hover {
+    text-decoration: underline;
+  }
+</style>

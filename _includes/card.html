@@ -11,6 +11,11 @@
       src="{{ include.image | relative_url }}"
       alt="{{ include.title | default: "card image" }}"
       loading="lazy"
+      style="
+        width: {{ d.image_width | default: "auto" }};
+        height: {{ d.image_height | default: "auto" }};
+        object-fit: {{ d.image_object_fit | default: "cover" }};
+      "
       {% include fallback.html %}
     >
   </a>

@@ -1,0 +1,8 @@
+---
+layout: cedr_layout
+title: RIMMS
+---
+
+# Runtime Integrated Memory Management System for Heterogeneous Computing
+
+Efficient memory management in heterogeneous systems is increasingly challenging due to diverse compute architectures (e.g., CPU, GPU, FPGA) and dynamic task mappings not known at compile time. Existing approaches often require programmers to manage data placement and transfers explicitly, or assume static mappings that limit portability and scalability. This paper introduces RIMMS (Runtime Integrated Memory Management System), a lightweight, runtime-managed, hardware-agnostic memory abstraction layer that decouples application development from low-level memory operations. RIMMS transparently tracks data locations, manages consistency, and supports efficient memory allocation across heterogeneous compute elements without requiring platform-specific tuning or code modifications. We integrate RIMMS into a baseline runtime and evaluate with complete radar signal processing applications across CPU+GPU and CPU+FPGA platforms. RIMMS delivers up to 2.43X speedup on GPU-based and 1.82X on FPGA-based systems over the baseline. Compared to IRIS, a recent heterogeneous runtime system, RIMMS achieves up to 3.08X speedup and matches the performance of native CUDA implementations while significantly reducing programming complexity. Despite operating at a higher abstraction level, RIMMS incurs only 1-2 cycles of overhead per memory management call, making it a low-cost solution. These results demonstrate RIMMS's ability to deliver high performance and enhanced programmer productivity in dynamic, real-world heterogeneous environments.

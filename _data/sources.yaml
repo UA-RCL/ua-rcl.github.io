@@ -1,16 +1,88 @@
 # If we ever want to add publications, put them here
 # The process generates a citations.yaml file with all
-- id: doi:10.1109/TCAD.2023.3285410
-  type: paper
-  description: description here
-  date: '2023-6-12'
-  image: images/projects/brain.png
-  buttons:
-    - type: source
-      text: Source Code
-      link: https://github.com/UA-RCL/RANC
-    - type: website
-      link: projects/ranc
+# - id: doi:10.1109/TCAD.2023.3285410
+#   type: paper
+#   description: description here
+#   date: '2023-6-12'
+#   image: none # images/projects/brain.png
+#   buttons:
+#     - type: source
+#       text: Source Code
+#       link: https://github.com/UA-RCL/RANC
+#     - type: website
+#       link: projects/ranc
+#   tags:
+#     - RANC
+#   repo: UA-RCL/RANC
+#   ranc: true
+
+- id: doi:10.1145/3760257
+  manual: true
+  title: "RIMMS: Runtime Integrated Memory Management System for Heterogeneous Computing"
+  authors: "Serhan Gener, Aditya Ukarande, Shilpa Mysore Srinivasa Murthy, Sahil Hassan, Joshua Mack, Chaitali Chakrabarti, Umit Ogras, Ali Akoglu"
+  publisher: "ACM Transactions on Embedded Computing Systems"
+  date: "2025-08-03"
   tags:
-    - can add tags here
-  repo: UA-RCL/RANC
+    - CEDR
+    - RIMMS
+  repo: UA-RCL/CEDR
+  cedr: true
+
+- id: doi:10.1145/3720555.3721988
+  tags:
+    - CEDR
+    - Taskflow
+  repo: UA-RCL/CEDR
+  cedr: true
+
+- id: doi:10.1109/IPDPSW63119.2024.00013
+  tags:
+    - CEDR
+    - RISC-V
+  repo: UA-RCL/CEDR
+  cedr: true
+
+- id: doi:10.1145/3687463
+  tags:
+    - CEDR
+  repo: UA-RCL/CEDR
+  cedr: true
+
+- id: doi:10.1109/AICCSA59173.2023.10479315
+  tags:
+    - CEDR
+    - PyTorch
+  repo: UA-RCL/CEDR
+  cedr: true
+
+- id: doi:10.1145/3624062.3624243
+  tags:
+    - CEDR
+    - VoS
+  repo: UA-RCL/CEDR
+  cedr: true
+
+- id: doi:10.1145/3589010.3594889
+  tags:
+    - CEDR
+  repo: UA-RCL/CEDR
+  cedr: true
+
+- id: doi:10.1109/MDAT.2023.3291331
+  tags:
+    - CEDR
+  repo: UA-RCL/CEDR
+  cedr: true
+
+- id: doi:10.1109/IPDPSW59300.2023.00016
+  tags:
+    - CEDR
+  repo: UA-RCL/CEDR
+  cedr: true
+
+- id: doi:10.1145/3529257
+  tags:
+    - CEDR
+  repo: UA-RCL/CEDR
+  cedr: true
+  overview: true
