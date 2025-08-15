@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--
+  Based on the Scrolling Nav template from Start Bootstrap
+  https://github.com/BlackrockDigital/startbootstrap-scrolling-nav
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Compiler-Integrated Extensible DSSoC Runtime">
+  <meta name="author" content="University of Arizona Reconfigurable Computing Lab">
+
+  <title>CEDR - Compiler-Integrated Extensible DSSoC Runtime</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/scrolling-nav.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">CEDR</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#project-status">Project Status</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-danger text-warning">
+    <div class="container text-center">
+      <!--Royalty free source: https://www.cleanpng.com/png-system-on-a-chip-psoc-integrated-circuits-chips-si-1135310/download-png.html-->
+      <img class="img-fluid" src="./images/soc.png" alt="" width="500" height="500">
+    </div>
+    <div class="container text-center">
+      <h1>CEDR</h1>
+      <p class="lead"><b>Compiler-Integrated Extensible DSSoC Runtime</b></p>
+      <a class="btn btn-secondary btn-large" href="https://github.com/UA-RCL/CEDR" target="_blank">GitHub</a>
+      <br>
+      <div class="row justify-content-center mt-2">
+        <div class="col-sm-0 text-center mr-1">
+          <a class="github-button" href="https://github.com/UA-RCL/CEDR" data-icon="octicon-star" data-size="large" aria-label="Star UA-RCL/CEDR on GitHub">Star</a>
+        </div>
+        <div class="col-sm-0 text-center ml-1">
+          <a class="github-button" href="https://github.com/UA-RCL/CEDR/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork UA-RCL/CEDR on GitHub">Fork</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h2>About CEDR</h2>
+          <p class="lead">
+            System designers are continuously exploring design methodologies that harness increased levels of heterogeneity towards pushing the boundaries of achievable performance gains. 
+            We have developed CEDR, an open-source, unified compilation, and runtime framework designed for heterogeneous systems, as part of the DARPA DSSoC program. CEDR allows 
+            applications, scheduling heuristics, and accelerators to be co-designed in a cohesive manner. CEDR is currently being leveraged in basic research as part of the DARPA 
+            SpaceBACN and PROWESS programs. Its utility has been successfully tested by our industry partners General Dynamics and Collins Aerospace with their applications along 
+            with several academic partners and independently evaluated by the Carnegie Mellon University Software Engineering Institute.
+            We shared CEDR with the community by organizing tutorials in venues such as International Symposium on Field Programmable Gate Arrays (ISFPGA’24) and Embedded Systems Week, 
+            Education Track (ESWEEK’23).  We showcased the utility of this framework through live demonstrations during Free and Open-source Software Developers’ European Meeting 
+            (FOSDEM’20 and ’21), GNU Radio 4.0 Hackfest (2020), GNU Radio Conference (2022), and Arm Research Summit (2019).
+          </p><br>
+          <div class="container text-center">
+            <img class="img-fluid" src="./images/project_images/cedr_overall.png" alt="" width="1080" height="720">
+            </div>
+          <div class="container text-center">
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h2>Publications and News</h2>
+          <p class="lead">
+            <ol>
+              <li>Our paper <i>A Runtime Manager Integrated Emulation Environment for Heterogeneous SoC Design with RISC-V Cores</i> (<a href="https://ieeexplore.ieee.org/document/10596355">IEEE Explore</a>) was published in Heterogeneity in Computing Workshop (<a href="https://hcw.pages.dev/">HCW'24</a>).</li>
+              <li>Our paper <i>Tutorial: A Novel Runtime Environment for Accelerator-Rich Heterogeneous Architectures</i> (<a href="https://dl.acm.org/doi/abs/10.1145/3687463">ACM</a>) was published in ACM Transactions on Embedded Computing Systems.</li>
+              <li>Our paper <i>PyTorch and CEDR: Enabling Deployment of Machine Learning Models on Heterogeneous Computing Systems</i> (<a href="https://ieeexplore.ieee.org/document/10479315">IEEE Explore</a>) was published in 2023 20th ACS/IEEE International Conference on Computer Systems and Applications (AICCSA).
+              <li>Joshua Mack and Serhan Gener held a Tutorial Session <i>CEDR: A Holistic Software and Hardware Design Environment for FPGA-Integrated Heterogeneous Systems</i> in FPGA'24.</li>
+              <li>Our paper <i>Value-Based Resource Management at SoC Scale</i> (<a href="https://dl.acm.org/doi/10.1145/3624062.3624243">ACM</a>) was published in 3rd Workshop on Redefining Scalability for Diversely Heterogeneous Architectures (RSDHA).</li>
+              <li>Our paper <i>CEDR-API: Productive, Performant Programming of Domain-Specific Embedded Systems</i> (<a href="https://arxiv.org/abs/2304.12396">arXiv</a>) was accepted to the 2023 IPDPS Heterogeneity in Computing Workshop.</li>
+              <li>Our paper <i>CEDR -- A Compiler-Integrated, Extensible, DSSoC Runtime</i> (<a href="https://arxiv.org/pdf/2204.08962.pdf">arXiv</a>, <a href="https://dl.acm.org/doi/full/10.1145/3529257">ACM</a>) was accepted for publication in the ACM Transactions on Embedded Computing Systems.</li>
+              <li>Our paper <i>User-Space Emulation Framework for Domain-Specific SoC Design</i> (<a href="https://arxiv.org/pdf/2004.01636.pdf">arXiv</a>, <a href="https://ieeexplore.ieee.org/abstract/document/9150335">IEEE Xplore</a>) was accepted to the 2020 IPDPS Heterogeneity in Computing Workshop.</li>
+              <li>We presented <a href="https://fosdem.org/2020/schedule/event/llvm_aut_prog_het_soc/"><i>Automating Programming and Development of Heterogeneous SoCs with LLVM Tools</i></a> at the 2020 Free and Open Source Developers' European Meetup (FOSDEM 2020).</li>
+              <li>We presented a poster on <i>Heterogeneous SoC Design Space Exploration with an FPGA based Emulation Framework</i> at the 2019 International Conference on ReConFigurable Computing and FPGAs (ReConFig 2019).</li>
+              <li>We presented a poster and demo on <i>Emulation Framework for Hardware-Software Co-Design of Heterogeneous SoCs</i> at 2019 ARM Research Summit.</li>    
+                 
+            </ol>
+          </p>
+          <!-- Demo video...-->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <h2>Value based Runtime Management</h2>
+            <p class="lead">
+              Value-based resource management heuristics, which are traditionally deployed in heterogeneous HPC systems, maximize system productivity by assigning resources to 
+              each job based on its priority and estimated value gain relative to each job's completion time. We investigate the utility of value-based resource management at 
+              heterogeneous SoC scale and demonstrate its ability to make effective scheduling decisions for time-constrained jobs in oversubscribed systems where system 
+              resources are shared by multiple users and applications arrive dynamically. The proposed value-based resource management approach drops tasks that are estimated to
+              result with lower-value gain dynamically with the aim of completing more number of high-value jobs with a scheduling decision time at 120𝜇s scale. The 
+              value-based resource management treats scheduling as a global optimization problem, therefore this study sets a path forward for deploying a unified value-based 
+              resource management on a system composed of front-end SoC-based edge devices and a back-end HPC system.
+            </p><br>
+
+            <h2>Anomaly Detection on Heterogeneous SoC</h2>
+            <p class="lead">
+              Distinguishing between normal and abnormal application behavior poses a greater challenge in heterogeneous computing systems compared to homogeneous systems due 
+              to varying execution characteristics influenced by factors like differences in programming models, diversity of Processing Elements (PEs), and dynamically changing 
+              resource allocation decisions. We develop a profiling framework integrated with an open-source runtime to understand the non-linear correlations among the 
+              aforementioned factors. Using this framework as a foundation, we construct an autoencoder model that provides a holistic system view and achieves up to 19% 
+              and 13% improvement in abnormal behavior detection accuracy compared to conventional methods such as the One-Class Support Vector Machine and Isolation Forest 
+              respectively. We demonstrate the robustness of our approach by executing real-world applications covering radar, communications, and autonomous vehicles domains 
+              along with anomalous application scenarios that manipulate behavior or the state of the runtime manager, scheduler, and PEs across three commercial off-the-shelf 
+              platforms and three scheduling heuristic policies.
+            </p><br>
+
+            <h2>RISC-V based Heterogeneous SoC Emulation Platform</h2>
+            <p class="lead">
+              Heterogeneous System-on-Chip (SoC) architectures are becoming attractive for deployment in HPC environments as they deliver performance with energy efficiency 
+              and scalability benefits. Particularly the RISC-V is an attractive solution for building heterogeneous systems at HPC scale since it offers ability to customize 
+              CPU cores and modularity to integrate with other compute units towards meeting the demands of wide range of computational workloads. Consequently, there is a 
+              need for a software ecosystem that facilitates productive application development and deployment on such heterogeneous SoCs, while utilizing system resources 
+              effectively. We present a preliminary study over a runtime environment that allows execution of applications written in C/C++ on heterogeneous SoC architectures 
+              composed of multiple RISC-V core types and a pool of accelerators emulated on Xilinx Virtex 7 FPGA.  We showcase ability to investigate the impact of hardware 
+              composition and scheduling policy on execution time performance while executing real-life applications in our emulation environment. 
+            </p><br>
+
+            <h2>Automated PyTorch Application Deployment on Heterogeneous SoC</h2>
+            <p class="lead">
+              The PyTorch programming interface enables efficient deployment of machine learning models, leveraging the parallelism offered by GPU architectures. In this study, 
+              we present the integration of the PyTorch framework with a compiler and runtime ecosystem. Our aim is to demonstrate the ability to deploy PyTorch-based models on 
+              FPGA-based SoC platforms, without requiring users to possess prior FPGA-based design experience. We realize seamless deployment of PyTorch models by dynamically 
+              loading accelerator-supported functions during runtime. This approach allows runtime to benefit from accelerators for certain layers and fall back to CPU
+              for unsupported layers. Such flexibility facilitates the integration from native Python implementation to a diverse set of heterogeneous SoCs. This approach does not require 
+              users to have prior FPGA-based design experience and delivers a straightforward, portable, and adaptable deployment process. This is achieved by incorporating neural
+              network layers at the task level through an API-based programming model, thereby obviating the necessity for hardware implementation of the model. Our experiments involve 
+              compiling and executing real-life applications on heterogeneous SoC configurations emulated on the Xilinx Zynq 
+              Ultrascale+ ZCU102 system. We showcase our ability to deploy three distinct PyTorch applications, encompassing object detection, visual geometry group (VGG), 
+              and speech classification, using the integrated compiler and runtime system without loss of model accuracy. Furthermore, we extend our analysis by evaluating 
+              dynamically arriving workload scenarios, consisting of a mix of PyTorch models and non-PyTorch-based applications. Through these experiments, we vary the hardware 
+              composition and scheduling heuristics. Our findings indicate that when PyTorch-based applications coexist with unrelated applications, our integrated scheduler 
+              fairly dispatches tasks to the FPGA platform's accelerator and CPU cores, without compromising the target throughput for each application.
+            </p><br>
+          </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Profiles are generated via js/profile.js -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h4>Current Contributors</h4>
+          <div class="row mx-auto mt-3">
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Joshua Mack" data-location="UArizona"></div>
+            </div>
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Sahil Hassan" data-location="UArizona"></div>
+            </div>
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Serhan Gener" data-location="UArizona"></div>
+            </div>
+          </div>
+          <div class="row mx-auto mt-3">
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="H. Umut Suluhan" data-location="UArizona" data-imgname="umut"></div>
+            </div>
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Mustafa Ghanim" data-location="UArizona" data-imgname="mustafa"></div>
+            </div>
+          </div>
+          <h4>Past Contributors</h4>
+          <div class="row mx-auto mt-3">
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Nirmal Kumbhare"></div>
+            </div>
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Anish NK"></div>
+            </div>
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Miguel Castro Gonzalez"></div>
+            </div>
+          </div>
+          <div class="row mx-auto mt-3">
+            <div class="col-sm mx-auto text-center">
+              <div class="contrib-profile" data-name="Alex Fusco"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Maintained by the University of Arizona <a href="https://uweb.engr.arizona.edu/~rcl/">Reconfigurable Computing Lab</a>. Copyright &copy; 2023, University of Arizona</p>
+    </div>
+  </footer>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script async src="vendor/github-buttons/js/buttons.min.js"></script>
+
+  <script src="js/scrolling-nav.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+
+</html>

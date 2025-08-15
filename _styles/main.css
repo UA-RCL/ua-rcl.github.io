@@ -4,4 +4,22 @@ main {
   flex-grow: 1;
 }
 
+.full-width-section {
+  width: 99vw;
+  margin-left: calc(-50vw + 50%);
+  gap: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.full-width-section:first-of-type {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 /*# sourceMappingURL=main.css.map */
