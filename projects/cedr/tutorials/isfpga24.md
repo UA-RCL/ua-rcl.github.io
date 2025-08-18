@@ -10,6 +10,7 @@ As the FPGAs are being embedded in all layers of computing infrastructure from e
 
 We will start with an overview of CEDR, and then we will explore how CEDR (i) allows naive application developers to utilize FPGA-based acceleration within heterogeneous environments, (ii) enables system designers to sweep hardware compositions and measure their impact on realistic workload scenarios, and (iii) provides a rich environment for resource management developers to design new scheduling policies. Throughout the tutorial, our common goal is lifting the barriers to research and enabling productive application deployment on FPGA-integrated heterogeneous systems.
 
+<div style="display: flex; gap: 2rem; justify-content: center; align-items: flex-start;">
 {%
   include portrait.html
   name="Joshua Mack"
@@ -17,7 +18,6 @@ We will start with an overview of CEDR, and then we will explore how CEDR (i) al
   image="/images/profiles/lab/joshua_mack.jpg"
   custom-class="wide-profile"
 %}
-
 {%
   include portrait.html
   name="Sahil Hassan"
@@ -25,7 +25,6 @@ We will start with an overview of CEDR, and then we will explore how CEDR (i) al
   image="/images/profiles/lab/sahil_hassan.jpg"
   custom-class="wide-profile"
 %}
-
 {% 
   include portrait.html
   name="Serhan Gener"
@@ -33,6 +32,7 @@ We will start with an overview of CEDR, and then we will explore how CEDR (i) al
   image="/images/profiles/lab/serhan_gener.jpg"
   custom-class="wide-profile"
 %}
+</div>
 
 ## Schedule:
 

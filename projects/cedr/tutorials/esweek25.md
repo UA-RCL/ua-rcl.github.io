@@ -12,6 +12,7 @@ CEDR is currently being leveraged in basic research as part of the DARPA SpaceBA
 
 For the 2025 edition of this tutorial, our goal is to deliver a comprehensive learning experience that builds on the foundational CEDR knowledge shared last year. The tutorial will begin with a refresher on the basics of CEDR, followed by an in-depth, hands-on exploration of advanced topics. Participants will learn to integrate new accelerators and APIs into the runtime, as well as apply fine-grained performance monitoring and profiling techniques on FPGA-based heterogeneous platforms. This approach aims to reduce the knowledge barrier for attendees, enabling them to develop and optimize applications using CEDR across various application domains and hardware platforms. In the final segment of the tutorial, we will preview the latest advancements in CEDR and introduce its new features for the users.
 
+<div style="display: flex; gap: 2rem; justify-content: center; align-items: flex-start;">
 {%
   include portrait.html
   name="Sahil Hassan"
@@ -19,7 +20,6 @@ For the 2025 edition of this tutorial, our goal is to deliver a comprehensive le
   image="/images/profiles/lab/sahil_hassan.jpg"
   custom-class="wide-profile"
 %}
-
 {% 
   include portrait.html
   name="Serhan Gener"
@@ -27,6 +27,7 @@ For the 2025 edition of this tutorial, our goal is to deliver a comprehensive le
   image="/images/profiles/lab/serhan_gener.jpg"
   custom-class="wide-profile"
 %}
+</div>
 
 ## Tutorial Structure and Flow
 The tutorial is structured into two core exercises, each including a series of hands-on activities tailored to the needs of three distinct user types: naïve application developers, system designers, and resource management heuristic developers. Throughout these activities, the common thread is lifting the barriers to research and enabling productive application development and deployment on FPGA-integrated heterogeneous systems. The tutorial adopts a hands-on approach utilizing the Zynq UltraScale+ MPSoC ZCU102 Evaluation Kit, enabling participants to gain practical experience on systems that amalgamate ARM CPU cores with FPGA accelerators. 
