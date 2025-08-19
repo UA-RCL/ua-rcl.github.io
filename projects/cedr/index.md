@@ -51,11 +51,25 @@ System designers are continuously exploring design methodologies that harness in
   </div>
 </div>
 
+<div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
 
-## Research Initiatives
+  <!-- First column -->
+  <div style="flex: 1; min-width: 300px;">
+    <h2 style="text-align: center;">Research Initiatives</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; align-items: center;">
+      <img src="/projects/cedr/images/logos/agency/DARPA-logo.png" alt="DARPA" style="width: 100%;">
+      <img src="/projects/cedr/images/logos/agency/NSF-logo.png" alt="NSF" style="width: 100%;">
+      <img src="/projects/cedr/images/logos/agency/AFRL-logo.png" alt="AFRL" style="width: 100%;">
+    </div>
+  </div>
 
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; align-items: center; width: 50%; margin: 0 auto;">
-  <img src="/projects/cedr/images/logos/agency/DARPA-logo.png" alt="DARPA" style="width: 100%;">
-  <img src="/projects/cedr/images/logos/agency/NSF-logo.png" alt="NSF" style="width: 100%;">
-  <img src="/projects/cedr/images/logos/agency/AFRL-logo.png" alt="AFRL" style="width: 100%;">
+  <!-- Second column -->
+  <div style="flex: 1; min-width: 300px;">
+    <h2 style="text-align: center;">Acknowledgment</h2>
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; align-items: center;">
+      <img src="/projects/cedr/images/logos/industry/AMD-Logo.png" alt="AMD" style="width: 100%;">
+      <p>We appreciate the continuous and generous support from the AMD University Program, including the donation of FPGA prototyping boards.</p>
+    </div>
+  </div>
+
 </div>

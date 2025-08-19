@@ -1,3 +1,10 @@
+- title: CEDR
+  subtitle: Compiler-integrated, Extensible, DSSoC Runtime
+  group: featured
+  image: images/projects/soc.png
+  link: /projects/cedr/
+  description: Compile-time application analysis, a Linux-based runtime system, and an intelligent scheduling framework to holistically target the aforementioned requirements and capabilities.
+
 - title: CLEO-AI
   subtitle: Closed-loop Edge System for Optimized and Adaptive Intelligence
   group: featured
@@ -52,6 +59,9 @@
 - title: Value of Service
   subtitle: Value-based Resource Management Heuristics
   group: featured
-  image: images/background_v1.jpg
+  image: projects/cedr/images/logos/tool/VoS-logo.svg
+  image_width: 100%
+  image_height: auto
+  image_object_fit: contain
   link: /projects/cedr/projects/vos.html
   description: Value-based resource management that treats scheduling as a global optimization problem.
