@@ -19,11 +19,13 @@ layout: default
       <li class="has-sub {% if page.url contains '/tutorials/' %}open{% endif %}">
         <a href="{{ '/projects/cedr/tutorials/' | relative_url }}" class="{% if page.url contains '/tutorials/' %}active{% endif %}">Tutorials</a>
         <ul style="max-height: {% if page.url contains '/tutorials/' %}500px{% else %}0{% endif %};">
-          {% assign tutorial_pages = site.pages | where_exp: "p", "p.path contains 'projects/cedr/tutorials/'" | sort: "order" | reverse%}
+          {% assign tutorial_pages = site.pages | where_exp: "p", "p.path contains 'projects/cedr/tutorials/'" | sort: "order" | reverse %}
           {% for p in tutorial_pages %}
-            {% if p.url != '/projects/cedr/tutorials/' %}
-              <li><a href="{{ p.url | relative_url }}" class="{% if page.url == p.url %}active{% endif %}">{{ p.title }}</a></li>
-            {% endif %}
+            {% unless p.path contains "step-by-step" %}
+              {% if p.url != '/projects/cedr/tutorials/' %}
+                <li><a href="{{ p.url | relative_url }}" class="{% if page.url == p.url %}active{% endif %}">{{ p.title }}</a></li>
+              {% endif %}
+            {% endunless %}
           {% endfor %}
           <li>
             {% include button.html
@@ -115,12 +117,6 @@ layout: default
           </div>
         </div>
       </a>
-    </div>
-
-    <div class="box">
-      <h3>Ongoing Work</h3>
-      <img src="/images/logo.svg" alt="Work 1" style="width: 20%;">
-      <p>Coming soon...</p>
     </div>
   </aside>
 

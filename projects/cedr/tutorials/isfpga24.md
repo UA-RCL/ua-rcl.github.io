@@ -53,4 +53,4 @@ We will start with an overview of CEDR, and then we will explore how CEDR (i) al
 
 ## Archival materials:
 
-Click [here](/presentations/tutorials/fpga24/tutorial/) for a self-paced, archival version of our tutorial workflow.
+Click [here](/projects/cedr/tutorials/step-by-step/fpga24_tutorial/) for a self-paced, archival version of our tutorial workflow.

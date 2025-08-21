@@ -10,7 +10,7 @@ title: CEDR Tutorials
   <img src="https://esweek.org/wp-content/uploads/2020/03/esweek-logo.png" alt="ESWEEK Logo" style="max-width: 100px; height: auto;">
 </p>
 
-Click [here](./esweek25/) to see our tutorial from [ESWEEK 2025](https://esweek.org/tutorials/)
+Click [here](/projects/cedr/tutorials/esweek25/) to see our tutorial from [ESWEEK 2025](https://esweek.org/tutorials/)
 
 {% endcapture %}
 
@@ -18,7 +18,7 @@ Click [here](./esweek25/) to see our tutorial from [ESWEEK 2025](https://esweek.
 
 {% capture content %}
 
-Click [here](./fpga25/) to see our tutorial from [FPGA 2025](https://www.isfpga.org/past/fpga2025/)
+Click [here](/projects/cedr/tutorials/isfpga25/) to see our tutorial from [FPGA 2025](https://www.isfpga.org/past/fpga2025/)
 
 {% endcapture %}
 
@@ -26,7 +26,7 @@ Click [here](./fpga25/) to see our tutorial from [FPGA 2025](https://www.isfpga.
 
 {% capture content %}
 
-Click [here](./fpga24/) to see our tutorial from [FPGA 2024](https://www.isfpga.org/past/fpga2024/)
+Click [here](/projects/cedr/tutorials/isfpga24/) to see our tutorial from [FPGA 2024](https://www.isfpga.org/past/fpga2024/)
 
 {% endcapture %}
 
