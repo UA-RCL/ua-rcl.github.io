@@ -1,0 +1,40 @@
+<div
+  class="feature"
+  {% if include.flip %}
+    data-flip
+  {% endif %}
+  style="display: flex; align-items: center; gap: 10px; margin: 10px 0; padding: 0;"
+>
+  <a
+    {% if include.link %}
+      href="{{ include.link | relative_url }}" 
+    {% endif %}
+    class="feature-image"
+    aria-label="{{ include.title | default: 'feature link' }}"
+    style="flex-shrink: 0;"
+  >
+    {% if include.image contains ".mp4" %}
+      <video autoplay muted loop playsinline 
+             style="width: 200px; height: 150px; object-fit: fill; border: none; display: block;" 
+             loading="lazy">
+        <source src="{{ include.image | relative_url }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    {% else %}
+      <img
+        src="{{ include.image | relative_url }}"
+        loading="lazy"
+        alt="{{ include.title | default: 'feature image' }}"
+        style="width: 400px; height: 300px; object-fit: fill; border: none; display: block;"
+        {% include fallback.html %}
+      >
+    {% endif %}
+  </a>
+
+  <div class="feature-text" style="flex: 1;">
+    {% if include.title %}
+      <p class="feature-title" style="margin: 0 0 5px 0;">{{ include.title }}</p>
+    {% endif %}
+    <div style="margin: 0;">{{ include.text | markdownify }}</div>
+  </div>
+</div>
