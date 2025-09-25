@@ -49,21 +49,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>ESWEEK'25 Tutorial Contents | UA-RCL</title>
+<title>PACT'25 Tutorial Contents | UA-RCL</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="ESWEEK'25 Tutorial Contents">
+<meta name="title" content="PACT'25 Tutorial Contents">
 <meta name="description" content="University of Arizona Reconfigurable Computing Lab. ">
 
-<meta property="og:title" content="ESWEEK'25 Tutorial Contents">
+<meta property="og:title" content="PACT'25 Tutorial Contents">
 <meta property="og:site_title" content="UA-RCL">
 <meta property="og:description" content="University of Arizona Reconfigurable Computing Lab. ">
 <meta property="og:url" content="">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="ESWEEK'25 Tutorial Contents">
+<meta property="twitter:title" content="PACT'25 Tutorial Contents">
 <meta property="twitter:description" content="University of Arizona Reconfigurable Computing Lab. ">
 <meta property="twitter:url" content="">
 <meta property="twitter:card" content="summary_large_image">
@@ -79,9 +79,9 @@
     
       "@type": "WebSite",
     
-    "name": "ESWEEK'25 Tutorial Contents",
+    "name": "PACT'25 Tutorial Contents",
     "description": "University of Arizona Reconfigurable Computing Lab. ",
-    "headline": "ESWEEK'25 Tutorial Contents",
+    "headline": "PACT'25 Tutorial Contents",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -316,6 +316,36 @@
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 <!-- include all css in styles folder -->
 <!-- 
@@ -329,7 +359,7 @@
 
 <!-- allow pages to customize styling via frontmatter -->
 
-<link href="/_styles/presentations/esweek25/custom.css" rel="stylesheet">
+<link href="/_styles/presentations/pact25/custom.css" rel="stylesheet">
 
   <!-- third party scripts -->
 <script src="https://unpkg.com/@popperjs/core@2" defer></script>
@@ -447,7 +477,7 @@
   
 
   <section class="background" data-size="page">
-    <h1 id="esweek25-tutorial-step-by-step-flow">ESWEEK’25 Tutorial Step-by-step Flow</h1>
+    <h1 id="pact25-tutorial-step-by-step-flow">PACT’25 Tutorial Step-by-step Flow</h1>
 
 <p>In this tutorial, we will familiarize ourselves with setting up CEDR and performing the following set of tasks:</p>
 <ul>
@@ -496,63 +526,42 @@
 <h2 id="tutorial-requirements">Tutorial Requirements</h2>
 <ul>
   <li>Ubuntu-based Linux machine or ability to run a <a href="https://hub.docker.com/r/uofarcl/cedr/tags">docker image</a>
-    <ul>
-      <li>Choose one of the supported environments:
-        <ul>
-          <li><a href="#option-1-docker-based-instructions-linux-windows-and-mac">Docker-based setup (Start on any platform without root access)</a></li>
-          <li><a href="#option-2-linux-native-instructions-requires-root-access">Native Linux-based setup (Requires root access)</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
+</li>
   <li>CEDR Source Files: <a href="https://github.com/UA-RCL/CEDR/">CEDR repository for this tutorial</a>, checked out to the <code class="language-plaintext highlighter-rouge">tutorial</code> branch.</li>
 </ul>
 
 <h1 id="exercise-0-getting-started-with-cedr">Exercise 0: Getting Started with CEDR</h1>
-<p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
+<p><a href="#pact25-tutorial-step-by-step-flow">Return to top</a></p>
 
 <h2 id="initial-setup">Initial Setup:</h2>
-<h3 id="option-1-docker-based-instructions-linux-windows-and-mac">Option 1: Docker-based Instructions (Linux, Windows, and Mac)</h3>
+<h3 id="docker-based-instructions-linux-windows-and-mac">Docker-based Instructions (Linux, Windows, and Mac)</h3>
 <p>Install Docker based on the host machine platform using the <a href="https://docs.docker.com/engine/install/#desktop">link</a>.
-Pull the latest <a href="https://hub.docker.com/r/uofarcl/cedr/tags">Docker container</a> with all dependencies installed. 
-Open a terminal in your CEDR folder and run the Docker image using the following command:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -it --name cedr_tutorial uofarcl/cedr:tutorial_esweek25 /bin/bash
+Pull the existing latest <a href="https://hub.docker.com/r/uofarcl/cedr/tags">Docker container</a> with all dependencies installed.
+Open a terminal in your CEDR folder and run the docker image using the following command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -it --rm uofarcl/cedr:tutorial_isfpga25 /bin/bash
 </code></pre></div></div>
 
-<p><strong><em>After runing the Docker container you can move to <a href="#building-cedr-for-x86">Building CEDR for x86</a>. Following few lines shows simple <code class="language-plaintext highlighter-rouge">docker</code> comments that would be useful for the following tutorials.</em></strong></p>
-
-<p>We will need to copy files from the container to the host machine. Use one of these alternatives for this:</p>
+<p>We will need to copy files from container to host machine, use one of the these alternatives for this:</p>
 <ul>
-  <li>Mount a volume while running Docker using a folder on the host machine that has read and write permissions for <code class="language-plaintext highlighter-rouge">other</code> users:
+  <li>Mount a volume while running docker using a folder on host machine that has read and write permissions for <code class="language-plaintext highlighter-rouge">other</code> users:
     <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">--name</span> cedr_tutorial <span class="nt">-v</span> &lt;host-folder&gt;:/root/repository/share uofarcl/cedr:tutorial_esweek25 /bin/bash
+<div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-v</span> &lt;host-folder&gt;:/root/repository/share uofarcl/cedr:tutorial_isfpga25 /bin/bash
 </code></pre></div>    </div>
   </li>
-  <li>Using <code class="language-plaintext highlighter-rouge">docker cp</code> to copy files from the container to the host:
+  <li>Using <code class="language-plaintext highlighter-rouge">docker cp</code> to copy files from host machine:
     <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>docker ps <span class="nt">-a</span> <span class="c"># Find the Container ID and Name</span>
-docker <span class="nb">cp </span>cedr_tutorial:/root/repository/CEDR ./
+<div class="highlight"><pre class="highlight"><code>docker ps <span class="c"># Find the Container ID and Name</span>
+docker <span class="nb">cp</span> &lt;container_name&gt;:/root/repository/CEDR ./
 </code></pre></div>    </div>
   </li>
-  <li>If you need to detach from Docker at any time, you can use <code class="language-plaintext highlighter-rouge">Crtl+p</code> and <code class="language-plaintext highlighter-rouge">Ctrl+q</code> to detach and to re-attach use:
+  <li>If you need to detach from docker at any time you can use <code class="language-plaintext highlighter-rouge">Crtl+p</code> and <code class="language-plaintext highlighter-rouge">Ctrl+q</code> to detach and to re-attach use:
     <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> cedr_tutorial /bin/bash
-</code></pre></div>    </div>
-  </li>
-  <li>Using <code class="language-plaintext highlighter-rouge">docker start</code> to restart a stopped Docker container:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>docker start <span class="nt">-ai</span> cedr_tutorial
-</code></pre></div>    </div>
-  </li>
-  <li>Save your changes locally to start a new container with saved changes:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>docker commit cedr_tutorial &lt;new_image_name&gt;:&lt;new_tag&gt; <span class="c"># Save changes in the current running image to create a new container</span>
-docker run <span class="nt">-it</span> <span class="nt">--name</span> my_cedr_dev &lt;new_image_name&gt;:&lt;new_tag&gt; /bin/bash <span class="c"># Start a new image with the updated changes</span>
+<div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> <span class="nt">--rm</span> &lt;container_name&gt; /bin/bash
 </code></pre></div>    </div>
   </li>
 </ul>
 
-<h3 id="option-2-linux-native-instructions-requires-root-access">Option 2: Linux-native instructions (Requires root access)</h3>
+<h3 id="linux-native-instructions-requires-root-access">Linux-native instructions (Requires root access)</h3>
 <p>Install git using the following command:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>git-all
 </code></pre></div></div>
@@ -584,14 +593,14 @@ docker run <span class="nt">-it</span> <span class="nt">--name</span> my_cedr_de
 <p>Navigate to the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial">root directory</a> and create a build folder</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>build
 </code></pre></div></div>
-<p>Change the current directory to build</p>
+<p>Change current directory to build</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>build
 </code></pre></div></div>
-<p>Call cmake and make to create CEDR executables for x86. You can leave <code class="language-plaintext highlighter-rouge">$(nproc)</code> empty (<code class="language-plaintext highlighter-rouge">make -j</code>) or set it equal to the number of cores you have on the host machine (i.e., <code class="language-plaintext highlighter-rouge">make -j 12</code> for a 12 CPU core machine).</p>
+<p>Call cmake and make to create CEDR executables for x86</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cmake ../
-make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
+make <span class="nt">-j</span> -<span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
 </code></pre></div></div>
-<p>At this point, there are 4 important files that should be compiled:</p>
+<p>At this point there are 4 important files that should be compiled:</p>
 <ul>
   <li>
 <em>cedr:</em> CEDR runtime daemon</li>
@@ -606,7 +615,7 @@ make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc
 <p>Look into <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h">dash.h</a> under <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash">libdash</a> folder and see available API calls.</p>
 
 <h1 id="exercise-1-1-1-introducing-cedr-apis-to-baseline-c-applications">Exercise 1-1-1: Introducing CEDR APIs to Baseline C++ Applications</h1>
-<p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
+<p><a href="#pact25-tutorial-step-by-step-flow">Return to top</a></p>
 
 <h2 id="application-overview">Application Overview</h2>
 
@@ -748,21 +757,20 @@ make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc
 <code class="language-plaintext highlighter-rouge">timing_trace.log</code> stores the computing resource and execution time of the API call.</li>
 </ul>
 
-<p>We can generate a Gantt chart showing the distribution of tasks to the processing elements. Navigate the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">scripts folder</a> and run <code class="language-plaintext highlighter-rouge">gantt_k-nk.py</code> script.</p>
+<p>We can generate a Gantt chart showing the distribution of tasks to the processing elements. Navigate the <code class="language-plaintext highlighter-rouge">scripts/</code> folder from the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a> and run <code class="language-plaintext highlighter-rouge">gantt_k-nk.py</code> script.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../scripts/
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>scripts/
 python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 </code></pre></div></div>
 
 <p>Having built CEDR and compiled radar correlator application, we can proceed to performing design-space exploration now.</p>
 
 <h1 id="exercise-1-1-2-multiple-application-instance-workloads">Exercise 1-1-2: Multiple Application Instance Workloads</h1>
-<p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
+<p><a href="#pact25-tutorial-step-by-step-flow">Return to top</a></p>
 
 <h2 id="multiple-applications">Multiple Applications</h2>
 <p>While in the build folder, run CEDR again using the config file</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../build
-./cedr <span class="nt">-c</span> ./daemon_config.json &amp;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./cedr <span class="nt">-c</span> ./daemon_config.json &amp;
 </code></pre></div></div>
 
 <p>Run <code class="language-plaintext highlighter-rouge">sub_dag</code> to submit applications to CEDR, this time using <code class="language-plaintext highlighter-rouge">-n 10</code> to submit 10 radar correlators and terminate CEDR using <code class="language-plaintext highlighter-rouge">kill_daemon</code>.</p>
@@ -829,12 +837,12 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment4/timing_trace.log
 <p>After each step or once all is done you can see the how the changes are effecting the execution of the applications looking at the generated Gantt charts.</p>
 
 <h1 id="exercise-1-2-1-introducing-a-new-api-call">Exercise 1-2-1: Introducing a New API Call</h1>
-<p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
+<p><a href="#pact25-tutorial-step-by-step-flow">Return to top</a></p>
 
 <p>In this section of the tutorial, we will demonstrate integration of a new API call to the CEDR. We will use <code class="language-plaintext highlighter-rouge">DASH_ZIP</code> API call as an example.</p>
 
 <p>Navigate to libdash folder from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../libdash
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>libdash
 </code></pre></div></div>
 
 <p>Add the API function definitions to the <code class="language-plaintext highlighter-rouge">dash.h</code>.</p>
@@ -999,18 +1007,17 @@ nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>log_dir/experiment5/timing_trace.log | <span class="nb">grep</span> <span class="nt">-E</span> <span class="s1">'*ZIP*'</span>
 </code></pre></div></div>
 <h1 id="exercise-1-2-2-introducing-a-new-accelerator">Exercise 1-2-2: Introducing a New Accelerator</h1>
-<p>Before starting with new accelerator integration we will go through the cross compilation of CEDR and application for AUP-ZU3.</p>
+<p>Before starting with new accelerator integration we will go through the cross compilation of CEDR and application for ZedBoard.</p>
 
-<h2 id="fpga-based-soc-experiment-aup-zu3">FPGA Based SoC Experiment (AUP-ZU3)</h2>
-<p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
+<h2 id="fpga-based-soc-experiment-zedboard">FPGA Based SoC Experiment (ZedBoard)</h2>
+<p><a href="#pact25-tutorial-step-by-step-flow">Return to top</a></p>
 
-<p>Moving on to the arm32-based build for AUP-ZU3 FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/arm32-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
+<p>Moving on to the arm32-based build for ZedBoard FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/arm32-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
 Simply run the following commands from the repository root folder:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../
-<span class="nb">mkdir </span>build-arm
-<span class="nb">cd </span>build-arm
-cmake <span class="nt">-DLIBDASH_MODULES</span><span class="o">=</span><span class="s2">"FFT"</span> <span class="nt">--toolchain</span><span class="o">=</span>../toolchains/aarch64-linux-gnu.toolchain.cmake ..
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>build-arm32
+<span class="nb">cd </span>build-arm32
+cmake <span class="nt">-DLIBDASH_MODULES</span><span class="o">=</span><span class="s2">"FFT"</span> <span class="nt">--toolchain</span><span class="o">=</span>../toolchains/arm32-linux-gnu.toolchain.cmake ..
 make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
 </code></pre></div></div>
 
@@ -1018,7 +1025,7 @@ make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>file cedr
 </code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cedr: ELF 64-bit LSB pie executable, &lt;b&gt;ARM aarch64&lt;/b&gt;, version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=c5913bcbf311f3df59cd3b7e3063856908cee207, for GNU/Linux 3.7.0, not stripped
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cedr: ELF 32-bit LSB shared object, &lt;b&gt;ARM&lt;/b&gt;, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=d8c6c1994644d6645f508952b8a3b3e491985a92, not stripped
 </code></pre></div></div>
 
 <p>Since we also used the <code class="language-plaintext highlighter-rouge">-DLIBDASH_MODULES="FFT"</code> flag, we also enabled FFT accelerator function calls for <code class="language-plaintext highlighter-rouge">DASH_FFT</code> API calls. We can test if these functions are available or not by running the following commands:</p>
@@ -1032,7 +1039,7 @@ make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc
 <p>After this, we can go to build our application using cross-compilation for arm32.</p>
 
 <h2 id="zip-acceleretor-integration">ZIP acceleretor Integration</h2>
-<p>Due to the overhead associated with SD Card based file transfor overheads, we will also include ZIP accelerator before moving on to the testing on the AUP-ZU3.</p>
+<p>Due to the overhead associated with SD Card based file transfor overheads, we will also include ZIP accelerator before moving on to the testing on the ZedBoard.</p>
 
 <h3 id="adding-zip-as-resource-to-cedr">Adding ZIP as Resource to CEDR</h3>
 
@@ -1053,7 +1060,7 @@ static const std::map&lt;std::string, resource_type&gt; resource_type_map = {
 <h3 id="accelerator-source-file">Accelerator Source File</h3>
 
 <p>Add accelerator implementation of the ZIP to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/">libdash/zip</a>. For simplicity, we just copy the original implementation.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">-r</span> ../original_files/zip_AUP-ZU3 ../libdash/zip
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">-r</span> ../original_files/zip_ZedBoard ../libdash/zip
 </code></pre></div></div>
 
 <p>In the <code class="language-plaintext highlighter-rouge">libdash/zip/zip.cpp</code>, there is a <code class="language-plaintext highlighter-rouge">DASH_ZIP_flt_zip</code> function call. The version <code class="language-plaintext highlighter-rouge">DASH_ZIP_flt_cpu</code> we added in <a href="#exercise-1-2-1-introducing-a-new-api-call">Integrating new API calls</a> was specifically for using the <code class="language-plaintext highlighter-rouge">cpu</code> resource while <code class="language-plaintext highlighter-rouge">_zip</code> suffix is the version that will be used when ZIP accelerator is used as a resource. The <code class="language-plaintext highlighter-rouge">DASH_ZIP_flt_zip</code> functions handles the input size limitations and data: type converstion and calls another function called <code class="language-plaintext highlighter-rouge">zip_accel</code> which handles the data transfers and signalling the ZIP accelerator to start execution. Looking deeper inthe function:</p>
@@ -1083,15 +1090,15 @@ static const std::map&lt;std::string, resource_type&gt; resource_type_map = {
 <p>These are some of the main steps for adding a new accelator to CEDR.</p>
 
 <p>We also need to make sure <code class="language-plaintext highlighter-rouge">CMakeLists.txt</code> under <code class="language-plaintext highlighter-rouge">libdash</code> folder looks for ZIP as an accelerator as well. Update following line (19) in <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/CMakeLists.txt">libdash/CMakeLists.txt</a></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  set(ALL_LIBDASH_MODULES FFT GEMM GPU ZIP)
-</code></pre></div></div>
+<pre><code class="language-CMake">  set(ALL_LIBDASH_MODULES FFT GEMM GPU ZIP)
+</code></pre>
 
 <h3 id="building-cedr-with-zip">Building CEDR with ZIP</h3>
 
 <p>In <code class="language-plaintext highlighter-rouge">build-arm32</code> folder run the following steps to rebuild CEDR with ZIP as an accelerator.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> ./<span class="k">*</span> <span class="c"># This can be skipped, used for showing fresh start of cmake with new accelerator</span>
-cmake <span class="nt">-DLIBDASH_MODULES</span><span class="o">=</span><span class="s2">"FFT ZIP"</span> <span class="nt">--toolchain</span><span class="o">=</span>../toolchains/aarch64-linux-gnu.toolchain.cmake ..
+cmake <span class="nt">-DLIBDASH_MODULES</span><span class="o">=</span><span class="s2">"FFT ZIP"</span> <span class="nt">--toolchain</span><span class="o">=</span>../toolchains/arm32-linux-gnu.toolchain.cmake ..
 make <span class="nt">-j</span>
 </code></pre></div></div>
 
@@ -1108,49 +1115,46 @@ make <span class="nt">-j</span>
 <p>First, navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator">applications/APIApps/radar_correlator</a> folder. Then run the following command to build the executable for arm32:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../applications/APIApps/radar_correlator
-<span class="nv">ARCH</span><span class="o">=</span>aarch64 make zip
-file radar_correlator_zip-aarch64.so
+<span class="nv">ARCH</span><span class="o">=</span>arm32 make zip
+file radar_correlator_zip-arm32.so
 </code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>radar_correlator_zip-aarch64.so: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, BuildID[sha1]=f86ca08b59c2769a26d2b236731e163ee8e0ba1f, not stripped
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>radar_correlator_zip-arm32.so: ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), dynamically linked, BuildID[sha1]=4f51a07fdd5f11cdad4bb3896dfceee8f9531a14, not stripped
 </code></pre></div></div>
 
 <p>After verifying the file is compiled for the correct platform, copy the file and inputs to the build directory:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Assuming your CEDR build folder is in the root directory and named "build-arm"</span>
-<span class="nb">cp</span> <span class="nt">-r</span> radar_correlator_zip-aarch64.<span class="o">{</span>so,out<span class="o">}</span> input/ ../../../build-arm
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Assuming your CEDR build folder is in the root directory and named "build-arm32"</span>
+<span class="nb">cp</span> <span class="nt">-r</span> radar_correlator_zip-arm32.<span class="o">{</span>so,out<span class="o">}</span> input/ ../../../build-arm32
 </code></pre></div></div>
 
-<h3 id="running-cedr-on-aup-zu3">Running CEDR on AUP-ZU3</h3>
+<h3 id="running-cedr-on-zedboard">Running CEDR on ZedBoard</h3>
 
-<p>Now, change your working directory to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory. Before going into the AUP-ZU3 first copy the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file to the <code class="language-plaintext highlighter-rouge">build-arm</code> directory and create an output folder.</p>
+<p>Now, change your working directory to the <code class="language-plaintext highlighter-rouge">build-arm32</code> directory. Before going into the ZedBoard first copy the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file to the <code class="language-plaintext highlighter-rouge">build-arm32</code> directory and create an output folder.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../../build-arm
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../../build-arm32
 <span class="nb">cp</span> ../daemon_config.json ./
 <span class="nb">ls</span>
 </code></pre></div></div>
 
-<p>Now we will copy our files to AUP-ZU3, and enter the password <code class="language-plaintext highlighter-rouge">root</code> when prompted. Assuming using Docker, copy the <code class="language-plaintext highlighter-rouge">CEDR/build-arm</code> folder to the host machine. While we only need handful of files to actually run CEDR and Radar Correlator application, we will copy everything under <code class="language-plaintext highlighter-rouge">build-arm</code> to the SD Card’s <code class="language-plaintext highlighter-rouge">System</code> partition. Running on the host machine:</p>
+<p>Now we will copy our files to ZedBoard, and enter the password <code class="language-plaintext highlighter-rouge">root</code> when prompted. Assuming using Docker, copy the <code class="language-plaintext highlighter-rouge">CEDR/build-arm32</code> folder to the host machine. While we only need handful of files to actually run CEDR and Radar Correlator application, we will copy everything under <code class="language-plaintext highlighter-rouge">build-arm32</code> to the SD Card’s <code class="language-plaintext highlighter-rouge">System</code> partition. Running on the host machine:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">cp</span> &lt;container_name&gt;:/root/repository/CEDR/build-arm ./ <span class="c"># Run if using Docker</span>
-<span class="nb">cp</span> <span class="nt">-r</span> ./build-arm &lt;path_to_external_drive&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">cp</span> &lt;container_name&gt;:/root/repository/CEDR/build-arm32 ./
+<span class="nb">cp</span> <span class="nt">-r</span> ./build-arm32 &lt;path_to_SD_Cards_system_partition&gt;
 </code></pre></div></div>
 
-<p>After these steps are completed, remove the SD Card from the host machine and attach it to the AUP-ZU3 and turn on the AUP-ZU3. Using any serial communication tool like <code class="language-plaintext highlighter-rouge">Putty</code>, <code class="language-plaintext highlighter-rouge">screen</code>, or <code class="language-plaintext highlighter-rouge">minicom</code>, watch AUP-ZU3 as it boots and enter username and password as <code class="language-plaintext highlighter-rouge">root</code> when promted. After botting the board, navigate to System partition of the SD Card and after typing <code class="language-plaintext highlighter-rouge">ls</code> you should see all the files you copied on the AUP-ZU3.</p>
+<p>After these steps are completed, remove the SD Card from the host machine and attach it to the ZedBoard and turn on the ZedBoard. Using any serial communication tool like <code class="language-plaintext highlighter-rouge">Putty</code>, <code class="language-plaintext highlighter-rouge">screen</code>, or <code class="language-plaintext highlighter-rouge">minicom</code>, watch ZedBoard as it boots and enter username and password as <code class="language-plaintext highlighter-rouge">root</code> when promted. After botting the board, navigate to System partition of the SD Card and after typing <code class="language-plaintext highlighter-rouge">ls</code> you should see all the files you copied on the ZedBoard.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>screen /dev/ttyACM0 115200
-Username: petalinux
-Password: &lt;<span class="nb">set </span>any password- it can be as simple as 1234&gt;
-<span class="c"># Find the USB path:</span>
-<span class="nb">ls</span> <span class="nt">-al</span> /run/media <span class="c"># or df -H</span>
-<span class="nb">cp</span> <span class="nt">-r</span> &lt;USB_PATH&gt;/build-arm ./
-<span class="nb">cd </span>build-arm
+Username: root
+Password: root
+<span class="nb">cd</span> /mnt/sd-mmcblk0p2/build-arm32
 <span class="nb">ls</span>
 </code></pre></div></div>
 
 <p>Before running CEDR, we need to enable FFT accelerator in the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file. By the time this tutorial was written, we had 2 FFT accelerators available in the FPGA image. We can put any number between 0-2 to the corresponding fields on the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/daemon_config.json">daemon_config.json</a> file. Change the file with the following <code class="language-plaintext highlighter-rouge">Worker Threads</code> setup:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"Worker Threads"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"fft"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"gemm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"gpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -1158,28 +1162,28 @@ Password: &lt;<span class="nb">set </span>any password- it can be as simple as 1
 </span></code></pre></div></div>
 <p>Execution of CEDR is the same as the x86_64 version. In one terminal launch CEDR:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./cedr <span class="nt">-c</span> ./daemon_config.json &amp;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./cedr <span class="nt">-c</span> ./daemon_config.json &amp;
 </code></pre></div></div>
 <p>After launching CEDR, you should see the function handles for FFT accelerators are successfully grabbed.</p>
 
 <p>In another terminal, we will submit 5 instances of <code class="language-plaintext highlighter-rouge">radar_correlator</code> using <code class="language-plaintext highlighter-rouge">sub_dag</code> and check the outputs:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./sub_dag <span class="nt">-a</span> ./radar_correlator_zip-aarch64.so <span class="nt">-n</span> 5 <span class="nt">-p</span> 0
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./sub_dag <span class="nt">-a</span> ./radar_correlator_zip-arm32.so <span class="nt">-n</span> 5 <span class="nt">-p</span> 0
 </code></pre></div></div>
 
 <p>Now kill CEDR by running <code class="language-plaintext highlighter-rouge">./kill_deamon</code> and check the <code class="language-plaintext highlighter-rouge">resource_name</code> fields for the first 10 APIs:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./kill_daemon
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./kill_daemon
 <span class="nb">head</span> <span class="nt">-n</span> 10 ./log_dir/experiment0/timing_trace.log
 </code></pre></div></div>
 
-<p>We can see that all the resources available for FFT execution (<code class="language-plaintext highlighter-rouge">cpu1</code>, <code class="language-plaintext highlighter-rouge">cpu2</code>, <code class="language-plaintext highlighter-rouge">cpu3</code>, <code class="language-plaintext highlighter-rouge">fft1</code>, and <code class="language-plaintext highlighter-rouge">fft2</code>) are being used and ZIP is only using CPU (<code class="language-plaintext highlighter-rouge">cpu1</code>, <code class="language-plaintext highlighter-rouge">cpu2</code>, or <code class="language-plaintext highlighter-rouge">cpu3</code>) for execution.</p>
+<p>We can see that all the resources available for FFT execution (<code class="language-plaintext highlighter-rouge">cpu1</code>, <code class="language-plaintext highlighter-rouge">fft1</code>, and <code class="language-plaintext highlighter-rouge">fft2</code>) are being used and ZIP is only using CPU (<code class="language-plaintext highlighter-rouge">cpu1</code>) for execution.</p>
 
 <h3 id="using-the-zip-accelerator">Using the ZIP Accelerator</h3>
 <p>Now we can also test the newly added accelerator based ZIP implementation. Modify the <code class="language-plaintext highlighter-rouge">daemon_config.json</code> file to set the number of ZIPs to 2.</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"Worker Threads"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"fft"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"gemm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1188,33 +1192,25 @@ Password: &lt;<span class="nb">set </span>any password- it can be as simple as 1
 </span></code></pre></div></div>
 
 <p>Re-run CEDR:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./cedr <span class="nt">-c</span> ./daemon_config.json &amp;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./cedr <span class="nt">-c</span> ./daemon_config.json &amp;
 </code></pre></div></div>
 <p>After launching CEDR, you should see the function handles for ZIP accelerators are successfully grabbed along with FFTs.</p>
 
 <p>Submit 5 instances of <code class="language-plaintext highlighter-rouge">radar_correlator</code> using <code class="language-plaintext highlighter-rouge">sub_dag</code>, check the outputs, kill CEDR using <code class="language-plaintext highlighter-rouge">./kill_deamon</code>, and check the <code class="language-plaintext highlighter-rouge">resource_name</code> fields for the first 10 APIs once again:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./sub_dag <span class="nt">-a</span> ./radar_correlator_zip-aarch64.so <span class="nt">-n</span> 5 <span class="nt">-p</span> 0
-<span class="nb">sudo</span> ./kill_daemon
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./sub_dag <span class="nt">-a</span> ./radar_correlator_zip-arm32.so <span class="nt">-n</span> 5 <span class="nt">-p</span> 0
+./kill_daemon
 <span class="nb">head</span> <span class="nt">-n</span> 10 ./log_dir/experiment1/timing_trace.log
 </code></pre></div></div>
 
-<h4 id="gantts-from-aup-zu3-experiments">Gantts from AUP-ZU3 Experiments:</h4>
-<p>After running these experiments you can copy the <code class="language-plaintext highlighter-rouge">log_dir</code> folder from AUP-ZU3 back to USB and go back to the host machine, you will need to copy <code class="language-plaintext highlighter-rouge">timing_trace.log</code> files for both experiments, and plot the Gantts using the same setup as before. The Gantt of <code class="language-plaintext highlighter-rouge">experiment0</code> will only show 3CPU and 2FFTs in use while <code class="language-plaintext highlighter-rouge">experiment1</code> will show 3CPU, 2FFTs, and 2ZIPs in use.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">-r</span> ./build-arm/log_dir &lt;USB_PATH&gt;/build-arm/
-<span class="nb">cd </span>build-arm
-python3 ../scripts/gantt_k-nk.py ./log_dir/experiment0/timing_trace.log
-<span class="nb">mv </span>gantt.png gantt_FFT.png
-python3 ../scripts/gantt_k-nk.py ./log_dir/experiment1/timing_trace.log
-<span class="nb">mv </span>gantt.png gantt_FFT_ZIP.png
-</code></pre></div></div>
+<h4 id="gantts-from-zedboard-experiments">Gantts from ZedBoard Experiments:</h4>
+<p>After running these experiments you can turn off the ZedBoard, remove the SD Card, place it to the host machine, copy <code class="language-plaintext highlighter-rouge">timing_trace.log</code> files for both experiments, and plot the Gantts using the same setup as before. The Gantt of <code class="language-plaintext highlighter-rouge">experiment0</code> will only show 1CPU and 2FFTs in use while <code class="language-plaintext highlighter-rouge">experiment1</code> will show 1CPU, 2FFTs, and 2ZIPs in use.</p>
 
 <h2 id="exercise-2-design-space-exploration">Exercise 2: Design Space Exploration</h2>
-<p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
+<p><a href="#pact25-tutorial-step-by-step-flow">Return to top</a></p>
 
 <p>CEDR comes with some scripts that makes design-space exploration (DSE) rapid and easy. Now, we will go over the flow and define how to perform DSE step by step. First, navigate to folder where we accomodate API based CEDR scripts from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../scripts/scripts-API/run_scripts
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>scripts/scripts-API/run_scripts
 </code></pre></div></div>
 
 <p>We will initially run <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/daemon_generator.py">daemon_generator.py</a> file to generate <code class="language-plaintext highlighter-rouge">daemon_config.json</code> files for our sweeps. We can modify the following code portion to denote scheduler types and hardware compositions. We set schedulers as <code class="language-plaintext highlighter-rouge">SIMPLE, ETF, and MET</code> while hardware compositions that are going to sweeped are picked as 4 CPUs at maximum since we don’t have any accelerator on the x86 system. If there were any accelerator, we would also set the maximum number of accelerator that we would like to sweep up to.</p>
@@ -1352,14 +1348,16 @@ python3 makedataframe.py <span class="nt">-i</span> ../../build/log_dir/ <span c
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 plt3dplot_inj.py &lt;input file name&gt; &lt;metric&gt;
 python3 plt3dplot_inj.py dataframe.csv CUMU  <span class="c"># Accumulates execution time of each API call</span>
+<span class="nb">mv </span>dse_sched.png dse_cumu.png
 python3 plt3dplot_inj.py dataframe.csv EXEC  <span class="c"># Application execution time</span>
+<span class="nb">mv </span>dse_sched.png dse_exec.png
 python3 plt3dplot_inj.py dataframe.csv SCHED <span class="c"># Scheduling overhead</span>
 </code></pre></div></div>
 
 <h1 id="supplemental-exercises">Supplemental Exercises:</h1>
 
 <h2 id="supplemental-exercise-1-integration-and-evaluation-of-eft-scheduler">Supplemental Exercise 1: Integration and Evaluation of EFT Scheduler</h2>
-<p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
+<p><a href="#pact25-tutorial-step-by-step-flow">Return to top</a></p>
 
 <p>Now navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scr-api/scheduler.cpp">scheduler.cpp</a>. This file contains various schedulers already tailored to work with CEDR. In this part of the tutorial, we will add the Earliest Finish Time(EFT) scheduler to CEDR. EFT heuristic schedules all the tasks in the <code class="language-plaintext highlighter-rouge">read queue</code> one by one based on the earliest expected finish time of the task on the available resources (processing elements – PE).</p>
 
@@ -1568,7 +1566,7 @@ make <span class="nt">-j</span>
 </code></pre></div></div>
 
 <h2 id="supplemental-exercise-2-running-multiple-applications-with-cedr-on-x86">Supplemental Exercise 2: Running Multiple Applications with CEDR on x86</h2>
-<p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
+<p><a href="#pact25-tutorial-step-by-step-flow">Return to top</a></p>
 
 <h3 id="compilation-of-applications">Compilation of Applications</h3>
 <p>In this section, we will demonstrate CEDR’s ability to manage dynamically arriving applications. Assuming you already have built CEDR following the previous steps, we will directly delve into compiling and running two new applications that are lane detection and pulse doppler.</p>
@@ -1604,7 +1602,7 @@ make nonblocking
 <p>Observe the <a href="./build/output_fft.png">output image of lane detection</a> and the <a href="./build/output/pulse_doppler_output.txt">shift and time delay</a> calculated by pulse doppler.</p>
 
 <h2 id="supplemental-exercise-3-gpu-based-soc-experiment-nvidia-jetson-agx-xavier">Supplemental Exercise 3: GPU Based SoC Experiment (Nvidia Jetson AGX Xavier)</h2>
-<p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
+<p><a href="#pact25-tutorial-step-by-step-flow">Return to top</a></p>
 
 <h3 id="building-cedr">Building CEDR</h3>
 <p>Firstly, we need to connect to the Nvidia Jetson board through ssh connection.</p>
