@@ -1,7 +1,7 @@
 ---
 name: Alex Romero
 image: images/profiles/lab/alex_romero.jpg
-role: undergrad
+role: former
 links:
 #   home-page:
   email: aromerolozano@arizona.edu

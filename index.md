@@ -15,7 +15,8 @@ We research ways to bridge the gap between application engineers, hardware archi
 {% include section.html %}
 
 ## News
-
+1. Our paper titled ***HOPPERFISH: Holistic Profiling with Portable Extensible and Robust Framework Intended for Systems with Heterogeneity***  is accepted for publication in ACM Transactions on Architecture and Code Optimization and is available as *just accepted* in [ACM](https://dl.acm.org/doi/abs/10.1145/3769087). The source code is hosted on [Github](https://github.com/UA-RCL/CEDR/tree/hopperfish).
+1. Our paper titled ***Event-based Human Action Recognition: Rehabilitation Monitoring Dataset and Models***  is accepted for publication in IEEE International Conference on Future Machine Learning and Data Science (FMLDS'25).
 1. Our paper titled ***An Overview of Challenges and Requirements for Real-Time Spectrum Sensing in Modern RF Autonomy Systems*** ([IEEE Xplore](https://ieeexplore.ieee.org/document/11104816)) is published in IEEE Design & Test.
 1. Our paper titled ***RIMMS: Runtime Integrated Memory Management System for Heterogeneous Computing*** is accepted for publication in Embedded Systems Week ([ESWEEK'25](https://esweek.org/)) and is available as *just accepted* in [ACM](https://doi.org/10.1145/3760257) Transactions on Embedded Computing Systems as part of ESWEEK'25 special issue.
 1. Our paper titled ***K-PACT: Kernel Planning for Adaptive Context Switching — A Framework for Clustering, Placement, and Prefetching in Spectrum Sensing*** is accepted for publication in International Conference on Computer-Aided Design ([ICCAD'25](https://2025.iccad.com/)). The preprint is available on [Arxiv](https://arxiv.org/abs/2507.19662) and the source code is hosted on [Github](https://github.com/UA-RCL/K-PACT).

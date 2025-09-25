@@ -1,7 +1,7 @@
 --- 
 name: Lojain Syed
 image: images/profiles/lab/lojain.jpg
-role: phd
+role: former
 links:
   home-page: 
   email: lojainsyed@arizona.edu
