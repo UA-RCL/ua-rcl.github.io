@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5GKLRZHLS3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5GKLRZHLS3');
+</script>
+
+<!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>FPGA'25 Tutorial Introduction | UA-RCL</title>
+
+<link rel="icon" href="/images/icon.png">
+
+<meta name="title" content="FPGA'25 Tutorial Introduction">
+<meta name="description" content="University of Arizona Reconfigurable Computing Lab. ">
+
+<meta property="og:title" content="FPGA'25 Tutorial Introduction">
+<meta property="og:site_title" content="UA-RCL">
+<meta property="og:description" content="University of Arizona Reconfigurable Computing Lab. ">
+<meta property="og:url" content="">
+<meta property="og:image" content="/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="FPGA'25 Tutorial Introduction">
+<meta property="twitter:description" content="University of Arizona Reconfigurable Computing Lab. ">
+<meta property="twitter:url" content="">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/images/share.jpg">
+
+
+  <meta property="og:type" content="website">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "WebSite",
+    
+    "name": "FPGA'25 Tutorial Introduction",
+    "description": "University of Arizona Reconfigurable Computing Lab. ",
+    "headline": "FPGA'25 Tutorial Introduction",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
+    },
+    "url": ""
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="preload" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/util.css" rel="stylesheet">
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- include all css in styles folder -->
+<!-- 
+
+  <link href="/_styles/presentations/esweek25/custom.css" rel="stylesheet" />
+
+  <link href="/_styles/presentations/fpga24/custom.css" rel="stylesheet" />
+
+  <link href="/_styles/presentations/fpga25/custom.css" rel="stylesheet" />
+ -->
+
+<!-- allow pages to customize styling via frontmatter -->
+
+<link href="/_styles/presentations/fpga24/custom.css" rel="stylesheet">
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/_scripts/anchors.js"></script>
+
+  <script src="/_scripts/dark-mode.js"></script>
+
+  <script src="/_scripts/fetch-tags.js"></script>
+
+  <script src="/_scripts/search.js"></script>
+
+  <script src="/_scripts/site-search.js"></script>
+
+  <script src="/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/images/background_v4.jpg')" data-dark="true">
+  <a href="/" class="home">
+    
+      <span class="logo">
+        
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg width="105.57295mm" height="105.09794mm" viewbox="0 0 105.57295 105.09793" version="1.1" id="svg5" xml:space="preserve" sodipodi:docname="rcl_logo_exp.svg" inkscape:version="1.2.2 (732a01da63, 2022-12-09)" inkscape:export-filename="rcl_logo_exp-whiteborder.svg" inkscape:export-xdpi="96" inkscape:export-ydpi="96" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><namedview id="namedview282" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" showgrid="false" inkscape:zoom="1.7031072" inkscape:cx="21.137835" inkscape:cy="283.89287" inkscape:window-width="1920" inkscape:window-height="1112" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="layer5"></namedview><defs id="defs2"></defs><g id="layer5" transform="translate(-172.2812,-313.96595)"><g id="g508-2" transform="translate(129.21565,255.02683)" inkscape:export-filename="rcl_logo_exp-whiteborder-notext.png" inkscape:export-xdpi="96" inkscape:export-ydpi="96"><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1" id="rect111-5" width="79.977592" height="79.9776" x="56.031349" y="71.790398" ry="8.0088863" inkscape:export-filename="rcl_logo_exp-whiteborder-notext.svg" inkscape:export-xdpi="96" inkscape:export-ydpi="96"></rect><g id="g482-8" style="fill:#0f2d42;fill-opacity:1" transform="matrix(0.76136547,0,0,1,14.985439,5.8208336)"><g id="g6730-5-8-9" transform="matrix(0,-0.76136547,0.65776194,0,-56.808101,187.54076)" style="fill:#0f2d42;fill-opacity:1;stroke-width:0.647787;stroke-dasharray:none"><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-9-9-9-3-8-5" width="20.135592" height="5.3485169" x="-163.75565" y="76.13652" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-4-5-3-7-0-5" width="20.135592" height="5.3485169" x="-163.34097" y="95.558365" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-9-7-5-8-3-7-9" width="20.135592" height="5.3485169" x="-163.341" y="115.13757" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-9-7-5-61-4-8-4-34" width="20.135592" height="5.3485169" x="-162.89604" y="133.14856" ry="0" transform="rotate(-90)"></rect></g><g id="g6730-5-8-7-8" transform="matrix(0,-0.76136547,0.65776194,0,67.61862,187.42341)" style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1"><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-9-9-9-3-8-9-4" width="20.135592" height="5.3485169" x="-163.75565" y="76.13652" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-4-5-3-7-0-7-48" width="20.135592" height="5.3485169" x="-163.34097" y="95.558365" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-9-7-5-8-3-7-0-8" width="20.135592" height="5.3485169" x="-163.341" y="115.13757" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-9-7-5-61-4-8-4-0-6" width="20.135592" height="5.3485169" x="-162.89604" y="133.14856" ry="0" transform="rotate(-90)"></rect></g><g id="g6730-5-8-7-9-6" transform="matrix(-1,0,0,-0.50079723,213.98073,135.28887)" style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1"><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-9-9-9-3-8-9-3-1" width="20.135592" height="5.3485169" x="-163.75565" y="76.13652" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-4-5-3-7-0-7-5-0" width="20.135592" height="5.3485169" x="-163.34097" y="95.558365" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-9-7-5-8-3-7-0-0-4" width="20.135592" height="5.3485169" x="-163.341" y="115.13757" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-9-7-5-61-4-8-4-0-1-0" width="20.135592" height="5.3485169" x="-162.89604" y="133.14856" ry="0" transform="rotate(-90)"></rect></g><g id="g6730-5-8-7-9-2-4" transform="matrix(-1,0,0,-0.50079723,214.82372,229.54807)" style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1"><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-9-9-9-3-8-9-3-2-8" width="20.135592" height="5.3485169" x="-163.75565" y="76.13652" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-4-5-3-7-0-7-5-1-1" width="20.135592" height="5.3485169" x="-163.34097" y="95.558365" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-9-7-5-8-3-7-0-0-5-8" width="20.135592" height="5.3485169" x="-163.341" y="115.13757" ry="0" transform="rotate(-90)"></rect><rect style="fill:#0f2d42;fill-opacity:1;stroke:#ffffff;stroke-width:0.647787;stroke-dasharray:none;stroke-opacity:1" id="rect324-7-9-7-5-61-4-8-4-0-1-5-0" width="20.135592" height="5.3485169" x="-162.89604" y="133.14856" ry="0" transform="rotate(-90)"></rect></g></g></g><g id="g1450-2" style="display:inline;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" transform="translate(150.79512,128.10833)"><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 65.544921,208.81494 h -6.090089 l -3.197989,1.80756 0.02781,4.72747 -1.751943,1.00111 v 1.50166 l -5.172403,2.78086 -0.05562,2.03004 7.758607,4.67184 0.02781,5.33926 -2.502775,1.58509 v 4.14348 0" id="path1366-6"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 60.594988,211.37333 -4.25472,2.36374" id="path1368-1"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 67.435909,209.59358 -8.870952,4.75528 0.05562,5.11678 5.116787,3.198 v 0" id="path1370-53"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 64.877515,212.5691 -4.8387,2.61402 -0.02781,2.2525 7.263063,4.27182" id="path1372-0"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 67.296865,212.29102 3.948824,2.22469 0.02781,4.00444 -2.725245,1.83537" id="path1374-8"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 67.241247,214.57133 3.809781,2.11345" id="path1376-5"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 62.15227,216.62917 8.370395,4.97774 0.05562,23.47047 -5.951045,3.8376" id="path1378-7"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 65.795199,249.94389 4.087868,-2.55839 h 0.639598 l 0.02781,3.5595" id="path1380-1"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 70.6339,254.25423 -0.05562,2.41935 -4.254719,0.0278 -0.02781,-4.53281 -4.310335,-2.39154" id="path1382-18"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 71.301307,258.75923 -6.813113,-0.11124 -0.08343,-4.61623 -5.116787,-2.8921" id="path1384-3"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 60.456024,232.95743 -0.02797,4.66067" id="path1386-2"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 57.035482,216.51793 0.02781,4.8387 5.20021,3.11457 6.813114,0.0834 v 19.18795 l -11.123449,6.22913 v 1.75194 l 5.144596,2.91991 0.02781,4.72746 7.925457,4.67185 v 0" id="path1388-29"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 53.003232,214.34886 -6.395981,3.33703 0.111233,8.67629 3.837591,2.28031 3.058948,0.0556 -0.111233,2.2247 -4.060061,2.39154 -0.111233,6.00666 -1.557285,1.11234 0.111236,2.66963 4.115676,2.50278 2.169073,0.0556 2.447157,-1.41824" id="path1390-5"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 52.891999,216.18423 -4.894318,2.89209 0.166851,6.28475 3.058949,1.9466 h 3.781972 l 0.05562,4.1713 -4.449379,2.61401 -0.05562,7.67518 1.724133,0.88987 h 2.44716 l 3.503885,-2.05783 v 0" id="path1392-29"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 52.175723,235.55648 -0.06236,3.54205 2.335924,1.44605 h 10.28919" id="path1394-1"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 56.952057,234.53792 0.222469,4.39376 4.727467,0.16685 2.502775,-2.00222 -0.05562,-3.44827 -6.117897,-3.89321 -0.111233,-4.22691" id="path1396-7"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 53.670641,223.13638 9.42379,5.32113 3.609968,2.14719" id="path1398-4"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 66.406989,233.36995 v 8.34259 l -11.790857,6.7853 -0.05562,4.61624 5.005551,3.11456 0.22247,7.56395 5.228021,3.00332" id="path1400-54"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 64.682853,244.43779 -8.787524,5.00555 0.05562,2.94771 5.339255,3.11457 0.05562,7.39709 6.729685,3.8932" id="path1402-0"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 61.512671,260.45555 8.954376,5.33925 0.111236,1.39044 -2.558394,1.89098 -2.44716,0.0556 -11.902088,-6.50721" id="path1404-5"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 57.091101,262.48558 -0.08343,-3.19799 1.223578,-1.00111 -0.166851,-1.22358 -5.394873,-3.28142 v -4.22691 l -7.61956,-4.39376 -2.05784,-0.0556 -0.166851,-5.83981 2.391542,-1.55728 0.166852,-8.34259" id="path1406-5"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 47.693763,232.60202 0.08145,5.94034 -4.894315,2.94771" id="path1408-9"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 44.994351,243.26982 6.00666,3.2258 4.838703,0.16686 3.921014,-2.36374" id="path1410-5"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 45.99546,248.21976 3.83759,2.00222 -0.05562,3.5595" id="path1412-1"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 43.504612,246.93654 0.01391,2.96128 4.312312,2.82694 -0.166851,2.72524 4.338145,0.0556 2.780861,1.55728 0.222469,4.00444" id="path1414-3"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 51.974314,259.56568 -0.02781,-2.83648 h -4.282527" id="path1416-4"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 42.76966,237.3744 c 0,-4.61624 0,-4.61624 0,-4.61624 l -1.279197,-1.33481 -0.166852,-2.05784 3.2258,-1.89098 -0.05561,-5.45049" id="path1418-2"></path><path style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" d="m 53.003232,221.02293 11.790857,6.89653 3.086757,0.0556 0.02085,-1.69633" id="path1420-07"></path><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-08-3" cx="45.383671" cy="247.99728" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-28-7" cx="49.777435" cy="254.11519" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-23" cx="52.029938" cy="260.20529" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-4-9" cx="47.079998" cy="256.75702" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-9-9" cx="65.405884" cy="267.21304" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-2-6" cx="68.464828" cy="267.07401" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-48-3" cx="71.329117" cy="264.29315" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-22-6" cx="71.774055" cy="258.67581" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-6-7" cx="70.606094" cy="253.61464" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-6-4-5" cx="70.550476" cy="251.50117" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-6-5-2" cx="61.484863" cy="249.52678" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-6-3-4" cx="58.898663" cy="250.94501" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-6-1-95" cx="64.237915" cy="249.05403" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-6-2-0" cx="65.044365" cy="244.32655" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-6-46-2" cx="60.289093" cy="243.90944" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-6-46-1-6" cx="56.924252" cy="243.93724" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-19-6-46-7-96" cx="65.461494" cy="250.2498" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-85-8" cx="53.225704" cy="262.40216" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-02-1" cx="55.061073" cy="261.65134" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-4-4" cx="57.091103" cy="263.04178" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-55" cx="44.465988" cy="221.49547" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-07-5" cx="45.383739" cy="228.80641" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-98-6" cx="42.788136" cy="237.77306" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-24-2" cx="44.439884" cy="242.8856" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-25-2" cx="43.496029" cy="246.30707" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-8-7" cx="53.426178" cy="214.09798" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-04" cx="53.406517" cy="215.86771" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-2-4" cx="57.024632" cy="234.19426" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-62" cx="60.446106" cy="232.34587" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-6-2" cx="67.09243" cy="230.87111" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-65-0" cx="66.384537" cy="232.97511" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-7-4" cx="54.547009" cy="239.03152" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-7-3-30" cx="52.167706" cy="234.92181" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-7-9-2" cx="65.22438" cy="240.42764" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-7-8-4" cx="47.645061" cy="232.05092" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-7-1-6" cx="64.064224" cy="222.94664" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-7-96-6" cx="67.800316" cy="222.06178" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-9-3" cx="60.44611" cy="238.08768" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-3-91" cx="52.541313" cy="220.70497" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-14-9" cx="53.091896" cy="222.84831" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-6-72" cx="57.044292" cy="216.00536" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-0-93" cx="66.050247" cy="208.86746" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-2-7" cx="61.134335" cy="210.99113" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-9-4" cx="67.918297" cy="209.31972" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-5-6" cx="66.758141" cy="212.01364" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-69-4" cx="65.322701" cy="212.2496" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-62-4" cx="66.679489" cy="214.1963" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-16-7" cx="61.684917" cy="216.33965" rx="0.5839811" ry="0.55617243"></ellipse><ellipse style="fill:#000000;fill-opacity:0;stroke:#a0f633;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1" id="path1504-1-0-7-0-6" cx="67.832184" cy="225.66002" rx="0.5839811" ry="0.55617243"></ellipse></g><path id="rect3573-9" style="display:inline;fill:#cb2eb7;stroke:#000000;stroke-width:0.499999" d="m 228.19657,343.63707 13.53013,-3.3676 0.1637,11.1831 -13.64706,-0.53788 z"></path><path id="rect3575-4" style="display:inline;fill:#2abb11;stroke:#000000;stroke-width:0.499999" d="m 234.82749,351.33417 7.06939,0.24555 9.99265,-2.30352 0.18944,18.16736 -17.64904,-2.61523 z"></path><path id="rect3577-26" style="display:inline;fill:#6b9cca;stroke:#000000;stroke-width:0.499999" d="m 228.25327,351.06612 6.53255,0.28063 -0.0234,21.81483 -6.50916,1.56687 z"></path><path id="rect3579-1" style="display:inline;fill:#6c69ed;stroke:#000000;stroke-width:0.499999" d="m 234.9528,373.40053 9.72927,1.77734 1.30962,9.37908 -7.43743,2.85309 z"></path><path id="rect3583-3" style="display:inline;fill:#b4e229;stroke:#000000;stroke-width:0.499999" d="m 228.33812,388.66486 10.26876,-1.47332 0.0724,9.84554 -7.85772,0.5709 -2.4367,-2.33861 z"></path><path id="rect3591-9" style="display:inline;fill:#936ae4;stroke:#000000;stroke-width:0.499999" d="m 252.3194,358.45963 8.17149,-2.87734 1.05833,3.52023 -2.18529,6.64766 -6.96185,1.67946 z"></path><path id="rect3605-8" style="display:inline;fill:#eace0d;stroke:#000000;stroke-width:0.499999" d="m 246.2498,384.7246 5.8031,2.5257 -0.65481,4.63017 -12.49151,5.23849 -0.21048,-9.70509 z"></path><path id="rect9040-23" style="fill:#ff9d0a;stroke:#000000;stroke-width:0.4" d="m 234.99965,365.37766 17.11862,2.24506 7.20291,-1.44993 1.26285,3.90547 -1.91766,7.36662 -23.7135,-3.97563 z"></path><path id="rect9491-8" style="fill:#ea4519;stroke:#000000;stroke-width:0.4" d="m 241.71147,340.09735 4.81753,-1.19269 7.75248,4.63044 1.81242,4.77076 -14.19534,3.13374 z"></path><path id="rect9522-16" style="fill:#16c6de;stroke:#000000;stroke-width:0.4" d="m 252.0247,349.63883 4.25627,-1.26285 2.40877,1.5201 1.82411,5.23848 -8.29036,3.16881 z"></path><path id="rect9554-0" style="fill:#ff2424;stroke:#000000;stroke-width:0.4" d="m 244.58795,375.15304 13.98488,2.47892 -6.31424,9.40121 -6.2207,-2.57247 z"></path><path id="rect9583-8" style="fill:#fbee68;stroke:#000000;stroke-width:0.4" d="m 230.95386,337.57162 c 1.59566,-0.96867 4.08206,-2.60762 4.08206,-2.60762 0,0 6.59375,0.21638 9.24801,0.38594 l 2.1749,3.53131 -18.17098,4.41997 z"></path><path id="rect9616-5" style="fill:#ffb3a1;stroke:#000000;stroke-width:0.4" d="m 228.19429,374.91921 6.59489,-1.70719 3.83532,13.89134 -10.33666,1.28624 z"></path><g id="g9674-05" style="display:inline" transform="translate(101.69898,138.34557)"><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="140.46411" y="221.64395" id="text3690-49"><tspan id="tspan3688-1" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="140.46411" y="221.64395">CPU</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="147.4772" y="243.1059" id="text3690-9-0"><tspan id="tspan3688-39-7" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="147.4772" y="243.1059">PGA</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="-218.03915" y="154.19006" id="text3690-42-6" transform="rotate(-90)"><tspan id="tspan3688-42-3" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="-218.03915" y="154.19006">Counter</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="-244.84966" y="130.67407" id="text3690-42-2-0" transform="rotate(-90)"><tspan id="tspan3688-42-2-2" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="-244.84966" y="130.67407">UART</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="144.20482" y="207.38016" id="text3690-64-3"><tspan id="tspan3688-7-4" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="144.20482" y="207.38016">Timer</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="136.99393" y="233.23317" id="text3690-6-85"><tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="136.99393" y="233.23317" id="tspan9489-0">Neuromorphic Core</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="132.09462" y="209.02898" id="text3690-4-4"><tspan id="tspan3688-3-5" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="132.09462" y="209.02898">GPU</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="133.34428" y="199.92447" id="text3690-4-6-28"><tspan id="tspan3688-3-7-3" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="133.34428" y="199.92447">Filter</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="-228.88995" y="130.6046" id="text5225-82" transform="rotate(-90)"><tspan id="tspan5223-04" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.2" x="-228.88995" y="130.6046">nvSRAM</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="136.61221" y="241.72095" id="text5984-0"><tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.2" x="136.61221" y="241.72095" id="tspan4246-7">Custom</tspan><tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.2" x="136.61221" y="243.70532" id="tspan6487-64">Logic</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="129.87502" y="254.96727" id="text5984-4-0"><tspan id="tspan5982-3-4" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.2" x="129.87502" y="254.96727">ADC</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="140.90504" y="253.85649" id="text5984-1-7"><tspan id="tspan5982-4-62" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.2" x="140.90504" y="253.85649">USB</tspan></text><text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:0" x="153.40811" y="223.60866" id="text5984-1-9-9"><tspan id="tspan5982-4-6-6" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5875px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.2" x="153.40811" y="223.60866">I2C</tspan></text></g></g></svg>
+
+        
+      </span>
+    
+    
+      <span class="title" data-tooltip="Home">
+        
+          <span>UA-RCL</span>
+        
+        
+          <span>University of Arizona Reconfigurable Computing Lab</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/projects/" data-tooltip="Software, datasets, and more">
+          Projects
+        </a>
+      
+    
+      
+        <a href="/team/" data-tooltip="About our team">
+          Team
+        </a>
+      
+    
+      
+        <a href="/presentations/" data-tooltip="Archive of presentations and tutorials">
+          Presentations
+        </a>
+      
+    
+      
+        <a href="/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+      
+        <a href="/contact/" data-tooltip="Email, address, and location">
+          Contact
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - wrap each table in div to allow for scrolling
+  - filter out blank sections
+-->
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <h1 id="cedr-a-holistic-software-and-hardware-design-environment-for-hardware-agnostic-application-development-and-deployment-on-fpga-integrated-heterogeneous-systems">CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems</h1>
+
+<p><b>Overview:</b> As the FPGAs are being embedded in all layers of computing infrastructure from edge to HPC scale, system designers continue to explore design methodologies that leverage increased levels of heterogeneity to push performance within the target performance goals or constraints. In line with this objective, we have developed CEDR, —an open-source, unified compilation, and runtime framework designed for FPGA-integrated heterogeneous systems, as part of the DARPA DSSoC program. Our framework empowers users to seamlessly develop, compile, and deploy applications on off-the-shelf heterogeneous computing platforms. Importantly, this framework is portable across a wide range of Linux-based systems, ensuring that effort to migrate across systems is minimal. This tutorial builds upon the educational class we conducted on the open-source CEDR framework during ESWEEK’23 and the CEDR tutorial we delivered in ISFPGA’24, with a particular focus on FPGA-integrated heterogeneous systems. Our aim is to engage participants with our framework through hands-on exercises, facilitate interaction with FPGA-based SoCs, and foster productive discussions around challenges in heterogeneous computing.</p>
+
+<p>CEDR is currently being leveraged in basic research as part of the DARPA SpaceBACN and DARPA PROWESS programs. Its utility has been validated through a diverse set of real-world applications by General Dynamics, Collins Aerospace, and the Johns Hopkins Applied Physics Laboratory, alongside several academic collaborators. Additionally, it has undergone independent evaluation by the Carnegie Mellon University Software Engineering Institute, further affirming its effectiveness. With its easy-to-use Application Programming Interface (API)-based programming model, CEDR has extended support and compatibility across programming models (GNURadio, PyTorch) and architectures (RISC-V, GPU, and ARM-based SoCs), making it a highly versatile runtime for heterogeneous computing. In our previous tutorial at ISFPGA’24, participants gained hands-on experience with CEDR’s API-based programming model. They successfully implemented a basic application and analyzed performance variations under different workload scenarios and scheduling heuristics—all within three hours. For users to be able to replicate the entire tutorial independently, we provided resources and step-by-step instructions on our dedicated page: <a href="https://ua-rcl.github.io/presentations/fpga24/index.html">https://ua-rcl.github.io/presentations/fpga24/index.html</a></p>
+
+<p>For the 2025 edition of this tutorial, our goal is to deliver a comprehensive learning experience that builds on the foundational CEDR knowledge shared last year. The tutorial will begin with a refresher on the basics of CEDR, followed by an in-depth, hands-on exploration of advanced topics. Participants will learn to integrate new accelerators and APIs into the runtime, as well as apply fine-grained performance monitoring and profiling techniques on FPGA-based heterogeneous platforms. This approach aims to reduce the knowledge barrier for attendees, enabling them to develop and optimize applications using CEDR across various application domains and hardware platforms. In the final segment of the tutorial, we will preview the latest advancements in CEDR and introduce its new features for the users.</p>
+
+<div class="portrait-wrapper">
+  <a class="portrait wide-profile" data-style="" aria-label="Sahil Hassan">
+    <img src="/images/profiles/lab/sahil_hassan.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Sahil Hassan
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            
+            <span>Sahil Hassan is a Post-Doc in the Reconfigurable Computing Lab graduating since Spring 2024. His research interests include design and development of resource management techniques for emerging heterogeneous embedded computing systems, novel architectures and algorithms for neuromorphic computing, and FPGA based reconfigurable architectures.</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a class="portrait wide-profile" data-style="" aria-label="Serhan Gener">
+    <img src="/images/profiles/lab/serhan_gener.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Serhan Gener
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            
+            <span>Serhan Gener is a senior PhD student in the Reconfigurable Computing Lab graduating in Spring 2025. His research interests include reconfigurable computing, embedded systems heterogeneous computing, and software security.</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+<h2 id="tutorial-structure-and-flow">Tutorial Structure and Flow</h2>
+<p>The tutorial is structured into two core exercises, each including a series of hands-on activities tailored to the needs of three distinct user types: naïve application developers, system designers, and resource management heuristic developers. Throughout these activities, the common thread is lifting the barriers to research and enabling productive application development and deployment on FPGA-integrated heterogeneous systems. The tutorial adopts a hands-on approach utilizing the Zynq UltraScale+ MPSoC ZCU102 Evaluation Kit, enabling participants to gain practical experience on systems that amalgamate ARM CPU cores with FPGA accelerators.</p>
+
+<h3 id="schedule-150--minutes">Schedule (150  minutes):</h3>
+
+<ul>
+  <li>Downloading and building CEDR (5 min)</li>
+  <li>CEDR Overview and capabilities (15 min)</li>
+  <li>Core Exercise 1 (75 minutes)
+    <ul>
+      <li>
+<b>Part-1 [Naïve application developer, System designer]:</b> In this exercise, participants will walk through the basic setup, perform functional verification, and conduct performance analysis to harness FPGA-based acceleration. They will modify a reference C/C++ Radar Correlator implementation by integrating the CEDR FFT API, then compile and deploy the application on a ZCU102 platform configured with two FFT accelerators and four ARM CPU cores.
+        <ul>
+          <li>
+<b>Activity-1 [Naïve application developer]:</b> Participants will deploy a single instance of the Radar Correlator and perform an end-to-end functional verification.</li>
+          <li>
+<b>Activity-2 [System designer]:</b> Participants will stress-test the scheduler by deploying multiple instances of the Radar Correlator, performing timing analysis, and visualizing how API calls are dispatched to compute units based on the selected scheduling heuristic. They will learn to set up experiments by tuning key parameters such as application arrival rate, hardware composition, and scheduling heuristic. Additionally, participants will utilize built-in scripts to collect log files and visualize the execution profile, gaining deeper insights into system behavior and performance.</li>
+        </ul>
+      </li>
+      <li>
+        <p><b>Part-2 [Resource management heuristic developer]:</b></p>
+
+        <p>The tutorial will guide participants on introducing a new API call to CEDR, performing functional verification, and deploying it on the ZCU102 using a pre-configured SoC image.</p>
+        <ul>
+          <li>
+<b>Activity-1:</b> Introduce ZIP API call to CEDR, modify Radar Correlator application using the new ZIP API call, compile and execute on an X86-based setup to perform functional verification with the new API call.</li>
+          <li>
+<b>Activity-2:</b> Using a pre-generated FPGA image of an SoC configured with four ARM CPU cores, two FFT accelerators, and one ZIP accelerator, participants will deploy single and multiple instances of the new Radar Correlator implementation and conduct timing analysis as in Part 1, Activity 2.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Core Exercise 2 (30 minutes)
+    <ul>
+      <li>With the ability to develop and deploy applications on an FPGA-based SoC established, this phase of the tutorial will focus on design space exploration. Participants will analyze systems composed of ARM CPUs and FPGA accelerators, gaining insights into performance trade-offs and optimization opportunities.</li>
+      <li>
+<b>Activity [System designer]:</b> Participants will learn to use the profiling scripts provided with CEDR to collect performance counter data, power consumption traces, and log files. They will conduct experiments by varying the number of compute resources and exploring different scheduling heuristics under dynamically arriving workload scenarios. These activities will leverage pre-built custom FPGA images that integrate CPU cores with various accelerators, all emulated on the ZCU102 platform.</li>
+    </ul>
+  </li>
+  <li>Pre-release CEDR 2.0 (25 minutes)
+    <ul>
+      <li>
+<b>Explore Recent Advancements:</b> Walk participants through the latest advancements in CEDR, which have achieved an 86x reduction in runtime overhead.</li>
+      <li>
+<b>Introduce New Features in CEDR 2.0:</b> Present the enhanced capabilities of CEDR 2.0, including improvements in user productivity and performance gains enabled by OpenMP-based API parallelization.</li>
+      <li>
+<b>Interactive Discussion:</b> Engage attendees in a discussion about the new features of CEDR, gathering feedback and exploring potential applications and enhancements.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="archival-materials">Archival materials:</h2>
+
+<p><b>Hardware Images:</b> FPGA image used in this tutorial is available <a href="https://github.com/UA-RCL/Hardware-Images/tree/ZedBoard-ISFPGA25">here</a>.</p>
+
+<p><b>Step-by-step Tutorial:</b> A self-paced, archival version of our tutorial workflow is available <a href="./tutorial">here</a>.</p>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/images/background_v4.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="mailto:akoglu@arizona.edu" data-tooltip="Email" data-style="bare" aria-label="Email" target="_blank" rel="noopener noreferrer">
+      <i class="icon fa-solid fa-envelope"></i>
+      
+    </a>
+  </div>
+
+
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://scholar.google.com/citations?user=JeiSWR8AAAAJ&hl=en" data-tooltip="Google Scholar" data-style="bare" aria-label="Google Scholar" target="_blank" rel="noopener noreferrer">
+      <i class="icon fa-brands fa-google"></i>
+      
+    </a>
+  </div>
+
+
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/UA-RCL" data-tooltip="GitHub" data-style="bare" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2025
+    UA-RCL
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
