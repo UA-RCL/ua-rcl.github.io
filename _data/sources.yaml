@@ -16,6 +16,13 @@
 #   repo: UA-RCL/RANC
 #   ranc: true
 
+- id: doi:10.1145/3769087
+  tags:
+    - CEDR
+    - HOPPERFISH
+  repo: UA-RCL/CEDR
+  cedr: true
+
 - id: doi:10.1145/3760257
   tags:
     - CEDR
