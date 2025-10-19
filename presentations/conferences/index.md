@@ -4,6 +4,15 @@ title: Conferences
 
 <!-- Check out our tutorial presentation from <a href="./fpga24">FPGA 2024</a> -->
 
+
+{% capture content %}
+
+Click [here](./iccad25/ICCAD-KPACT_sub.pdf) to see our presentation from ICCAD25 for the paper titled ***K-PACT: Kernel Planning for Adaptive Context Switching - A Framework for Clustering, Placement, and Prefetching in Spectrum Sensing***
+
+{% endcapture %}
+
+{% include feature_conferences.html title="<h1>ICCAD 2025</h1>" text=content image="/presentations/conferences/iccad25/iccad25_logo.png" %}
+
 {% capture content %}
 
 Click [here](./ppopp25/exhet_presentation.pdf) to see our presentation from ExHET25 for the paper titled ***A Unified Portable and Programmable Framework for Task-Based Execution and Dynamic Resource Management on Heterogeneous Systems***
