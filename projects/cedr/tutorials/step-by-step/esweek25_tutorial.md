@@ -494,7 +494,7 @@ Before starting with new accelerator integration we will go through the cross co
 ## FPGA Based SoC Experiment (AUP-ZU3)
 [Return to top](#esweek25-tutorial-step-by-step-flow)
 
-Moving on to the arm32-based build for AUP-ZU3 FPGA with accelerators. We'll start by building CEDR itself. This time we will use the [toolchain](https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/arm32-linux-gnu.toolchain.cmake) file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
+Moving on to the aarch64-based build for AUP-ZU3 FPGA with accelerators. We'll start by building CEDR itself. This time we will use the [toolchain](https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/aarch64-linux-gnu.toolchain.cmake) file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
 Simply run the following commands from the repository root folder:
 
 ```bash
@@ -524,7 +524,7 @@ nm -D libdash-rt/libdash-rt.so | grep -E '*_fft$'
 0000588f T DASH_FFT_int_fft
 ```
 
-After this, we can go to build our application using cross-compilation for arm32. 
+After this, we can go to build our application using cross-compilation for aarch64. 
 
 ## ZIP acceleretor Integration
 Due to the overhead associated with SD Card based file transfor overheads, we will also include ZIP accelerator before moving on to the testing on the AUP-ZU3.
@@ -574,7 +574,7 @@ We also need to make sure `CMakeLists.txt` under `libdash` folder looks for ZIP 
 
 ### Building CEDR with ZIP
 
-In `build-arm32` folder run the following steps to rebuild CEDR with ZIP as an accelerator.
+In `build-arm` folder run the following steps to rebuild CEDR with ZIP as an accelerator.
 
 ```bash
 rm -rf ./* # This can be skipped, used for showing fresh start of cmake with new accelerator
@@ -594,7 +594,7 @@ nm -D libdash-rt/libdash-rt.so | grep -E '*_zip$'
 
 ### Application Cross-compilation
 
-First, navigate to [applications/APIApps/radar_correlator](https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator) folder. Then run the following command to build the executable for arm32:
+First, navigate to [applications/APIApps/radar_correlator](https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator) folder. Then run the following command to build the executable for aarch64:
 
 ```bash
 cd ../applications/APIApps/radar_correlator
@@ -637,7 +637,9 @@ Username: petalinux
 Password: <set any password- it can be as simple as 1234>
 # Find the USB path:
 ls -al /run/media # or df -H
-cp -r <USB_PATH>/build-arm ./
+cp -r <USB_PATH>/build-arm ./ # Might need to run with sudo
+# If needed sudo to copy run below commented line
+# sudo chown -R petalinux:petalinux build-arm/
 cd build-arm
 ls
 ```
@@ -704,7 +706,10 @@ head -n 10 ./log_dir/experiment1/timing_trace.log
 After running these experiments you can copy the `log_dir` folder from AUP-ZU3 back to USB and go back to the host machine, you will need to copy `timing_trace.log` files for both experiments, and plot the Gantts using the same setup as before. The Gantt of `experiment0` will only show 3CPU and 2FFTs in use while `experiment1` will show 3CPU, 2FFTs, and 2ZIPs in use.
 
 ```bash
-cp -r ./build-arm/log_dir <USB_PATH>/build-arm/
+# On the Board
+cp -r ./log_dir <USB_PATH>/build-arm/
+# After moving the USB to Host
+cp -r <USB_PATH>/build-arm/log_dir build-arm/
 cd build-arm
 python3 ../scripts/gantt_k-nk.py ./log_dir/experiment0/timing_trace.log
 mv gantt.png gantt_FFT.png
