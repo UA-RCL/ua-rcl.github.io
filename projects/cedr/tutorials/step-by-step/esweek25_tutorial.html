@@ -1004,7 +1004,7 @@ nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</
 <h2 id="fpga-based-soc-experiment-aup-zu3">FPGA Based SoC Experiment (AUP-ZU3)</h2>
 <p><a href="#esweek25-tutorial-step-by-step-flow">Return to top</a></p>
 
-<p>Moving on to the arm32-based build for AUP-ZU3 FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/arm32-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
+<p>Moving on to the aarch64-based build for AUP-ZU3 FPGA with accelerators. We’ll start by building CEDR itself. This time we will use the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/aarch64-linux-gnu.toolchain.cmake">toolchain</a> file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
 Simply run the following commands from the repository root folder:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../
@@ -1029,7 +1029,7 @@ make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc
 0000588f T DASH_FFT_int_fft
 </code></pre></div></div>
 
-<p>After this, we can go to build our application using cross-compilation for arm32.</p>
+<p>After this, we can go to build our application using cross-compilation for aarch64.</p>
 
 <h2 id="zip-acceleretor-integration">ZIP acceleretor Integration</h2>
 <p>Due to the overhead associated with SD Card based file transfor overheads, we will also include ZIP accelerator before moving on to the testing on the AUP-ZU3.</p>
@@ -1088,7 +1088,7 @@ static const std::map&lt;std::string, resource_type&gt; resource_type_map = {
 
 <h3 id="building-cedr-with-zip">Building CEDR with ZIP</h3>
 
-<p>In <code class="language-plaintext highlighter-rouge">build-arm32</code> folder run the following steps to rebuild CEDR with ZIP as an accelerator.</p>
+<p>In <code class="language-plaintext highlighter-rouge">build-arm</code> folder run the following steps to rebuild CEDR with ZIP as an accelerator.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> ./<span class="k">*</span> <span class="c"># This can be skipped, used for showing fresh start of cmake with new accelerator</span>
 cmake <span class="nt">-DLIBDASH_MODULES</span><span class="o">=</span><span class="s2">"FFT ZIP"</span> <span class="nt">--toolchain</span><span class="o">=</span>../toolchains/aarch64-linux-gnu.toolchain.cmake ..
@@ -1105,7 +1105,7 @@ make <span class="nt">-j</span>
 
 <h3 id="application-cross-compilation">Application Cross-compilation</h3>
 
-<p>First, navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator">applications/APIApps/radar_correlator</a> folder. Then run the following command to build the executable for arm32:</p>
+<p>First, navigate to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/applications/APIApps/radar_correlator">applications/APIApps/radar_correlator</a> folder. Then run the following command to build the executable for aarch64:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../applications/APIApps/radar_correlator
 <span class="nv">ARCH</span><span class="o">=</span>aarch64 make zip
@@ -1142,7 +1142,9 @@ Username: petalinux
 Password: &lt;<span class="nb">set </span>any password- it can be as simple as 1234&gt;
 <span class="c"># Find the USB path:</span>
 <span class="nb">ls</span> <span class="nt">-al</span> /run/media <span class="c"># or df -H</span>
-<span class="nb">cp</span> <span class="nt">-r</span> &lt;USB_PATH&gt;/build-arm ./
+<span class="nb">cp</span> <span class="nt">-r</span> &lt;USB_PATH&gt;/build-arm ./ <span class="c"># Might need to run with sudo</span>
+<span class="c"># If needed sudo to copy run below commented line</span>
+<span class="c"># sudo chown -R petalinux:petalinux build-arm/</span>
 <span class="nb">cd </span>build-arm
 <span class="nb">ls</span>
 </code></pre></div></div>
@@ -1201,7 +1203,10 @@ Password: &lt;<span class="nb">set </span>any password- it can be as simple as 1
 <h4 id="gantts-from-aup-zu3-experiments">Gantts from AUP-ZU3 Experiments:</h4>
 <p>After running these experiments you can copy the <code class="language-plaintext highlighter-rouge">log_dir</code> folder from AUP-ZU3 back to USB and go back to the host machine, you will need to copy <code class="language-plaintext highlighter-rouge">timing_trace.log</code> files for both experiments, and plot the Gantts using the same setup as before. The Gantt of <code class="language-plaintext highlighter-rouge">experiment0</code> will only show 3CPU and 2FFTs in use while <code class="language-plaintext highlighter-rouge">experiment1</code> will show 3CPU, 2FFTs, and 2ZIPs in use.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">-r</span> ./build-arm/log_dir &lt;USB_PATH&gt;/build-arm/
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># On the Board</span>
+<span class="nb">cp</span> <span class="nt">-r</span> ./log_dir &lt;USB_PATH&gt;/build-arm/
+<span class="c"># After moving the USB to Host</span>
+<span class="nb">cp</span> <span class="nt">-r</span> &lt;USB_PATH&gt;/build-arm/log_dir build-arm/
 <span class="nb">cd </span>build-arm
 python3 ../scripts/gantt_k-nk.py ./log_dir/experiment0/timing_trace.log
 <span class="nb">mv </span>gantt.png gantt_FFT.png
