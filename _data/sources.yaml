@@ -16,6 +16,13 @@
 #   repo: UA-RCL/RANC
 #   ranc: true
 
+- id: doi:10.1016/j.future.2025.108184
+  tags:
+    - CEDR
+    - Taskflow
+  repo: UA-RCL/CEDR
+  cedr: true
+
 - id: doi:10.1145/3769087
   tags:
     - CEDR
