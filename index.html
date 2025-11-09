@@ -512,6 +512,91 @@
 
 <p>Click <a href="./archived_news/">here</a> to check out archived news.</p>
 
+<h2 id="open-source-highlights">Open-Source Highlights</h2>
+<div class="highlights-grid">
+  
+  <div class="highlight-item">
+    <img src="/images/open_source/soc.png" alt="CEDR: a Compiler-integrated Extensible DSSoC Runtime">
+    <h4><a href="https://github.com/UA-RCL/CEDR" target="_blank">CEDR: a Compiler-integrated Extensible DSSoC Runtime</a></h4>
+    <p>CEDR is an open-source, compiler-integrated, extensible DSSoC runtime that unifies a front-end compilation flow with a Linux-based runtime and intelligent scheduling framework. Applications are transformed into hardware-agnostic function calls, allowing the runtime to dynamically map tasks to the most suitable processing elements, enabling efficient resource utilization and productive deployment in heterogeneous systems.
+</p>
+  </div>
+  
+  <div class="highlight-item">
+    <img src="/images/open_source/brain.png" alt="RANC: Reconfigurable Architecture for Neuromorphic Computing">
+    <h4><a href="https://github.com/UA-RCL/RANC" target="_blank">RANC: Reconfigurable Architecture for Neuromorphic Computing</a></h4>
+    <p>RANC is a highly flexible environment that enables rapid experimentation with neuromorphic architectures in both software via C++ simulation and hardware via FPGA emulation. RANC enables hardware architects and application engineers to investigate and tune parameters of their neuromorphic architecture that would otherwise be unavailable on a purely prefabricated ASIC.
+</p>
+  </div>
+  
+  <div class="highlight-item">
+    <img src="/images/open_source/prowess.png" alt="K-PACT: Kernel Planning for Adaptive Context Switching">
+    <h4><a href="https://github.com/UA-RCL/K-PACT" target="_blank">K-PACT: Kernel Planning for Adaptive Context Switching</a></h4>
+    <p>K-PACT is a software planning framework that clusters temporally independent kernels and places them onto reconfigurable hardware equipped with multiple IMEM banks, enabling nanosecond-scale context switching without requiring full hardware reconfiguration. This capability is particularly critical for dynamic workloads, where rapid adaptation  and efficient reuse of resources are essential.
+</p>
+  </div>
+  
+</div>
+
+<style>
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  margin-top: 1.5rem;
+  align-items: stretch;           /* 🔹 kartları aynı yükseklikte hizala */
+  justify-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 750px) {
+  .highlights-grid { grid-template-columns: 1fr; }
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  background: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  width: 100%;
+  height: 100%;                   /* 🔹 grid yüksekliğine uyar */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlight-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.highlight-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
+
+.highlight-item h4 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  min-height: 48px;
+}
+
+.highlight-item p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+  flex-grow: 1;                   /* 🔹 yazı alanı esner */
+  text-align: justify;            /* 🔹 hizalanmış paragraf */
+}
+</style>
+
 <h2 id="highlights">Highlights</h2>
 
 <div class="feature">
