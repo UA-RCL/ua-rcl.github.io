@@ -1,0 +1,26 @@
+- image: /images/open_source/soc.png
+  link: https://github.com/UA-RCL/CEDR
+  title: "CEDR: a Compiler-integrated Extensible DSSoC Runtime"
+  description: >
+    CEDR is an open-source, compiler-integrated, extensible DSSoC runtime that unifies a front-end compilation flow
+    with a Linux-based runtime and intelligent scheduling framework. Applications are transformed into hardware-agnostic
+    function calls, allowing the runtime to dynamically map tasks to the most suitable processing elements, enabling
+    efficient resource utilization and productive deployment in heterogeneous systems.
+
+- image: /images/open_source/brain.png
+  link: https://github.com/UA-RCL/RANC
+  title: "RANC: Reconfigurable Architecture for Neuromorphic Computing"
+  description: >
+    RANC is a highly flexible environment that enables rapid experimentation with neuromorphic architectures in both
+    software via C++ simulation and hardware via FPGA emulation. RANC enables hardware architects and application
+    engineers to investigate and tune parameters of their neuromorphic architecture that would otherwise be unavailable
+    on a purely prefabricated ASIC.
+
+- image: /images/open_source/prowess.png
+  link: https://github.com/UA-RCL/K-PACT
+  title: "K-PACT: Kernel Planning for Adaptive Context Switching"
+  description: >
+    K-PACT is a software planning framework that clusters temporally independent kernels and places them onto
+    reconfigurable hardware equipped with multiple IMEM banks, enabling nanosecond-scale context switching without
+    requiring full hardware reconfiguration. This capability is particularly critical for dynamic workloads, where rapid adaptation 
+    and efficient reuse of resources are essential.

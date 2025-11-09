@@ -30,6 +30,9 @@ We research ways to bridge the gap between application engineers, hardware archi
 
 Click [here](./archived_news/) to check out archived news.
 
+## Open-Source Highlights
+{% include open_source_grid.html %}
+
 ## Highlights
 
 {% capture text %}
