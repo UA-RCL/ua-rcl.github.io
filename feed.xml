@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-09T05:43:47+00:00</updated><id>/feed.xml</id><title type="html">UA-RCL</title><entry><title type="html">Presentation in ICCAD25</title><link href="/2025/10/29/iccad.html" rel="alternate" type="text/html" title="Presentation in ICCAD25" /><published>2025-10-29T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2025/10/29/iccad</id><content type="html" xml:base="/2025/10/29/iccad.html"><![CDATA[<p>Umut Suluhan presented the paper <strong><em>K-PACT: Kernel Planning for Adaptive Context Switching — A Framework for Clustering, Placement, and Prefetching in Spectrum Sensing</em></strong> in Internation Conference on Computer-Aided Design (<a href="https://2025.iccad.com/">ICCAD’25</a>) on October 29nd in Munich, Germany.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-23T04:05:17+00:00</updated><id>/feed.xml</id><title type="html">UA-RCL</title><entry><title type="html">Presentation in ICCAD25</title><link href="/2025/10/29/iccad.html" rel="alternate" type="text/html" title="Presentation in ICCAD25" /><published>2025-10-29T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2025/10/29/iccad</id><content type="html" xml:base="/2025/10/29/iccad.html"><![CDATA[<p>Umut Suluhan presented the paper <strong><em>K-PACT: Kernel Planning for Adaptive Context Switching — A Framework for Clustering, Placement, and Prefetching in Spectrum Sensing</em></strong> in Internation Conference on Computer-Aided Design (<a href="https://2025.iccad.com/">ICCAD’25</a>) on October 29nd in Munich, Germany.</p>
 
 <figure class="figure">
   <a href="/team" class="figure-image" aria-label="From presentation in ICCAD25">
@@ -20,7 +20,7 @@
   background: ;
   dark: ;
   size: ;
--->]]></content><author><name></name></author><summary type="html"><![CDATA[Umut Suluhan presented the paper K-PACT: Kernel Planning for Adaptive Context Switching — A Framework for Clustering, Placement, and Prefetching in Spectrum Sensing in Internation Conference on Computer-Aided Design (ICCAD’25) on October 29nd in Munich, Germany.]]></summary></entry><entry><title type="html">Tutorial in ISFPGA’25 and Presentation at ExHET’25</title><link href="/2025/03/03/isfpga_tutorial_and_exhet.html" rel="alternate" type="text/html" title="Tutorial in ISFPGA’25 and Presentation at ExHET’25" /><published>2025-03-03T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2025/03/03/isfpga_tutorial_and_exhet</id><content type="html" xml:base="/2025/03/03/isfpga_tutorial_and_exhet.html"><![CDATA[<p>Serhan Gener and Sahil Hassan held a tutorial Session <strong><em>CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems</em></strong> in <a href="https://www.isfpga.org/workshops-tutorials/#t6">ISFPGA’25</a> on March 1st in Monterrey, CA. Then, they presented a paper <strong><em>A Unified Portable and Programmable Framework for Task-Based Execution and Dynamic Resource Management on Heterogeneous Systems</em></strong> in Workshop on Extreme Heterogeneity Solutions (<a href="https://ornl.github.io/events/exhet2025/">ExHET’25</a>) on March 2nd in Las Vegas, NV. The paper presented in ExHET’25 won Best Paper Award!</p>
+-->]]></content><author><name></name></author><summary type="html"><![CDATA[Umut Suluhan presented the paper K-PACT: Kernel Planning for Adaptive Context Switching — A Framework for Clustering, Placement, and Prefetching in Spectrum Sensing in Internation Conference on Computer-Aided Design (ICCAD’25) on October 29nd in Munich, Germany.]]></summary></entry><entry><title type="html">Tutorial in ISFPGA’25 and Presentation at ExHET’25</title><link href="/2025/03/03/isfpga_tutorial_and_exhet.html" rel="alternate" type="text/html" title="Tutorial in ISFPGA’25 and Presentation at ExHET’25" /><published>2025-03-03T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2025/03/03/isfpga_tutorial_and_exhet</id><content type="html" xml:base="/2025/03/03/isfpga_tutorial_and_exhet.html"><![CDATA[<p>Serhan Gener and Sahil Hassan held a tutorial Session <strong><em>CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems</em></strong> in <a href="https://www.isfpga.org/workshops-tutorials/#t6">ISFPGA’25</a> on March 1st in Monterrey, CA. Then, they presented a paper <strong><em>A Unified Portable and Programmable Framework for Task-Based Execution and Dynamic Resource Management on Heterogeneous Systems</em></strong> in Workshop on Extreme Heterogeneity Solutions (<a href="https://ornl.github.io/events/exhet2025/">ExHET’25</a>) on March 2nd in Las Vegas, NV. The paper presented in ExHET’25 won Best Paper Award!</p>
 
 <figure class="figure">
   <a href="/team" class="figure-image" aria-label="figure link">
@@ -104,7 +104,7 @@
   
 </figure>
 
-<center>From the presentation in ExHET'25, Las Vegas, NV</center>]]></content><author><name></name></author><summary type="html"><![CDATA[Serhan Gener and Sahil Hassan held a tutorial Session CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems in ISFPGA’25 on March 1st in Monterrey, CA. Then, they presented a paper A Unified Portable and Programmable Framework for Task-Based Execution and Dynamic Resource Management on Heterogeneous Systems in Workshop on Extreme Heterogeneity Solutions (ExHET’25) on March 2nd in Las Vegas, NV. The paper presented in ExHET’25 won Best Paper Award!]]></summary></entry><entry><title type="html">Presentation at HCW24 and PhD Forum at IPDPS24</title><link href="/2024/05/27/ipdps24.html" rel="alternate" type="text/html" title="Presentation at HCW24 and PhD Forum at IPDPS24" /><published>2024-05-27T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2024/05/27/ipdps24</id><content type="html" xml:base="/2024/05/27/ipdps24.html"><![CDATA[<!-- section break -->
+<center>From the presentation in ExHET'25, Las Vegas, NV</center>]]></content><author><name></name></author><summary type="html"><![CDATA[Serhan Gener and Sahil Hassan held a tutorial Session CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems in ISFPGA’25 on March 1st in Monterrey, CA. Then, they presented a paper A Unified Portable and Programmable Framework for Task-Based Execution and Dynamic Resource Management on Heterogeneous Systems in Workshop on Extreme Heterogeneity Solutions (ExHET’25) on March 2nd in Las Vegas, NV. The paper presented in ExHET’25 won Best Paper Award!]]></summary></entry><entry><title type="html">Presentation at HCW24 and PhD Forum at IPDPS24</title><link href="/2024/05/27/ipdps24.html" rel="alternate" type="text/html" title="Presentation at HCW24 and PhD Forum at IPDPS24" /><published>2024-05-27T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2024/05/27/ipdps24</id><content type="html" xml:base="/2024/05/27/ipdps24.html"><![CDATA[<!-- section break -->
 <!--
   background: ;
   dark: ;
@@ -154,7 +154,7 @@
 </figure>
 
 
-</div>]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">2024 Graduation Ceremony</title><link href="/2024/05/10/graduation_ceremony.html" rel="alternate" type="text/html" title="2024 Graduation Ceremony" /><published>2024-05-10T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2024/05/10/graduation_ceremony</id><content type="html" xml:base="/2024/05/10/graduation_ceremony.html"><![CDATA[<!-- section break -->
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">2024 Graduation Ceremony</title><link href="/2024/05/10/graduation_ceremony.html" rel="alternate" type="text/html" title="2024 Graduation Ceremony" /><published>2024-05-10T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2024/05/10/graduation_ceremony</id><content type="html" xml:base="/2024/05/10/graduation_ceremony.html"><![CDATA[<!-- section break -->
 <!--
   background: ;
   dark: ;
@@ -194,7 +194,7 @@
 </figure>
 
 
-</div>]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Best Demonstration Award in ECE Graduate Student Research Poster &amp;amp; Demo Symposium</title><link href="/2024/03/15/best_demonstration.html" rel="alternate" type="text/html" title="Best Demonstration Award in ECE Graduate Student Research Poster &amp;amp; Demo Symposium" /><published>2024-03-15T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2024/03/15/best_demonstration</id><content type="html" xml:base="/2024/03/15/best_demonstration.html"><![CDATA[<figure class="figure">
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Best Demonstration Award in ECE Graduate Student Research Poster &amp;amp; Demo Symposium</title><link href="/2024/03/15/best_demonstration.html" rel="alternate" type="text/html" title="Best Demonstration Award in ECE Graduate Student Research Poster &amp;amp; Demo Symposium" /><published>2024-03-15T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2024/03/15/best_demonstration</id><content type="html" xml:base="/2024/03/15/best_demonstration.html"><![CDATA[<figure class="figure">
   <a href="/team" class="figure-image" aria-label="From ECE Graduate Student Research Poster &amp; Demo Symposium">
     <img src="/images/blog/best_demonstration/best_demonstration_1.jpeg" style="
         width: 900px;
@@ -229,7 +229,7 @@
 </figure>
 
 
-</div>]]></content><author><name></name></author><summary type="html"><![CDATA[From ECE Graduate Student Research Poster &amp; Demo Symposium]]></summary></entry><entry><title type="html">FPGA Tutorial in FPGA’24</title><link href="/2024/03/03/fpga_tutorial.html" rel="alternate" type="text/html" title="FPGA Tutorial in FPGA’24" /><published>2024-03-03T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2024/03/03/fpga_tutorial</id><content type="html" xml:base="/2024/03/03/fpga_tutorial.html"><![CDATA[<figure class="figure">
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[From ECE Graduate Student Research Poster &amp; Demo Symposium]]></summary></entry><entry><title type="html">FPGA Tutorial in FPGA’24</title><link href="/2024/03/03/fpga_tutorial.html" rel="alternate" type="text/html" title="FPGA Tutorial in FPGA’24" /><published>2024-03-03T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2024/03/03/fpga_tutorial</id><content type="html" xml:base="/2024/03/03/fpga_tutorial.html"><![CDATA[<figure class="figure">
   <a href="/team" class="figure-image" aria-label="From the FPGA tutorial in FPGA'24, Monterrey, CA">
     <img src="/images/blog/fpga_tutorial/fpga_tutorial1.jpg" style="
         width: 900px;
@@ -242,7 +242,7 @@
 
     </figcaption>
   
-</figure>]]></content><author><name></name></author><summary type="html"><![CDATA[From the FPGA tutorial in FPGA’24, Monterrey, CA]]></summary></entry><entry><title type="html">Joshua Mack’s PhD Defense</title><link href="/2024/02/27/josh_defense.html" rel="alternate" type="text/html" title="Joshua Mack’s PhD Defense" /><published>2024-02-27T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2024/02/27/josh_defense</id><content type="html" xml:base="/2024/02/27/josh_defense.html"><![CDATA[<figure class="figure">
+</figure>]]></content><author><name></name></author><summary type="html"><![CDATA[From the FPGA tutorial in FPGA’24, Monterrey, CA]]></summary></entry><entry><title type="html">Joshua Mack’s PhD Defense</title><link href="/2024/02/27/josh_defense.html" rel="alternate" type="text/html" title="Joshua Mack’s PhD Defense" /><published>2024-02-27T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2024/02/27/josh_defense</id><content type="html" xml:base="/2024/02/27/josh_defense.html"><![CDATA[<figure class="figure">
   <a href="/team" class="figure-image" aria-label="Joshua Mack has defended his PhD dissertation successfully. Congrats Dr. Mack!">
     <img src="/images/blog/josh_defense/josh_defense1.jpg" style="
         width: 900px;
@@ -277,7 +277,7 @@
 </figure>
 
 
-</div>]]></content><author><name></name></author><summary type="html"><![CDATA[Joshua Mack has defended his PhD dissertation successfully. Congrats Dr. Mack!]]></summary></entry><entry><title type="html">ECE Building Group Picture</title><link href="/2023/05/20/group_picture.html" rel="alternate" type="text/html" title="ECE Building Group Picture" /><published>2023-05-20T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2023/05/20/group_picture</id><content type="html" xml:base="/2023/05/20/group_picture.html"><![CDATA[<figure class="figure">
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[Joshua Mack has defended his PhD dissertation successfully. Congrats Dr. Mack!]]></summary></entry><entry><title type="html">ECE Building Group Picture</title><link href="/2023/05/20/group_picture.html" rel="alternate" type="text/html" title="ECE Building Group Picture" /><published>2023-05-20T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2023/05/20/group_picture</id><content type="html" xml:base="/2023/05/20/group_picture.html"><![CDATA[<figure class="figure">
   <a href="/team" class="figure-image" aria-label="The team at the end of Spring semester, 2023">
     <img src="/images/blog/group_picture/group_picture.jpg" style="
         width: 900px;
@@ -297,7 +297,7 @@
   background: ;
   dark: ;
   size: ;
--->]]></content><author><name></name></author><summary type="html"><![CDATA[The team at the end of Spring semester, 2023]]></summary></entry><entry><title type="html">Outstanding GTA Award 2023</title><link href="/2023/05/12/graduation_ceremony.html" rel="alternate" type="text/html" title="Outstanding GTA Award 2023" /><published>2023-05-12T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2023/05/12/graduation_ceremony</id><content type="html" xml:base="/2023/05/12/graduation_ceremony.html"><![CDATA[<!-- section break -->
+-->]]></content><author><name></name></author><summary type="html"><![CDATA[The team at the end of Spring semester, 2023]]></summary></entry><entry><title type="html">Outstanding GTA Award 2023</title><link href="/2023/05/12/graduation_ceremony.html" rel="alternate" type="text/html" title="Outstanding GTA Award 2023" /><published>2023-05-12T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2023/05/12/graduation_ceremony</id><content type="html" xml:base="/2023/05/12/graduation_ceremony.html"><![CDATA[<!-- section break -->
 <!--
   background: ;
   dark: ;
@@ -312,7 +312,7 @@
 
 <style>
 .figure--full img{display:block;width:min(100%,1140px);height:auto;margin:0 auto;}
-</style>]]></content><author><name></name></author><summary type="html"><![CDATA[Masiha Hafiz was elected as the Outstanding Graduate Teaching Assistant in the ECE Department.]]></summary></entry><entry><title type="html">Dinner at Dr. Akoglu’s home</title><link href="/2023/05/11/dinner.html" rel="alternate" type="text/html" title="Dinner at Dr. Akoglu’s home" /><published>2023-05-11T00:00:00+00:00</published><updated>2025-11-09T05:43:02+00:00</updated><id>/2023/05/11/dinner</id><content type="html" xml:base="/2023/05/11/dinner.html"><![CDATA[<figure class="figure">
+</style>]]></content><author><name></name></author><summary type="html"><![CDATA[Masiha Hafiz was elected as the Outstanding Graduate Teaching Assistant in the ECE Department.]]></summary></entry><entry><title type="html">Dinner at Dr. Akoglu’s home</title><link href="/2023/05/11/dinner.html" rel="alternate" type="text/html" title="Dinner at Dr. Akoglu’s home" /><published>2023-05-11T00:00:00+00:00</published><updated>2025-11-23T04:02:36+00:00</updated><id>/2023/05/11/dinner</id><content type="html" xml:base="/2023/05/11/dinner.html"><![CDATA[<figure class="figure">
   <a href="/team" class="figure-image" aria-label="The team having dinner at Dr. Akoglu's house, 2023">
     <img src="/images/blog/dinner/dinner1.jpeg" style="
         width: 900px;
