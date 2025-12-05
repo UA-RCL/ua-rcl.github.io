@@ -10,7 +10,7 @@ title: CEDR Tutorials
 {% capture content %}
 
 <p style="text-align:left; margin-bottom: 1em;">
-  <img src="/projects/cedr/images/logos/conference/esweek-logo.png" alt="ESWEEK Logo" style="max-width: 100%; height: auto; width: 5vw;">
+  <img src="https://pact2025.github.io/images/pact-logo.png" alt="PACT Logo" style="max-width: 100%; height: auto; width: 5vw;">
 </p>
 
 Click [here](./pact25.html) to see our tutorial from [PACT 2025](https://pact2025.github.io/workshops/)
@@ -20,6 +20,10 @@ Click [here](./pact25.html) to see our tutorial from [PACT 2025](https://pact202
 {% include feature.html title="<h1>PACT 2025</h1>" text=content image="https://pact2025.github.io/images/LB.jpg" %}
 
 {% capture content %}
+
+<p style="text-align:left; margin-bottom: 1em;">
+  <img src="/projects/cedr/images/logos/conference/esweek-logo.png" alt="ESWEEK Logo" style="max-width: 100%; height: auto; width: 5vw;">
+</p>
 
 Click [here](./esweek25.html) to see our tutorial from [ESWEEK 2025](https://esweek.org/tutorials/)
 
