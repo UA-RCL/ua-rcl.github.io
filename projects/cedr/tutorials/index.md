@@ -13,7 +13,15 @@ title: CEDR Tutorials
   <img src="/projects/cedr/images/logos/conference/esweek-logo.png" alt="ESWEEK Logo" style="max-width: 100%; height: auto; width: 5vw;">
 </p>
 
-Click [here](./esweek25/) to see our tutorial from [ESWEEK 2025](https://esweek.org/tutorials/)
+Click [here](./pact25.html) to see our tutorial from [PACT 2025](https://pact2025.github.io/workshops/)
+
+{% endcapture %}
+
+{% include feature.html title="<h1>PACT 2025</h1>" text=content image="https://pact2025.github.io/images/LB.jpg" %}
+
+{% capture content %}
+
+Click [here](./esweek25.html) to see our tutorial from [ESWEEK 2025](https://esweek.org/tutorials/)
 
 {% endcapture %}
 
@@ -21,7 +29,7 @@ Click [here](./esweek25/) to see our tutorial from [ESWEEK 2025](https://esweek.
 
 {% capture content %}
 
-Click [here](./fpga25/) to see our tutorial from [FPGA 2025](https://www.isfpga.org/past/fpga2025/)
+Click [here](./isfpga25.html) to see our tutorial from [FPGA 2025](https://www.isfpga.org/past/fpga2025/)
 
 {% endcapture %}
 
@@ -29,7 +37,7 @@ Click [here](./fpga25/) to see our tutorial from [FPGA 2025](https://www.isfpga.
 
 {% capture content %}
 
-Click [here](./fpga24/) to see our tutorial from [FPGA 2024](https://www.isfpga.org/past/fpga2024/)
+Click [here](./isfpga24.html) to see our tutorial from [FPGA 2024](https://www.isfpga.org/past/fpga2024/)
 
 {% endcapture %}
 

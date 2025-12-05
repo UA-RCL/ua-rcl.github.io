@@ -10,6 +10,14 @@ title: CEDR Tutorials
   <img src="https://esweek.org/wp-content/uploads/2020/03/esweek-logo.png" alt="ESWEEK Logo" style="max-width: 100px; height: auto;">
 </p>
 
+Click [here](/projects/cedr/tutorials/pact25.html) to see our tutorial from [PACT 2025](https://pact2025.github.io/workshops/)
+
+{% endcapture %}
+
+{% include feature.html title="<h1>PACT 2025</h1>" text=content image="https://pact2025.github.io/images/LB.jpg" %}
+
+{% capture content %}
+
 Click [here](/projects/cedr/tutorials/esweek25.html) to see our tutorial from [ESWEEK 2025](https://esweek.org/tutorials/)
 
 {% endcapture %}
