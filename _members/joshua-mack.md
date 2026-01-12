@@ -5,7 +5,7 @@ role: graduated
 description: Praetorian
 links:
   email: jmack2545@arizona.edu
-  google-scholar: IiACx-AAAAAJ&hl=en&oi=ao
+  google-scholar: YRYq6uUAAAAJ
   orcid: 0000-0003-1066-5578
   linkedin: jmack2545/
   github: mackncheesiest
