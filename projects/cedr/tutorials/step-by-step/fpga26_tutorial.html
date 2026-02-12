@@ -337,6 +337,8 @@
   <link href="/_styles/presentations/fpga24/custom.css" rel="stylesheet" />
 
   <link href="/_styles/presentations/fpga25/custom.css" rel="stylesheet" />
+
+  <link href="/_styles/presentations/fpga26/custom.css" rel="stylesheet" />
  -->
 
 <!-- allow pages to customize styling via frontmatter -->
@@ -492,7 +494,7 @@
 <strong>Core Exercise 2</strong> (30 minutes)
     <ul>
       <li>
-<strong>Activity</strong> <a href="#exercise-2-design-space-exploration">Performing DSE</a> by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios</li>
+<strong>Activity</strong> <a href="#exercise-2-design-space-exploration">Performing DSE</a> by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios on UAP-ZU3 board.</li>
     </ul>
   </li>
 </ul>
@@ -953,6 +955,7 @@ static const std::map&lt;std::string, api_types&gt; api_types_map = { {api_type_
 <h2 id="building-cedr-with-zip-api">Building CEDR with ZIP API</h2>
 <p>Navigate to the build folder, re-generate the files, and check the <code class="language-plaintext highlighter-rouge">libdash-rt.so</code> shared object to verify the new ZIP-based function calls.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../build
+nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</span> <span class="nt">-E</span> <span class="s1">'*_ZIP_*'</span>
 cmake ..
 make <span class="nt">-j</span> <span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span>
 nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</span> <span class="nt">-E</span> <span class="s1">'*_ZIP_*'</span>
@@ -973,24 +976,27 @@ nm <span class="nt">-D</span> libdash-rt/libdash-rt.so | <span class="nb">grep</
 </ul>
 
 <p>Change the <code class="language-plaintext highlighter-rouge">radar_correlator_zip.c</code> to include <code class="language-plaintext highlighter-rouge">DASH_ZIP</code> calls</p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-<span class="o">&lt;</span>  <span class="n">corr_freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
-<span class="o">&lt;</span>  <span class="n">corr_freq</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
-<span class="o">&lt;</span><span class="p">}</span>
-<span class="o">&gt;</span><span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_inp0</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
-<span class="o">&gt;</span><span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_inp1</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
-<span class="o">&gt;</span><span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_out</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
-<span class="o">&gt;</span><span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="o">&gt;</span>  <span class="n">zip_inp0</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X1</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">];</span>
-<span class="o">&gt;</span>  <span class="n">zip_inp0</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X1</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
-<span class="o">&gt;</span>  <span class="n">zip_inp1</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">];</span>
-<span class="o">&gt;</span>  <span class="n">zip_inp1</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="o">-</span><span class="n">X2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// Conj Multiplication</span>
-<span class="o">&gt;</span><span class="p">}</span>
-<span class="o">&gt;</span><span class="n">DASH_ZIP_flt</span><span class="p">(</span><span class="n">zip_inp0</span><span class="p">,</span> <span class="n">zip_inp1</span><span class="p">,</span> <span class="n">zip_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">ZIP_MULT</span><span class="p">);</span>
-<span class="o">&gt;</span><span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="o">&gt;</span>  <span class="n">corr_freq</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">]</span>   <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">zip_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span><span class="p">;</span>
-<span class="o">&gt;</span>  <span class="n">corr_freq</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">zip_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span><span class="p">;</span>
-<span class="o">&gt;</span><span class="p">}</span>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Remove */</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">corr_freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
+      <span class="n">corr_freq</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+<span class="cm">/* Add */</span>
+    <span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_inp0</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
+    <span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_inp1</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
+    <span class="n">dash_cmplx_flt_type</span> <span class="o">*</span><span class="n">zip_out</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">dash_cmplx_flt_type</span><span class="p">));</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">zip_inp0</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X1</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">];</span>
+      <span class="n">zip_inp0</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X1</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+      <span class="n">zip_inp1</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="n">X2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">];</span>
+      <span class="n">zip_inp1</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span> <span class="o">=</span> <span class="p">(</span><span class="n">dash_re_flt_type</span><span class="p">)</span> <span class="o">-</span><span class="n">X2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// Conj Multiplication</span>
+    <span class="p">}</span>
+    <span class="n">DASH_ZIP_flt</span><span class="p">(</span><span class="n">zip_inp0</span><span class="p">,</span> <span class="n">zip_inp1</span><span class="p">,</span> <span class="n">zip_out</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">ZIP_MULT</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">corr_freq</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">]</span>   <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">zip_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">re</span><span class="p">;</span>
+      <span class="n">corr_freq</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">zip_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">im</span><span class="p">;</span>
+    <span class="p">}</span>
 </code></pre></div></div>
 
 <p>Build radar correlator with ZIP API calls, standalone as well as the shared object, and compare the output against other versions</p>
@@ -1216,7 +1222,8 @@ Password: &lt;<span class="nb">set </span>any password- it can be as simple as 1
 <p>After running these experiments you can copy the <code class="language-plaintext highlighter-rouge">log_dir</code> folder from AUP-ZU3 back to USB and go back to the host machine, you will need to copy <code class="language-plaintext highlighter-rouge">timing_trace.log</code> files for both experiments, and plot the Gantts using the same setup as before. The Gantt of <code class="language-plaintext highlighter-rouge">experiment0</code> will only show 3CPU and 2FFTs in use while <code class="language-plaintext highlighter-rouge">experiment1</code> will show 3CPU, 2FFTs, and 2ZIPs in use.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># On the Board</span>
-<span class="nb">cp</span> <span class="nt">-r</span> ./log_dir &lt;USB_PATH&gt;/build-arm/
+<span class="nb">sudo cp</span> <span class="nt">-r</span> ./log_dir &lt;USB_PATH&gt;/build-arm/
+<span class="nb">sudo </span>umount &lt;USB_PATH&gt;
 <span class="c"># After moving the USB to Host</span>
 <span class="nb">cp</span> <span class="nt">-r</span> &lt;USB_PATH&gt;/build-arm/log_dir build-arm/
 <span class="nb">cd </span>build-arm
@@ -1229,100 +1236,116 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment1/timing_trace.log
 <h2 id="exercise-2-design-space-exploration">Exercise 2: Design Space Exploration</h2>
 <p><a href="#fpga26-tutorial-step-by-step-flow">Return to top</a></p>
 
-<p>CEDR comes with some scripts that makes design-space exploration (DSE) rapid and easy. Now, we will go over the flow and define how to perform DSE step by step. First, navigate to folder where we accomodate API based CEDR scripts from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
+<p>CEDR includes scripts that enable rapid, easy design-space exploration (DSE). Now, we will go over the flow and define how to perform DSE step-by-step. First, navigate to the folder where we accommodate <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/DSE">DSE scripts</a>.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../scripts/scripts-API/run_scripts
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../scripts/DSE
 </code></pre></div></div>
 
-<p>We will initially run <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/daemon_generator.py">daemon_generator.py</a> file to generate <code class="language-plaintext highlighter-rouge">daemon_config.json</code> files for our sweeps. We can modify the following code portion to denote scheduler types and hardware compositions. We set schedulers as <code class="language-plaintext highlighter-rouge">SIMPLE, ETF, and MET</code> while hardware compositions that are going to sweeped are picked as 4 CPUs at maximum since we don’t have any accelerator on the x86 system. If there were any accelerator, we would also set the maximum number of accelerator that we would like to sweep up to.</p>
+<p>First, we will look into a helper script <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/DSE/generate_daemon_config.sh">generate_daemon_config.sh</a>, which generates <code class="language-plaintext highlighter-rouge">daemon_config.json</code> files for our sweeps. It uses the arguments given to the script to generate the corresponding <code class="language-plaintext highlighter-rouge">daemon_config.json</code> file. For each configuration, our main script will call this script to re-generate the <code class="language-plaintext highlighter-rouge">daemon_config.json</code> file for the current configuration under testing.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SCHEDS</span> <span class="o">=</span> <span class="p">[</span><span class="s">"SIMPLE"</span><span class="p">,</span> <span class="s">"ETF"</span><span class="p">,</span> <span class="s">"MET"</span><span class="p">]</span>
-<span class="n">CPUS</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">FFTS</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">MMULTS</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">ZIPS</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">GPUS</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash generate_daemon_config.sh &lt;number of CPUs&gt; &lt;number of FFTs&gt; &lt;number of ZIPs&gt; &lt;number of GEMMs&gt; &lt;number of GPUs&gt; &lt;number of Conv_2Ds&gt; &lt;scheduler_name&gt;
 </code></pre></div></div>
 
-<p>Then, we can see that number of each processing element starts from <code class="language-plaintext highlighter-rouge">0</code> all the way up to <code class="language-plaintext highlighter-rouge">maximum number of that processing element</code> looking at nested loops between Lines 26-31 (except CPU starts from 1). By changing the boundaries of the for loops, we can control the starting point of the sweep for each processing element. For this experiment, we will keep the file same.</p>
+<p>Next, move to <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/DSE/run_sweep.sh">main DSE script</a> that runs <code class="language-plaintext highlighter-rouge">./cedr</code> and <code class="language-plaintext highlighter-rouge">./sub_dag</code>.In <code class="language-plaintext highlighter-rouge">run_sweep.sh</code>, we need to set a few fields based on what we want to sweep.</p>
 
-<p>Next, we need to configure <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/run_cedr.sh">run_cedr.sh</a> and <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/run_subdag.sh">run_sub_dag.sh</a>, which will concurrently run CEDR and submit applications. In <code class="language-plaintext highlighter-rouge">run_cedr.sh</code>, we need to set the following fields identical to the daemon config generator. Periodicity denotes the delay between injecting each application instance in microseconds.</p>
+<ul>
+  <li>Line 7: Schedulers to be used in the sweep</li>
+  <li>Lines 8-13: Resources to be swept</li>
+  <li>Lines 17-18: Injection rate to be used with <code class="language-plaintext highlighter-rouge">sub_dag</code> when submitting applications</li>
+  <li>Line 20: Applications to be submitted</li>
+  <li>Line 21: Number of instances for the given application(s)</li>
+  <li>Lines 27-62: Main sweep loop</li>
+  <li>Line 39: Calls the helper script <code class="language-plaintext highlighter-rouge">generate_daemon_config.sh</code> with the current resource and scheduler under test.</li>
+</ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">SCHEDS</span><span class="o">=(</span><span class="s2">"SIMPLE"</span> <span class="s2">"MET"</span> <span class="s2">"ETF"</span><span class="o">)</span>
-<span class="nv">CPUS</span><span class="o">=</span>3
-<span class="nv">FFTS</span><span class="o">=</span>0
-<span class="nv">MMULTS</span><span class="o">=</span>0
-<span class="nv">ZIPS</span><span class="o">=</span>0
-<span class="nv">GPUS</span><span class="o">=</span>0
-<span class="c">######################################################################</span>
-
-<span class="c"># Number of distinct period values for each workload. Use this value from the bash script that</span>
-<span class="c"># runs sub_dag</span>
-<span class="nv">PERIODCOUNT</span><span class="o">=</span>2
-<span class="nv">PERIODS</span><span class="o">=(</span><span class="s2">"1734"</span> <span class="s2">"2313"</span><span class="o">)</span>
-
-<span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">WORKLOADS</span><span class="o">=(</span><span class="s2">"HIGH"</span> <span class="o">)</span>
-</code></pre></div></div>
-
-<p>In the case of <code class="language-plaintext highlighter-rouge">run_sub_dag.sh</code>, we need to set the following fields identical as before. In here, we also define <code class="language-plaintext highlighter-rouge">APPS</code> variable that stores the applications that we will sweep and <code class="language-plaintext highlighter-rouge">INSTS</code> variable that defines how many of each application will be submitted during each sweep.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#### All possible schedulers, and max number of allowed resources ####</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Line 7:</span>
 <span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">SCHEDS</span><span class="o">=(</span><span class="s2">"SIMPLE"</span> <span class="s2">"MET"</span> <span class="s2">"ETF"</span><span class="o">)</span>
-<span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">CPUS</span><span class="o">=</span>3
-<span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">FFTS</span><span class="o">=</span>0
-<span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">MMULTS</span><span class="o">=</span>0
-<span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">ZIPS</span><span class="o">=</span>0
-<span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">GPUS</span><span class="o">=</span>0
-<span class="c">######################################################################</span>
 
-<span class="nv">APPS</span><span class="o">=(</span><span class="s2">"radar_correlator_fft-x86.so"</span><span class="o">)</span>
+<span class="c"># Lines 8-13:</span>
+<span class="nv">CPUS</span><span class="o">=</span>3
+<span class="nv">FFTS</span><span class="o">=</span>2
+<span class="nv">MMULTS</span><span class="o">=</span>0
+<span class="nv">ZIPS</span><span class="o">=</span>2
+<span class="nv">GPUS</span><span class="o">=</span>0
+<span class="nv">CONV_2DS</span><span class="o">=</span>0
+
+<span class="c"># Lines 17-18:</span>
+<span class="nv">PERIODCOUNT</span><span class="o">=</span>2
+<span class="nv">PERIODS</span><span class="o">=(</span><span class="s2">"1734"</span> <span class="s2">"2313"</span> <span class="o">)</span>
+
+<span class="c"># Line 20:</span>
+<span class="nv">APPS</span><span class="o">=(</span><span class="s2">"./radar_correlator_zip-x86.so"</span><span class="o">)</span>
+
+<span class="c"># Line 21:</span>
 <span class="nv">INSTS</span><span class="o">=(</span><span class="s2">"5"</span><span class="o">)</span>
 
-<span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">PERIODS</span><span class="o">=(</span><span class="s2">"1734"</span> <span class="s2">"2313"</span><span class="o">)</span>
-<span class="nv">PERIODCOUNT</span><span class="o">=</span>2
-
-<span class="nb">declare</span> <span class="nt">-a</span> <span class="nv">WORKLOADS</span><span class="o">=(</span><span class="s2">"HIGH"</span><span class="o">)</span>
+<span class="c"># Line 39:</span>
+bash generate_daemon_config.sh <span class="nv">$cpu</span> <span class="nv">$fft</span> <span class="nv">$zip</span> <span class="nv">$mmult</span> <span class="nv">$gpu</span> <span class="nv">$conv_2d</span> <span class="nv">$sched</span>
 </code></pre></div></div>
 
-<p>After getting everything ready, we can move scripts and configuration files to the <a href="./build/">build</a> folder for starting the DSE. We also need to create a folder named <code class="language-plaintext highlighter-rouge">schedsweep_daemon_configs</code> in <code class="language-plaintext highlighter-rouge">build</code> folder to store configuration files.</p>
+<p>Looking at the script’s details, we see that <code class="language-plaintext highlighter-rouge">cedr</code> is started on line 42. A 5-second delay is added on line 43 to let Cedr complete all required initializations. Once the delay is over, on line 44, <code class="language-plaintext highlighter-rouge">sub_dag</code> is used to submit applications to <code class="language-plaintext highlighter-rouge">cedr</code>. Line 45 waits for <code class="language-plaintext highlighter-rouge">cedr</code> to complete all the running applications and write the log files. Once <code class="language-plaintext highlighter-rouge">cedr</code> is complete and logs are written, line 47 moves the log files for use with plotting scripts.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 daemon_generator.py
-<span class="nb">mkdir</span> ../../../build/schedsweep_daemon_configs/
-<span class="nb">cp </span>daemon_config<span class="k">*</span>.json ../../../build/schedsweep_daemon_configs/
-<span class="nb">cp</span> <span class="k">*</span>.sh ../../../build
+<h4 id="getting-ready-to-run-dse-on-aup-zu3">Getting ready to run DSE on AUP-ZU3:</h4>
+
+<p>To get ready for the execution on AUP-ZU3 boards, we will first move to the <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>, copy these DSE scripts to the <code class="language-plaintext highlighter-rouge">build-arm</code> folder, and clean any existing log files within the <code class="language-plaintext highlighter-rouge">build-arm</code> folder.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../
+<span class="nb">cp </span>scripts/DSE/<span class="k">*</span>.sh build-arm/
+<span class="nb">rm</span> <span class="nt">-rf</span> build-arm/log_dir/ <span class="c"># Be careful when using `rm -rf`!</span>
 </code></pre></div></div>
 
-<p>Navigate back to the <code class="language-plaintext highlighter-rouge">build</code> directory and remove all earlier log files in the <code class="language-plaintext highlighter-rouge">log_dir</code> directory.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../../../build
-<span class="nb">rm</span> <span class="nt">-rf</span> log_dir/<span class="k">*</span>
+<p>Next, we will move the <code class="language-plaintext highlighter-rouge">build-arm</code> folder again to the AUP-ZU3 board, following the same steps we used in <a href="#exercise-1-2-2-introducing-a-new-accelerator">Exercise 1-2-2</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">cp</span> &lt;container_name&gt;:/root/repository/CEDR/build-arm ./build-arm-DSE <span class="c"># Run if using Docker</span>
+<span class="nb">cp</span> <span class="nt">-r</span> ./build-arm-DSE &lt;path_to_external_drive&gt;/build-arm-DSE
+
+<span class="c">###############################</span>
+<span class="c"># Move USB to the AUP-ZU3 board</span>
+<span class="c">###############################</span>
+
+<span class="c"># Run on the AUP-ZU3 board:</span>
+<span class="nb">cd</span> ..
+<span class="nb">cp</span> <span class="nt">-r</span> &lt;USB_PATH&gt;/build-arm-DSE ./ <span class="c"># Might need to run with sudo</span>
+<span class="c"># If needed sudo to copy run below commented line</span>
+<span class="c"># sudo chown -R petalinux:petalinux build-arm-DSE/</span>
+<span class="nb">cd </span>build-arm-DSE
+<span class="nb">ls</span>
 </code></pre></div></div>
 
-<p>Then, first execute <code class="language-plaintext highlighter-rouge">run_cedr.sh</code> for running CEDR with the DSE configurations on the first terminal. Then, pull up a new terminal and run <code class="language-plaintext highlighter-rouge">run_sub_dag.sh</code> for dynamically submitting the applications based on workload composition. If you are on Docker environment, execute the first commands on a separate terminal to be able to pull up a second terminal running docker container.</p>
+<p>Now that we have everything we need to start DSE sweeps on AUP-ZU3 board, we will start the sweeps by simply running the <code class="language-plaintext highlighter-rouge">run_sweep.sh</code> script:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps
-<span class="c"># Take note of the number below "CONTAINER ID" column</span>
-docker <span class="nb">exec</span> <span class="nt">-it</span> &lt;CONTAINER ID&gt; /bin/bash
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>bash run_sweep.sh
 </code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash run_cedr.sh    <span class="c"># Execute on the first terminal</span>
-bash run_sub_dag.sh <span class="c"># Execute on the second terminal</span>
+<p>Once all the DSE is completed, move the log folder back to the USB for analysis on the host machine, following a similar command we used in<a href="#exercise-1-2-2-introducing-a-new-accelerator">Exercise 1-2-2</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># On the Board</span>
+<span class="nb">sudo cp</span> <span class="nt">-r</span> ./log_dir &lt;USB_PATH&gt;/build-arm/DSE/
+<span class="nb">sudo </span>umount &lt;USB_PATH&gt;
+
+<span class="c">###############################</span>
+<span class="c"># Move USB to the Host machine</span>
+<span class="c">###############################</span>
+
+<span class="c"># On the Host machine</span>
+<span class="nb">cp</span> <span class="nt">-r</span> &lt;USB_PATH&gt;/build-arm-DSE/log_dir build-arm/
 </code></pre></div></div>
 
-<p>After both scripts terminate, there should be a folder named <code class="language-plaintext highlighter-rouge">HIGH</code> in the <code class="language-plaintext highlighter-rouge">log_dir</code> containing as many files as there are trials. Each folder should have log files for each hardware composition, scheduler, and injection rate. To plot all the DSE results in a 3D format, first navigate to <code class="language-plaintext highlighter-rouge">scripts/scripts-API/</code> from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a>.</p>
+<p>Inside the <code class="language-plaintext highlighter-rouge">log_dir</code> folder, there should be a folder named <code class="language-plaintext highlighter-rouge">HIGH</code> containing as many files as there are trials. Each folder should have log files for each hardware composition, scheduler, and injection rate. These logs will be used to plot all DSE results in 3D. We will now navigate to <code class="language-plaintext highlighter-rouge">scripts/scripts-API/</code> from <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/./">root directory</a></p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ../scripts/scripts-API/
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>scripts/scripts-API/
 </code></pre></div></div>
 
-<p>There are two scripts named <code class="language-plaintext highlighter-rouge">makedataframe.py</code> and <code class="language-plaintext highlighter-rouge">plt3dplot_inj.py</code> for plotting 3D diagram. For each DSE experiment, following lines in <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/makedataframe.py">makedataframe.py</a> should be modified.</p>
+<p>There are two scripts under <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/">scripts/scripts-API/</a> folder, named <code class="language-plaintext highlighter-rouge">makedataframe.py</code> and <code class="language-plaintext highlighter-rouge">plt3dplot_inj.py</code> that we will be using for plotting a 3D diagram. For each DSE experiment, the following lines in <a href="https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/makedataframe.py">makedataframe.py</a> should be modified as needed.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">corelist</span> <span class="o">=</span> <span class="p">[</span><span class="s">' cpu1'</span><span class="p">,</span> <span class="s">' cpu2'</span><span class="p">,</span> <span class="s">' cpu3'</span><span class="p">]</span>  <span class="c1"># Line 38
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">corelist</span> <span class="o">=</span> <span class="p">[</span><span class="s">' cpu1'</span><span class="p">,</span> <span class="s">' cpu2'</span><span class="p">,</span> <span class="s">' cpu3'</span><span class="p">,</span> <span class="s">' fft0'</span><span class="p">,</span> <span class="s">' fft1'</span><span class="p">,</span> <span class="s">' zip0'</span><span class="p">,</span> <span class="s">' zip1'</span><span class="p">]</span>  <span class="c1"># Line 38
 </span>
 <span class="c1">############# Edit parameters here ####################
 # Starting from line 179
 </span><span class="n">CPUS</span><span class="o">=</span><span class="mi">3</span>
-<span class="n">FFTS</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">FFTS</span><span class="o">=</span><span class="mi">2</span>
 <span class="n">MMULTS</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">ZIPS</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">ZIPS</span><span class="o">=</span><span class="mi">2</span>
 
 <span class="n">SCHEDS</span><span class="o">=</span><span class="p">[</span><span class="s">"SIMPLE"</span><span class="p">,</span> <span class="s">"MET"</span><span class="p">,</span> <span class="s">"ETF"</span><span class="p">]</span>
 
@@ -1338,12 +1361,12 @@ bash run_sub_dag.sh <span class="c"># Execute on the second terminal</span>
 
 <span class="n">INJ_COUNT</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">injectionRateCount</span><span class="p">)</span>
 <span class="n">TRIALS</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">trial</span><span class="p">)</span>
-<span class="n">corelist</span> <span class="o">=</span> <span class="p">[</span><span class="s">' cpu1'</span><span class="p">,</span> <span class="s">' cpu2'</span><span class="p">,</span> <span class="s">' cpu3'</span><span class="p">]</span>  <span class="c1"># Edit here
+<span class="n">corelist</span> <span class="o">=</span> <span class="p">[</span><span class="s">' cpu1'</span><span class="p">,</span> <span class="s">' cpu2'</span><span class="p">,</span> <span class="s">' cpu3'</span><span class="p">,</span> <span class="s">' fft0'</span><span class="p">,</span> <span class="s">' fft1'</span><span class="p">,</span> <span class="s">' zip0'</span><span class="p">,</span> <span class="s">' zip1'</span><span class="p">]</span>  <span class="c1"># Edit here
 </span>
 <span class="c1">#######################################################
 </span></code></pre></div></div>
 
-<p>To learn about the input arguments of <code class="language-plaintext highlighter-rouge">makedataframe.py</code>, execute the script with <code class="language-plaintext highlighter-rouge">-h</code> option. Then, execute <code class="language-plaintext highlighter-rouge">makedataframe.py</code> script using the given arguments below for the DSE experiment in this tutorial. Other DSE experiments may require different set of input arguments.</p>
+<p>To learn about the input arguments of <code class="language-plaintext highlighter-rouge">makedataframe.py</code>, execute the script with the <code class="language-plaintext highlighter-rouge">-h</code> option. Then, execute the <code class="language-plaintext highlighter-rouge">makedataframe.py</code> script using the given arguments below for the DSE experiment in this tutorial. Other DSE experiments may require different input arguments.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 makedataframe.py <span class="nt">-h</span>
 python3 makedataframe.py <span class="nt">-i</span> ../../build/log_dir/ <span class="nt">-w</span> HIGH <span class="nt">-o</span> dataframe.csv <span class="nt">-t</span> 2 <span class="nt">-r</span> 2
@@ -1354,9 +1377,9 @@ python3 makedataframe.py <span class="nt">-i</span> ../../build/log_dir/ <span c
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### Configuration specification ###
 ### Starting from line 27
 </span><span class="n">CPUS</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">FFTS</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">FFTS</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">MMULTS</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">ZIPS</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ZIPS</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">GPUS</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">WORKLOAD</span> <span class="o">=</span> <span class="s">'High'</span>
 <span class="n">TRIALS</span> <span class="o">=</span> <span class="mi">2</span>
