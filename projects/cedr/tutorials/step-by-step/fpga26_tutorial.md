@@ -15,7 +15,7 @@ In this tutorial, we will familiarize ourselves with setting up CEDR and perform
     - **Activity-1** - [Integrating new API calls](#exercise-1-2-1-introducing-a-new-api-call) to CEDR by adding ZIP as an API
     - **Activity-2** - [Integrating new Accelerator](#exercise-1-2-2-introducing-a-new-accelerator) to CEDR and verify it on FPGA
 - **Core Exercise 2** (30 minutes)
-  - **Activity** [Performing DSE](#exercise-2-design-space-exploration) by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios
+  - **Activity** [Performing DSE](#exercise-2-design-space-exploration) by varying the number of compute resources across different scheduling heuristics in dynamically arriving workload scenarios on UAP-ZU3 board.
 
 Additionally, we provide a number of supplemental tutorials on topics such as:
 - [Integrating and evaluating scheduling heuristics](#supplemental-exercise-1-integration-and-evaluation-of-eft-scheduler) with CEDR and conducting performance evaluation with dynamically arriving workload scenarios.
@@ -427,6 +427,7 @@ static const std::map<std::string, api_types> api_types_map = { {api_type_names[
 Navigate to the build folder, re-generate the files, and check the `libdash-rt.so` shared object to verify the new ZIP-based function calls.
 ```bash
 cd ../build
+nm -D libdash-rt/libdash-rt.so | grep -E '*_ZIP_*'
 cmake ..
 make -j $(nproc)
 nm -D libdash-rt/libdash-rt.so | grep -E '*_ZIP_*'
@@ -448,24 +449,27 @@ Look at the [non-API version](https://github.com/UA-RCL/CEDR/tree/tutorial/appli
 
 Change the `radar_correlator_zip.c` to include `DASH_ZIP` calls
 ```c
-<for (i = 0; i < 2 * len; i += 2) {
-<  corr_freq[i] = (X1[i] * X2[i]) + (X1[i + 1] * X2[i + 1]);
-<  corr_freq[i + 1] = (X1[i + 1] * X2[i]) - (X1[i] * X2[i + 1]);
-<}
->dash_cmplx_flt_type *zip_inp0 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
->dash_cmplx_flt_type *zip_inp1 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
->dash_cmplx_flt_type *zip_out = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
->for (size_t i = 0; i < len; i++) {
->  zip_inp0[i].re = (dash_re_flt_type) X1[2*i];
->  zip_inp0[i].im = (dash_re_flt_type) X1[2*i+1];
->  zip_inp1[i].re = (dash_re_flt_type) X2[2*i];
->  zip_inp1[i].im = (dash_re_flt_type) -X2[2*i+1]; // Conj Multiplication
->}
->DASH_ZIP_flt(zip_inp0, zip_inp1, zip_out, len, ZIP_MULT);
->for (size_t i = 0; i < len; i++) {
->  corr_freq[2*i]   = (double) zip_out[i].re;
->  corr_freq[2*i+1] = (double) zip_out[i].im;
->}
+/* Remove */
+    for (i = 0; i < 2 * len; i += 2) {
+      corr_freq[i] = (X1[i] * X2[i]) + (X1[i + 1] * X2[i + 1]);
+      corr_freq[i + 1] = (X1[i + 1] * X2[i]) - (X1[i] * X2[i + 1]);
+    }
+
+/* Add */
+    dash_cmplx_flt_type *zip_inp0 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
+    dash_cmplx_flt_type *zip_inp1 = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
+    dash_cmplx_flt_type *zip_out = (dash_cmplx_flt_type*) malloc(len * sizeof(dash_cmplx_flt_type));
+    for (size_t i = 0; i < len; i++) {
+      zip_inp0[i].re = (dash_re_flt_type) X1[2*i];
+      zip_inp0[i].im = (dash_re_flt_type) X1[2*i+1];
+      zip_inp1[i].re = (dash_re_flt_type) X2[2*i];
+      zip_inp1[i].im = (dash_re_flt_type) -X2[2*i+1]; // Conj Multiplication
+    }
+    DASH_ZIP_flt(zip_inp0, zip_inp1, zip_out, len, ZIP_MULT);
+    for (size_t i = 0; i < len; i++) {
+      corr_freq[2*i]   = (double) zip_out[i].re;
+      corr_freq[2*i+1] = (double) zip_out[i].im;
+    }
 ```
 
 Build radar correlator with ZIP API calls, standalone as well as the shared object, and compare the output against other versions
@@ -707,7 +711,8 @@ After running these experiments you can copy the `log_dir` folder from AUP-ZU3 b
 
 ```bash
 # On the Board
-cp -r ./log_dir <USB_PATH>/build-arm/
+sudo cp -r ./log_dir <USB_PATH>/build-arm/
+sudo umount <USB_PATH>
 # After moving the USB to Host
 cp -r <USB_PATH>/build-arm/log_dir build-arm/
 cd build-arm
@@ -720,110 +725,124 @@ mv gantt.png gantt_FFT_ZIP.png
 ## Exercise 2: Design Space Exploration
 [Return to top](#fpga26-tutorial-step-by-step-flow)
 
-CEDR comes with some scripts that makes design-space exploration (DSE) rapid and easy. Now, we will go over the flow and define how to perform DSE step by step. First, navigate to folder where we accomodate API based CEDR scripts from [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./).
+CEDR includes scripts that enable rapid, easy design-space exploration (DSE). Now, we will go over the flow and define how to perform DSE step-by-step. First, navigate to the folder where we accommodate [DSE scripts](https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/DSE).
 
 ```bash
-cd ../scripts/scripts-API/run_scripts
+cd ../scripts/DSE
 ```
 
-We will initially run [daemon_generator.py](https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/daemon_generator.py) file to generate `daemon_config.json` files for our sweeps. We can modify the following code portion to denote scheduler types and hardware compositions. We set schedulers as `SIMPLE, ETF, and MET` while hardware compositions that are going to sweeped are picked as 4 CPUs at maximum since we don't have any accelerator on the x86 system. If there were any accelerator, we would also set the maximum number of accelerator that we would like to sweep up to. 
-
-```python
-SCHEDS = ["SIMPLE", "ETF", "MET"]
-CPUS = 3
-FFTS = 0
-MMULTS = 0
-ZIPS = 0
-GPUS = 0
-```
-
-Then, we can see that number of each processing element starts from `0` all the way up to `maximum number of that processing element` looking at nested loops between Lines 26-31 (except CPU starts from 1). By changing the boundaries of the for loops, we can control the starting point of the sweep for each processing element. For this experiment, we will keep the file same.  
-
-Next, we need to configure [run_cedr.sh](https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/run_cedr.sh) and [run_sub_dag.sh](https://github.com/UA-RCL/CEDR/tree/tutorial/./scripts/scripts-API/run_scripts/run_subdag.sh), which will concurrently run CEDR and submit applications. In `run_cedr.sh`, we need to set the following fields identical to the daemon config generator. Periodicity denotes the delay between injecting each application instance in microseconds.
+First, we will look into a helper script [generate_daemon_config.sh](https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/DSE/generate_daemon_config.sh), which generates `daemon_config.json` files for our sweeps. It uses the arguments given to the script to generate the corresponding `daemon_config.json` file. For each configuration, our main script will call this script to re-generate the `daemon_config.json` file for the current configuration under testing.
 
 ```bash
+bash generate_daemon_config.sh <number of CPUs> <number of FFTs> <number of ZIPs> <number of GEMMs> <number of GPUs> <number of Conv_2Ds> <scheduler_name>
+```
+
+Next, move to [main DSE script](https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/DSE/run_sweep.sh) that runs `./cedr` and `./sub_dag`.In `run_sweep.sh`, we need to set a few fields based on what we want to sweep.
+
+ * Line 7: Schedulers to be used in the sweep
+ * Lines 8-13: Resources to be swept
+ * Lines 17-18: Injection rate to be used with `sub_dag` when submitting applications
+ * Line 20: Applications to be submitted
+ * Line 21: Number of instances for the given application(s)
+ * Lines 27-62: Main sweep loop
+ * Line 39: Calls the helper script `generate_daemon_config.sh` with the current resource and scheduler under test. 
+
+```bash
+# Line 7:
 declare -a SCHEDS=("SIMPLE" "MET" "ETF")
+
+# Lines 8-13:
 CPUS=3
-FFTS=0
+FFTS=2
 MMULTS=0
-ZIPS=0
+ZIPS=2
 GPUS=0
-######################################################################
+CONV_2DS=0
 
-# Number of distinct period values for each workload. Use this value from the bash script that
-# runs sub_dag
+# Lines 17-18:
 PERIODCOUNT=2
-PERIODS=("1734" "2313")
+PERIODS=("1734" "2313" )
 
-declare -a WORKLOADS=("HIGH" )
-```
+# Line 20:
+APPS=("./radar_correlator_zip-x86.so")
 
-In the case of `run_sub_dag.sh`, we need to set the following fields identical as before. In here, we also define `APPS` variable that stores the applications that we will sweep and `INSTS` variable that defines how many of each application will be submitted during each sweep. 
-
-```bash
-#### All possible schedulers, and max number of allowed resources ####
-declare -a SCHEDS=("SIMPLE" "MET" "ETF")
-declare -a CPUS=3
-declare -a FFTS=0
-declare -a MMULTS=0
-declare -a ZIPS=0
-declare -a GPUS=0
-######################################################################
-
-APPS=("radar_correlator_fft-x86.so")
+# Line 21:
 INSTS=("5")
 
-declare -a PERIODS=("1734" "2313")
-PERIODCOUNT=2
-
-declare -a WORKLOADS=("HIGH")
+# Line 39:
+bash generate_daemon_config.sh $cpu $fft $zip $mmult $gpu $conv_2d $sched
 ```
 
-After getting everything ready, we can move scripts and configuration files to the [build](./build/) folder for starting the DSE. We also need to create a folder named `schedsweep_daemon_configs` in `build` folder to store configuration files. 
+Looking at the script's details, we see that `cedr` is started on line 42. A 5-second delay is added on line 43 to let Cedr complete all required initializations. Once the delay is over, on line 44, `sub_dag` is used to submit applications to `cedr`. Line 45 waits for `cedr` to complete all the running applications and write the log files. Once `cedr` is complete and logs are written, line 47 moves the log files for use with plotting scripts.
+
+#### Getting ready to run DSE on AUP-ZU3:
+
+To get ready for the execution on AUP-ZU3 boards, we will first move to the [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./), copy these DSE scripts to the `build-arm` folder, and clean any existing log files within the `build-arm` folder.
 
 ```bash
-python3 daemon_generator.py
-mkdir ../../../build/schedsweep_daemon_configs/
-cp daemon_config*.json ../../../build/schedsweep_daemon_configs/
-cp *.sh ../../../build
+cd ../../
+cp scripts/DSE/*.sh build-arm/
+rm -rf build-arm/log_dir/ # Be careful when using `rm -rf`!
 ```
 
-Navigate back to the `build` directory and remove all earlier log files in the `log_dir` directory.
-```bash
-cd ../../../build
-rm -rf log_dir/*
-``` 
-
-Then, first execute `run_cedr.sh` for running CEDR with the DSE configurations on the first terminal. Then, pull up a new terminal and run `run_sub_dag.sh` for dynamically submitting the applications based on workload composition. If you are on Docker environment, execute the first commands on a separate terminal to be able to pull up a second terminal running docker container.
+Next, we will move the `build-arm` folder again to the AUP-ZU3 board, following the same steps we used in [Exercise 1-2-2](#exercise-1-2-2-introducing-a-new-accelerator).
 
 ```bash
-docker ps
-# Take note of the number below "CONTAINER ID" column
-docker exec -it <CONTAINER ID> /bin/bash
+docker cp <container_name>:/root/repository/CEDR/build-arm ./build-arm-DSE # Run if using Docker
+cp -r ./build-arm-DSE <path_to_external_drive>/build-arm-DSE
+
+###############################
+# Move USB to the AUP-ZU3 board
+###############################
+
+# Run on the AUP-ZU3 board:
+cd ..
+cp -r <USB_PATH>/build-arm-DSE ./ # Might need to run with sudo
+# If needed sudo to copy run below commented line
+# sudo chown -R petalinux:petalinux build-arm-DSE/
+cd build-arm-DSE
+ls
 ```
 
-```bash
-bash run_cedr.sh    # Execute on the first terminal
-bash run_sub_dag.sh # Execute on the second terminal
-```
-
-After both scripts terminate, there should be a folder named `HIGH` in the `log_dir` containing as many files as there are trials. Each folder should have log files for each hardware composition, scheduler, and injection rate. To plot all the DSE results in a 3D format, first navigate to `scripts/scripts-API/` from [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./).
+Now that we have everything we need to start DSE sweeps on AUP-ZU3 board, we will start the sweeps by simply running the `run_sweep.sh` script:
 
 ```bash
-cd ../scripts/scripts-API/
+sudo bash run_sweep.sh
 ```
 
-There are two scripts named `makedataframe.py` and `plt3dplot_inj.py` for plotting 3D diagram. For each DSE experiment, following lines in [makedataframe.py](https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/makedataframe.py) should be modified.
+Once all the DSE is completed, move the log folder back to the USB for analysis on the host machine, following a similar command we used in[Exercise 1-2-2](#exercise-1-2-2-introducing-a-new-accelerator).
+
+
+```bash
+# On the Board
+sudo cp -r ./log_dir <USB_PATH>/build-arm/DSE/
+sudo umount <USB_PATH>
+
+###############################
+# Move USB to the Host machine
+###############################
+
+# On the Host machine
+cp -r <USB_PATH>/build-arm-DSE/log_dir build-arm/
+```
+
+Inside the `log_dir` folder, there should be a folder named `HIGH` containing as many files as there are trials. Each folder should have log files for each hardware composition, scheduler, and injection rate. These logs will be used to plot all DSE results in 3D. We will now navigate to `scripts/scripts-API/` from [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./)
+
+```bash
+cd scripts/scripts-API/
+```
+
+There are two scripts under [scripts/scripts-API/](https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/) folder, named `makedataframe.py` and `plt3dplot_inj.py` that we will be using for plotting a 3D diagram. For each DSE experiment, the following lines in [makedataframe.py](https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/makedataframe.py) should be modified as needed.
 
 ```python
-corelist = [' cpu1', ' cpu2', ' cpu3']  # Line 38
+corelist = [' cpu1', ' cpu2', ' cpu3', ' fft0', ' fft1', ' zip0', ' zip1']  # Line 38
 
 ############# Edit parameters here ####################
 # Starting from line 179
 CPUS=3
-FFTS=0
+FFTS=2
 MMULTS=0
-ZIPS=0
+ZIPS=2
 
 SCHEDS=["SIMPLE", "MET", "ETF"]
 
@@ -839,12 +858,12 @@ else:
 
 INJ_COUNT=int(args.injectionRateCount)
 TRIALS=int(args.trial)
-corelist = [' cpu1', ' cpu2', ' cpu3']  # Edit here
+corelist = [' cpu1', ' cpu2', ' cpu3', ' fft0', ' fft1', ' zip0', ' zip1']  # Edit here
 
 #######################################################
 ```
 
-To learn about the input arguments of `makedataframe.py`, execute the script with `-h` option. Then, execute `makedataframe.py` script using the given arguments below for the DSE experiment in this tutorial. Other DSE experiments may require different set of input arguments. 
+To learn about the input arguments of `makedataframe.py`, execute the script with the `-h` option. Then, execute the `makedataframe.py` script using the given arguments below for the DSE experiment in this tutorial. Other DSE experiments may require different input arguments. 
 
 ```bash
 python3 makedataframe.py -h
@@ -857,9 +876,9 @@ Modify the following lines in the [plt3dplot_inj.py](https://github.com/UA-RCL/C
 ### Configuration specification ###
 ### Starting from line 27
 CPUS = 3
-FFTS = 0
+FFTS = 2
 MMULTS = 0
-ZIPS = 0
+ZIPS = 2
 GPUS = 0
 WORKLOAD = 'High'
 TRIALS = 2
