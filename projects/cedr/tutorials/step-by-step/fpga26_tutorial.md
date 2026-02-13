@@ -27,6 +27,7 @@ Additionally, we provide a number of supplemental tutorials on topics such as:
   * Choose one of the supported environments:
     * [Docker-based setup (Start on any platform without root access)](#option-1-docker-based-instructions-linux-windows-and-mac)
     * [Native Linux-based setup (Requires root access)](#option-2-linux-native-instructions-requires-root-access)
+    * [WSL based setup for Windows](#option-3-wsl-for-windows)
 - CEDR Source Files: [CEDR repository for this tutorial](https://github.com/UA-RCL/CEDR/), checked out to the `tutorial` branch.
 
 # Exercise 0: Getting Started with CEDR
@@ -36,24 +37,34 @@ Additionally, we provide a number of supplemental tutorials on topics such as:
 ### Option 1: Docker-based Instructions (Linux, Windows, and Mac)
 Install Docker based on the host machine platform using the [link](https://docs.docker.com/engine/install/#desktop).
 Pull the latest [Docker container](https://hub.docker.com/r/uofarcl/cedr/tags) with all dependencies installed. 
-Open a terminal in your CEDR folder and run the Docker image using the following command: 
-```
-docker run -it --name cedr_tutorial uofarcl/cedr:tutorial_fpga26 /bin/bash
+Open a terminal and run the Docker image using the following command: 
+```bash 
+docker run -it --name cedr_tutorial uofarcl/cedr:tutorial_isfpga26 /bin/bash
 ```
 
-***After runing the Docker container you can move to [Building CEDR for x86](#building-cedr-for-x86). Following few lines shows simple `docker` comments that would be useful for the following tutorials.***
+Within the Docker container clone CEDR from GitHub using one of the following methods:
+  * Clone with ssh:
+```bash
+git clone -b tutorial git@github.com:UA-RCL/CEDR.git
+```
+  * Clone with https:
+```bash
+git clone -b tutorial https://github.com/UA-RCL/CEDR.git
+```
+
+***After cloning CEDR from GitHub, you can move to [Building CEDR for x86](#building-cedr-for-x86). Following few lines shows simple `docker` comments that would be useful for the following tutorials.***
 
 We will need to copy files from the container to the host machine. Use one of these alternatives for this: 
-  * Mount a volume while running Docker using a folder on the host machine that has read and write permissions for `other` users: 
+  * Mount a volume while running Docker using a folder on the host machine: 
 ```bash
-docker run -it --name cedr_tutorial -v <host-folder>:/root/repository/share uofarcl/cedr:tutorial_fpga26 /bin/bash
+docker run -it --name cedr_tutorial -v <host-folder>:/root/repository/share uofarcl/cedr:tutorial_isfpga26 /bin/bash
 ```
   * Using `docker cp` to copy files from the container to the host: 
 ```bash
 docker ps -a # Find the Container ID and Name
 docker cp cedr_tutorial:/root/repository/CEDR ./
 ```
-  * If you need to detach from Docker at any time, you can use `Crtl+p` and `Ctrl+q` to detach and to re-attach use: 
+  * If you need to detach from Docker at any time, you can use `Ctrl+p` and `Ctrl+q` to detach and to open a new shell for the same container use: 
 ```bash
 docker exec -it cedr_tutorial /bin/bash
 ```
@@ -61,7 +72,7 @@ docker exec -it cedr_tutorial /bin/bash
 ```bash
 docker start -ai cedr_tutorial
 ```
-  * Save your changes locally to start a new container with saved changes: 
+  * Save your changes locally to start a new image with saved changes: 
 ```bash
 docker commit cedr_tutorial <new_image_name>:<new_tag> # Save changes in the current running image to create a new container
 docker run -it --name my_cedr_dev <new_image_name>:<new_tag> /bin/bash # Start a new image with the updated changes
@@ -91,6 +102,51 @@ cd CEDR
 Install all the required dependencies using the following command (this will take some time):
 ```bash
 sudo bash install_dependencies.sh
+pip3 install --no-cache-dir -r requirements.txt
+```
+
+***After installations are completed, you can move to [Building CEDR for x86](#building-cedr-for-x86).***
+
+### Option 3: WSL for Windows
+
+Download `Ubuntu 20.04` (The tutorial was tested with Ubuntu 20.04; Ubuntu 22.04 is also expected to work) for WSL from Microsoft store and start WSL.
+
+Install git using the following command:
+```bash
+sudo apt-get install git-all
+```
+
+Clone CEDR from GitHub using one of the following methods:
+  * Clone with ssh:
+```bash
+git clone -b tutorial git@github.com:UA-RCL/CEDR.git
+```
+  * Clone with https:
+```bash
+git clone -b tutorial https://github.com/UA-RCL/CEDR.git
+```
+
+Change your working directory to the cloned CEDR folder
+```bash
+cd CEDR
+```
+
+Install all the required dependencies using the following command (this will take some time):
+```bash
+sudo bash install_dependencies.sh
+pip3 install --no-cache-dir -r requirements.txt
+```
+
+***After installations are completed, you can move to [Building CEDR for x86](#building-cedr-for-x86). Following few lines shows helper commands for WSL.***
+
+Opening Windows explorer for the current folder you are in WSL, you may use:
+```bash
+explorer.exe .
+```
+
+Accessing your Windows folders from WSL you can use the following pathing:
+```bash
+ls /mnt/c/
 ```
 
 ## Building CEDR for x86:
@@ -291,7 +347,7 @@ python3 ../scripts/gantt_k-nk.py ./log_dir/experiment2/timing_trace.log
 mv gantt.png gantt_10rc_100ms.png
 ```
 
-## Chaning Hardware Composition
+## Changing Hardware Composition
 Until now, we have been using 3 CPUs. This time we will use 5 CPUs and run the same experiment. Modify the `daemon_config.json` file to set the number of CPUs to 5.
 
 ```
@@ -810,12 +866,12 @@ Now that we have everything we need to start DSE sweeps on AUP-ZU3 board, we wil
 sudo bash run_sweep.sh
 ```
 
-Once all the DSE is completed, move the log folder back to the USB for analysis on the host machine, following a similar command we used in[Exercise 1-2-2](#exercise-1-2-2-introducing-a-new-accelerator).
+Once all the DSE is completed, move the log folder back to the USB for analysis on the host machine, following a similar command we used in [Exercise 1-2-2](#exercise-1-2-2-introducing-a-new-accelerator).
 
 
 ```bash
 # On the Board
-sudo cp -r ./log_dir <USB_PATH>/build-arm/DSE/
+sudo cp -r ./log_dir <USB_PATH>/build-arm-DSE/
 sudo umount <USB_PATH>
 
 ###############################
@@ -826,7 +882,7 @@ sudo umount <USB_PATH>
 cp -r <USB_PATH>/build-arm-DSE/log_dir build-arm/
 ```
 
-Inside the `log_dir` folder, there should be a folder named `HIGH` containing as many files as there are trials. Each folder should have log files for each hardware composition, scheduler, and injection rate. These logs will be used to plot all DSE results in 3D. We will now navigate to `scripts/scripts-API/` from [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./)
+Inside the `log_dir` folder, there should be a folder named `HIGH` containing as many files as there are trials. Each folder should have log files for each hardware composition, scheduler, and injection rate. These logs will be used to plot all DSE results in 3D. We will now navigate to `scripts/scripts-API/` from [root directory](https://github.com/UA-RCL/CEDR/tree/tutorial/./).
 
 ```bash
 cd scripts/scripts-API/
@@ -867,7 +923,7 @@ To learn about the input arguments of `makedataframe.py`, execute the script wit
 
 ```bash
 python3 makedataframe.py -h
-python3 makedataframe.py -i ../../build/log_dir/ -w HIGH -o dataframe.csv -t 2 -r 2
+python3 makedataframe.py -i ../../build-arm/log_dir/ -w HIGH -o dataframe.csv -t 2 -r 2
 ```
 
 Modify the following lines in the [plt3dplot_inj.py](https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/scripts-API/plt3dplot_inj.py).
