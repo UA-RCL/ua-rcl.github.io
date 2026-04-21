@@ -9,6 +9,18 @@ title: CEDR Tutorials
 
 {% capture content %}
 
+<p style="text-align:left; margin-bottom: 1em;">
+  <img src="https://pact2026.github.io/images/pact-logo.png" alt="PACT Logo" style="max-width: 100%; height: auto; width: 5vw;">
+</p>
+
+Click [here](./pact26.html) to see our tutorial from [PACT 2026](https://pact2026.github.io/workshops/)
+
+{% endcapture %}
+
+{% include feature.html title="<h1>PACT 2026</h1>" text=content image="https://pact2026.github.io/images/chicago.jpg" %}
+
+{% capture content %}
+
 Click [here](./isfpga26.html) to see our tutorial from [FPGA 2026](https://www.isfpga.org)
 
 {% endcapture %}
