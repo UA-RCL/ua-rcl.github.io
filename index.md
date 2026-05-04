@@ -3,7 +3,11 @@
 
 # University of Arizona Reconfigurable Computing Lab (UA-RCL)
 
-We research ways to bridge the gap between application engineers, hardware architects, and system software developers towards making emerging heterogeneous computing and neuromorphic computing systems accessible. For this, we are actively working on two thrusts: a) building intelligent runtime systems for hardware-agnostic application development and deployment on SoC scale heterogeneous computing systems; b) designing reconfigurable architectures for neuromorphic computing to perform both training and high-throughput inference on resource constraint environments.
+***Our work sits at the intersection of computer architecture, system software, and domain-specific computing. We build the runtimes, compilers, schedulers, and hardware architectures that allow heterogeneous computing systems to be programmed, managed, and optimized in a unified, portable, and hardware-agnostic way from the embedded edge to high-performance platforms. If you want to see what it looks like when hardware diversity becomes a feature instead of a burden, explore our projects.***
+
+Monolithic systems are architecturally rigid, making them poorly suited to diverse and dynamically evolving workloads. In such environments, execution efficiency and adaptability matter more than raw compute density. Heterogeneous architectures address this need by combining the complementary strengths of multiple computation models. Systems that couple CPUs with accelerators such as GPUs and FPGAs have already become mainstream, and the trajectory is clear. Architectures are evolving toward deeper heterogeneity with the integration of specialized processing elements such as NPUs, TPUs, and CGRAs. Yet as heterogeneity increases, so does complexity.
+
+Researchers and system architects face mounting challenges in exploring the vast design space of processing element compositions, scheduler heuristics, and runtime strategies, and the tools needed to do so in a unified environment simply do not exist. Another critical challenge is in optimizing performance without sacrificing programming productivity, and the software and runtime infrastructure needed to harness this diversity remains fragmented, architecture-specific, and largely inaccessible. The UA-RCL exists to close this void.
 
 {%
   include button.html
