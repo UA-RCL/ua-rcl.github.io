@@ -3,6 +3,7 @@ name: Sahil Hassan (Ph.D.)
 image: images/profiles/lab/sahil_hassan.jpg
 description: RCL (UofArizona)
 role: graduated
+date: 2024-1-1
 links:
   email: sahilhassan@arizona.edu
   orcid: 0000-0002-4574-9555 

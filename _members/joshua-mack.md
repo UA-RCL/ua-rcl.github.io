@@ -2,6 +2,7 @@
 name: Joshua Mack
 image: images/profiles/lab/joshua_mack.jpg
 role: graduated
+date: 2024-1-1
 description: Praetorian
 links:
   email: jmack2545@arizona.edu
