@@ -19,6 +19,8 @@ Researchers and system architects face mounting challenges in exploring the vast
 {% include section.html %}
 
 ## News
+1. Mustafa Ghanim and Serhan Gener presented a poster and demo at the 2026 Big Idea Challenge Research 
+Showcase as members of the AZSCI team. (Check out our [blog post](./2026/05/08/azsci.html))
 1. Our paper titled ***Event-based Human Action Recognition: Rehabilitation Monitoring Dataset and Models***  is published in International Conference on Future Machine Learning and Data Science [(FMLDS'25)](https://www.fmlds.org/). This paper is available on ([IEEE Xplore](https://ieeexplore.ieee.org/document/11446492)).
 1. Our paper titled ***K-PACT: Kernel Planning for Adaptive Context Switching — A Framework for Clustering, Placement, and Prefetching in Spectrum Sensing*** is published in International Conference on Computer-Aided Design ([ICCAD'25](https://2025.iccad.com/)). The paper is available on ([IEEE Xplore](https://ieeexplore.ieee.org/document/11240855)) and the source code is hosted on [Github](https://github.com/UA-RCL/K-PACT).
 1. Our paper titled ***A Portable Framework with Generalized Runtime Features for Task Graph Execution and Concurrent Multi-Application Deployment on Heterogeneous Systems*** ([Science Direct](https://www.sciencedirect.com/science/article/pii/S0167739X25004789)) is published in Future Generation Computer Systems as journal preproof.
