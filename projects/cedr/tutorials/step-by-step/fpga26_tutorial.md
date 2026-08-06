@@ -1,6 +1,6 @@
 ---
 title: FPGA'26 Tutorial Contents
-style: /_styles/presentations/fpga26/custom.css
+style: /_styles/presentations/generic_tutorials/custom.css
 ---
 
 # FPGA'26 Tutorial Step-by-step Flow

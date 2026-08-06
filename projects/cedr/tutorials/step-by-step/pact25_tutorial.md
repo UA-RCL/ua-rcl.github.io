@@ -1,6 +1,6 @@
 ---
 title: PACT'25 Tutorial Contents
-style: /_styles/presentations/pact25/custom.css
+style: /_styles/presentations/generic_tutorials/custom.css
 ---
 
 # PACT'25 Tutorial Step-by-step Flow

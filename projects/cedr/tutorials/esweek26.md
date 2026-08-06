@@ -1,14 +1,14 @@
 ---
 layout: cedr_layout
-title: PACT'26
-order: 7
+title: ESWEEK'26
+order: 6
 ---
 
 # CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems
 
 <b>Overview:</b> As FPGAs are being embedded in all layers of computing infrastructure from edge to HPC scale, system designers continue to explore design methodologies that leverage increased levels of heterogeneity to push performance within the target performance goals or constraints. In line with this objective, we have developed CEDR, an open-source, unified compilation and runtime framework designed for FPGA-integrated heterogeneous systems, initially created as part of the DARPA DSSoC program. Our framework empowers users to seamlessly develop, compile, and deploy applications on off-the-shelf heterogeneous computing platforms. The framework is portable across a wide range of Linux-based systems, enabling seamless migration between platforms.  Building on the previous CEDR tutorials conducted at ESWEEK’23, ISFPGA’24, ISFPGA’25, ESWEEK’25, and PACT’25, this tutorial caters to audiences with diverse backgrounds and varying levels of expertise through hands-on activities tailored to three user types: application developers, system designers, and resource management heuristic developers.  For the 2026 edition, we partner with AMD to provide learning experience through hands-on exercises using AMD Xilinx FPGA-based SoCs and discussions around emerging challenges in heterogeneous computing. 
 
-CEDR is currently being leveraged in basic research and its utility has been validated through a diverse set of real-world applications by General Dynamics, Collins Aerospace, and the Johns Hopkins University Applied Physics Laboratory, alongside several academic collaborators. Additionally, it has undergone independent evaluation by the Carnegie Mellon University Software Engineering Institute. With its easy-to-use Application Programming Interface (API)-based programming model, CEDR has extended support and compatibility across programming models (GNURadio, PyTorch, Taskflow) and architectures (RISC-V, GPU, FPGA, and ARM-based SoCs), making it a highly versatile runtime for heterogeneous computing. In recent tutorials at ISFPGA’25, ESWEEK’25, and PACT’25, participants gained hands-on experience with CEDR on implementing applications and analyzing performance across diverse workload scenarios and scheduling heuristics using FPGA-based heterogeneous SoCs. Through our partnership with AMD, attendees in ESWEEK’25 and PACT’25 executed their implementations directly on AMD’s AUP-ZU3 FPGA boards. To enable repeatability and independent learning, all tutorial materials, including step-by-step instructions, test applications, and reference FPGA images, are publicly available [https://ua-rcl.github.io/projects/cedr/tutorials/step-by-step/pact26_tutorial.html](https://ua-rcl.github.io/projects/cedr/tutorials/step-by-step/pact26_tutorial.html).
+CEDR is currently being leveraged in basic research and its utility has been validated through a diverse set of real-world applications by General Dynamics, Collins Aerospace, and the Johns Hopkins University Applied Physics Laboratory, alongside several academic collaborators. Additionally, it has undergone independent evaluation by the Carnegie Mellon University Software Engineering Institute. With its easy-to-use Application Programming Interface (API)-based programming model, CEDR has extended support and compatibility across programming models (GNURadio, PyTorch, Taskflow) and architectures (RISC-V, GPU, FPGA, and ARM-based SoCs), making it a highly versatile runtime for heterogeneous computing. In recent tutorials at ISFPGA’25, ESWEEK’25, and PACT’25, participants gained hands-on experience with CEDR on implementing applications and analyzing performance across diverse workload scenarios and scheduling heuristics using FPGA-based heterogeneous SoCs. Through our partnership with AMD, attendees in ESWEEK’25 and PACT’25 executed their implementations directly on AMD’s AUP-ZU3 FPGA boards. To enable repeatability and independent learning, all tutorial materials, including step-by-step instructions, test applications, and reference FPGA images, are publicly available [https://ua-rcl.github.io/projects/cedr/tutorials/step-by-step/fpga26_tutorial.html](https://ua-rcl.github.io/projects/cedr/tutorials/step-by-step/fpga26_tutorial.html).
 
 For this edition of the tutorial, our goal is to deliver a comprehensive learning experience that builds on the foundational CEDR content introduced in prior tutorials while significantly expanding the depth and hands-on scope. We devote more time to FPGA-level design space exploration (DSE), enabling participants to run full DSE experiments directly on the hardware. This structure lowers the learning barrier for attendees and equips them with the skills needed to efficiently develop, optimize, and deploy applications using CEDR across diverse application domains and SoC configurations. The tutorial will conclude with a preview of the latest advancements in CEDR, including newly introduced features and upcoming enhancements. We leverage the proven, stable learning environment refined through previous offerings and enhance it with expanded FPGA-focused activities using AMD’s hardware platform. The session will begin with a concise refresher on the fundamentals of CEDR, ensuring both new and returning participants can follow the material. From there, the tutorial will transition into advanced topics, including integrating new accelerators and APIs into the runtime and applying fine-grained performance monitoring and profiling techniques on AMD’s FPGA-based heterogeneous platforms.  
 
@@ -18,13 +18,6 @@ For this edition of the tutorial, our goal is to deliver a comprehensive learnin
   name="Serhan Gener"
   description="Serhan Gener is a senior PhD student in the Reconfigurable Computing Lab graduating in Spring 2025. His research interests include reconfigurable computing, embedded systems heterogeneous computing, and software security."
   image="/images/profiles/lab/serhan_gener.jpg"
-  custom-class="wide-profile"
-%}
-{%
-  include portrait.html
-  name="Umut Suluhan"
-  description="Umut Suluhan is currently pursuing a PhD in the Electrical and Computer Engineering Department, The University of Arizona. His research interests include high-performance computing, reconfigurable architectures, and bridging the gap between deep learning techniques and low-power/high-performance heterogeneous architectures. Suluhan has a BS from Ozyegin University, Istanbul, Türkiye."
-  image="/images/profiles/lab/umut_suluhan.jpg"
   custom-class="wide-profile"
 %}
 </div>
@@ -57,4 +50,4 @@ The tutorial is structured in a half-day format that covers two core exercises, 
 
 <b>Hardware Images:</b> FPGA image used in this tutorial is available <a href="https://github.com/UA-RCL/Hardware-Images/tree/AUP-ZU3-2fft2zip" target="_blank">here</a>.
 
-<b>Step-by-step Tutorial:</b> A self-paced, archival version of our tutorial workflow is available [here](/projects/cedr/tutorials/step-by-step/pact26_tutorial.html).
+<b>Step-by-step Tutorial:</b> A self-paced, archival version of our tutorial workflow is available [here](/projects/cedr/tutorials/step-by-step/esweek26_tutorial.html).

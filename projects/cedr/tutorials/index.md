@@ -21,6 +21,18 @@ Click [here](./pact26.html) to see our tutorial from [PACT 2026](https://pact202
 
 {% capture content %}
 
+<p style="text-align:left; margin-bottom: 1em;">
+  <img src="https://esweek.org/wp-content/uploads/2020/03/esweek-logo.png" alt="ESWEEK Logo" style="max-width: 100%; height: auto; width: 5vw;">
+</p>
+
+Click [here](./esweek26.html) to see our tutorial from [ESWEEK 2026](https://esweek.org/tutorials/)
+
+{% endcapture %}
+
+{% include feature.html title="<h1>ESWEEK 2026</h1>" text=content image="https://esweek.org/wp-content/uploads/2025/12/bc.mp4" %}
+
+{% capture content %}
+
 Click [here](./isfpga26.html) to see our tutorial from [FPGA 2026](https://www.isfpga.org)
 
 {% endcapture %}

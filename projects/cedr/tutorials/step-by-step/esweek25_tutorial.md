@@ -1,6 +1,6 @@
 ---
 title: ESWEEK'25 Tutorial Contents
-style: /_styles/presentations/esweek25/custom.css
+style: /_styles/presentations/generic_tutorials/custom.css
 ---
 
 # ESWEEK'25 Tutorial Step-by-step Flow

@@ -1,9 +1,9 @@
 ---
-title: PACT'26 Tutorial Contents
+title: ESWEEK'26 Tutorial Contents
 style: /_styles/presentations/generic_tutorials/custom.css
 ---
 
-# PACT'26 Tutorial Step-by-step Flow
+# ESWEEK'26 Tutorial Step-by-step Flow
 
 In this tutorial, we will familiarize ourselves with setting up CEDR and performing the following set of tasks:
 - [Getting started](#exercise-0-getting-started-with-cedr) with and compiling CEDR
@@ -31,7 +31,7 @@ Additionally, we provide a number of supplemental tutorials on topics such as:
 - CEDR Source Files: [CEDR repository for this tutorial](https://github.com/UA-RCL/CEDR/), checked out to the `tutorial` branch.
 
 # Exercise 0: Getting Started with CEDR
-[Return to top](#pact26-tutorial-step-by-step-flow)
+[Return to top](#esweek26-tutorial-step-by-step-flow)
 
 ## Initial Setup:
 ### Option 1: Docker-based Instructions (Linux, Windows, and Mac)
@@ -39,7 +39,7 @@ Install Docker based on the host machine platform using the [link](https://docs.
 Pull the latest [Docker container](https://hub.docker.com/r/uofarcl/cedr/tags) with all dependencies installed. 
 Open a terminal and run the Docker image using the following command: 
 ```bash 
-docker run -it --name cedr_tutorial uofarcl/cedr:tutorial_pact26 /bin/bash
+docker run -it --name cedr_tutorial uofarcl/cedr:tutorial_esweek26 /bin/bash
 ```
 
 Within the Docker container clone CEDR from GitHub using one of the following methods:
@@ -57,7 +57,7 @@ git clone -b tutorial https://github.com/UA-RCL/CEDR.git
 We will need to copy files from the container to the host machine. Use one of these alternatives for this: 
   * Mount a volume while running Docker using a folder on the host machine: 
 ```bash
-docker run -it --name cedr_tutorial -v <host-folder>:/root/repository/share uofarcl/cedr:tutorial_pact26 /bin/bash
+docker run -it --name cedr_tutorial -v <host-folder>:/root/repository/share uofarcl/cedr:tutorial_esweek26 /bin/bash
 ```
   * Using `docker cp` to copy files from the container to the host: 
 ```bash
@@ -173,7 +173,7 @@ At this point, there are 4 important files that should be compiled:
 Look into [dash.h](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash/dash.h) under [libdash](https://github.com/UA-RCL/CEDR/tree/tutorial/libdash) folder and see available API calls.
 
 # Exercise 1-1-1: Introducing CEDR APIs to Baseline C++ Applications
-[Return to top](#pact26-tutorial-step-by-step-flow)
+[Return to top](#esweek26-tutorial-step-by-step-flow)
 
 ## Application Overview
 
@@ -309,7 +309,7 @@ python3 gantt_k-nk.py ../build/log_dir/experiment0/timing_trace.log
 Having built CEDR and compiled radar correlator application, we can proceed to performing design-space exploration now. 
 
 # Exercise 1-1-2: Multiple Application Instance Workloads
-[Return to top](#pact26-tutorial-step-by-step-flow)
+[Return to top](#esweek26-tutorial-step-by-step-flow)
 
 ## Multiple Applications
 While in the build folder, run CEDR again using the config file
@@ -390,7 +390,7 @@ mv gantt.png gantt_10rc_100ms_5CPU_ETF.png
 After each step or once all is done you can see the how the changes are effecting the execution of the applications looking at the generated Gantt charts.
 
 # Exercise 1-2-1: Introducing a New API Call
-[Return to top](#pact26-tutorial-step-by-step-flow)
+[Return to top](#esweek26-tutorial-step-by-step-flow)
 
 In this section of the tutorial, we will demonstrate integration of a new API call to the CEDR. We will use `DASH_ZIP` API call as an example. 
 
@@ -552,7 +552,7 @@ cat log_dir/experiment5/timing_trace.log | grep -E '*ZIP*'
 Before starting with new accelerator integration we will go through the cross compilation of CEDR and application for AUP-ZU3.
 
 ## FPGA Based SoC Experiment (AUP-ZU3)
-[Return to top](#pact26-tutorial-step-by-step-flow)
+[Return to top](#esweek26-tutorial-step-by-step-flow)
 
 Moving on to the aarch64-based build for AUP-ZU3 FPGA with accelerators. We'll start by building CEDR itself. This time we will use the [toolchain](https://github.com/UA-RCL/CEDR/tree/tutorial/toolchains/aarch64-linux-gnu.toolchain.cmake) file for cross-compilation. If you are on Ubuntu 22.04, the toolchain requires running inside the docker container.
 Simply run the following commands from the repository root folder:
@@ -779,7 +779,7 @@ mv gantt.png gantt_FFT_ZIP.png
 ```
 
 ## Exercise 2: Design Space Exploration
-[Return to top](#pact26-tutorial-step-by-step-flow)
+[Return to top](#esweek26-tutorial-step-by-step-flow)
 
 CEDR includes scripts that enable rapid, easy design-space exploration (DSE). Now, we will go over the flow and define how to perform DSE step-by-step. First, navigate to the folder where we accommodate [DSE scripts](https://github.com/UA-RCL/CEDR/tree/tutorial/scripts/DSE).
 
@@ -955,7 +955,7 @@ python3 plt3dplot_inj.py dataframe.csv SCHED # Scheduling overhead
 # Supplemental Exercises:
 
 ## Supplemental Exercise 1: Integration and Evaluation of EFT Scheduler
-[Return to top](#pact26-tutorial-step-by-step-flow)
+[Return to top](#esweek26-tutorial-step-by-step-flow)
 
 Now navigate to [scheduler.cpp](https://github.com/UA-RCL/CEDR/tree/tutorial/scr-api/scheduler.cpp). This file contains various schedulers already tailored to work with CEDR. In this part of the tutorial, we will add the Earliest Finish Time(EFT) scheduler to CEDR. EFT heuristic schedules all the tasks in the `read queue` one by one based on the earliest expected finish time of the task on the available resources (processing elements -- PE). 
 
@@ -1177,7 +1177,7 @@ Once everything is completed, we will terminate CEDR with `kill_daemon`.
 ```
 
 ## Supplemental Exercise 2: Running Multiple Applications with CEDR on x86
-[Return to top](#pact26-tutorial-step-by-step-flow)
+[Return to top](#esweek26-tutorial-step-by-step-flow)
 
 ### Compilation of Applications
 In this section, we will demonstrate CEDR's ability to manage dynamically arriving applications. Assuming you already have built CEDR following the previous steps, we will directly delve into compiling and running two new applications that are lane detection and pulse doppler.
@@ -1217,7 +1217,7 @@ Then, launch CEDR with your desired configuration and submit both applications w
 Observe the [output image of lane detection](./build/output_fft.png) and the [shift and time delay](./build/output/pulse_doppler_output.txt) calculated by pulse doppler.
 
 ## Supplemental Exercise 3: GPU Based SoC Experiment (Nvidia Jetson AGX Xavier)
-[Return to top](#pact26-tutorial-step-by-step-flow)
+[Return to top](#esweek26-tutorial-step-by-step-flow)
 
 ### Building CEDR
 Firstly, we need to connect to the Nvidia Jetson board through ssh connection. 
@@ -1322,4 +1322,4 @@ cat output/pulse_doppler_output.txt
 
 # Contact
 
-For any questions and bug reports, please email [gener@arizona.edu](mailto:gener@arizona.edu) or [suluhan@arizona.edu](mailto:suluhan@arizona.edu).
+For any questions and bug reports, please email [sahilhassan@arizona.edu](mailto:sahilhassan@arizona.edu), [gener@arizona.edu](mailto:gener@arizona.edu), or [suluhan@arizona.edu](mailto:suluhan@arizona.edu).
