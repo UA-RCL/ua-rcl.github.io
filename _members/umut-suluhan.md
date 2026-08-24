@@ -8,7 +8,7 @@ links:
   orcid: 0009-0009-5398-5708
   google-scholar: dcYgpdgAAAAJ&hl=en
   linkedin: hasan-umut-suluhan-318127186/
-  cv: images/cv/Umut_Suluhan_Resume_aug25.pdf
+  cv: images/cv/Umut_Suluhan_Resume_aug26.pdf
 ---
 
 I am a PhD student in the Department of Electrical & Computer Engineering at The University of Arizona. I received my BS degree in Computer Science from Ozyegin University in 2023. My research interests are broadly in high-performance computing and reconfigurable architectures. 
