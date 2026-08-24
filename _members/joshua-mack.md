@@ -1,5 +1,5 @@
 ---
-name: Joshua Mack
+name: Joshua Mack (Ph.D.)
 image: images/profiles/lab/joshua_mack.jpg
 role: graduated
 date: 2024-1-1
