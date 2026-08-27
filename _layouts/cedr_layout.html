@@ -60,6 +60,11 @@ layout: default
       </li>
 
       <li>
+        <a href="{{ '/projects/cedr/demo/' | relative_url }}" class="{% if page.url == '/projects/cedr/demo/' %}active{% endif %}">Demo Recording</a>
+        <ul style="max-height: {% if page.url contains '/tutorials/' %}500px{% else %}0{% endif %};"></ul>
+      </li>
+
+      <li>
         {% include button.html
           type="github"
           text="CEDR GitHub"

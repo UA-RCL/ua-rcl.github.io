@@ -10,6 +10,10 @@ System designers are continuously exploring design methodologies that harness in
 -->
 <img src="images/CEDR-Overview.svg" alt="CEDR Flow" style="display: block; margin: 0 auto; ">
 
+<div style="text-align: center;">
+  {% include button.html type="website" text="CEDR Demo Recording" link="/projects/cedr/demo/" %}
+</div>
+
 ## Key Features of CEDR
 
 <ul>

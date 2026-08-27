@@ -28,7 +28,7 @@ We will start with an overview of CEDR, and then we will explore how CEDR (i) al
 {% 
   include portrait.html
   name="Serhan Gener"
-  description="Serhan Gener is a senior PhD student in the Reconfigurable Computing Lab graduating in Spring 2025. His research interests include reconfigurable computing, embedded systems heterogeneous computing, and software security."
+  description="Serhan Gener is a senior PhD student in the Reconfigurable Computing Lab. His research interests include reconfigurable computing, embedded systems heterogeneous computing, and software security."
   image="/images/profiles/lab/serhan_gener.jpg"
   custom-class="wide-profile"
 %}
