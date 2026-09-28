@@ -49,21 +49,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>RIMMS | UA-RCL</title>
+<title>Demo Reproduction Guide | UA-RCL</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="RIMMS">
+<meta name="title" content="Demo Reproduction Guide">
 <meta name="description" content="University of Arizona Reconfigurable Computing Lab. ">
 
-<meta property="og:title" content="RIMMS">
+<meta property="og:title" content="Demo Reproduction Guide">
 <meta property="og:site_title" content="UA-RCL">
 <meta property="og:description" content="University of Arizona Reconfigurable Computing Lab. ">
 <meta property="og:url" content="">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="RIMMS">
+<meta property="twitter:title" content="Demo Reproduction Guide">
 <meta property="twitter:description" content="University of Arizona Reconfigurable Computing Lab. ">
 <meta property="twitter:url" content="">
 <meta property="twitter:card" content="summary_large_image">
@@ -79,9 +79,9 @@
     
       "@type": "WebSite",
     
-    "name": "RIMMS",
+    "name": "Demo Reproduction Guide",
     "description": "University of Arizona Reconfigurable Computing Lab. ",
-    "headline": "RIMMS",
+    "headline": "Demo Reproduction Guide",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -290,74 +290,6 @@
 
   
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
 <!-- include all css in styles folder -->
 <!-- 
@@ -368,6 +300,8 @@
  -->
 
 <!-- allow pages to customize styling via frontmatter -->
+
+<link href="/_styles/presentations/generic_tutorials/custom.css" rel="stylesheet">
 
   <!-- third party scripts -->
 <script src="https://unpkg.com/@popperjs/core@2" defer></script>
@@ -490,378 +424,415 @@
   
   
 
-  <section class="background" data-size="0.9rem" style="--image: url('/#fff')">
-    <section class="full-width-section" style="display: flex; margin-top: 0; padding-top: 0;">
-<div style="display: flex; margin-top: 0; padding-top: 0;">
+  <section class="background" data-size="page">
+    <h1 id="cedr-live-demo-reproduction-guide">CEDR Live Demo Reproduction Guide</h1>
 
-  <!-- Sidebar -->
-  <nav id="cedr-sidebar">
-    <h3>Table of Contents</h3>
-    <ul style="padding-top: 3rem;">
+<p>This README describes how to reproduce the CEDR live demonstration using an <strong>AUP-ZU3 FPGA board</strong> and a <strong>Linux host machine</strong>.</p>
 
-      <li>
-        <a href="/projects/cedr/" class="">Overview</a>
-        <ul style="max-height: 0;"></ul>
-      </li>
+<p>The demo uses a direct local network connection between the host and the AUP-ZU3. The default configuration assumes:</p>
 
-      <li class="has-sub ">
-        <a href="/projects/cedr/tutorials/" class="">Tutorials</a>
-        <ul style="max-height: 0;">
-          
-          
-            
-              
-                <li><a href="/projects/cedr/tutorials/pact26.html" class="">PACT'26</a></li>
-              
-            
-          
-            
-              
-                <li><a href="/projects/cedr/tutorials/esweek26.html" class="">ESWEEK'26</a></li>
-              
-            
-          
-            
-              
-                <li><a href="/projects/cedr/tutorials/isfpga26.html" class="">ISFPGA'26</a></li>
-              
-            
-          
-            
-              
-                <li><a href="/projects/cedr/tutorials/pact25.html" class="">PACT'25</a></li>
-              
-            
-          
-            
-              
-                <li><a href="/projects/cedr/tutorials/esweek25.html" class="">ESWEEK'25</a></li>
-              
-            
-          
-            
-              
-                <li><a href="/projects/cedr/tutorials/isfpga25.html" class="">ISFPGA'25</a></li>
-              
-            
-          
-            
-              
-                <li><a href="/projects/cedr/tutorials/isfpga24.html" class="">ISFPGA'24</a></li>
-              
-            
-          
-            
-          
-            
-          
-            
-              
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-          <li>
-            
+<ul>
+  <li>
+<strong>Host IP:</strong> <code class="language-plaintext highlighter-rouge">192.168.10.1</code>
+</li>
+  <li>
+<strong>AUP-ZU3 IP:</strong> <code class="language-plaintext highlighter-rouge">192.168.10.2</code>
+</li>
+  <li>
+<strong>CEDR TCP port:</strong> <code class="language-plaintext highlighter-rouge">5001</code>
+</li>
+  <li>
+<strong>Dashboard:</strong> <code class="language-plaintext highlighter-rouge">http://127.0.0.1:8050</code>
+</li>
+</ul>
 
+<p>All files required for the demo are available in the following read-only Google Drive folder:</p>
 
+<p><a href="https://drive.google.com/drive/folders/1YlDGz3caBvI6kMCsgK_YPf2T1GQhaJJa?usp=sharing" target="_blank" rel="noopener noreferrer">
+      CEDR Live Demo Files
+</a></p>
 
-  <div class="button-wrapper">
-    <a class="button" href="https://github.com/UA-RCL/CEDR/blob/tutorial/CEDR_tutorial.md" data-tooltip="GitHub" data-style="" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-      <i class="icon fa-brands fa-github"></i>
-      
-        <span>Detailed Tutorial</span>
-      
-    </a>
-  </div>
+<hr>
 
+<h1 id="part-0--prerequisites">Part 0 — Prerequisites</h1>
 
-          </li>
-        </ul>
-      </li>
+<h2 id="1-required-hardware-and-software">1. Required Hardware and Software</h2>
 
-      <li class="has-sub open">
-        <a href="/projects/cedr/projects/" class="active">Projects</a>
-        <ul style="max-height: 500px;">
-          
-          
-            
-              <li><a href="/projects/cedr/projects/cleo-ai.html" class="">CLEO-AI</a></li>
-            
-          
-            
-              <li><a href="/projects/cedr/projects/hopperfish.html" class="">HOPPERFISH</a></li>
-            
-          
-            
-          
-            
-              <li><a href="/projects/cedr/projects/pytorch.html" class="">PyTorch</a></li>
-            
-          
-            
-              <li><a href="/projects/cedr/projects/rimms.html" class="active">RIMMS</a></li>
-            
-          
-            
-              <li><a href="/projects/cedr/projects/risc-v.html" class="">RISC-V</a></li>
-            
-          
-            
-              <li><a href="/projects/cedr/projects/taskflow.html" class="">Taskflow</a></li>
-            
-          
-            
-              <li><a href="/projects/cedr/projects/vos.html" class="">Value of Service</a></li>
-            
-          
-        </ul>
-      </li>
+<h3 id="hardware">Hardware</h3>
 
-      <li>
-        <a href="/projects/cedr/publications/" class="">Publications</a>
-        <ul style="max-height: 0;"></ul>
-      </li>
+<ul>
+  <li>AUP-ZU3 FPGA board</li>
+  <li>SD card for the AUP-ZU3</li>
+  <li>Linux host computer</li>
+  <li>Ethernet cable for a direct host-to-board connection</li>
+</ul>
 
-      <li>
-        <a href="/projects/cedr/news/" class="">News</a>
-        <ul style="max-height: 0;"></ul>
-      </li>
+<h3 id="host-software">Host Software</h3>
 
-      <li>
-        <a href="/projects/cedr/demo/" class="">Demo Recording</a>
-        <ul style="max-height: 0;"></ul>
-      </li>
+<p>The host should have:</p>
 
-      <li>
-        
+<ul>
+  <li>Python 3</li>
+  <li><code class="language-plaintext highlighter-rouge">pip</code></li>
+  <li>A modern web browser</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">scp</code> / SSH utilities</li>
+</ul>
 
+<p>The dashboard script requires the following Python packages:</p>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> pip <span class="nb">install </span>dash pandas plotly
+</code></pre></div></div>
 
-  <div class="button-wrapper">
-    <a class="button" href="https://github.com/UA-RCL/CEDR" data-tooltip="GitHub" data-style="" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-      <i class="icon fa-brands fa-github"></i>
-      
-        <span>CEDR GitHub</span>
-      
-    </a>
-  </div>
+<p>Optionally, you can install them inside a Python virtual environment:</p>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> venv cedr-demo-env
+<span class="nb">source </span>cedr-demo-env/bin/activate
+python3 <span class="nt">-m</span> pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+python3 <span class="nt">-m</span> pip <span class="nb">install </span>dash pandas plotly
+</code></pre></div></div>
 
-      </li>
-    </ul>
-  </nav>
+<hr>
 
-  <!-- Main Content -->
-  <main style="flex: 1; max-width: none; width: 100%; padding: 0 1rem 1rem 1rem; margin-top: -2rem; padding-top: -2rem;">
-    <h1 id="runtime-integrated-memory-management-system-for-heterogeneous-computing">Runtime Integrated Memory Management System for Heterogeneous Computing</h1>
+<h2 id="2-download-the-demo-files">2. Download the Demo Files</h2>
 
-<p>Efficient memory management in heterogeneous systems is increasingly challenging due to diverse compute architectures (e.g., CPU, GPU, FPGA) and dynamic task mappings not known at compile time. Existing approaches often require programmers to manage data placement and transfers explicitly, or assume static mappings that limit portability and scalability. This paper introduces RIMMS (Runtime Integrated Memory Management System), a lightweight, runtime-managed, hardware-agnostic memory abstraction layer that decouples application development from low-level memory operations. RIMMS transparently tracks data locations, manages consistency, and supports efficient memory allocation across heterogeneous compute elements without requiring platform-specific tuning or code modifications. We integrate RIMMS into a baseline runtime and evaluate with complete radar signal processing applications across CPU+GPU and CPU+FPGA platforms. RIMMS delivers up to 2.43X speedup on GPU-based and 1.82X on FPGA-based systems over the baseline. Compared to IRIS, a recent heterogeneous runtime system, RIMMS achieves up to 3.08X speedup and matches the performance of native CUDA implementations while significantly reducing programming complexity. Despite operating at a higher abstraction level, RIMMS incurs only 1-2 cycles of overhead per memory management call, making it a low-cost solution. These results demonstrate RIMMS’s ability to deliver high performance and enhanced programmer productivity in dynamic, real-world heterogeneous environments.</p>
+<p>Open the Google Drive folder:</p>
 
-  </main>
+<p><a href="https://drive.google.com/drive/folders/1YlDGz3caBvI6kMCsgK_YPf2T1GQhaJJa?usp=sharing" target="_blank" rel="noopener noreferrer">
+      CEDR Live Demo Files
+</a></p>
 
-  <aside class="sidebar" style="flex: 0 0 300px; position: sticky; top: 70px; align-self: flex-start;">
-    <div class="box">
-      <!-- Keep 3 items only, remove old ones as needed -->
-      <h3>Latest News</h3>
+<p>The provided files are organized into the following main groups:</p>
 
-      <a href="/projects/cedr/tutorials/pact26.html" class="news-card-link">
-        <div class="news-card">
-          <img src="https://pact2026.github.io/images/pact-logo.png" alt="PACT 2026" class="news-img">
-          <div class="news-content">
-            <h4>Aug 3, 2026</h4>
-            <p>
-              Released new <strong>PACT 2026</strong> tutorial.
-            </p>
-          </div>
-        </div>
-      </a>
-      <a href="/projects/cedr/tutorials/esweek26.html" class="news-card-link">
-        <div class="news-card">
-          <img src="https://esweek.org/wp-content/uploads/2020/03/esweek-logo.png" alt="ESWEEK 2026" class="news-img">
-          <div class="news-content">
-            <h4>Aug 3, 2026</h4>
-            <p>
-              Released new <strong>ESWEEK 2026</strong> tutorial.
-            </p>
-          </div>
-        </div>
-      </a>
-      <a href="/projects/cedr/tutorials/isfpga26.html" class="news-card-link">
-        <div class="news-card">
-          <img src="https://www.isfpga.org/wp-content/uploads/2020/06/montereybridge3-1536x390.jpg" alt="ISFPGA 2026" class="news-img">
-          <div class="news-content">
-            <h4>Feb 10, 2026</h4>
-            <p>
-              Released new <strong>ISFPGA 2026</strong> tutorial.
-            </p>
-          </div>
-        </div>
-      </a>
-      <!-- <a href="/projects/cedr/projects/hopperfish.html" class="news-card-link">
-        <div class="news-card">
-          <img src="/projects/cedr/images/logos/journals/acm_taco.jpg" alt="TACO 2025" class="news-img">
-          <div class="news-content">
-            <h4>October 4, 2025</h4>
-            <p>
-              Our <strong>HOPPERFISH</strong> paper is accepted on ACM TACO.
-            </p>
-          </div>
-        </div>
-      </a> -->
+<ul>
+  <li>
+<strong>SD Card files</strong> — image/files used to boot the AUP-ZU3</li>
+  <li>
+<strong>Board_Files</strong> — CEDR binaries, configuration files, and workloads used on the AUP-ZU3</li>
+  <li>
+<strong>Host_Script</strong> — Python dashboard script and its supporting files</li>
+</ul>
 
-    </div>
-  </aside>
+<p>Download the required files before continuing.</p>
 
-</div>
+<hr>
 
-</section>
+<h1 id="part-i--aup-zu3-setup">Part I — AUP-ZU3 Setup</h1>
 
-<script>
-document.querySelectorAll('#cedr-sidebar .has-sub > a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const parent = this.parentElement;
-    parent.classList.toggle('open');
-    const submenu = parent.querySelector('ul');
-    if (submenu) {
-      if (parent.classList.contains('open')) {
-        submenu.style.maxHeight = submenu.scrollHeight + 'px';
-      } else {
-        window.location.href = this.href;
-      }
-    }
-  });
-});
-</script>
+<h2 id="prepare-the-aup-zu3-board">Prepare the AUP-ZU3 Board</h2>
 
-<style> /* News box related changes */
-  @media (max-width: 1020px) { /* Remove news in small windows */
-    .sidebar {
-      display: none;
-    }
-  }
+<p>Download the provided SD card image/files from the Google Drive folder.</p>
 
-  .box {
-    background: #fff;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
+<p>Use your preferred SD card imaging tool to write the provided image to the SD card.</p>
 
-  .sidebar h3 {
-    margin-top: 0;
-  }
+<p>After the image has been written:</p>
 
-  .news-card {
-    display: flex;
-    gap: 0.5rem;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    margin-bottom: 1rem;
-  }
+<ol>
+  <li>Insert the SD card into the AUP-ZU3.</li>
+  <li>Power on the board.</li>
+  <li>Wait for the board to finish booting.</li>
+  <li>Connect the Ethernet adapter to the AUP-ZU3 board.</li>
+  <li>
+    <p>Configure the Ethernet adapter on the AUP-ZU3 with the following IP address:</p>
 
-  .news-img {
-    width: 80px;
-    height: 80px;
-    object-fit: scale-down;
-  }
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ip <span class="nb">link set </span>dev &lt;device_name&gt; up
+<span class="nb">sudo </span>ip addr add 192.168.10.2/24 dev &lt;device_name&gt;
+</code></pre></div>    </div>
 
-  .news-content {
-    padding: 0.5rem;
-  }
+    <p>Replace <code class="language-plaintext highlighter-rouge">&lt;device_name&gt;</code> with the Ethernet interface connected to the host. You can identify the interface using the <code class="language-plaintext highlighter-rouge">ip link</code> command on the board. The interface that appears after connecting the Ethernet adapter is the one to use.</p>
+  </li>
+  <li>
+    <p>Verify the configuration:</p>
 
-  .news-content h4 {
-    margin: 0 0 0.25rem;
-    font-size: 0.9rem;
-    color: #555;
-  }
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>ip addr show dev &lt;device_name&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
 
-  .news-content p {
-    margin: 0;
-    font-size: 0.85rem;
-  }
+<p>The AUP-ZU3 should now be configured to use:</p>
 
-  .news-card-link {
-    display: block;
-    text-decoration: none; /* remove underline */
-    color: inherit;        /* keep text color */
-  }
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>192.168.10.2
+</code></pre></div></div>
 
-  .news-card-link:hover .news-card {
-    background-color: #f5f5f5; /* optional hover effect */
-  }
-</style>
+<hr>
 
-<style> /* ToC related changes */
-  .container {
-    max-width: 100% !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0;
-  }
+<h1 id="part-ii--host-network-setup">Part II — Host Network Setup</h1>
 
-  /* Sidebar Layout */
-  #cedr-sidebar {
-    display: flex;
-    flex-direction: column;
-    flex: 0 1 220px;
-    width: 220px;
-    border-right: 1px solid #ccc;
-    padding-right: 1rem;
-    position: sticky;
-    top: 1rem;
-    height: max-content;
-  }
+<h2 id="configure-the-host-ethernet-interface">Configure the Host Ethernet Interface</h2>
 
-  /* Title */
-  #cedr-sidebar h3 {
-    position: sticky;
-    top: 70px;
-    z-index: 10;
-    padding: 0.5rem 0;
-    margin: 0;
-    border-bottom: 1px solid #ddd;
-  }
+<p>First, identify the Ethernet interface connected to the AUP-ZU3:</p>
 
-  /* List Styling */
-  #cedr-sidebar ul {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 0;
-  }
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip <span class="nb">link</span>
+</code></pre></div></div>
 
-  #cedr-sidebar li {
-    padding-left: 1rem;
-  }
+<p>Typical interface names may look like:</p>
 
-  #cedr-sidebar li ul {
-    padding-left: 1rem;
-    overflow: hidden;
-    transition: max-height 0.25s ease-in-out;
-  }
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eth0
+enp3s0
+enx001122334455
+</code></pre></div></div>
 
-  /* Links */
-  #cedr-sidebar a.active {
-    font-weight: bold;
-    color: #0056b3;
-  }
+<p>Replace <code class="language-plaintext highlighter-rouge">&lt;device_name&gt;</code> in the commands below with the correct interface.</p>
 
-  #cedr-sidebar a:hover {
-    text-decoration: underline;
-  }
-</style>
+<p>Bring the interface up:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ip <span class="nb">link set </span>dev &lt;device_name&gt; up
+</code></pre></div></div>
+
+<p>Assign the host IP address:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ip addr add 192.168.10.1/24 dev &lt;device_name&gt;
+</code></pre></div></div>
+
+<p>The demo expects the following network configuration:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>IP Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Host</td>
+      <td><code class="language-plaintext highlighter-rouge">192.168.10.1</code></td>
+    </tr>
+    <tr>
+      <td>AUP-ZU3</td>
+      <td><code class="language-plaintext highlighter-rouge">192.168.10.2</code></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>You can verify the host configuration with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip addr show dev &lt;device_name&gt;
+</code></pre></div></div>
+
+<p>Finally, verify that the board is reachable:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping 192.168.10.2
+</code></pre></div></div>
+
+<p>You should receive replies from the AUP-ZU3 before continuing.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> The provided scripts and binaries assume these IP addresses by default. If different addresses are used, the corresponding host and board configuration must also be updated.</p>
+</blockquote>
+
+<hr>
+
+<h1 id="part-iii--copy-the-board-files">Part III — Copy the Board Files</h1>
+
+<h2 id="copy-board_files-to-the-aup-zu3">Copy <code class="language-plaintext highlighter-rouge">Board_Files</code> to the AUP-ZU3</h2>
+
+<p>From the host machine, navigate to the location where the Google Drive files were downloaded.</p>
+
+<p>Copy the contents of <code class="language-plaintext highlighter-rouge">Board_Files</code> to the board:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp <span class="nt">-r</span> Board_Files/<span class="k">*</span> petalinux@192.168.10.2:/home/petalinux/
+</code></pre></div></div>
+
+<p>Enter the AUP-ZU3 user password when prompted.</p>
+
+<p>After the transfer completes, SSH into the board:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh petalinux@192.168.10.2
+</code></pre></div></div>
+
+<p>Verify that the files are present:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span>
+</code></pre></div></div>
+
+<p>If necessary, make the CEDR binary executable:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x cedr
+</code></pre></div></div>
+
+<hr>
+
+<h1 id="part-iv--start-the-host-dashboard">Part IV — Start the Host Dashboard</h1>
+
+<h2 id="1-prepare-the-host-script">1. Prepare the Host Script</h2>
+
+<p>Download the complete <code class="language-plaintext highlighter-rouge">Host_Script</code> folder from the Google Drive folder.</p>
+
+<p>Keep the files together. In particular, the dashboard expects its image files inside an <code class="language-plaintext highlighter-rouge">assets</code> directory located next to the Python script.</p>
+
+<p>A typical layout should look similar to:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Host_Script/
+├── &lt;dashboard_script&gt;.py
+├── jetson-demo/
+│   ├── api_trace.csv
+│   └── power_trace.csv
+├── assets/
+│   ├── AUP-ZU3.png
+│   ├── Jetson.png
+│   ├── UA-logo.png
+│   ├── RCL-logo.png
+│   └── AMD-logo.png
+└── ...
+</code></pre></div></div>
+
+<p>Navigate to the host script directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>Host_Script
+</code></pre></div></div>
+
+<p>Run the dashboard:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 tcp-gantt-workload.py
+</code></pre></div></div>
+
+<p>The script starts:</p>
+
+<ul>
+  <li>a TCP server used to communicate with CEDR using port <code class="language-plaintext highlighter-rouge">5001</code>, and</li>
+  <li>a Dash web application on port <code class="language-plaintext highlighter-rouge">8050</code>.</li>
+</ul>
+
+<hr>
+
+<h2 id="2-open-the-dashboard">2. Open the Dashboard</h2>
+
+<p>Once the Python script is running, open a browser on the host machine and navigate to:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://127.0.0.1:8050
+</code></pre></div></div>
+
+<p>You can also use:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:8050
+</code></pre></div></div>
+
+<p>For the best demo layout, press <code class="language-plaintext highlighter-rouge">F11</code> on the browser to place the browser in full-screen mode.</p>
+
+<p>At this point, the dashboard may show that the AUP-ZU3 is not yet connected. This is expected until CEDR is started on the board.</p>
+
+<hr>
+
+<h1 id="part-v--start-cedr-on-the-aup-zu3">Part V — Start CEDR on the AUP-ZU3</h1>
+
+<h2 id="run-cedr">Run CEDR</h2>
+
+<p>On the AUP-ZU3, navigate to the directory containing the copied board files. If the contents of <code class="language-plaintext highlighter-rouge">Board_Files</code> were copied directly into <code class="language-plaintext highlighter-rouge">/home/petalinux</code>, use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~
+</code></pre></div></div>
+
+<p>Start CEDR with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./cedr <span class="nt">-c</span> ./daemon_config-light.json <span class="nt">-l</span> NONE
+</code></pre></div></div>
+
+<p>After CEDR starts, the dashboard on the host should indicate that the board is connected.</p>
+
+<hr>
+
+<h1 id="part-vi--run-the-live-demo">Part VI — Run the Live Demo</h1>
+
+<h2 id="1-start-a-workload">1. Start a Workload</h2>
+
+<p>Once both the dashboard and CEDR are running:</p>
+
+<ol>
+  <li>Return to the browser dashboard.</li>
+  <li>Verify that the AUP-ZU3 shows as connected.</li>
+  <li>Press the workload start button in the dashboard.</li>
+  <li>Observe task execution in the live Gantt chart and the associated performance information.</li>
+</ol>
+
+<hr>
+
+<h2 id="2-experiment-with-scheduling-policies">2. Experiment with Scheduling Policies</h2>
+
+<p>The dashboard allows the scheduling policy to be changed while using the demo.</p>
+
+<p>For example, experiment with:</p>
+
+<ul>
+  <li><strong>Round Robin</strong></li>
+  <li><strong>EFT — Earliest Finish Time</strong></li>
+  <li><strong>ETF — Earliest Time to Finish</strong></li>
+  <li><strong>MET — Minimum Execution Time</strong></li>
+</ul>
+
+<p>Changing the scheduler allows you to observe how task placement changes across the available CPUs and FPGA accelerators.</p>
+
+<hr>
+
+<h2 id="3-experiment-with-resource-availability">3. Experiment with Resource Availability</h2>
+
+<p>The dashboard also allows the active resource configuration to be modified.</p>
+
+<p>For example:</p>
+
+<ol>
+  <li>Start with all CPU, FFT, and ZIP resources enabled.</li>
+  <li>Reduce the number of available FFT or ZIP accelerators.</li>
+  <li>Disable one or more accelerator types.</li>
+  <li>Observe how CEDR dynamically adapts task placement to the available resources.</li>
+</ol>
+
+<p>The resource pool visualization indicates which resources are currently enabled or disabled.</p>
+
+<hr>
+
+<h1 id="default-demo-configuration">Default Demo Configuration</h1>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Host IP</td>
+      <td><code class="language-plaintext highlighter-rouge">192.168.10.1</code></td>
+    </tr>
+    <tr>
+      <td>AUP-ZU3 IP</td>
+      <td><code class="language-plaintext highlighter-rouge">192.168.10.2</code></td>
+    </tr>
+    <tr>
+      <td>TCP Port</td>
+      <td><code class="language-plaintext highlighter-rouge">5001</code></td>
+    </tr>
+    <tr>
+      <td>Dash Port</td>
+      <td><code class="language-plaintext highlighter-rouge">8050</code></td>
+    </tr>
+    <tr>
+      <td>Dashboard URL</td>
+      <td><code class="language-plaintext highlighter-rouge">http://127.0.0.1:8050</code></td>
+    </tr>
+    <tr>
+      <td>AUP-ZU3 User</td>
+      <td><code class="language-plaintext highlighter-rouge">petalinux</code></td>
+    </tr>
+    <tr>
+      <td>CEDR Config</td>
+      <td><code class="language-plaintext highlighter-rouge">daemon_config-light.json</code></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<hr>
+
+<h1 id="demo-files">Demo Files</h1>
+
+<p>All files used by this demonstration are available here:</p>
+
+<p><a href="https://drive.google.com/drive/folders/1YlDGz3caBvI6kMCsgK_YPf2T1GQhaJJa?usp=sharing" target="_blank" rel="noopener noreferrer">
+      CEDR Live Demo Files
+</a></p>
   </section>
 
 
