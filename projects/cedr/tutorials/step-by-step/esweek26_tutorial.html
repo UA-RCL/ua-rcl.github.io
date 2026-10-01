@@ -521,7 +521,8 @@
 <p>Install Docker based on the host machine platform using the <a href="https://docs.docker.com/engine/install/#desktop">link</a>.
 Pull the latest <a href="https://hub.docker.com/r/uofarcl/cedr/tags">Docker container</a> with all dependencies installed. 
 Open a terminal and run the Docker image using the following command:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">--name</span> cedr_tutorial uofarcl/cedr:tutorial_esweek26 /bin/bash
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull uofarcl/cedr:tutorial
+docker run <span class="nt">-it</span> <span class="nt">--name</span> cedr_tutorial uofarcl/cedr:tutorial /bin/bash
 </code></pre></div></div>
 
 <p>Within the Docker container clone CEDR from GitHub using one of the following methods:</p>
@@ -544,7 +545,7 @@ Open a terminal and run the Docker image using the following command:</p>
 <ul>
   <li>Mount a volume while running Docker using a folder on the host machine:
     <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">--name</span> cedr_tutorial <span class="nt">-v</span> &lt;host-folder&gt;:/root/repository/share uofarcl/cedr:tutorial_esweek26 /bin/bash
+<div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">--name</span> cedr_tutorial <span class="nt">-v</span> &lt;host-folder&gt;:/root/repository/share uofarcl/cedr:tutorial /bin/bash
 </code></pre></div>    </div>
   </li>
   <li>Using <code class="language-plaintext highlighter-rouge">docker cp</code> to copy files from the container to the host:
