@@ -39,7 +39,8 @@ Install Docker based on the host machine platform using the [link](https://docs.
 Pull the latest [Docker container](https://hub.docker.com/r/uofarcl/cedr/tags) with all dependencies installed. 
 Open a terminal and run the Docker image using the following command: 
 ```bash 
-docker run -it --name cedr_tutorial uofarcl/cedr:tutorial_pact26 /bin/bash
+docker pull uofarcl/cedr:tutorial
+docker run -it --name cedr_tutorial uofarcl/cedr:tutorial /bin/bash
 ```
 
 Within the Docker container clone CEDR from GitHub using one of the following methods:
@@ -57,7 +58,7 @@ git clone -b tutorial https://github.com/UA-RCL/CEDR.git
 We will need to copy files from the container to the host machine. Use one of these alternatives for this: 
   * Mount a volume while running Docker using a folder on the host machine: 
 ```bash
-docker run -it --name cedr_tutorial -v <host-folder>:/root/repository/share uofarcl/cedr:tutorial_pact26 /bin/bash
+docker run -it --name cedr_tutorial -v <host-folder>:/root/repository/share uofarcl/cedr:tutorial /bin/bash
 ```
   * Using `docker cp` to copy files from the container to the host: 
 ```bash
