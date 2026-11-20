@@ -4,7 +4,7 @@ title: ESWEEK'26
 order: 6
 ---
 
-# CEDR: A Holistic Software and Hardware Design Environment for Hardware Agnostic Application Development and Deployment on FPGA-Integrated Heterogeneous Systems
+# From Application Development to Design-Space Exploration with CEDR for Heterogeneous Systems
 
 <b>Overview:</b> As FPGAs are being embedded in all layers of computing infrastructure from edge to HPC scale, system designers continue to explore design methodologies that leverage increased levels of heterogeneity to push performance within the target performance goals or constraints. In line with this objective, we have developed CEDR, an open-source, unified compilation and runtime framework designed for FPGA-integrated heterogeneous systems, initially created as part of the DARPA DSSoC program. Our framework empowers users to seamlessly develop, compile, and deploy applications on off-the-shelf heterogeneous computing platforms. The framework is portable across a wide range of Linux-based systems, enabling seamless migration between platforms.  Building on the previous CEDR tutorials conducted at ESWEEK’23, ISFPGA’24, ISFPGA’25, ESWEEK’25, and PACT’25, this tutorial caters to audiences with diverse backgrounds and varying levels of expertise through hands-on activities tailored to three user types: application developers, system designers, and resource management heuristic developers.  For the 2026 edition, we partner with AMD to provide learning experience through hands-on exercises using AMD Xilinx FPGA-based SoCs and discussions around emerging challenges in heterogeneous computing. 
 
