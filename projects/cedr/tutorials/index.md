@@ -10,6 +10,18 @@ title: CEDR Tutorials
 {% capture content %}
 
 <p style="text-align:left; margin-bottom: 1em;">
+  <img src="https://www.ee.cityu.edu.hk/~rcheung/FPT/UserFiles/Image/fpt2026_logo.png" alt="FPT'26 Logo" style="max-width: 100%; height: auto; width: 5vw;">
+</p>
+
+Click [here](./fpt26.html) to see our tutorial from [FPT 2026](https://fpt2026.uark.edu/workshop-and-tutorials/)
+
+{% endcapture %}
+
+<style>*:has(> img[src*="2026FPT_Header_photo.jpg"]) { display: flex; align-items: center; justify-content: center; } img[src*="2026FPT_Header_photo.jpg"] { max-width: 100%; height: auto; }</style>{% include feature.html title="<h1>FPT 2026</h1>" text=content image="https://fpt2026.uark.edu/files/2026/02/2026FPT_Header_photo.jpg" %}
+
+{% capture content %}
+
+<p style="text-align:left; margin-bottom: 1em;">
   <img src="https://pact2026.github.io/images/pact-logo.png" alt="PACT Logo" style="max-width: 100%; height: auto; width: 5vw;">
 </p>
 
